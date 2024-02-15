@@ -1,0 +1,12 @@
+[
+    {
+        "id": "",
+        "username": "",
+        "password": "",
+        "firstName": "",
+        "lastName": "",
+        "emailAddress": "",
+        "approved": false,
+        "assignedStudents": ["", "", ""]
+    }
+]

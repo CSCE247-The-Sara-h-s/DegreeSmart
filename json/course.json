@@ -1,0 +1,14 @@
+[
+    {
+        "id": "",
+        "subject": "",
+        "number": "",
+        "name": "",
+        "description": "",
+        "prerequisites": ["", "", ""],
+        "corequisites": ["", "", ""],
+        "semestersOffered": ["", "", ""],
+        "coreCategories": ["", "", ""],
+        "creditHours": 0.000
+    }
+]

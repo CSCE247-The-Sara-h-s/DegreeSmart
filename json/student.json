@@ -1,0 +1,35 @@
+[
+    {
+        "id": "",
+        "username": "",
+        "password": "",
+        "firstName": "",
+        "lastName": "",
+        "emailAddress": "",
+        "uscId": "",
+        "advisor": "",
+        "accessRequests": ["", "", ""],
+        "advisingNotes": [
+            {
+                "note": "",
+                "author": "",
+                "time": ""
+            }
+        ],
+        "transcript": {
+            "completedCourses": [
+                {
+                    "course": "",
+                    "grade": "",
+                    "semester": "",
+                    "year": 0
+                }
+            ],
+            "gpa": 0.000,
+            "completedCreditHours": 0.000 
+        },
+        "graduationPlan": {
+            // TODO
+        }
+    }
+]

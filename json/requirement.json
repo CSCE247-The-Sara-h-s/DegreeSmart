@@ -1,0 +1,23 @@
+[
+	{
+		"name": "",
+		"category": "",
+		"requirements": [
+			{
+				"numberToSelect": 0,
+				"courseOptions": ["", "", ""],
+				"minGrade": ""
+			},
+			{
+				"numberToSelect": 0,
+				"requirementOptions": [
+					{
+						"numberToSelect": 0,
+						"courseOptions": ["", "", ""],
+						"minGrade": ""
+					}
+				],
+			}
+		]
+	}
+]
