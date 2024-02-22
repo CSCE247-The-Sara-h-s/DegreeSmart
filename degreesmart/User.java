@@ -14,11 +14,11 @@ public abstract class User {
   }
 
   public String getSystemId() {
-    return "";
+    return id;
   }
 
   public String getUsername() {
-    return "";
+    return username;
   }
 
   public void setUsername(String username) {
@@ -26,7 +26,7 @@ public abstract class User {
   }
 
   public String getPassword() {
-    return "";
+    return password;
   }
 
   public void setPassword(String password) {
@@ -34,7 +34,7 @@ public abstract class User {
   }
 
   public String getFirstName() {
-    return "";
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
@@ -42,7 +42,7 @@ public abstract class User {
   }
 
   public String getLastName() {
-    return "";
+    return lastName;
   }
 
   public void setLastName() {
@@ -50,7 +50,7 @@ public abstract class User {
   }
 
   public String getPreferredName() {
-    return "";
+    return preferredName;
   }
 
   public void setPreferredName(String firstName) {
@@ -58,7 +58,7 @@ public abstract class User {
   }
 
   public String getEmailAddress() {
-    return "";
+    return emailAddress;
   }
 
   public void setEmailAddress(String emailAddress) {
