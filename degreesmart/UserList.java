@@ -8,7 +8,7 @@ public class UserList {
     private HashMap<String, String> idsByUsername;
     private UserList userList;
 
-    // FIGURE OUT RETURN TYPE
+    // FIGURE OUT
     private static UserList() {
 
     }

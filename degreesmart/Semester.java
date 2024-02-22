@@ -1,4 +1,4 @@
-package degreeworks;
+package degreesmart;
 
 public enum Semester {
 	SPRING,
