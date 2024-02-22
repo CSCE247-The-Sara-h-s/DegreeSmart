@@ -18,15 +18,15 @@ public class UserList {
     }
 
     public ArrayList<User> getUsers() {
-        return new ArrayList<User>;
+        return new ArrayList<User>[];
     }
 
     private User getUser(String id) {
-        return new User;
+        return new User();
     }
 
     public User getUser(String username) {
-        return new User;
+        return new User();
     }
 
     public void createUser(User user) {
