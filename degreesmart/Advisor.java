@@ -19,7 +19,7 @@ public class Advisor extends User {
   }
 
   public ArrayList<Student> getAssignedStudents() {
-    return new ArrayList<Student>;
+    return new ArrayList<Student>();
   }
 
   public void addAssignedStudent(Student student) {
@@ -43,6 +43,6 @@ public class Advisor extends User {
   }
 
   public void removeCompletedCourse(Student student, CompletedCourse course) {
-    
+
   }
 }
