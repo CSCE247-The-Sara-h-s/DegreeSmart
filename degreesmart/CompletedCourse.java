@@ -27,7 +27,7 @@ public class CompletedCourse {
 	}
 
 	public Semester getSemester() {
-
+		return semester;
 	}
 
 	public void setSemester(Semester semester) {
@@ -35,7 +35,7 @@ public class CompletedCourse {
 	}
 
 	public int getYear() {
-
+		return year;
 	}
 
 	public void setYear(int year) {
