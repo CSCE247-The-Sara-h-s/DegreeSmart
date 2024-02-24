@@ -9,7 +9,7 @@ public class GraduationPlan {
 	private Semester preferredGraduationSemester;
 	private double preferredMinCreditHoursPerSemester;
 	private double preferredMaxCreditHoursPerSemester;
-	private	Hashmap<String, Course> selectedCourses;
+	private	HashMap<String, Course> selectedCourses;
 	private ArrayList<PlannedCourse> semesterSchedule;
 
 	public GraduationPlan() {
@@ -17,7 +17,7 @@ public class GraduationPlan {
 	}
 
 	public ArrayList<RequirementSet> getRequirementSets() {
-		return new ArrayList<RequirementSet;
+		return new ArrayList<RequirementSet>();
 	}
 
 	public boolean addRequirementSet(RequirementSet requirementSet) {
@@ -49,7 +49,7 @@ public class GraduationPlan {
 	}
 
 	public void setPreferredMinCreditHoursPerSemester(double preferredMinCreditHoursPerSemester) {
-		return preferredMinCreditHoursPerSemester;
+
 	}
 
 	public double getPreferredMaxCreditHoursPerSemester() {
@@ -57,7 +57,7 @@ public class GraduationPlan {
 	}
 
 	public void setPreferredMaxCreditHoursPerSemester(double preferredMaxCreditHoursPerSemester) {
-		return preferredMaxCreditHoursPerSemester;
+
 	}
 
 	private void generateSemesterSchedule() {
