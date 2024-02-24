@@ -1,32 +1,31 @@
 package degreesmart;
+
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserList {
     private ArrayList<User> users;
-    private HashMap<String, User> usersById;
-    private HashMap<String, String> idsByUsername;
-    private UserList userList;
+    private HashMap<UUID, User> usersById;
+    private HashMap<String, UUID> uuidsByUsername;
+    private static UserList userList;
 
-    // FIGURE OUT
-    private static UserList() {
-
-    }
+    private UserList() {}
 
     public UserList getInstance() {
         return new UserList();
     }
 
     public ArrayList<User> getUsers() {
-        return new ArrayList<User>[];
+        return new ArrayList<User>();
     }
 
-    private User getUser(String id) {
-        return new User();
+    private User getUser(UUID uuid) {
+        return users.get(0);
     }
 
     public User getUser(String username) {
-        return new User();
+        return users.get(0);
     }
 
     public void createUser(User user) {
@@ -37,7 +36,7 @@ public class UserList {
 
     }
 
-    public void modifyUser(User modfieidUser) {
+    public void modifyUser(User modifiedUser) {
 
     }
 
