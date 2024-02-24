@@ -8,14 +8,12 @@ public class CourseList {
 	private ArrayList<Course> courses;
 	private HashMap<UUID, Course> coursesByUuid;
 	private HashMap<String, UUID> uuidsBySubjectAndNumber;
-	private static final CourseList courseList;
+	private static CourseList courseList;
 
-	private CourseList() {
-
-	}
+	private CourseList() {}
 
 	public CourseList getInstance() {
-		return this();
+		return new CourseList();
 	}
 
 	public ArrayList<Course> getCourses() {
@@ -23,11 +21,11 @@ public class CourseList {
 	}
 
 	public Course getCourse(UUID uuid) {
-		return new Course();
+		return courses.get(0);
 	}
 
 	public Course getCourse(Subject subject, String number) {
-		return new Course();
+		return courses.get(0);
 	}
 
 	public boolean createCourse(Course course) {
