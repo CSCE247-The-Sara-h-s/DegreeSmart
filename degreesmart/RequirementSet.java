@@ -1,5 +1,7 @@
 package degreesmart;
 
+import java.util.ArrayList;
+
 public class RequirementSet {
 	private String name;
 	private RequirementSetCategory category;
