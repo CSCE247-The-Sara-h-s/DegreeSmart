@@ -3,17 +3,17 @@ package degreesmart;
 import java.util.ArrayList;
 
 public class Application {
-    private UserList userlist;
-    private CourseList CourseList;
+    private UserList userList;
+    private CourseList courseList;
     private RequirementSetList requirementSetList;
     private User activeUser;
 
     public User createAccount(String username, String password, String email, String firstName, String lastName) {
-
+        return userList.getUsers().get(0);
     }
 
     public User logIn(String username, String password) {
-
+        return userList.getUsers().get(0);
     }
 
     public void logOut() {
@@ -37,79 +37,79 @@ public class Application {
     }
 
     public ArrayList<User> getUsers() {
-        
+        return userList.getUsers();
     }
 
     public User getUser(String username) {
-
+        return userList.getUsers().get(0);
     }
     
     public ArrayList<User> getUsers(String firstName, String lastName) {
-
+        return userList.getUsers();
     }
 
-    public ArrayList<Advisor> getAdvisors() {
-
+    public ArrayList<User> getAdvisors() {
+        return userList.getUsers();
     }
 
-    public ArrayList<Student> getStudents() {
-
+    public ArrayList<User> getStudents() {
+        return userList.getUsers();
     }
 
-    public ArrayList<Advisor> getUnapprovedAdvisors() {
-
+    public ArrayList<User> getUnapprovedAdvisors() {
+        return userList.getUsers();
     }
 
-    public ArrayList<Student> getUnassignedStudents() {
-
+    public ArrayList<User> getUnassignedStudents() {
+        return userList.getUsers();
     }
 
     public Student getStudent(Student uscId) {
-
+        return (Student)userList.getUsers().get(0);
     }
 
-    public ArrayList<Student> getStudents(String firstName, String lastName) {
-
+    public ArrayList<User> getStudents(String firstName, String lastName) {
+        return userList.getUsers();
     }
 
     public ArrayList<Course> getCourses() {
-
+        return courseList.getCourses();
     }
 
     public Course getCourse(Subject subject, String number) {
-
+        return courseList.getCourses().get(0);
     }
 
     public ArrayList<Course> getCourses(Subject subject) {
-
+        return courseList.getCourses();
     }
 
     public ArrayList<Course> getCourses(CoreCategory category) {
-
+        return courseList.getCourses();
     }
 
     public ArrayList<RequirementSet> getRequirementSets() {
-
+        return requirementSetList.getRequirementSets();
     }
 
     public ArrayList<RequirementSet> getRequirementSets(RequirementSetCategory category) {
-
+        return requirementSetList.getRequirementSets();
     }
     
-    public RequirementSet getRequirementSets(String name, RequirementSetCategory category) {
-        
+    public RequirementSet getRequirementSet(String name, RequirementSetCategory category) {
+        return requirementSetList.getRequirementSets().get(0);
     }
 
     public RequirementSet getCarolinaCore() {
-
+        return requirementSetList.getRequirementSets().get(0);
     }
 
     public ArrayList<RequirementSet> getMajors() {
-
+        return requirementSetList.getRequirementSets();
     }
 
     public ArrayList<RequirementSet> getApplicationAreas() {
-
+        return requirementSetList.getRequirementSets();
     }
 
     public void approveAdvisor(Advisor advisor) {
@@ -148,9 +148,8 @@ public class Application {
 
     }
 
-    // TODO: FIGURE OUT RETURN TYPE
-    public ArrayList<String> getScholarshipStatus(Student student) {
-
+    public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
+        return new ArrayList<Scholarship>();
     }
 
     public void addAdvisingNote(Student student, String note) {
@@ -166,15 +165,15 @@ public class Application {
     }
 
     public ArrayList<CompletedCourse> getCompletedCourses(Student student) {
-
+        return new ArrayList<CompletedCourse>();
     }
 
     public double getGpa(Student student) {
-
+        return 0.0;
     }
 
     public double getCompletedCreditHours(Student student) {
-
+        return 0.0;
     }
 
     public void sendAccessRequest(String username) {
@@ -194,15 +193,15 @@ public class Application {
     }
 
     public double getGpa() {
-
+        return 0.0;
     }
 
     public double getCompletedCreditHours() {
-
+        return 0.0;
     }
 
     public ArrayList<String> getAccessRequests() {
-
+        return new ArrayList<String>();
     }
 
     public void approveAccessRequest() {
@@ -217,16 +216,16 @@ public class Application {
 
     }
 
-    public String getAdvisingNotes() {
-        
+    public ArrayList<AdvisingNote> getAdvisingNotes() {
+        return new ArrayList<AdvisingNote>();
     }
 
     public Advisor getAdvisor() {
-
+        return (Advisor)userList.getUsers().get(0);
     }
 
-    public Parent getParents() {
-
+    public Parent getParent() {
+        return (Parent)userList.getUsers().get(0);
     }
 
     public void addScholarship () {
@@ -234,10 +233,6 @@ public class Application {
     }
 
     public void removeScholarship () {
-
-    }
-
-    public ArrayList<String> getScholarshipStatus() {
 
     }
 
@@ -261,17 +256,15 @@ public class Application {
         
     }
 
-    public Course getCoursesThatApplyToRequirement() {
-
+    public ArrayList<Course> getCoursesThatApplyToRequirement() {
+        return courseList.getCourses();
     }
 
     public ArrayList<PlannedCourse> getSemesterSchedule() {
-
+        return new ArrayList<PlannedCourse>();
     }
 
     public void moveCourseToDifferentSemester() {
 
     }
-
 }
-
