@@ -8,14 +8,12 @@ public class RequirementSetList {
 	private ArrayList<RequirementSet> requirementSets;
 	private HashMap<UUID, RequirementSet> requirementSetsByUuid;
 	private HashMap<String, UUID> uuidsByCategoryAndName;
-	private static final RequirementSetList requirementSetList;
+	private static RequirementSetList requirementSetList;
 
-	private RequirementSetList() {
-
-	}
+	private RequirementSetList() {}
 
 	public RequirementSetList getInstance() {
-		return this();
+		return new RequirementSetList();
 	}
 
 	public ArrayList<RequirementSet> getRequirementSets() {
@@ -23,11 +21,11 @@ public class RequirementSetList {
 	}
 
 	public RequirementSet getRequirementSet(UUID uuid) {
-		return new RequirementSet();
+		return requirementSets.get(0);
 	}
 
 	public RequirementSet getRequirementSet(RequirementSetCategory category, String name) {
-		return new RequirementSet();
+		return requirementSets.get(0);
 	}
 
 	public boolean createRequirementSet(RequirementSet requirementSet) {
