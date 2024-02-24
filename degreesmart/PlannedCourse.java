@@ -10,7 +10,7 @@ public class PlannedCourse {
     }
 
     public Course getCourse() {
-        return new Course();
+        return course;
     }
 
     public void setCourse(Course course) {
@@ -18,7 +18,7 @@ public class PlannedCourse {
     }
 
     public Semester getSemester() {
-        return new Semester();
+        return semester;
     }
 
     public void setSemester(Semester semester) {
