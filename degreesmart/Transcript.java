@@ -11,8 +11,8 @@ public class Transcript {
 
     }
 
-    public ArrayList<CompletedCourse>getCompletedCourses() {
-
+    public ArrayList<CompletedCourse> getCompletedCourses() {
+        return completedCourses;
     }
 
     public void addCompletedCourse(CompletedCourse course) {
