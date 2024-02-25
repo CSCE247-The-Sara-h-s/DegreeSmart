@@ -10,14 +10,22 @@ public class UserList {
     private HashMap<String, UUID> uuidsByUsername;
     private static UserList userList;
 
-    private UserList() {}
+    private UserList() {
+        users = DataLoader.getUsers();
+    }
 
     public UserList getInstance() {
-        return new UserList();
+        if(userList == null) {
+			userList = new UserList();
+		}
+		
+		return userList;
+
+        //return new UserList();
     }
 
     public ArrayList<User> getUsers() {
-        return new ArrayList<User>();
+        return users;
     }
 
     private User getUser(UUID uuid) {
@@ -32,8 +40,17 @@ public class UserList {
 
     }
 
+    //just kinda messing around with this...it might be wrong but hopefully gives us good starting point
     public void deleteUser(User user) {
-
+        UUID uuid = uuidsByUsername.get(user.getUsername());
+        usersById.remove(uuid);
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(user.getUsername())) {
+                users.remove(i);
+                break;
+            }
+        }
+        uuidsByUsername.remove(user.getUsername());
     }
 
     public void modifyUser(User modifiedUser) {
