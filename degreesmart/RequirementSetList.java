@@ -10,33 +10,61 @@ public class RequirementSetList {
 	private HashMap<String, UUID> uuidsByCategoryAndName;
 	private static RequirementSetList requirementSetList;
 
-	private RequirementSetList() {}
+	private RequirementSetList() {
+		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
+		HashMap<UUID, RequirementSet> requirementSetsByUuid = new HashMap<UUID, RequirementSet>();
+		HashMap<String, UUID> uuidsByCategoryAndName = new HashMap<String, UUID>();
+	}
 
 	public RequirementSetList getInstance() {
-		return new RequirementSetList();
+		if (requirementSetList == null) {
+			requirementSetList = new RequirementSetList();
+		}
+		return requirementSetList;
 	}
 
 	public ArrayList<RequirementSet> getRequirementSets() {
-		return new ArrayList<RequirementSet>();
+		return requirementSets;
 	}
 
 	public RequirementSet getRequirementSet(UUID uuid) {
-		return requirementSets.get(0);
+		return requirementSetsByUuid.get(uuid);
 	}
 
 	public RequirementSet getRequirementSet(RequirementSetCategory category, String name) {
-		return requirementSets.get(0);
+		return getRequirementSet(uuidsByCategoryAndName.get(category + " " + name));
 	}
 
 	public boolean createRequirementSet(RequirementSet requirementSet) {
-		return true;
+		if (!requirementSetsByUuid.containsKey(requirementSet.getUuid())) {
+			uuidsByCategoryAndName.put(requirementSet.getCategory() + " " + requirementSet.getName(), requirementSet.getUuid());
+			requirementSetsByUuid.put(requirementSet.getUuid(), requirementSet);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean deleteRequirementSet(RequirementSet requirementSet) {
-		return true;
+		if (requirementSets.remove(requirementSet)) {
+			requirementSetsByUuid.remove(requirementSet.getUuid());
+			uuidsByCategoryAndName.remove(requirementSet.getCategory() + " " + requirementSet.getName());
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean modifyRequirementSet(RequirementSet requirementSet) {
-		return true;
+		RequirementSet old = requirementSetsByUuid.get(requirementSet.getUuid());
+
+		if (old != null) {
+			uuidsByCategoryAndName.remove(old.getCategory() + " " + old.getName());
+			uuidsByCategoryAndName.put(requirementSet.getCategory() + " " + requirementSet.getName(), requirementSet.getUuid());
+			requirementSetsByUuid.replace(requirementSet.getUuid(), requirementSet);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
