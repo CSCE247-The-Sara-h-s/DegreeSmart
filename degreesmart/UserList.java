@@ -10,14 +10,22 @@ public class UserList {
     private HashMap<String, UUID> uuidsByUsername;
     private static UserList userList;
 
-    private UserList() {}
+    private UserList() {
+        users = DataLoader.getUsers();
+    }
 
     public UserList getInstance() {
-        return new UserList();
+        if(userList == null) {
+			userList = new UserList();
+		}
+		
+		return userList;
+
+        //return new UserList();
     }
 
     public ArrayList<User> getUsers() {
-        return new ArrayList<User>();
+        return users;
     }
 
     private User getUser(UUID uuid) {

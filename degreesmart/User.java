@@ -9,8 +9,12 @@ public abstract class User {
   private String preferredName;
   private String emailAddress;
 
-  public User(String username, String password, String email, String firstName, String lastName) {
-
+  public User(String username, String password, String emailAddress, String firstName, String lastName) {
+    this.username = username;
+    this.password = password;
+    this.emailAddress = emailAddress;
+    this.firstName= firstName;
+    this.lastName = lastName;
   }
 
   public String getSystemId() {
@@ -22,7 +26,7 @@ public abstract class User {
   }
 
   public void setUsername(String username) {
-
+    this.username = username;
   }
 
   public String getPassword() {
@@ -30,7 +34,7 @@ public abstract class User {
   }
 
   public void setPassword(String password) {
-
+    this.password = password;
   }
 
   public String getFirstName() {
@@ -38,7 +42,7 @@ public abstract class User {
   }
 
   public void setFirstName(String firstName) {
-
+    this.firstName = firstName;
   }
 
   public String getLastName() {
@@ -46,7 +50,7 @@ public abstract class User {
   }
 
   public void setLastName() {
-
+    this.lastName = lastName;
   }
 
   public String getPreferredName() {
@@ -54,7 +58,7 @@ public abstract class User {
   }
 
   public void setPreferredName(String firstName) {
-
+    this.firstName = preferredName;
   }
 
   public String getEmailAddress() {
@@ -62,7 +66,7 @@ public abstract class User {
   }
 
   public void setEmailAddress(String emailAddress) {
-    
+    this.emailAddress = emailAddress;
   }
 
 }
