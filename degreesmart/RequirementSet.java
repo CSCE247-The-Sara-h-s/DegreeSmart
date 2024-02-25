@@ -19,6 +19,10 @@ public class RequirementSet {
 		this(UUID.randomUUID(), name, category);
 	}
 
+	public UUID getUuid() {
+		return uuid;
+	}
+
 	public String getName() {
 		return name;
 	}
