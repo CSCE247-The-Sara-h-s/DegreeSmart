@@ -1,7 +1,9 @@
 package degreesmart;
 
+import java.util.UUID;
+
 public abstract class User {
-  private String id;
+  private UUID uuid;
   private String username;
   private String password;
   private String firstName;
@@ -9,16 +11,21 @@ public abstract class User {
   private String preferredName;
   private String emailAddress;
 
-  public User(String username, String password, String emailAddress, String firstName, String lastName) {
+  public User(UUID uuid, String username, String password, String emailAddress, String firstName, String lastName) {
+    this.uuid = uuid;
     this.username = username;
     this.password = password;
     this.emailAddress = emailAddress;
-    this.firstName= firstName;
+    this.firstName = firstName;
     this.lastName = lastName;
   }
 
-  public String getSystemId() {
-    return id;
+  public User(String username, String password, String emailAddress, String firstName, String lastName) {
+    this(UUID.randomUUID(), username, password, emailAddress, firstName, lastName);
+  }
+
+  public UUID getUuid() {
+    return uuid;
   }
 
   public String getUsername() {
@@ -68,5 +75,4 @@ public abstract class User {
   public void setEmailAddress(String emailAddress) {
     this.emailAddress = emailAddress;
   }
-
 }
