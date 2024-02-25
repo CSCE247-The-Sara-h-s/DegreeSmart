@@ -1,14 +1,22 @@
 package degreesmart;
 
+import java.util.UUID;
 import java.util.ArrayList;
 
 public class RequirementSet {
+	private UUID uuid;
 	private String name;
 	private RequirementSetCategory category;
 	private ArrayList<Requirement> requirements;
 
-	public RequirementSet(String name, RequirementSetCategory category) {
+	public RequirementSet(UUID uuid, String name, RequirementSetCategory category) {
+		this.uuid = uuid;
+		this.name = name;
+		this.category = category;
+	}
 
+	public RequirementSet(String name, RequirementSetCategory category) {
+		this(UUID.randomUUID(), name, category);
 	}
 
 	public String getName() {
@@ -16,7 +24,7 @@ public class RequirementSet {
 	}
 
 	public void setName(String name) {
-
+		this.name = name;
 	}
 
 	public RequirementSetCategory getCategory() {
@@ -24,7 +32,7 @@ public class RequirementSet {
 	}
 
 	public void setCategory(RequirementSetCategory category) {
-
+		this.category = category;
 	}
 
 	public ArrayList<Requirement> getRequirements() {
@@ -32,10 +40,10 @@ public class RequirementSet {
 	}
 
 	public boolean addRequirement(Requirement requirement) {
-		return true;
+		return requirements.add(requirement);
 	}
 
 	public boolean removeRequirement(Requirement requirement) {
-		return true;
+		return requirements.remove(requirement);
 	}
 }
