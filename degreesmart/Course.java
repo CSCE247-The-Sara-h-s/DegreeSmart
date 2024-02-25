@@ -14,12 +14,20 @@ public class Course {
 	private ArrayList<CoreCategory> coreCategories;
 	private double creditHours;
 
-	public Course(Subject subject, String number) {
-
+	public Course(UUID uuid, Subject subject, String number) {
+		this.uuid = uuid;
+		this.subject = subject;
+		this.number = number;
+		prerequisites = new ArrayList<CourseRequirement>();
+		corequisites = new ArrayList<Course>();
+		semestersOffered = new ArrayList<Semester>();
+		coreCategories = new ArrayList<CoreCategory>();
+		creditHours = 0.0;
 	}
 
-	private void setUuid() {
-
+	public Course(Subject subject, String number) {
+		// TODO - uuid collisions?
+		this(UUID.randomUUID(), subject, number);
 	}
 
 	public UUID getUuid() {
@@ -27,11 +35,11 @@ public class Course {
 	}
 
 	public Subject getSubject() {
-		return Subject.CSCE;
+		return subject;
 	}
 
 	public void setSubject(Subject subject) {
-
+		this.subject = subject;
 	}
 
 	public String getNumber() {
@@ -39,19 +47,23 @@ public class Course {
 	}
 
 	public void setNumber(String number) {
-
+		this.number = number;
 	}
 
 	public ArrayList<CourseRequirement> getPrerequisites() {
 		return prerequisites;
 	}
 
-	public boolean addPrerequisite(Requirement prerequisite) {
-		return true;
+	public boolean addPrerequisite(CourseRequirement prerequisite) {
+		if (!prerequisites.contains(prerequisite)) {
+			return prerequisites.add(prerequisite);
+		} else {
+			return false;
+		}
 	}
 
-	public boolean removePrerequisite(Requirement prerequisite) {
-		return true;
+	public boolean removePrerequisite(CourseRequirement prerequisite) {
+		return prerequisites.remove(prerequisite);
 	}
 
 	public ArrayList<Course> getCorequisites() {
@@ -59,11 +71,15 @@ public class Course {
 	}
 
 	public boolean addCorequisite(Course corequisite) {
-		return true;
+		if (!corequisites.contains(corequisite)) {
+			return corequisites.add(corequisite);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean removeCorequisite(Course corequisite) {
-		return true;
+		return corequisites.remove(corequisite);
 	}
 
 	public ArrayList<Semester> getSemestersOffered() {
@@ -71,11 +87,15 @@ public class Course {
 	}
 
 	public boolean addSemesterOffered(Semester semester) {
-		return true;
+		if (!semestersOffered.contains(semester)) {
+			return semestersOffered.add(semester);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean removeSemesterOffered(Semester semester) {
-		return true;
+		return semestersOffered.remove(semester);
 	}
 
 	public ArrayList<CoreCategory> getCoreCategories() {
@@ -83,11 +103,15 @@ public class Course {
 	}
 
 	public boolean addSemesterOffered(CoreCategory coreCategory) {
-		return true;
+		if (!semestersOffered.contains(coreCategory)) {
+			return coreCategories.add(coreCategory);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean removeSemesterOffered(CoreCategory coreCategory) {
-		return true;
+		return coreCategories.remove(coreCategory);
 	}
 
 	public double getCreditHours() {
@@ -95,6 +119,10 @@ public class Course {
 	}
 
 	public void setCreditHours(double creditHours) {
-		
+		if (creditHours <= 0.0) {
+			creditHours = 0.0;
+		}
+
+		this.creditHours = creditHours;
 	}
 }
