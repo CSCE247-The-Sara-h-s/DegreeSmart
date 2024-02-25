@@ -7,26 +7,31 @@ public class CourseRequirement extends Requirement {
 	private Grade minGrade;
 
 	public CourseRequirement() {
-		
+		courseOptions = new ArrayList<Course>();
+		minGrade = Grade.F;
 	}
 
 	public ArrayList<Course> getCourseOptions() {
-		return new ArrayList<Course>();
+		return courseOptions;
 	}
 
 	public boolean addCourseOption(Course course) {
-		return true;
+		if (!courseOptions.contains(course)) {
+			return courseOptions.add(course);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean removeCourseOption(Course course) {
-		return true;
+		return courseOptions.remove(course);
 	}
 
 	public Grade getMinGrade() {
 		return minGrade;
 	}
 
-	public void setMinGrade(Grade grade) {
-
+	public void setMinGrade(Grade minGrade) {
+		this.minGrade = minGrade;
 	}
 }

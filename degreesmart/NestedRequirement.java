@@ -6,18 +6,22 @@ public class NestedRequirement extends Requirement {
 	private ArrayList<Requirement> requirementOptions;
 
 	public NestedRequirement() {
-		
+		requirementOptions = new ArrayList<Requirement>();
 	}
 
 	public ArrayList<Requirement> getRequirementOptions() {
-		return new ArrayList<Requirement>();
+		return requirementOptions;
 	}
 
 	public boolean addRequirementOption(Requirement requirement) {
-		return true;
+		if (!requirementOptions.contains(requirement)) {
+			return requirementOptions.add(requirement);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean removeRequirementOption(Requirement requirement) {
-		return true;
+		return requirementOptions.remove(requirement);
 	}
 }
