@@ -40,8 +40,17 @@ public class UserList {
 
     }
 
+    //just kinda messing around with this...it might be wrong but hopefully gives us good starting point
     public void deleteUser(User user) {
-
+        UUID uuid = uuidsByUsername.get(user.getUsername());
+        usersById.remove(uuid);
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(user.getUsername())) {
+                users.remove(i);
+                break;
+            }
+        }
+        uuidsByUsername.remove(user.getUsername());
     }
 
     public void modifyUser(User modifiedUser) {
