@@ -8,41 +8,47 @@ public class Advisor extends User {
 
   public Advisor(String username, String password, String email, String firstName, String lastName) {
     super(username, password, email, firstName, lastName);
+    assignedStudents = new ArrayList<Student>();
+    approved = false;
   }
 
-  public boolean getApprived() {
+  public boolean getApproved() {
     return approved;
   }
 
-  public void setApproved() {
-
+  public void setApproved(boolean approved) {
+    this.approved = approved;
   }
 
   public ArrayList<Student> getAssignedStudents() {
-    return new ArrayList<Student>();
+    return assignedStudents;
   }
 
-  public void addAssignedStudent(Student student) {
-
+  public boolean addAssignedStudent(Student student) {
+    if (!assignedStudents.contains(student)) {
+      return assignedStudents.add(student);
+    } else {
+      return false;
+    }
   }
 
-  public void removeAssignedStudent(Student student) {
-
+  public boolean removeAssignedStudent(Student student) {
+    return assignedStudents.remove(student);
   }
 
-  public void addAdvisingNote(Student student, String note) {
-
+  public void addAdvisingNote(Student student, String message) {
+    student.addAdvisingNote(this, message);
   }
 
-  public void removeAdvisingNote(Student student, String note) {
-
+  public boolean removeAdvisingNote(Student student, AdvisingNote note) {
+    return student.removeAdvisingNote(note);
   }
 
-  public void addCompletedCourse(Student student, CompletedCourse course) {
-
+  public boolean addCompletedCourse(Student student, CompletedCourse course) {
+    return student.addCompletedCourse(course);
   }
 
-  public void removeCompletedCourse(Student student, CompletedCourse course) {
-
+  public boolean removeCompletedCourse(Student student, CompletedCourse course) {
+    return student.removeCompletedCourse(course);
   }
 }

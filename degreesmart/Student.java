@@ -59,12 +59,12 @@ public class Student extends User {
     return new ArrayList<CompletedCourse>();
   }
 
-  public void addCompletedCourse(CompletedCourse course) {
-
+  public boolean addCompletedCourse(CompletedCourse course) {
+    return true;
   }
 
-  public void removeCompletedCourse(CompletedCourse course) {
-
+  public boolean removeCompletedCourse(CompletedCourse course) {
+    return true;
   }
 
   public ArrayList<AdvisingNote> getAdvisingNotes() {
@@ -75,8 +75,8 @@ public class Student extends User {
 
   }
 
-  public void removeAdvisingNote(AdvisingNote note) {
-
+  public boolean removeAdvisingNote(AdvisingNote note) {
+    return true;
   }
 
   public ArrayList<Scholarship> getScholarships() {
