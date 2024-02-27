@@ -1,10 +1,18 @@
 [
     {
-        "id": "",
-        "username": "",
-        "password": "",
-        "firstName": "",
-        "lastName": "",
-        "emailAddress": "",
+        "id": "10",
+        "username": "Rgreen",
+        "password": "PurpleDaisy22",
+        "firstName": "Rachel",
+        "lastName": "Green",
+        "emailAddress": "Rgreen@email.sc.edu"
+    },
+    {
+        "id": "11",
+        "username": "Tmiller",
+        "password": "GreenGecko77",
+        "firstName": "Tyler",
+        "lastName": "Miller",
+        "emailAddress": "Tmiller@email.sc.edu"
     }
 ]
