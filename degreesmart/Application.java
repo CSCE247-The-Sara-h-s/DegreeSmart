@@ -7,7 +7,7 @@ public class Application {
     private CourseList courseList;
     private RequirementSetList requirementSetList;
     private User activeUser;
-    private Application application;
+    private static Application application;
 
     private Application(){
         this.userList = userList;
@@ -16,7 +16,7 @@ public class Application {
         this.activeUser = activeUser;
     }
 
-    public Application getInstance() {
+    public static Application getInstance() {
         if (application == null) {
             application = new Application();
         }
