@@ -1,12 +1,32 @@
 [
     {
-        "id": "",
-        "username": "",
-        "password": "",
-        "firstName": "",
-        "lastName": "",
-        "emailAddress": "",
-        "approved": false,
-        "assignedStudents": ["", "", ""]
+        "id": "4",
+        "username": "KClark",
+        "password": "ChickenNugget123",
+        "firstName": "Kelly",
+        "lastName": "Clark",
+        "emailAddress": "KClark@email.sc.edu",
+        "approved": true,
+        "assignedStudents": ["1", "2", "3"]
+    }
+    {
+        "id": "5",
+        "username": "JohnM",
+        "password": "GummyWorn1976",
+        "firstName": "John",
+        "lastName": "Mark",
+        "emailAddress": "JM2876@email.sc.edu",
+        "approved": true,
+        "assignedStudents": ["1", "2", "3"]
+    }
+    {
+        "id": "6",
+        "username": "eJohnson65",
+        "password": "catlover_forever123",
+        "firstName": "Eva",
+        "lastName": "Johnson",
+        "emailAddress": "EJohnson@email.sc.edu",
+        "approved": true,
+        "assignedStudents": ["1", "2", "3"]
     }
 ]
