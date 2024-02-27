@@ -8,7 +8,9 @@ public class AdvisingNote {
   private ZonedDateTime time;
 
   public AdvisingNote(Advisor author, String note) {
-
+    this.author = author;
+    this.note = note;
+    time = ZonedDateTime.now();
   }
 
   public String getNote() {
@@ -16,7 +18,7 @@ public class AdvisingNote {
   }
 
   public void setNote(String note) {
-
+    this.note = note;
   }
 
   public Advisor getAuthor() {
@@ -24,14 +26,10 @@ public class AdvisingNote {
   }
 
   public void setAuthor(Advisor author) {
-
+    this.author = author;
   }
 
   public ZonedDateTime getTime() {
     return time;
-  }
-
-  public void setTime(ZonedDateTime time) {
-    
   }
 }
