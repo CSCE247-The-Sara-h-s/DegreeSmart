@@ -7,7 +7,7 @@ public class AdvisingNote {
   private Advisor author;
   private ZonedDateTime time;
 
-  public AdvisingNote(String note, Advisor author) {
+  public AdvisingNote(Advisor author, String note) {
 
   }
 

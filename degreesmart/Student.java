@@ -6,13 +6,19 @@ public class Student extends User {
   private String uscId;
   private Advisor advisor;
   private ArrayList<Parent> parents;
+  private ArrayList<Parent> accessRequests;
   private ArrayList<AdvisingNote> advisingNotes;
   private ArrayList<Scholarship> scholarships;
+  private Transcript transcript;
   private GraduationPlan graduationPlan;
 
   public Student(String firstName, String lastName, String username, String password, 
       String major, String uscId) {
     super(username, password, uscId, firstName, lastName);
+    parents = new ArrayList<Parent>();
+    advisingNotes = new ArrayList<AdvisingNote>();
+    scholarships = new ArrayList<Scholarship>();
+    graduationPlan = new GraduationPlan();
   }
 
   public String getUscId() {
@@ -20,7 +26,7 @@ public class Student extends User {
   }
 
   public void setUscId(String uscId) {
-
+    this.uscId = uscId;
   }
 
   public Advisor getAdvisor() {
@@ -28,67 +34,75 @@ public class Student extends User {
   }
 
   public void setAdvisor(Advisor advisor) {
-
+    this.advisor = advisor;
   }
 
   public ArrayList<Parent> getParents() {
-    return new ArrayList<Parent>();
+    return parents;
   }
 
-  public void addParent(String username) {
-
+  public boolean addParent(Parent parent) {
+    if (!parents.contains(parent)) {
+      return parents.add(parent);
+    } else {
+      return false;
+    }
   }
 
-  public void removeParent(Parent parent) {
-
+  public boolean removeParent(Parent parent) {
+    return parents.remove(parent);
   }
 
-  public ArrayList<String> getAccessRequests() {
-    return new ArrayList<String>();
+  public ArrayList<Parent> getAccessRequests() {
+    return accessRequests;
   }
 
-  public void addAccessRequest(String username) {
-
+  public boolean addAccessRequest(Parent parent) {
+    if (!accessRequests.contains(parent)) {
+      return accessRequests.add(parent);
+    } else {
+      return false;
+    }
   }
 
-  public void removeAccessRequest(String username) {
-
+  public boolean removeAccessRequest(Parent parent) {
+    return accessRequests.remove(parent);
   }
 
   public ArrayList<CompletedCourse> getCompletedCourses() {
-    return new ArrayList<CompletedCourse>();
+    return transcript.getCompletedCourses();
   }
 
   public boolean addCompletedCourse(CompletedCourse course) {
-    return true;
+    return transcript.addCompletedCourse(course);
   }
 
   public boolean removeCompletedCourse(CompletedCourse course) {
-    return true;
+    return transcript.removeCompletedCourse(course);
   }
 
   public ArrayList<AdvisingNote> getAdvisingNotes() {
-    return new ArrayList<AdvisingNote>();
+    return advisingNotes;
   }
 
   public void addAdvisingNote(Advisor advisor, String note) {
-
+    advisingNotes.add(new AdvisingNote(advisor, note));
   }
 
   public boolean removeAdvisingNote(AdvisingNote note) {
-    return true;
+    return advisingNotes.remove(note);
   }
 
   public ArrayList<Scholarship> getScholarships() {
-    return new ArrayList<Scholarship>();
+    return scholarships;
   }
 
-  public void addScholarship(Scholarship scholarship) {
-
+  public boolean addScholarship(Scholarship scholarship) {
+    return scholarships.add(scholarship);
   }
 
-  public void removeScholarship(Scholarship scholarship) {
-
+  public boolean removeScholarship(Scholarship scholarship) {
+    return scholarships.remove(scholarship);
   }
 
   public GraduationPlan getGraduationPlan() {

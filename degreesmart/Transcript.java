@@ -15,12 +15,12 @@ public class Transcript {
         return completedCourses;
     }
 
-    public void addCompletedCourse(CompletedCourse course) {
-
+    public boolean addCompletedCourse(CompletedCourse course) {
+        return true;
     }
 
-    public void removeCompletedCourse(CompletedCourse course) {
-
+    public boolean removeCompletedCourse(CompletedCourse course) {
+        return true;
     }
 
     public double getGpa() {
