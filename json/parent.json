@@ -1,12 +1,12 @@
 [
     {
-        "id": "",
-        "username": "",
-        "password": "",
-        "firstName": "",
-        "lastName": "",
-        "emailAddress": "",
-        "pendingAccessRequests": "",
-        "children": ["", "", ""]
+        "id": "7",
+        "username": "Msmith",
+        "password": "SmoothieKing333",
+        "firstName": "Michael",
+        "lastName": "Smith",
+        "emailAddress": "Michael.smith@gmail.com",
+        "pendingAccessRequests": "8",
+        "children": ["1", "", ""]
     }
 ]
