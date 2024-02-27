@@ -81,6 +81,26 @@ public class DataLoader extends DataConstants {
 	}
 	
 	public static final ArrayList<RequirementSet> getRequirementSets() {
-		return new ArrayList<RequirementSet>();
+		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
+		
+		try {
+			FileReader reader = new FileReader(REQUIREMENT_FILE_NAME);
+			JSONParser parser = new JSONParser();
+			JSONArray requirementsJSON = (JSONArray)new JSONParser().parse(reader);
+			
+			for(int i=0; i < requirementsJSON.size(); i++) {
+				JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
+				UUID id = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
+				String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
+				String category = (String)personJSON.get(REQUIREMENT_SET_CATEGORY);
+				String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
+			}
+			
+			return requirementSets;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
