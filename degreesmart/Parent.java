@@ -4,33 +4,43 @@ import java.util.ArrayList;
 
 public class Parent extends User {
   private ArrayList<Student> children;
-  private ArrayList<String> pendingAccessRequests;
+  private ArrayList<Student> pendingAccessRequests;
 
   public Parent(String username, String password, String email, String firstName, String lastName) {
     super(username, password, email, firstName, lastName);
+    children = new ArrayList<Student>();
+    pendingAccessRequests = new ArrayList<Student>();
   }
 
   public ArrayList<Student> getChildren() {
-    return new ArrayList<Student>();
+    return children;
   }
 
-  public void addChild(Student student) {
-
+  public boolean addChild(Student student) {
+    if (!children.contains(student)) {
+      return children.add(student);
+    } else {
+      return false;
+    }
   }
 
-  public void removeChild(Student student) {
-
+  public boolean removeChild(Student student) {
+    return children.remove(student);
   }
 
-  public ArrayList<String> getPendingAccessRequests() {
-    return new ArrayList<String>();
+  public ArrayList<Student> getPendingAccessRequests() {
+    return pendingAccessRequests;
   }
 
-  public void addPendingAccessRequest() {
-
+  public boolean addPendingAccessRequest(Student student) {
+    if (!pendingAccessRequests.contains(student)) {
+      return pendingAccessRequests.add(student);
+    } else {
+      return false;
+    }
   }
 
-  public void removePendingAccessRequest(String username) {
-
+  public boolean removePendingAccessRequest(Student student) {
+    return pendingAccessRequests.remove(student);
   }
 }
