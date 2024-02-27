@@ -1,32 +1,98 @@
 [
     {
-        "id": "",
-        "username": "",
-        "password": "",
-        "firstName": "",
-        "lastName": "",
-        "emailAddress": "",
-        "uscId": "",
-        "advisor": "",
-        "accessRequests": ["", "", ""],
+        "id": "1",
+        "username": "Jsmith",
+        "password": "BlueCat101",
+        "firstName": "John",
+        "lastName": "Smith",
+        "emailAddress": "Jsmith@email.sc.edu",
+        "uscId": "R12345678",
+        "advisor": "4",
+        "accessRequests": ["7", "8", "9"],
         "advisingNotes": [
             {
-                "note": "",
-                "author": "",
-                "time": ""
+                "note": "You're losing your scholarship!",
+                "author": "4",
+                "time": "10:00"
             }
         ],
         "transcript": {
             "completedCourses": [
                 {
-                    "course": "",
-                    "grade": "",
-                    "semester": "",
-                    "year": 0
+                    "course": "CSCE 247",
+                    "grade": "D",
+                    "semester": "FALL",
+                    "year": 2023
                 }
             ],
-            "gpa": 0.000,
-            "completedCreditHours": 0.000 
+            "gpa": 3.230,
+            "completedCreditHours": 3.000 
+        },
+        "graduationPlan": {
+            // TODO
+        }
+    },
+    {
+        "id": "2",
+        "username": "Hdawson",
+        "password": "ILoveFootball35",
+        "firstName": "Henry",
+        "lastName": "Dawson",
+        "emailAddress": "Hdawson@email.sc.edu",
+        "uscId": "P87654321",
+        "advisor": "5",
+        "accessRequests": ["3", "4", "5"],
+        "advisingNotes": [
+            {
+                "note": "Hey",
+                "author": "5",
+                "time": "2:30"
+            }
+        ],
+        "transcript": {
+            "completedCourses": [
+                {
+                    "course": "MATH 241",
+                    "grade": "A",
+                    "semester": "SPRING",
+                    "year": 2024
+                }
+            ],
+            "gpa": 3.850,
+            "completedCreditHours": 3.000 
+        },
+        "graduationPlan": {
+            // TODO
+        }
+    },
+    {
+        "id": "3",
+        "username": "Mkate",
+        "password": "YellowFlower123",
+        "firstName": "Mary",
+        "lastName": "Kate",
+        "emailAddress": "Mkate@email.sc.edu",
+        "uscId": "L22334567",
+        "advisor": "6",
+        "accessRequests": ["6", "7", "8"],
+        "advisingNotes": [
+            {
+                "note": "Good job!",
+                "author": "6",
+                "time": "9:30"
+            }
+        ],
+        "transcript": {
+            "completedCourses": [
+                {
+                    "course": "CSCE 212",
+                    "grade": "B",
+                    "semester": "SPRING",
+                    "year": 2023
+                }
+            ],
+            "gpa": 3.790,
+            "completedCreditHours": 3.000 
         },
         "graduationPlan": {
             // TODO

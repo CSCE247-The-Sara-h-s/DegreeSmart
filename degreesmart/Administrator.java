@@ -2,9 +2,11 @@ package degreesmart;
 
 public class Administrator extends User {
 
-  public Administrator(String username, String password, String email, String firstName, String lastName) {
+  public Administrator(String username, String password, String email, String firstName, 
+      String lastName) {
     super(username, password, email, firstName, lastName);
   }
+
   public void approveAdvisor(Advisor advisor) {
 
   }
