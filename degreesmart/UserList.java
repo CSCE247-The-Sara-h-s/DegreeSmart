@@ -10,7 +10,7 @@ public class UserList {
     private HashMap<String, UUID> uuidsByUsername;
     private static UserList userList;
 
-    UserList() {
+    private UserList() {
         users = DataLoader.getUsers();
     }
 
