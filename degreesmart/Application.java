@@ -7,7 +7,21 @@ public class Application {
     private CourseList courseList;
     private RequirementSetList requirementSetList;
     private User activeUser;
+    private Application application;
 
+    private Application(){
+        this.userList = userList;
+        this.courseList = courseList;
+        this.requirementSetList = requirementSetList;
+        this.activeUser = activeUser;
+    }
+
+    public Application getInstance() {
+        if (application == null) {
+            application = new Application();
+        }
+        return application;
+    }
     public User createAccount(String username, String password, String email, String firstName, String lastName) {
         return userList.getUsers().get(0);
     }
