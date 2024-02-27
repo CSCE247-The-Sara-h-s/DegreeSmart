@@ -40,10 +40,10 @@ public abstract class DataConstants {
 	protected static final String GRADUATION_PLAN_SELECTED_COURSES = "selected_courses";
 	protected static final String GRADUATION_PLAN_SEMESTER_SCHEDULE = "semester_schedule";
 	/********************/
-	protected static final String COURSE_SET_UUID = "uuid";
-	protected static final String COURSE_SET_SUBJECT = "subject";
-	protected static final String COURSE_SET_NUMBER = "number";
-	protected static final String COURSE_SET_NAME = "name";
+	protected static final String COURSE_UUID = "uuid";
+	protected static final String COURSE_SUBJECT = "subject";
+	protected static final String COURSE_NUMBER = "number";
+	protected static final String COURSE_NAME = "name";
 	protected static final String COURSE_PREREQUISITES = "prerequisites";
 	protected static final String REQUIREMENT_NUM_CHOICES = "num_choices";
 	protected static final String COURSE_REQUIREMENT_MIN_GRADE = "min_grade";
