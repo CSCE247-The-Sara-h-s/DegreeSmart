@@ -6,7 +6,7 @@ public class DegreeSmartUI {
 	private Application application;
 
 	public DegreeSmartUI() {
-		application = new Application();
+		application = Application.getInstance();
 	}
 
 	public void run() {
