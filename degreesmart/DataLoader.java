@@ -34,7 +34,7 @@ public class DataLoader extends DataConstants {
 				// TODO: FIGURE OUT ASSIGNED STUENT PART
 				// JSONArray approved = 
 				
-				users.add(new User(id, username, password, emailAddress, firstName, lastName));
+				// users.add(new User(id, username, password, emailAddress, firstName, lastName));
 	
 			}
 
