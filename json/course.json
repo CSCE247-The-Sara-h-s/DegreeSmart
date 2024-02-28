@@ -198,11 +198,7 @@
                                   "SPRING"
                               ],
         "prerequisites":  [
-                              {
-                                  "course_options":  [
-                                                     ],
-                                  "min_grade":  "F"
-                              }
+
                           ],
         "corequisites":  [
 
