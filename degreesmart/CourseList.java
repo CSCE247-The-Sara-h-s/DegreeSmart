@@ -12,7 +12,7 @@ public class CourseList {
 
 	private CourseList() {}
 
-	public CourseList getInstance() {
+	public static CourseList getInstance() {
 		return new CourseList();
 	}
 

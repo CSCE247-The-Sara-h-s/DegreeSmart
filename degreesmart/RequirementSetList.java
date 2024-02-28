@@ -16,7 +16,7 @@ public class RequirementSetList {
 		HashMap<String, UUID> uuidsByCategoryAndName = new HashMap<String, UUID>();
 	}
 
-	public RequirementSetList getInstance() {
+	public static RequirementSetList getInstance() {
 		if (requirementSetList == null) {
 			requirementSetList = new RequirementSetList();
 		}

@@ -14,14 +14,12 @@ public class UserList {
         users = DataLoader.getUsers();
     }
 
-    public UserList getInstance() {
-        if(userList == null) {
+    public static UserList getInstance() {
+        if (userList == null) {
 			userList = new UserList();
 		}
 		
 		return userList;
-
-        //return new UserList();
     }
 
     public ArrayList<User> getUsers() {
