@@ -1,6 +1,6 @@
 [
     {
-        "id": "129b682f-aee4-4272-9fd9-45a44ce96ec4",
+        "uuid": "129b682f-aee4-4272-9fd9-45a44ce96ec4",
         "username": "Rgreen",
         "password": "PurpleDaisy22",
         "firstName": "Rachel",
@@ -8,7 +8,7 @@
         "emailAddress": "Rgreen@email.sc.edu"
     },
     {
-        "id": "91a04b32-3965-4c03-b81d-076dd3603012",
+        "uuid": "91a04b32-3965-4c03-b81d-076dd3603012",
         "username": "Tmiller",
         "password": "GreenGecko77",
         "firstName": "Tyler",
