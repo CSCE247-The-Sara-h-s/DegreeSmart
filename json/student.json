@@ -1,6 +1,6 @@
 [
     {
-        "id": "0aaa676a-7a41-43d4-a7fd-eee56abe80c2",
+        "uuid": "0aaa676a-7a41-43d4-a7fd-eee56abe80c2",
         "username": "Jsmith",
         "password": "BlueCat101",
         "firstName": "John",
@@ -29,7 +29,7 @@
         "graduationPlan": "TODO"
     },
     {
-        "id": "1858a71b-79e1-4823-89be-e7206feb9bb3",
+        "uuid": "1858a71b-79e1-4823-89be-e7206feb9bb3",
         "username": "Hdawson",
         "password": "ILoveFootball35",
         "firstName": "Henry",
@@ -58,7 +58,7 @@
         "graduationPlan": "TODO"
     },
     {
-        "id": "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a",
+        "uuid": "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a",
         "username": "Mkate",
         "password": "YellowFlower123",
         "firstName": "Mary",
