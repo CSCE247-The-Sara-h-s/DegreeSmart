@@ -11,32 +11,75 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
 	public static final ArrayList<User> getUsers() {
-		// go through each student and assign to advisor
-		// load advisor
-		// as you go through student, go to advisor class and add student to their list 
-		 
 		ArrayList<User> users = new ArrayList<User>();
+		HashMap<UUID, User> uuidToUser = new HashMap<UUID, User>();
+		HashMap<UUID, JSONArray> advisorAssignedStudentsHash = new HashMap<UUID, JSONArray>();
 
 		try {
-			FileReader reader = new FileReader(ADVISOR_FILE_NAME);
+			FileReader reader = new FileReader(ADMINISTRATOR_FILE_NAME);
 			JSONParser parser = new JSONParser();
-			JSONArray usersJSON = (JSONArray) new JSONParser().parse(reader);
+			JSONArray administratorsJSON = (JSONArray)new JSONParser().parse(reader);
 
-			for(int i = 0; i < usersJSON.size(); i++) {
-				JSONObject personJSON = (JSONObject)usersJSON.get(i);
-				// is this supposed to be "adivsor:"
-				UUID id = UUID.fromString((String)personJSON.get(USER_UUID));
-				String username = (String)personJSON.get(USER_USERNAME);
-				String password = (String)personJSON.get(USER_PASSWORD);
-				String firstName = (String)personJSON.get(USER_FIRST_NAME);
-				String lastName = (String)personJSON.get(USER_LAST_NAME);
-				String emailAddress = (String)personJSON.get(USER_EMAIL_ADDRESS);
-				
-				// TODO: FIGURE OUT ASSIGNED STUENT PART
-				// JSONArray approved = 
-				
-				// users.add(new User(id, username, password, emailAddress, firstName, lastName));
-	
+			for (int i = 0; i < administratorsJSON.size(); i++) {
+				JSONObject administratorJSON = (JSONObject)administratorsJSON.get(i);
+				UUID uuid = UUID.fromString((String)administratorJSON.get(USER_UUID));
+				String username = (String)administratorJSON.get(USER_USERNAME);
+				String password = (String)administratorJSON.get(USER_PASSWORD);
+				String firstName = (String)administratorJSON.get(USER_FIRST_NAME);
+				String lastName = (String)administratorJSON.get(USER_LAST_NAME);
+				String emailAddress = (String)administratorJSON.get(USER_EMAIL_ADDRESS);
+
+				User administrator = new Administrator(uuid, username, password, emailAddress, firstName, lastName);
+				users.add(administrator);
+			}
+
+			reader = new FileReader(ADVISOR_FILE_NAME);
+			parser = new JSONParser();
+			JSONArray advisorsJSON = (JSONArray)new JSONParser().parse(reader);
+
+			for (int i = 0; i < advisorsJSON.size(); i++) {
+				JSONObject advisorJSON = (JSONObject)advisorsJSON.get(i);
+				UUID uuid = UUID.fromString((String)advisorJSON.get(USER_UUID));
+				String username = (String)advisorJSON.get(USER_USERNAME);
+				String password = (String)advisorJSON.get(USER_PASSWORD);
+				String firstName = (String)advisorJSON.get(USER_FIRST_NAME);
+				String lastName = (String)advisorJSON.get(USER_LAST_NAME);
+				String emailAddress = (String)advisorJSON.get(USER_EMAIL_ADDRESS);
+				JSONArray assignedStudentsJSON = (JSONArray)advisorJSON.get(ADVISOR_ASSIGNED_STUDENTS);
+
+				Advisor advisor = new Advisor(uuid, username, password, emailAddress, firstName, lastName);
+				uuidToUser.put(advisor.getUuid(), advisor);
+				advisorAssignedStudentsHash.put(advisor.getUuid(), assignedStudentsJSON);
+
+				users.add(advisor);
+			}
+
+			reader = new FileReader(STUDENT_FILE_NAME);
+			parser = new JSONParser();
+			JSONArray studentsJSON = (JSONArray)new JSONParser().parse(reader);
+			for (int i = 0; i < studentsJSON.size(); i++) {
+				JSONObject studentJSON = (JSONObject)studentsJSON.get(i);
+				UUID uuid = UUID.fromString((String)studentJSON.get(USER_UUID));
+				String username = (String)studentJSON.get(USER_USERNAME);
+				String password = (String)studentJSON.get(USER_PASSWORD);
+				String firstName = (String)studentJSON.get(USER_FIRST_NAME);
+				String lastName = (String)studentJSON.get(USER_LAST_NAME);
+				String emailAddress = (String)studentJSON.get(USER_EMAIL_ADDRESS);
+				String uscId = (String)studentJSON.get(STUDENT_USC_ID);
+
+				Student student = new Student(uuid, username, password, emailAddress, firstName, lastName, uscId);
+				uuidToUser.put(student.getUuid(), student);
+
+				users.add(student);
+			}
+
+			for (User user : users) {
+				if (user.getClass().getSimpleName().equals("Advisor")) {
+					JSONArray assignedStudentsJSON = advisorAssignedStudentsHash.get(user.getUuid());
+					for (int k = 0; k < assignedStudentsJSON.size(); k++) {
+						((Advisor)user).addAssignedStudent((Student)uuidToUser.get(UUID.fromString((String)assignedStudentsJSON.get(k))));						
+					}
+				}
 			}
 
 			return users;
@@ -46,8 +89,6 @@ public class DataLoader extends DataConstants {
 		}
 
 		return null;
-
-		// return new ArrayList<User>();
 	}
 
 	public static final ArrayList<Course> getCourses() {
