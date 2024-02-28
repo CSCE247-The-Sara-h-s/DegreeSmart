@@ -197,7 +197,7 @@
         "number":  "209",
         "name":  "Special Topics in Computer Programming",
         "description":  "Programming and application development using selected programming languages. Course content varies and will be announced in the schedule of classes by title.",
-        "credit_hours":  "1.000 TO     4.000",
+        "credit_hours":  "4.000",
         "semesters_offered":  [
                          "FALL",
                          "SUMMER",
@@ -688,7 +688,7 @@
         "number":  "498",
         "name":  "Independent Study",
         "description":  "Individual investigation or study of special topics. At most three credits may be applied toward a degree.  Approval of project proposal by instructor and department advisor.",
-        "credit_hours":  "1.000 TO     3.000",
+        "credit_hours":  "3.000",
         "semesters_offered":  [
                          "FALL",
                          "SUMMER",
@@ -1600,7 +1600,7 @@
         "number":  "790",
         "name":  "Topics in Information Technology",
         "description":  "Reading and research on selected topics in information technology. Course content varies and will be announced in the schedule of courses by title. May be repeated for credit as topics vary.",
-        "credit_hours":  "1.000 TO     3.000",
+        "credit_hours":  "3.000",
         "semesters_offered":  [
                          "FALL",
                          "SUMMER",
