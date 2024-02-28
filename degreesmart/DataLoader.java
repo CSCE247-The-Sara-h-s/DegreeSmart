@@ -94,6 +94,8 @@ public class DataLoader extends DataConstants {
 				String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
 				String category = (String)personJSON.get(REQUIREMENT_SET_CATEGORY);
 				String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
+
+				requirementSets.add(new RequirementSet(name, category));
 			}
 			
 			return requirementSets;
