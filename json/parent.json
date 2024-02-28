@@ -1,12 +1,32 @@
 [
     {
-        "id": "7",
+        "id": "b8291586-30a8-46b1-beeb-bc147c15f735",
         "username": "Msmith",
         "password": "SmoothieKing333",
         "firstName": "Michael",
         "lastName": "Smith",
         "emailAddress": "Michael.smith@gmail.com",
-        "pendingAccessRequests": "8",
-        "children": ["1", "", ""]
+        "pendingAccessRequests": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2"],
+        "children": ["1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
+    },
+    {
+        "id": "0ca6019b-9457-410e-bba4-10181802c042",
+        "username": "username1",
+        "password": "password",
+        "firstName": "firstName",
+        "lastName": "lastName",
+        "emailAddress": "emailAddress",
+        "pendingAccessRequests": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2"],
+        "children": ["1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
+    },
+    {
+        "id": "baada357-e763-472f-bf51-65f83f36083a",
+        "username": "username2",
+        "password": "password",
+        "firstName": "firstName",
+        "lastName": "lastName",
+        "emailAddress": "emailAddress",
+        "pendingAccessRequests": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2"],
+        "children": ["1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
     }
 ]

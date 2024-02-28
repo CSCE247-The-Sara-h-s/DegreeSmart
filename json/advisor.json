@@ -1,32 +1,32 @@
 [
     {
-        "id": "4",
+        "id": "cefb8873-3961-4cbb-828e-171daf42f723",
         "username": "KClark",
         "password": "ChickenNugget123",
         "firstName": "Kelly",
         "lastName": "Clark",
         "emailAddress": "KClark@email.sc.edu",
         "approved": true,
-        "assignedStudents": ["1", "2", "3"]
+        "assignedStudents": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2", "1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
     }
     {
-        "id": "5",
+        "id": "ccee0619-484b-4ece-a5b0-188ba7a54c3a",
         "username": "JohnM",
         "password": "GummyWorn1976",
         "firstName": "John",
         "lastName": "Mark",
         "emailAddress": "JM2876@email.sc.edu",
         "approved": true,
-        "assignedStudents": ["1", "2", "3"]
+        "assignedStudents": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2", "1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
     }
     {
-        "id": "6",
+        "id": "8e9ae814-bf29-4cc7-ac40-462687a1c9b2",
         "username": "eJohnson65",
         "password": "catlover_forever123",
         "firstName": "Eva",
         "lastName": "Johnson",
         "emailAddress": "EJohnson@email.sc.edu",
         "approved": true,
-        "assignedStudents": ["1", "2", "3"]
+        "assignedStudents": ["0aaa676a-7a41-43d4-a7fd-eee56abe80c2", "1858a71b-79e1-4823-89be-e7206feb9bb3", "0d9ff5ea-a82f-44c4-ae8a-10d239b0688a"]
     }
 ]
