@@ -1,1613 +1,1985 @@
-[
+﻿[
     {
-        "uuid":  "",
+        "uuid":  "5c279398-853f-4c48-b89c-c5b3378901f4",
         "subject":  "CSCE",
         "number":  "101",
         "name":  "Introduction to Computer Concepts",
         "description":  "History, application, and social impact of computers; problem-solving, algorithm development, applications software, and programming in a procedural language.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "677164e6-9f88-4c42-87d1-0a45b39408b4",
         "subject":  "CSCE",
         "number":  "102",
         "name":  "General Applications Programming",
         "description":  "Introduction to systematic computer problem-solving and programming for a variety of applications.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "053f7b35-1db6-4207-8103-83051d1ca282",
         "subject":  "CSCE",
         "number":  "145",
         "name":  "Algorithmic Design I",
         "description":  "Problem-solving, algorithmic design, and programming. Three lectures and two laboratory hours per week.",
         "credit_hours":  "4.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "616a8121-13e7-4b75-9b3d-7b90fc270cd7",
         "subject":  "CSCE",
         "number":  "146",
         "name":  "Algorithmic Design II",
         "description":  "Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures. Three lecture hours and two laboratory hours per week.",
         "credit_hours":  "4.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 145"
-                                              ],
+                                                         "053f7b35-1db6-4207-8103-83051d1ca282"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "160b1bae-13af-489f-8e9b-b4fec933720d",
         "subject":  "CSCE",
         "number":  "190",
         "name":  "Computing in the Modern World",
         "description":  "An introduction to the field of computing: trends in computing technology, the profession, and careers; subdisciplines in computing; the nature of research and development.",
         "credit_hours":  "1.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "6d4adb1b-3450-421f-a627-cfbe24ddbc0d",
         "subject":  "CSCE",
         "number":  "201",
         "name":  "Introduction to Computer Security",
         "description":  "Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "a080089b-2cb7-410e-b731-a9fcd37e8868",
         "subject":  "CSCE",
         "number":  "204",
         "name":  "Program Design and Development",
         "description":  "Fundamental algorithms and processes used in business information systems. Development and representation of programming logic. Introduction to implementation using a high-level programming language.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 101",
-                                                  "MGSC 290",
-                                                  "ITEC 264"
-                                              ],
+                                                         "5c279398-853f-4c48-b89c-c5b3378901f4",
+                                                         "",
+                                                         ""
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "2352fcf1-638a-4c80-90c4-61c48ca7cf74",
         "subject":  "CSCE",
         "number":  "205",
         "name":  "Business Applications Programming",
         "description":  "Introduction to computer applications in business. Programming exercises in COBOL.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "a722361a-3916-407e-84e1-5049923df62f",
         "subject":  "CSCE",
         "number":  "206",
         "name":  "Scientific Applications Programming",
         "description":  "Introduction to computer applications in science and engineering. Programming exercises in a high-level language.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "MATH 122",
-                                                  "MATH 141"
-                                              ],
+                                                         "",
+                                                         ""
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "e019aa1b-b951-4625-a150-893dfe1af7bc",
         "subject":  "CSCE",
         "number":  "207",
         "name":  "UNIX System Administration",
         "description":  "The Unix programming environment: I/O programming, Unix processes, fork, exec, pipes and signals, and tools.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 145",
-                                                  "CSCE 206"
-                                              ],
+                                                         "053f7b35-1db6-4207-8103-83051d1ca282",
+                                                         "a722361a-3916-407e-84e1-5049923df62f"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "6a469c54-1814-49c9-a4bd-59fd06411839",
         "subject":  "CSCE",
         "number":  "209",
         "name":  "Special Topics in Computer Programming",
         "description":  "Programming and application development using selected programming languages. Course content varies and will be announced in the schedule of classes by title.",
         "credit_hours":  "4.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "449ae480-3aaa-471a-9de8-196bf4c86653",
         "subject":  "CSCE",
         "number":  "210",
         "name":  "Computer Hardware Foundations",
         "description":  "Number representation, data formats, CPU and memory organization, assembly language, I/O and peripherals, computer networks. Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "3beed849-b270-4e0a-83df-baad59a00ff4",
         "subject":  "CSCE",
         "number":  "211",
         "name":  "Digital Logic Design",
         "description":  "Number systems, Boolean algebra, logic design, sequential machines.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
-                                  "course_options":  [
-                                                  "MATH 141"
-                                              ],
+                                  "course_options":  null,
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb",
         "subject":  "CSCE",
         "number":  "212",
         "name":  "Introduction to Computer Architecture",
         "description":  "Computer architecture, components. and organization; memory addressing; Input/Output; instruction sets; interrupts; assembly-language programming. Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "d06739f6-9fc3-4e4d-8cff-9e57383bf0a1",
         "subject":  "CSCE",
         "number":  "215",
         "name":  "UNIX/Linux Fundamentals",
         "description":  "UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
         "credit_hours":  "1.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 145"
-                                              ],
+                                                         "053f7b35-1db6-4207-8103-83051d1ca282"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "958ffecd-a465-4532-8cde-c9fd8d2f79e5",
         "subject":  "CSCE",
         "number":  "240",
         "name":  "Advanced Programming Techniques",
         "description":  "Pointers; memory management; advanced programming language structures: operator overloading, iterators, multiple inheritance, polymorphism, templates, virtual functions; Unix programming environment.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9d2fbdfa-ea06-4fc4-bf4e-ee104be9320b",
         "subject":  "CSCE",
         "number":  "242",
         "name":  "Web Applications",
         "description":  "Web technologies to support client-server computing. Implementation of client-server applications.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 146"
-                                              ],
+                                                         "616a8121-13e7-4b75-9b3d-7b90fc270cd7"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "66aff0b7-4386-4f81-aa38-90ac4bdb2d3c",
         "subject":  "CSCE",
         "number":  "245",
         "name":  "Object-Oriented Programming Techniques",
         "description":  "Advanced object-oriented concepts and techniques; multiple inheritance; memory management; operator overloading; polymorphism; performance issues.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 146"
-                                              ],
+                                                         "616a8121-13e7-4b75-9b3d-7b90fc270cd7"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "4b7e5af2-1d76-4829-8316-e92076ee61e2",
         "subject":  "CSCE",
         "number":  "247",
         "name":  "Software Engineering",
         "description":  "Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing. ",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 146"
-                                              ],
+                                                         "616a8121-13e7-4b75-9b3d-7b90fc270cd7"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "cb05af00-a719-42c2-b032-4e5a93d27ada",
         "subject":  "CSCE",
         "number":  "274",
         "name":  "Robotic Applications and Design",
         "description":  "Design and control of robots. Interactions between robots, sensing, actuation, and computation.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 146"
-                                              ],
+                                                         "616a8121-13e7-4b75-9b3d-7b90fc270cd7"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "510f7bdd-b562-4a48-a370-735c02a82993",
         "subject":  "CSCE",
         "number":  "304",
         "name":  "Applied Problem Solving and Programming",
         "description":  "Systematic problem definition, solution formulation, and computer implementation for business and related areas. Internet and database applications. Programming exercises in a high-level programming language.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 204",
-                                                  "MGSC 298"
-                                              ],
+                                                         "a080089b-2cb7-410e-b731-a9fcd37e8868",
+                                                         ""
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "3b148900-46ed-4322-9d74-dd3d8944b7cf",
         "subject":  "CSCE",
         "number":  "311",
         "name":  "Operating Systems",
         "description":  "Operating system structure and function; process implementation, scheduling, and synchronization; memory management; security; naming protection; resource allocation; network file systems.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "ac9d280e-19de-4199-9de4-a015ff5f3b5a",
         "subject":  "CSCE",
         "number":  "313",
         "name":  "Embedded Systems",
         "description":  "Fundamentals of embedded systems: hardware components, software components, hardware/software interface design, and hardware/software co-design.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 211"
-                                              ],
+                                                         "3beed849-b270-4e0a-83df-baad59a00ff4"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "434295dd-6197-460d-a813-4b10c8def2d8",
         "subject":  "CSCE",
         "number":  "317",
         "name":  "Computer Systems Engineering",
         "description":  "System-level modeling and evaluation of computer systems: requirements elicitation and specification, architectural design, reliability and performance evaluation, Markov modeling, life-cycle cost analysis, project management.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "MATH 242"
-                                              ],
+                                                         "9d2fbdfa-ea06-4fc4-bf4e-ee104be9320b"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
-                                  "course_options":  [
-                                                  "STAT 509"
-                                              ],
+                                  "course_options":  null,
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "626a85f8-de9c-449a-bb25-0d2cafcf8f7c",
         "subject":  "CSCE",
         "number":  "330",
         "name":  "Programming Language Structures",
         "description":  "Formal specification of syntax and semantics; structure of algorithms; list processing and string manipulation languages; statement types, control structures, and interfacing procedures.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "bbb88994-06f7-43ab-a640-b227df1e3a9b",
         "subject":  "CSCE",
         "number":  "350",
         "name":  "Data Structures and Algorithms",
         "description":  "Techniques for representing and processing information, including the use of lists, trees, and graphs; analysis of algorithms; sorting, searching, and hashing techniques.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "ee445efc-1a05-4670-9c21-5ae27302f3cb",
         "subject":  "CSCE",
         "number":  "355",
         "name":  "Foundations of Computation",
         "description":  "Basic theoretical principles of computing as modeled by formal languages, grammars, automata, and Turing machines; fundamental limits of computation.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 211"
-                                              ],
+                                                         "3beed849-b270-4e0a-83df-baad59a00ff4"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "1c265e6f-3516-4445-b52e-868c6b630886",
         "subject":  "CSCE",
         "number":  "390",
         "name":  "Professional Issues in Computer Science and Engineering",
         "description":  "Professional issues in the information technology professions; history and social context of computing; professional responsibilities; privacy; intellectual property; risks and liabilities of computer-based systems.",
         "credit_hours":  "1.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "035eb54c-0201-41a0-ba8b-ace96867d902",
         "subject":  "CSCE",
         "number":  "415",
         "name":  "Mainframe Systems",
         "description":  "Introduction to the large scale computer systems used by businesses to support thousands of simultaneous users and process millions of transactions. ",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "ITEC 352",
-                                                  "CSCE 240"
-                                              ],
+                                                         "",
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "5142301d-8060-4028-864d-4e7b0e496ca7",
         "subject":  "CSCE",
         "number":  "416",
         "name":  "Introduction to Computer Networks",
         "description":  "Concepts and components of computer networks and the Internet; network applications; network protocol stack.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 146"
-                                              ],
+                                                         "616a8121-13e7-4b75-9b3d-7b90fc270cd7"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "18190575-870a-485f-90d6-d4f7a5b4ff4f",
         "subject":  "CSCE",
         "number":  "490",
         "name":  "Capstone Computing Project I",
-        "description":  "Major team-based software design project to be undertaken in a student’s final year of study; project planning, software requirements analysis, design, and specification. Written reports and oral presentations in a technical setting.",
+        "description":  "Major team-based software design project to be undertaken in a studentâ€™s final year of study; project planning, software requirements analysis, design, and specification. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "D"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "8dc4fef1-f34e-4e10-a34a-270867ff11d5",
         "subject":  "CSCE",
         "number":  "491",
         "name":  "Capstone Computer Engineering Project",
         "description":  "Advanced computer systems engineering. Team projects. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "d152f76d-c77c-4282-a7e8-46d24cea68a6",
         "subject":  "CSCE",
         "number":  "492",
         "name":  "Capstone Computing Project II",
         "description":  "Continuation of CSCE 490. Computer system implementation, testing, verification and validation of results. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "8c405a19-5e98-4069-b751-ae6558d70205",
         "subject":  "CSCE",
         "number":  "498",
         "name":  "Independent Study",
         "description":  "Individual investigation or study of special topics. At most three credits may be applied toward a degree.  Approval of project proposal by instructor and department advisor.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "472fe195-6d0d-4e6a-96e5-2fa1049ffd0a",
         "subject":  "CSCE",
         "number":  "500",
         "name":  "Computer Programming and Applications",
         "description":  "Concepts and properties of algorithms; programming exercises with emphasis on good programming habits.  Credit may not be received for both CSCE 500 and CSCE 145. Open to all majors. May not be used for major credit by computer science and engineering majors.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "b6b2920c-12b6-45b1-9ba8-ceb342688628",
         "subject":  "CSCE",
         "number":  "510",
         "name":  "System Programming",
         "description":  "System software such as command language interpreters, client-server applications, debuggers; mail systems, browsers, macroprocessors, and revision control systems; file systems, processes, threads, and interprocess communication.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 215"
-                                              ],
+                                                         "d06739f6-9fc3-4e4d-8cff-9e57383bf0a1"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "c8d41c0a-3cd6-4fac-beda-66bda762470b",
         "subject":  "CSCE",
         "number":  "512",
         "name":  "System Performance Evaluation",
         "description":  "Measuring, modeling, analyzing, and predicting performance of computer systems and networks; bottleneck analysis; Markovian queuing systems and networks; use of operational and probabilistic models.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "eb386c4a-189c-4cdf-8f52-ca42eb20eeae",
         "subject":  "CSCE",
         "number":  "513",
         "name":  "Computer Architecture",
         "description":  "Design methodology; processor design; computer arithmetic: algorithms for addition, multiplication, floating point arithmetic; microprogrammed control; memory organization; introduction to parallel architectures.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 211"
-                                              ],
+                                                         "3beed849-b270-4e0a-83df-baad59a00ff4"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "dd0e8d9d-faff-45c2-9f68-f4fdfdd106cd",
         "subject":  "CSCE",
         "number":  "515",
         "name":  "Computer Network Programming",
         "description":  "Computer networks and communication protocols; socket programming; interprocess communication; development of network software; case studies.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 311"
-                                              ],
+                                                         "3b148900-46ed-4322-9d74-dd3d8944b7cf"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9276b668-a494-4527-b5f5-0b0754dc569c",
         "subject":  "CSCE",
         "number":  "516",
         "name":  "Computer Networks",
         "description":  "Structure, design, and analysis of computer networks; ISO/OSI network architecture.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "STAT 509",
-                                                  "STAT 515"
-                                              ],
+                                                         "",
+                                                         "dd0e8d9d-faff-45c2-9f68-f4fdfdd106cd"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "fef1bdab-c5d5-4b9f-a8b7-db9bd2a7327f",
         "subject":  "CSCE",
         "number":  "517",
         "name":  "Computer Crime and Forensics",
         "description":  "Structure, design, and analysis of computer networks; ISO/OSI network architecture.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 215"
-                                              ],
+                                                         "d06739f6-9fc3-4e4d-8cff-9e57383bf0a1"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "e44e9628-5c20-4b99-a649-b5ae59acc351",
         "subject":  "CSCE",
         "number":  "518",
         "name":  "Ethical Hacking",
         "description":  "Fundamental principles and techniques of ethical hacking, including penetration testing life cycle, planning and scoping, identifying targets and goals, active and passive reconnaissance, enumeration and scanning, exploitation, post-exploitation, and results reporting.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "98fb710a-a064-4e68-9128-c74c2da58a1d",
         "subject":  "CSCE",
         "number":  "520",
         "name":  "Database System Design",
         "description":  "Database management systems; database design and implementation; security, integrity, and privacy.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240",
-                                                  "GEOG 563"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5",
+                                                         "1411ab20-1e8c-44e3-85c1-b2b02cb55938"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "1c4fd821-38fa-4c86-8cc4-d25ba7876b77",
         "subject":  "CSCE",
         "number":  "522",
         "name":  "Information Security Principles",
         "description":  "Threats to information resources and appropriate countermeasures. Cryptography, identification and authentication, access control models and mechanisms, multilevel database security, steganography, Internet security, and intrusion detection and prevention.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9dcbc223-42ba-46b8-bb19-becf09cef967",
         "subject":  "CSCE",
         "number":  "526",
         "name":  "Service Oriented Computing",
         "description":  "Cooperative information systems and service-oriented computing. Techniques for achieving coordinated behavior among a decentralized group of information system components. Distributed databases, multiagent systems, conceptual modeling, Web services, and applications.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 311"
-                                              ],
+                                                         "3b148900-46ed-4322-9d74-dd3d8944b7cf"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "183d18cc-62d8-43f6-a4e5-b12e2d0cffa9",
         "subject":  "CSCE",
         "number":  "531",
         "name":  "Compiler Construction",
         "description":  "Techniques for design and implementation of compilers, including lexical analysis, parsing, syntax-directed translation, and symbol table management.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "94e61526-f756-4a1c-92f4-c28da93de517",
         "subject":  "CSCE",
         "number":  "546",
         "name":  "Mobile Application Development",
         "description":  "Development of mobile applications, including user interface design for mobile, local and cloud data storage techniques, and application architectures.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "de7b73b3-4271-408e-9e0c-a1ed7e02a505",
         "subject":  "CSCE",
         "number":  "547",
         "name":  "Windows Programming",
         "description":  "Object-oriented methods and tools for application programming with graphically interactive operating systems.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "8e0a1018-daaa-4bbd-a042-0a0522873601",
         "subject":  "CSCE",
         "number":  "548",
         "name":  "Building Secure Software",
         "description":  "Construction of software systems resistant to vulnerabilities and attacks. Cryptographic tools. Language, operating system, and network security. Case studies. Development of best practices through programming assignments.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "917562b7-65ef-40f2-b45c-4116dbf524d9",
         "subject":  "CSCE",
         "number":  "551",
         "name":  "Theory of Computation",
         "description":  "Basic theoretical principles of computing as modeled by formal languages and automata; computability and computational complexity",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 350",
-                                                  "MATH 300"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b",
+                                                         ""
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "34893fff-48c9-4b29-af35-1edf42f92171",
         "subject":  "CSCE",
         "number":  "552",
         "name":  "Computer Game Development",
         "description":  "Design and development of computer games, with emphasis on the technologies used. Hands-on development of computer games.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "314d8a57-e592-4fef-acf5-1367f1ebf979",
         "subject":  "CSCE",
         "number":  "555",
         "name":  "Algorithms in Bioinformatics",
         "description":  "Concepts, algorithms and tools for important problems in Bioinformatics, including nucleotide and amino acid sequence alignment, DNA fragment assembly, phylogenetic reconstruction, and protein structure visualization and assessment.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "76c4987b-2a31-4bb7-bd3d-4eb78fbcfe74",
         "subject":  "CSCE",
         "number":  "556",
         "name":  "Data Analysis in Python: Application to Neuroscience",
         "description":  "Hands-on introduction in Python to the analysis of neuroscience data (human neuroimaging and cellular electrophysiology), including various aspects such as data wrangling, statistics, classification, and visualization.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240",
-                                                  "CSCE 206"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5",
+                                                         "a722361a-3916-407e-84e1-5049923df62f"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "bf91b186-c1b5-41c9-81f8-bb719d0c518c",
         "subject":  "CSCE",
         "number":  "557",
         "name":  "Introduction to Cryptography",
         "description":  "Design of secret codes for secure communication, including encryption and integrity verification: ciphers, cryptographic hashing, and public key cryptosystems such as RSA. Mathematical principles underlying encryption. Code-breaking techniques. Cryptographic protocols.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9833bf1c-66b7-4fb0-9511-c6bda56fc866",
         "subject":  "CSCE",
         "number":  "561",
         "name":  "Numerical Analysis",
         "description":  "Interpolation and approximation of functions; solution of algebraic equations; numerical differentiation and integration; numerical solutions of ordinary differential equations and boundary value problems; computer implementation of algorithms.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "1411ab20-1e8c-44e3-85c1-b2b02cb55938",
         "subject":  "CSCE",
         "number":  "563",
         "name":  "Systems Simulation",
         "description":  "Computer simulation of real systems; principles of system organization; random number generation; programming exercises in a simulation language.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "f75324ab-453c-4b8c-a2e3-15748cb4abb6",
         "subject":  "CSCE",
         "number":  "564",
         "name":  "Computational Science",
         "description":  "Parallel algorithms; scientific visualization; techniques for solving scientific problems.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "6b52efab-af7c-4f74-bac6-c97b839b4ab2",
         "subject":  "CSCE",
         "number":  "565",
         "name":  "Introduction to Computer Graphics",
         "description":  "Graphics hardware; graphics primitives; two-dimensional and three-dimensional viewing; basic modeling.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "026cdf07-3335-484b-b869-e9f8dc256412",
         "subject":  "CSCE",
         "number":  "567",
         "name":  "Visualization Tools",
         "description":  "Scientific visualization tools as applied to sampled and generated data; methods for data manipulation and representation; investigation of visualization techniques.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 145",
-                                                  "CSCE 206",
-                                                  "CSCE 207"
-                                              ],
+                                                         "053f7b35-1db6-4207-8103-83051d1ca282",
+                                                         "a722361a-3916-407e-84e1-5049923df62f",
+                                                         "e019aa1b-b951-4625-a150-893dfe1af7bc"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "cec5c202-a534-458e-bea9-d473831f23cf",
         "subject":  "CSCE",
         "number":  "569",
         "name":  "Parallel Computing",
         "description":  "Architecture and interconnection of parallel computers; parallel programming models and applications; issues in high-performance computing; programming of parallel computers.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "acc2f424-f94a-439f-93e6-5e47c3ff3776",
         "subject":  "CSCE",
         "number":  "571",
         "name":  "Critical Interactives",
         "description":  "Foundational techniques in multidisciplinary software development, specifically of applications designed to present sensitive, sometimes controversial, materials in ways to engender empathic awareness of the interactor.   ",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "ffcd8e82-a9bd-4220-9427-44606a330d3e",
         "subject":  "CSCE",
         "number":  "572",
         "name":  "Human-Computer Interaction",
         "description":  "Interdisciplinary approach to interaction design, user-centered design, human abilities, survey development, experimental study methodology, heuristic evaluations, usability testing, universal design, and accessibility.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "b72d799c-fdc4-42fb-bda3-5bcd6ed8e3e5",
         "subject":  "CSCE",
         "number":  "574",
         "name":  "Robotics",
         "description":  "Design and application of robotic systems; emphasis on mobile robots and intelligent machines.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 211"
-                                              ],
+                                                         "3beed849-b270-4e0a-83df-baad59a00ff4"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "2edef71e-37c6-4277-8f54-04df50c2651f",
         "subject":  "CSCE",
         "number":  "578",
         "name":  "Text Processing",
         "description":  "Text and natural language processing; formal models and data structures appropriate for text processing; selected topics in computational linguistics, stylistics, and content analysis.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 330"
-                                              ],
+                                                         "626a85f8-de9c-449a-bb25-0d2cafcf8f7c"
+                                                     ],
                                   "min_grade":  "F"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 355"
-                                              ],
+                                                         "ee445efc-1a05-4670-9c21-5ae27302f3cb"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9d445bf2-bd0a-44fd-bf09-29db33d588be",
         "subject":  "CSCE",
         "number":  "580",
         "name":  "Artificial Intelligence",
         "description":  "Heuristic problem solving, theorem proving, and knowledge representation, including the use of appropriate programming languages and tools.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "b7c62b47-56cd-455c-b429-fa2cf9f9371d",
         "subject":  "CSCE",
         "number":  "581",
         "name":  "Trusted Artificial Intelligence",
-        "description":  "AI Trust – responsible/ethical technology, fairness/ lack of bias, explanations (XAI), machine learning, reasoning, software testing, data quality and provenance, tools and projects.",
+        "description":  "AI Trust â€“ responsible/ethical technology, fairness/ lack of bias, explanations (XAI), machine learning, reasoning, software testing, data quality and provenance, tools and projects.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
+                                                     ],
                                   "min_grade":  "C"
                               },
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "8e6f18bc-d00e-476f-befe-c2877b91c014",
         "subject":  "CSCE",
         "number":  "582",
         "name":  "Bayesian Networks and Decision Graphs",
         "description":  "Normative approaches to uncertainty in artificial intelligence. Probabilistic and causal modeling with Bayesian networks and influence diagrams. Applications in decision analysis and support. Algorithms for probability update in graphical models.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "9ef92b58-8eec-4a9a-88e5-89b7e22ead04",
         "subject":  "CSCE",
         "number":  "585",
         "name":  "Machine Learning Systems",
         "description":  "Design and implementation of machine learning systems, Deep learning systems stack, machine learning platforms, scalable and distributed machine learning.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 240",
-                                                  "CSCE 206"
-                                              ],
+                                                         "958ffecd-a465-4532-8cde-c9fd8d2f79e5",
+                                                         "a722361a-3916-407e-84e1-5049923df62f"
+                                                     ],
                                   "min_grade":  "C"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "d7743c8b-74cc-4f73-95d1-d26a9ee5a25e",
         "subject":  "CSCE",
         "number":  "587",
         "name":  "Big Data Analytics",
         "description":  "Foundational techniques and tools required for data science and big data analytics.  Concepts, principles, and techniques applicable to any technology and industry for establishing a baseline that can be enhanced by future study.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "6d1bdd4c-ca9b-475e-8778-d87e2887a2a3",
         "subject":  "CSCE",
         "number":  "590",
         "name":  "Topics in Information Technology",
         "description":  "Reading and research on selected topics in information technology. Course content varies and will be announced in the schedule of courses by title. May be repeated for credit as topics vary.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "ad9dc562-afb6-4689-9be2-66567e509615",
         "subject":  "CSCE",
         "number":  "594",
         "name":  "Strategic Management of Information Systems",
         "description":  "Strategic management and use of information systems in organizations.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "68ec94f2-e6da-4232-89d1-c3b1a0b835da",
         "subject":  "CSCE",
         "number":  "611",
         "name":  "Advanced Digital Design",
         "description":  "Design techniques for logic systems; emphasis on higher-level CAD tools such as hardware description languages and functional modeling.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 212"
-                                              ],
+                                                         "386f4cb2-3bf3-47d7-963d-546a2cdc5fcb"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "2b50023b-c9e0-47df-b583-13d1c4ce20de",
         "subject":  "CSCE",
         "number":  "612",
         "name":  "VLSI System Design",
         "description":  "VLSI design process models, introduction to EDA tools, HDL modeling and simulation, logic synthesis and simulation, benchmark design projects.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 211"
-                                              ],
+                                                         "3beed849-b270-4e0a-83df-baad59a00ff4"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "ffd09a51-7ba2-41a1-8e61-1b6633f4c1a4",
         "subject":  "CSCE",
         "number":  "613",
         "name":  "Fundamentals of VLSI Chip Design",
         "description":  "Design of VLSI circuits, including standard processes, circuit design, layout, and CAD tools. Lecture and guided design projects.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
-                                  "course_options":  [
-                                                  "ELCT 371"
-                                              ],
+                                  "course_options":  null,
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "126162c5-7068-4b79-807f-145d423629eb",
         "subject":  "CSCE",
         "number":  "750",
         "name":  "Analysis of Algorithms",
         "description":  "Algorithm design techniques; algorithms and data structures for sets and graphs; time and space complexity; sorting and searching; NP-complete problems.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 350"
-                                              ],
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "092cbbf7-dae5-406a-9085-da4715050f0c",
         "subject":  "CSCE",
         "number":  "774",
         "name":  "Robotics Systems",
         "description":  "Design and operation of robot systems; dynamics, control, and motion trajectories of manipulators; visual, auditory, and tactile sensing systems; planning and learning.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                  "CSCE 574"
-                                              ],
+                                                         "b72d799c-fdc4-42fb-bda3-5bcd6ed8e3e5"
+                                                     ],
                                   "min_grade":  "F"
                               }
                           ],
-        "corequisites":  [],
-        "core_categories": []
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     },
     {
-        "uuid":  "",
+        "uuid":  "0754e39b-981c-418c-bd56-f182d7104a2e",
         "subject":  "CSCE",
         "number":  "790",
         "name":  "Topics in Information Technology",
         "description":  "Reading and research on selected topics in information technology. Course content varies and will be announced in the schedule of courses by title. May be repeated for credit as topics vary.",
         "credit_hours":  "3.000",
         "semesters_offered":  [
-                         "FALL",
-                         "SUMMER",
-                         "SPRING"
-                     ],
-        "prerequisites":  [],
-        "corequisites":  [],
-        "core_categories": []
+                                  "FALL",
+                                  "SUMMER",
+                                  "SPRING"
+                              ],
+        "prerequisites":  [
+
+                          ],
+        "corequisites":  [
+
+                         ],
+        "core_categories":  [
+
+                            ]
     }
 ]
