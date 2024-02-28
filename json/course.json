@@ -6,7 +6,7 @@
         "name":  "Introduction to Computer Concepts",
         "description":  "History, application, and social impact of computers; problem-solving, algorithm development, applications software, and programming in a procedural language.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -22,7 +22,7 @@
         "name":  "General Applications Programming",
         "description":  "Introduction to systematic computer problem-solving and programming for a variety of applications.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -38,7 +38,7 @@
         "name":  "Algorithmic Design I",
         "description":  "Problem-solving, algorithmic design, and programming. Three lectures and two laboratory hours per week.",
         "credit_hours":  "4.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -54,7 +54,7 @@
         "name":  "Algorithmic Design II",
         "description":  "Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures. Three lecture hours and two laboratory hours per week.",
         "credit_hours":  "4.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -77,7 +77,7 @@
         "name":  "Computing in the Modern World",
         "description":  "An introduction to the field of computing: trends in computing technology, the profession, and careers; subdisciplines in computing; the nature of research and development.",
         "credit_hours":  "1.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -93,7 +93,7 @@
         "name":  "Introduction to Computer Security",
         "description":  "Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -109,7 +109,7 @@
         "name":  "Program Design and Development",
         "description":  "Fundamental algorithms and processes used in business information systems. Development and representation of programming logic. Introduction to implementation using a high-level programming language.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -134,7 +134,7 @@
         "name":  "Business Applications Programming",
         "description":  "Introduction to computer applications in business. Programming exercises in COBOL.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -150,7 +150,7 @@
         "name":  "Scientific Applications Programming",
         "description":  "Introduction to computer applications in science and engineering. Programming exercises in a high-level language.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -174,7 +174,7 @@
         "name":  "UNIX System Administration",
         "description":  "The Unix programming environment: I/O programming, Unix processes, fork, exec, pipes and signals, and tools.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -198,7 +198,7 @@
         "name":  "Special Topics in Computer Programming",
         "description":  "Programming and application development using selected programming languages. Course content varies and will be announced in the schedule of classes by title.",
         "credit_hours":  "1.000 TO     4.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -214,7 +214,7 @@
         "name":  "Computer Hardware Foundations",
         "description":  "Number representation, data formats, CPU and memory organization, assembly language, I/O and peripherals, computer networks. Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -230,7 +230,7 @@
         "name":  "Digital Logic Design",
         "description":  "Number systems, Boolean algebra, logic design, sequential machines.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -253,7 +253,7 @@
         "name":  "Introduction to Computer Architecture",
         "description":  "Computer architecture, components. and organization; memory addressing; Input/Output; instruction sets; interrupts; assembly-language programming. Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -269,7 +269,7 @@
         "name":  "UNIX/Linux Fundamentals",
         "description":  "UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
         "credit_hours":  "1.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -292,7 +292,7 @@
         "name":  "Advanced Programming Techniques",
         "description":  "Pointers; memory management; advanced programming language structures: operator overloading, iterators, multiple inheritance, polymorphism, templates, virtual functions; Unix programming environment.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -308,7 +308,7 @@
         "name":  "Web Applications",
         "description":  "Web technologies to support client-server computing. Implementation of client-server applications.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -331,7 +331,7 @@
         "name":  "Object-Oriented Programming Techniques",
         "description":  "Advanced object-oriented concepts and techniques; multiple inheritance; memory management; operator overloading; polymorphism; performance issues.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -354,7 +354,7 @@
         "name":  "Software Engineering",
         "description":  "Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing. ",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -377,7 +377,7 @@
         "name":  "Robotic Applications and Design",
         "description":  "Design and control of robots. Interactions between robots, sensing, actuation, and computation.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -400,7 +400,7 @@
         "name":  "Applied Problem Solving and Programming",
         "description":  "Systematic problem definition, solution formulation, and computer implementation for business and related areas. Internet and database applications. Programming exercises in a high-level programming language.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -424,7 +424,7 @@
         "name":  "Operating Systems",
         "description":  "Operating system structure and function; process implementation, scheduling, and synchronization; memory management; security; naming protection; resource allocation; network file systems.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -440,7 +440,7 @@
         "name":  "Embedded Systems",
         "description":  "Fundamentals of embedded systems: hardware components, software components, hardware/software interface design, and hardware/software co-design.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -469,7 +469,7 @@
         "name":  "Computer Systems Engineering",
         "description":  "System-level modeling and evaluation of computer systems: requirements elicitation and specification, architectural design, reliability and performance evaluation, Markov modeling, life-cycle cost analysis, project management.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -504,7 +504,7 @@
         "name":  "Programming Language Structures",
         "description":  "Formal specification of syntax and semantics; structure of algorithms; list processing and string manipulation languages; statement types, control structures, and interfacing procedures.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -520,7 +520,7 @@
         "name":  "Data Structures and Algorithms",
         "description":  "Techniques for representing and processing information, including the use of lists, trees, and graphs; analysis of algorithms; sorting, searching, and hashing techniques.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -536,7 +536,7 @@
         "name":  "Foundations of Computation",
         "description":  "Basic theoretical principles of computing as modeled by formal languages, grammars, automata, and Turing machines; fundamental limits of computation.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -571,7 +571,7 @@
         "name":  "Professional Issues in Computer Science and Engineering",
         "description":  "Professional issues in the information technology professions; history and social context of computing; professional responsibilities; privacy; intellectual property; risks and liabilities of computer-based systems.",
         "credit_hours":  "1.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -587,7 +587,7 @@
         "name":  "Mainframe Systems",
         "description":  "Introduction to the large scale computer systems used by businesses to support thousands of simultaneous users and process millions of transactions. ",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -611,7 +611,7 @@
         "name":  "Introduction to Computer Networks",
         "description":  "Concepts and components of computer networks and the Internet; network applications; network protocol stack.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -634,7 +634,7 @@
         "name":  "Capstone Computing Project I",
         "description":  "Major team-based software design project to be undertaken in a student’s final year of study; project planning, software requirements analysis, design, and specification. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -657,7 +657,7 @@
         "name":  "Capstone Computer Engineering Project",
         "description":  "Advanced computer systems engineering. Team projects. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -673,7 +673,7 @@
         "name":  "Capstone Computing Project II",
         "description":  "Continuation of CSCE 490. Computer system implementation, testing, verification and validation of results. Written reports and oral presentations in a technical setting.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -689,7 +689,7 @@
         "name":  "Independent Study",
         "description":  "Individual investigation or study of special topics. At most three credits may be applied toward a degree.  Approval of project proposal by instructor and department advisor.",
         "credit_hours":  "1.000 TO     3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -705,7 +705,7 @@
         "name":  "Computer Programming and Applications",
         "description":  "Concepts and properties of algorithms; programming exercises with emphasis on good programming habits.  Credit may not be received for both CSCE 500 and CSCE 145. Open to all majors. May not be used for major credit by computer science and engineering majors.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -721,7 +721,7 @@
         "name":  "System Programming",
         "description":  "System software such as command language interpreters, client-server applications, debuggers; mail systems, browsers, macroprocessors, and revision control systems; file systems, processes, threads, and interprocess communication.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -750,7 +750,7 @@
         "name":  "System Performance Evaluation",
         "description":  "Measuring, modeling, analyzing, and predicting performance of computer systems and networks; bottleneck analysis; Markovian queuing systems and networks; use of operational and probabilistic models.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -766,7 +766,7 @@
         "name":  "Computer Architecture",
         "description":  "Design methodology; processor design; computer arithmetic: algorithms for addition, multiplication, floating point arithmetic; microprogrammed control; memory organization; introduction to parallel architectures.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -795,7 +795,7 @@
         "name":  "Computer Network Programming",
         "description":  "Computer networks and communication protocols; socket programming; interprocess communication; development of network software; case studies.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -818,7 +818,7 @@
         "name":  "Computer Networks",
         "description":  "Structure, design, and analysis of computer networks; ISO/OSI network architecture.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -842,7 +842,7 @@
         "name":  "Computer Crime and Forensics",
         "description":  "Structure, design, and analysis of computer networks; ISO/OSI network architecture.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -865,7 +865,7 @@
         "name":  "Ethical Hacking",
         "description":  "Fundamental principles and techniques of ethical hacking, including penetration testing life cycle, planning and scoping, identifying targets and goals, active and passive reconnaissance, enumeration and scanning, exploitation, post-exploitation, and results reporting.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -881,7 +881,7 @@
         "name":  "Database System Design",
         "description":  "Database management systems; database design and implementation; security, integrity, and privacy.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -905,7 +905,7 @@
         "name":  "Information Security Principles",
         "description":  "Threats to information resources and appropriate countermeasures. Cryptography, identification and authentication, access control models and mechanisms, multilevel database security, steganography, Internet security, and intrusion detection and prevention.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -921,7 +921,7 @@
         "name":  "Service Oriented Computing",
         "description":  "Cooperative information systems and service-oriented computing. Techniques for achieving coordinated behavior among a decentralized group of information system components. Distributed databases, multiagent systems, conceptual modeling, Web services, and applications.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -944,7 +944,7 @@
         "name":  "Compiler Construction",
         "description":  "Techniques for design and implementation of compilers, including lexical analysis, parsing, syntax-directed translation, and symbol table management.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -967,7 +967,7 @@
         "name":  "Mobile Application Development",
         "description":  "Development of mobile applications, including user interface design for mobile, local and cloud data storage techniques, and application architectures.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -983,7 +983,7 @@
         "name":  "Windows Programming",
         "description":  "Object-oriented methods and tools for application programming with graphically interactive operating systems.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1006,7 +1006,7 @@
         "name":  "Building Secure Software",
         "description":  "Construction of software systems resistant to vulnerabilities and attacks. Cryptographic tools. Language, operating system, and network security. Case studies. Development of best practices through programming assignments.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1029,7 +1029,7 @@
         "name":  "Theory of Computation",
         "description":  "Basic theoretical principles of computing as modeled by formal languages and automata; computability and computational complexity",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1053,7 +1053,7 @@
         "name":  "Computer Game Development",
         "description":  "Design and development of computer games, with emphasis on the technologies used. Hands-on development of computer games.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1082,7 +1082,7 @@
         "name":  "Algorithms in Bioinformatics",
         "description":  "Concepts, algorithms and tools for important problems in Bioinformatics, including nucleotide and amino acid sequence alignment, DNA fragment assembly, phylogenetic reconstruction, and protein structure visualization and assessment.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1105,7 +1105,7 @@
         "name":  "Data Analysis in Python: Application to Neuroscience",
         "description":  "Hands-on introduction in Python to the analysis of neuroscience data (human neuroimaging and cellular electrophysiology), including various aspects such as data wrangling, statistics, classification, and visualization.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1129,7 +1129,7 @@
         "name":  "Introduction to Cryptography",
         "description":  "Design of secret codes for secure communication, including encryption and integrity verification: ciphers, cryptographic hashing, and public key cryptosystems such as RSA. Mathematical principles underlying encryption. Code-breaking techniques. Cryptographic protocols.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1145,7 +1145,7 @@
         "name":  "Numerical Analysis",
         "description":  "Interpolation and approximation of functions; solution of algebraic equations; numerical differentiation and integration; numerical solutions of ordinary differential equations and boundary value problems; computer implementation of algorithms.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1161,7 +1161,7 @@
         "name":  "Systems Simulation",
         "description":  "Computer simulation of real systems; principles of system organization; random number generation; programming exercises in a simulation language.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1177,7 +1177,7 @@
         "name":  "Computational Science",
         "description":  "Parallel algorithms; scientific visualization; techniques for solving scientific problems.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1193,7 +1193,7 @@
         "name":  "Introduction to Computer Graphics",
         "description":  "Graphics hardware; graphics primitives; two-dimensional and three-dimensional viewing; basic modeling.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1209,7 +1209,7 @@
         "name":  "Visualization Tools",
         "description":  "Scientific visualization tools as applied to sampled and generated data; methods for data manipulation and representation; investigation of visualization techniques.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1234,7 +1234,7 @@
         "name":  "Parallel Computing",
         "description":  "Architecture and interconnection of parallel computers; parallel programming models and applications; issues in high-performance computing; programming of parallel computers.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1250,7 +1250,7 @@
         "name":  "Critical Interactives",
         "description":  "Foundational techniques in multidisciplinary software development, specifically of applications designed to present sensitive, sometimes controversial, materials in ways to engender empathic awareness of the interactor.   ",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1266,7 +1266,7 @@
         "name":  "Human-Computer Interaction",
         "description":  "Interdisciplinary approach to interaction design, user-centered design, human abilities, survey development, experimental study methodology, heuristic evaluations, usability testing, universal design, and accessibility.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1282,7 +1282,7 @@
         "name":  "Robotics",
         "description":  "Design and application of robotic systems; emphasis on mobile robots and intelligent machines.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1317,7 +1317,7 @@
         "name":  "Text Processing",
         "description":  "Text and natural language processing; formal models and data structures appropriate for text processing; selected topics in computational linguistics, stylistics, and content analysis.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1346,7 +1346,7 @@
         "name":  "Artificial Intelligence",
         "description":  "Heuristic problem solving, theorem proving, and knowledge representation, including the use of appropriate programming languages and tools.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1369,7 +1369,7 @@
         "name":  "Trusted Artificial Intelligence",
         "description":  "AI Trust – responsible/ethical technology, fairness/ lack of bias, explanations (XAI), machine learning, reasoning, software testing, data quality and provenance, tools and projects.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1398,7 +1398,7 @@
         "name":  "Bayesian Networks and Decision Graphs",
         "description":  "Normative approaches to uncertainty in artificial intelligence. Probabilistic and causal modeling with Bayesian networks and influence diagrams. Applications in decision analysis and support. Algorithms for probability update in graphical models.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1414,7 +1414,7 @@
         "name":  "Machine Learning Systems",
         "description":  "Design and implementation of machine learning systems, Deep learning systems stack, machine learning platforms, scalable and distributed machine learning.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1438,7 +1438,7 @@
         "name":  "Big Data Analytics",
         "description":  "Foundational techniques and tools required for data science and big data analytics.  Concepts, principles, and techniques applicable to any technology and industry for establishing a baseline that can be enhanced by future study.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1454,7 +1454,7 @@
         "name":  "Topics in Information Technology",
         "description":  "Reading and research on selected topics in information technology. Course content varies and will be announced in the schedule of courses by title. May be repeated for credit as topics vary.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1470,7 +1470,7 @@
         "name":  "Strategic Management of Information Systems",
         "description":  "Strategic management and use of information systems in organizations.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1486,7 +1486,7 @@
         "name":  "Advanced Digital Design",
         "description":  "Design techniques for logic systems; emphasis on higher-level CAD tools such as hardware description languages and functional modeling.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1509,7 +1509,7 @@
         "name":  "VLSI System Design",
         "description":  "VLSI design process models, introduction to EDA tools, HDL modeling and simulation, logic synthesis and simulation, benchmark design projects.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1532,7 +1532,7 @@
         "name":  "Fundamentals of VLSI Chip Design",
         "description":  "Design of VLSI circuits, including standard processes, circuit design, layout, and CAD tools. Lecture and guided design projects.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1555,7 +1555,7 @@
         "name":  "Analysis of Algorithms",
         "description":  "Algorithm design techniques; algorithms and data structures for sets and graphs; time and space complexity; sorting and searching; NP-complete problems.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1578,7 +1578,7 @@
         "name":  "Robotics Systems",
         "description":  "Design and operation of robot systems; dynamics, control, and motion trajectories of manipulators; visual, auditory, and tactile sensing systems; planning and learning.",
         "credit_hours":  "3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
@@ -1601,7 +1601,7 @@
         "name":  "Topics in Information Technology",
         "description":  "Reading and research on selected topics in information technology. Course content varies and will be announced in the schedule of courses by title. May be repeated for credit as topics vary.",
         "credit_hours":  "1.000 TO     3.000",
-        "semester":  [
+        "semesters_offered":  [
                          "FALL",
                          "SUMMER",
                          "SPRING"
