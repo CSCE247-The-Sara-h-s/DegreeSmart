@@ -16,6 +16,7 @@ public class DataWriter extends DataConstants {
 			jsonUsers.add(users.get(i));
 		}
 
+		// where to assign students?
 		try (FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
 			file.write(jsonUsers.toJSONString());
 			file.flush();

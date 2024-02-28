@@ -7,7 +7,10 @@ public class CompletedCourse {
 	private int year;
 
 	public CompletedCourse(Course course, Grade grade, Semester semester, int year) {
-
+		this.course = course;
+		this.grade = grade;
+		this.semester = semester;
+		this.year = year;
 	}
 
 	public Course getCourse() {
@@ -15,7 +18,7 @@ public class CompletedCourse {
 	}
 
 	public void setCourse(Course course) {
-
+		this.course = course;
 	}
 
 	public Grade getGrade() {
@@ -23,7 +26,8 @@ public class CompletedCourse {
 	}
 
 	public void setGrade(Grade grade) {
-
+		// does a failed class count as a completed course?
+		this.grade = grade;
 	}
 
 	public Semester getSemester() {
@@ -31,7 +35,7 @@ public class CompletedCourse {
 	}
 
 	public void setSemester(Semester semester) {
-
+		this.semester = semester;
 	}
 
 	public int getYear() {
@@ -39,6 +43,6 @@ public class CompletedCourse {
 	}
 
 	public void setYear(int year) {
-
+		this.year = year;
 	}
 }
