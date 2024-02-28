@@ -60,9 +60,9 @@ public class DataLoader extends DataConstants {
 			
 			for(int i=0; i < coursesJSON.size(); i++) {
 				JSONObject classJSON = (JSONObject)coursesJSON.get(i);
-				String id = (String)classJSON.get(id);
-				String subject = (String)classJSON.get(subject);
-				String number = (String)classJSON.get(number);
+				String id = (String)classJSON.get(COURSE_UUID);
+				String subject = (String)classJSON.get(COURSE_SUBJECT);
+				String number = (String)classJSON.get(COURSE_NUMBER);
 
 				//TODO: FIGURE OUT PRE-REQS
 				
