@@ -151,9 +151,7 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "5c279398-853f-4c48-b89c-c5b3378901f4",
-                                                         "",
-                                                         ""
+                                                         "5c279398-853f-4c48-b89c-c5b3378901f4"
                                                      ],
                                   "min_grade":  "F"
                               }
@@ -202,8 +200,6 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "",
-                                                         ""
                                                      ],
                                   "min_grade":  "F"
                               }
@@ -300,10 +296,7 @@
                                   "SPRING"
                               ],
         "prerequisites":  [
-                              {
-                                  "course_options":  null,
-                                  "min_grade":  "F"
-                              }
+
                           ],
         "corequisites":  [
 
@@ -506,8 +499,7 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "a080089b-2cb7-410e-b731-a9fcd37e8868",
-                                                         ""
+                                                         "a080089b-2cb7-410e-b731-a9fcd37e8868"
                                                      ],
                                   "min_grade":  "F"
                               }
@@ -597,10 +589,6 @@
                                   "course_options":  [
                                                          "9d2fbdfa-ea06-4fc4-bf4e-ee104be9320b"
                                                      ],
-                                  "min_grade":  "F"
-                              },
-                              {
-                                  "course_options":  null,
                                   "min_grade":  "F"
                               }
                           ],
@@ -731,7 +719,6 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "",
                                                          "958ffecd-a465-4532-8cde-c9fd8d2f79e5"
                                                      ],
                                   "min_grade":  "F"
@@ -1016,7 +1003,6 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "",
                                                          "dd0e8d9d-faff-45c2-9f68-f4fdfdd106cd"
                                                      ],
                                   "min_grade":  "F"
@@ -1273,8 +1259,7 @@
         "prerequisites":  [
                               {
                                   "course_options":  [
-                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b",
-                                                         ""
+                                                         "bbb88994-06f7-43ab-a640-b227df1e3a9b"
                                                      ],
                                   "min_grade":  "C"
                               }
@@ -1894,10 +1879,7 @@
                                   "SPRING"
                               ],
         "prerequisites":  [
-                              {
-                                  "course_options":  null,
-                                  "min_grade":  "F"
-                              }
+
                           ],
         "corequisites":  [
 
