@@ -1,6 +1,7 @@
 package degreesmart;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Student extends User {
   private String uscId;
@@ -12,9 +13,10 @@ public class Student extends User {
   private Transcript transcript;
   private GraduationPlan graduationPlan;
 
-  public Student(String firstName, String lastName, String username, String password, 
-      String major, String uscId) {
-    super(username, password, uscId, firstName, lastName);
+  public Student(
+      UUID uuid, String username, String password, String email, String firstName, String lastName, 
+      String uscId) {
+    super(uuid, username, password, email, firstName, lastName);
     parents = new ArrayList<Parent>();
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();

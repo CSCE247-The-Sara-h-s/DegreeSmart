@@ -1,13 +1,14 @@
 package degreesmart;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Parent extends User {
   private ArrayList<Student> children;
   private ArrayList<Student> pendingAccessRequests;
 
-  public Parent(String username, String password, String email, String firstName, String lastName) {
-    super(username, password, email, firstName, lastName);
+  public Parent(UUID uuid, String username, String password, String email, String firstName, String lastName) {
+    super(uuid, username, password, email, firstName, lastName);
     children = new ArrayList<Student>();
     pendingAccessRequests = new ArrayList<Student>();
   }

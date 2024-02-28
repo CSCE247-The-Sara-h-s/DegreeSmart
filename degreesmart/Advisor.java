@@ -1,13 +1,14 @@
 package degreesmart;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Advisor extends User {
   private boolean approved;
   private ArrayList<Student> assignedStudents;
 
-  public Advisor(String username, String password, String email, String firstName, String lastName) {
-    super(username, password, email, firstName, lastName);
+  public Advisor(UUID uuid, String username, String password, String email, String firstName, String lastName) {
+    super(uuid, username, password, email, firstName, lastName);
     assignedStudents = new ArrayList<Student>();
     approved = false;
   }
