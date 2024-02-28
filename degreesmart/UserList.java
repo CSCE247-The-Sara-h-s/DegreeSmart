@@ -35,7 +35,11 @@ public class UserList {
     }
 
     public void createUser(User user) {
-
+        UUID uuid = UUID.randomUUID();
+        user.setId(uuid);
+        usersById.put(uuid, user);
+        users.add(user);
+        uuidsByUsername.put(user.getUsername(), uuid);
     }
 
     //just kinda messing around with this...it might be wrong but hopefully gives us good starting point
