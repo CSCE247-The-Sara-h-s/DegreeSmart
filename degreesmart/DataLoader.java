@@ -75,9 +75,11 @@ public class DataLoader extends DataConstants {
 		}
 		
 		return null;
+
+		//return new ArrayList<Course>();
 	}
 		
-		//return new ArrayList<Course>();
+
 	
 	public static final ArrayList<RequirementSet> getRequirementSets() {
 		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
@@ -95,7 +97,7 @@ public class DataLoader extends DataConstants {
 				RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
 				String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
 
-				requirementSets.add(new RequirementSet( id, name, category));
+				requirementSets.add(new RequirementSet(id ,name, category));
 			}
 			
 			return requirementSets;
@@ -103,7 +105,9 @@ public class DataLoader extends DataConstants {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return null;
+
 		
 	}
 }
