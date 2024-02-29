@@ -9,7 +9,11 @@ public class Application {
     private User activeUser;
     private static Application application;
 
-    private Application(){
+    // TODO: check if activeUser is null 
+
+
+    private Application() {
+        // userList = UserList.getInstance();
         this.userList = userList;
         this.courseList = courseList;
         this.requirementSetList = requirementSetList;
@@ -22,16 +26,27 @@ public class Application {
         }
         return application;
     }
+
     public User createAccount(String username, String password, String email, String firstName, String lastName) {
+        // create a new user
+        // userList.createUser
+        // return user
+
         return userList.getUsers().get(0);
     }
 
     public User logIn(String username, String password) {
+        // compare getPassword adn getUsername
+        // userList getUser, get the password, see if it matches
+        // username does not exist or is incorrect
+
         return userList.getUsers().get(0);
     }
 
-    public void logOut() {
 
+    public void logOut() {
+        // set user to active user
+        // set username and password to null
     }
 
     public void setUsername(User user, String username) {
@@ -46,9 +61,13 @@ public class Application {
 
     }
 
+    // add setPreferredName
+
     public void setEmailAddress(User user, String emailAddress) {
 
     }
+
+    // add methods for anything a user should be able to do
 
     public ArrayList<User> getUsers() {
         return userList.getUsers();
@@ -138,29 +157,7 @@ public class Application {
 
     }
 
-    public void createCourse(String subject, String name, ArrayList<Semester> semestersOffered, double creditHours) {
-
-    }
-
-    public void deleteCourse(Course course) {
-
-    }
-
-    public void modifyCourse(Course modifiedCourse) {
-
-    }
-
-    public void createRequirementSet(RequirementSet requirementSet) {
-
-    }
-
-    public void deleteRequirementSet(RequirementSet requirementSet) {
-
-    }
-
-    public void modifyRequirementSet(RequirementSet modifiedSet) {
-
-    }
+    // check user role from here down (admin)
 
     public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
         return new ArrayList<Scholarship>();
@@ -250,6 +247,31 @@ public class Application {
 
     }
 
+    public void createCourse(String subject, String name, ArrayList<Semester> semestersOffered, double creditHours) {
+        
+    }
+
+    public void deleteCourse(Course course) {
+
+    }
+
+    public void modifyCourse(Course modifiedCourse) {
+
+    }
+
+    public void createRequirementSet(RequirementSet requirementSet) {
+
+    }
+
+    public void deleteRequirementSet(RequirementSet requirementSet) {
+
+    }
+
+    public void modifyRequirementSet(RequirementSet modifiedSet) {
+
+    }
+
+    // Ignore everything below this line
     public void selectMajor() {
 
     }
