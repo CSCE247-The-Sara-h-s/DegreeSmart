@@ -165,10 +165,14 @@ public class Application {
         return new ArrayList<Scholarship>();
     }
 
-    public void addAdvisingNote(Student student, String note) {
+    public void addAdvisingNote(Student student, String message) {
 
     }
-
+    
+    public boolean removeAdvisingNote(Student student, AdvisingNote note) {
+        return true;
+    }
+    
     public void addCompletedCourse(Student student, Course course, Grade grade, Semester semester, int year) {
 
     }

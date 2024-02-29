@@ -37,14 +37,6 @@ public class Advisor extends User {
     return assignedStudents.remove(student);
   }
 
-  public void addAdvisingNote(Student student, String message) {
-    student.addAdvisingNote(this, message);
-  }
-
-  public boolean removeAdvisingNote(Student student, AdvisingNote note) {
-    return student.removeAdvisingNote(note);
-  }
-
   public boolean addCompletedCourse(Student student, CompletedCourse course) {
     return student.addCompletedCourse(course);
   }
