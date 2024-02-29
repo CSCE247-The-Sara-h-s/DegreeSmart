@@ -152,7 +152,10 @@ public class Application {
     }
 
     public void addAssignedStudent(Advisor advisor, Student student) {
-
+        if (activeUser instanceof Advisor){
+            Advisor activeAdvisor = (Advisor) activeUser;
+            activeAdvisor.addAssignedStudent(student);
+        }
     }
 
     public void removeAssignedStuent(Advisor advisor, Student student) {
