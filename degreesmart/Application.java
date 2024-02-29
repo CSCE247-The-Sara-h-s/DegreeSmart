@@ -61,7 +61,9 @@ public class Application {
 
     }
 
-    // add setPreferredName
+    public void setPreferredName(User user, String firstName, String lastName) {
+
+    }
 
     public void setEmailAddress(User user, String emailAddress) {
 
