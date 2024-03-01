@@ -50,11 +50,11 @@ public class Application {
     }
 
     public void setUsername(User user, String username) {
-
+        activeUser.setUsername(username);
     }
 
     public void setPassword(User user, String password) {
-
+        
     }
 
     public void setName(User user, String firstName, String lastName) {
