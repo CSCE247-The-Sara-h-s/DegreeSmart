@@ -10,7 +10,9 @@ public class CourseList {
 	private HashMap<String, UUID> uuidsBySubjectAndNumber;
 	private static CourseList courseList;
 
-	private CourseList() {}
+	private CourseList() {
+		//array list of course build hashmap 
+	}
 
 	public static CourseList getInstance() {
 		return new CourseList();

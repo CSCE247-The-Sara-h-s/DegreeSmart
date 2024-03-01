@@ -28,10 +28,6 @@ public abstract class User {
     return uuid;
   }
 
-  public void setId(UUID uuid){
-    this.uuid = uuid;
-  }
-
   public String getUsername() {
     return username;
   }
