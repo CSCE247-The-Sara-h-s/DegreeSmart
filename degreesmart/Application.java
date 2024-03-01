@@ -151,7 +151,7 @@ public class Application {
     }
 
     public void approveAdvisor(Advisor advisor) {
-
+        // user must be administrator?
     }
 
     public void addAssignedStudent(Advisor advisor, Student student) {
@@ -162,7 +162,10 @@ public class Application {
     }
 
     public void removeAssignedStuent(Advisor advisor, Student student) {
-
+        if (activeUser instanceof Advisor) {
+            Advisor activeAdvisor = (Advisor) activeUser;
+            activeAdvisor.removeAssignedStudent(student);
+        }
     }
 
     // check user role from here down (admin)
