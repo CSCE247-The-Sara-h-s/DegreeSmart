@@ -54,7 +54,7 @@ public class Application {
     }
 
     public void setPassword(User user, String password) {
-        
+        activeUser.setPassword(password);
     }
 
     public void setName(User user, String firstName, String lastName) {
