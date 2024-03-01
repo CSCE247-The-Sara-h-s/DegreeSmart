@@ -36,11 +36,14 @@ public class Application {
     }
 
     public User logIn(String username, String password) {
-        // compare getPassword adn getUsername
-        // userList getUser, get the password, see if it matches
-        // username does not exist or is incorrect
-
-        return userList.getUsers().get(0);
+        for (User user : userList.getUsers()) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                activeUser = user;
+                return user;
+            }
+        }
+        // Username not found/ Password is incorrect 
+        return null;
     }
 
 
