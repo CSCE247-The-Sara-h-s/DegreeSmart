@@ -262,7 +262,11 @@ public class Application {
     }
 
     public void removeScholarship () {
-
+        // confused here.. should Administrator have a removeScholarship method?
+        if (activeUser instanceof Administrator) {
+            Student activeStudent = (Student) activeUser;
+            activeStudent.removeScholarship(null);
+        }
     }
 
     public void createCourse(String subject, String name, ArrayList<Semester> semestersOffered, double creditHours) {
