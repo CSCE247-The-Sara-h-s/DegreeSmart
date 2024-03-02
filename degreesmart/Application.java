@@ -273,7 +273,10 @@ public class Application {
     }
 
     public void deleteCourse(Course course) {
-
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.deleteCourse(course);
+        }
     }
 
     public void modifyCourse(Course modifiedCourse) {
