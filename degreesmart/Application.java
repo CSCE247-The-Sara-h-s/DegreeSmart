@@ -280,7 +280,10 @@ public class Application {
     }
 
     public void modifyCourse(Course modifiedCourse) {
-
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.modifyCourse(modifiedCourse);
+        }
     }
 
     public void createRequirementSet(RequirementSet requirementSet) {
