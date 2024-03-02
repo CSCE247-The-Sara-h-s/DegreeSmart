@@ -151,7 +151,10 @@ public class Application {
     }
 
     public void approveAdvisor(Advisor advisor) {
-        // user must be administrator?
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.approveAdvisor(advisor);
+        }
     }
 
     public void addAssignedStudent(Advisor advisor, Student student) {
