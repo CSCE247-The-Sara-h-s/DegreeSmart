@@ -266,7 +266,10 @@ public class Application {
     }
 
     public void createCourse(String subject, String name, ArrayList<Semester> semestersOffered, double creditHours) {
-        
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.createCourse(null);
+        }
     }
 
     public void deleteCourse(Course course) {
