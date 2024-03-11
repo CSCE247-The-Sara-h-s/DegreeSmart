@@ -8,11 +8,12 @@ public class Course {
 	private Subject subject;
 	private String number;
 	private String name;
+	private String description;
+	private double creditHours;
 	private ArrayList<CourseRequirement> prerequisites;
 	private ArrayList<Course> corequisites;
 	private ArrayList<Semester> semestersOffered;
 	private ArrayList<CoreCategory> coreCategories;
-	private double creditHours;
 
 	public Course(UUID uuid, Subject subject, String number) {
 		this.uuid = uuid;
@@ -23,11 +24,7 @@ public class Course {
 		semestersOffered = new ArrayList<Semester>();
 		coreCategories = new ArrayList<CoreCategory>();
 		creditHours = 0.0;
-	}
-
-	public Course(Subject subject, String number) {
-		// TODO - uuid collisions?
-		this(UUID.randomUUID(), subject, number);
+		description = "";
 	}
 
 	public UUID getUuid() {
@@ -56,6 +53,14 @@ public class Course {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public ArrayList<CourseRequirement> getPrerequisites() {
