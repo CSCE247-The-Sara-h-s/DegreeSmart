@@ -172,6 +172,11 @@ public class Course {
 		}
 		prereqs = (prereqs.length() > 0)? prereqs : "None";
 
+		ArrayList<String> coreqs = new ArrayList<String>();
+		for (Course coreq : corequisites) {
+			coreqs.add(coreq.getSubject() + " " + coreq.getNumber());
+		}
+
 		return ""
 			+ "       UUID: " + uuid + "\n"
 			+ "    Subject: " + subject + "\n"
@@ -180,6 +185,7 @@ public class Course {
 			+ "  Semesters: " + semestersOffered + "\n"
 			+ "  Credit Hr: " + creditHours + "\n"
 			+ "Description: " + description + "\n"
+			+ "      Coreq: " + ((coreqs.size() > 0)? coreqs : "None") + "\n"
 			+ "     Prereq: " + prereqs;
 	}
 }
