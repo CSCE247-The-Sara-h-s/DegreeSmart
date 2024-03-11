@@ -93,67 +93,84 @@ public class DataLoader extends DataConstants {
 
 	public static final ArrayList<Course> getCourses() {
 		ArrayList<Course> courses = new ArrayList<Course>();
-		HashMap<UUID, JSONArray> prereqHash = new HashMap<UUID, JSONArray>();
+		HashMap<UUID, JSONArray> prereqJson = new HashMap<UUID, JSONArray>();
+		HashMap<UUID, JSONArray> coreqJson = new HashMap<UUID, JSONArray>();
 		HashMap<UUID, Course> uuidToCourse = new HashMap<UUID, Course>();
+		JSONParser parser = new JSONParser();
+		FileReader reader;
+		JSONArray coursesJSON;
 		
 		try {
-			FileReader reader = new FileReader(COURSE_FILE_NAME);
-			JSONParser parser = new JSONParser();
-			JSONArray coursesJSON = (JSONArray)new JSONParser().parse(reader);
-			
-			// first pass
-			for (int i = 0; i < coursesJSON.size(); i++) {
-				JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
-				UUID uuid = UUID.fromString((String)courseJSON.get(COURSE_UUID));
-				Subject subject = Subject.valueOf((String)courseJSON.get(COURSE_SUBJECT));
-				String number = (String)courseJSON.get(COURSE_NUMBER);
-				String name = (String)courseJSON.get(COURSE_NAME);
-				// String description = (String)courseJSON.get(COURSE_DESCRIPTION);
-				JSONArray semesterJSON = (JSONArray)courseJSON.get(COURSE_SEMESTERS_OFFERED);
-				double creditHours = Double.parseDouble((String)courseJSON.get(COURSE_CREDIT_HOURS));
-				JSONArray prerequisitesJSON = (JSONArray)courseJSON.get(COURSE_PREREQUISITES);
-
-				Course course = new Course(uuid, subject, number);
-				uuidToCourse.put(course.getUuid(), course);
-				prereqHash.put(course.getUuid(), prerequisitesJSON);
-
-				for (int k = 0; k < semesterJSON.size(); k++) {
-					try {
-						course.addSemesterOffered(Semester.valueOf((String)semesterJSON.get(k)));
-					} catch (Exception e) {
-					}
-				}
-				course.setCreditHours(creditHours);
-				course.setName(name);
-
-				courses.add(course);
-			}
-
-			// second pass
-			for (Course course : courses) {
-				JSONArray prerequisitesJSON = prereqHash.get(course.getUuid());
-				for (int k = 0; k < prerequisitesJSON.size(); k++) {
-					CourseRequirement prerequisite = new CourseRequirement();
-					JSONArray courseOptionsJSON = (JSONArray)((JSONObject)prerequisitesJSON.get(k)).get(COURSE_REQUIREMENT_COURSE_OPTIONS);
-
-					for (int m = 0; m < courseOptionsJSON.size(); m++) {
-						prerequisite.addCourseOption(uuidToCourse.get(UUID.fromString((String)courseOptionsJSON.get(m))));
-					}
-
-					prerequisite.setMinGrade(Grade.valueOf((String)((JSONObject)prerequisitesJSON.get(k)).get(COURSE_REQUIREMENT_MIN_GRADE)));
-
-					course.addPrerequisite(prerequisite);
-				}
-
-			}
-			
-			return courses;
-			
+			reader = new FileReader(COURSE_FILE_NAME);
+			coursesJSON = (JSONArray)new JSONParser().parse(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		
-		return null;
+			
+		// first pass
+		for (int i = 0; i < coursesJSON.size(); i++) {
+			JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
+
+			String uuid = (String) courseJSON.get(COURSE_UUID);
+			String subject = (String) courseJSON.get(COURSE_SUBJECT);
+			String number = (String) courseJSON.get(COURSE_NUMBER);
+			String name = (String) courseJSON.get(COURSE_NAME);
+			String description = (String) courseJSON.get(COURSE_DESCRIPTION);
+			String creditHours = (String) courseJSON.get(COURSE_CREDIT_HOURS);
+			JSONArray semesters = (JSONArray) courseJSON.get(COURSE_SEMESTERS_OFFERED);
+			JSONArray prerequisites = (JSONArray) courseJSON.get(COURSE_PREREQUISITES);
+			JSONArray corequisites = (JSONArray) courseJSON.get(COURSE_COREQUISITES);
+
+			Course course = new Course(UUID.fromString(uuid), Subject.valueOf(subject), number);
+			uuidToCourse.put(course.getUuid(), course);
+			prereqJson.put(course.getUuid(), prerequisites);
+			coreqJson.put(course.getUuid(), corequisites);
+
+			course.setCreditHours(Double.parseDouble(creditHours));
+			course.setName(name);q
+			course.setDescription(description);
+
+			for (int k = 0; k < semesters.size(); k++) {
+				String semester = (String) semesters.get(k);
+				course.addSemesterOffered(Semester.valueOf(semester));
+			}
+
+			courses.add(course);
+		}
+
+		// second pass
+		for (Course course : courses) {
+			JSONArray prerequisites = prereqJson.get(course.getUuid());
+
+			for (int k = 0; k < prerequisites.size(); k++) {
+				JSONObject prerequisite = (JSONObject) prerequisites.get(k);
+				String minGrade = (String) prerequisite.get(COURSE_REQUIREMENT_MIN_GRADE);
+				JSONArray courseOptions = (JSONArray) prerequisite.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+
+				CourseRequirement requirement = new CourseRequirement();
+				requirement.setMinGrade(Grade.valueOf(minGrade));
+
+				for (int m = 0; m < courseOptions.size(); m++) {
+					String uuid = (String)courseOptions.get(m);
+					Course courseOption = uuidToCourse.get(UUID.fromString(uuid));
+					requirement.addCourseOption(courseOption);
+				}
+
+				course.addPrerequisite(requirement);
+			}
+
+			JSONArray corequisites = coreqJson.get(course.getUuid());
+
+			for (int k = 0; k < corequisites.size(); k++) {
+				String uuid = (String) corequisites.get(k);
+				Course corequisite = uuidToCourse.get(UUID.fromString(uuid));
+
+				course.addCorequisite(corequisite);
+			}
+		}
+
+		return courses;
 	}
 		
 	public static final ArrayList<RequirementSet> getRequirementSets() {
