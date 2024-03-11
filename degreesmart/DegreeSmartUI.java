@@ -13,7 +13,7 @@ public class DegreeSmartUI {
 		ArrayList<Runnable> scenarios = new ArrayList<>(); // https://stackoverflow.com/a/67292304
 		scenarios.add(() -> scenario1());
 		scenarios.add(() -> scenario2());
-		// scenarios.add(() -> scenario3());
+		scenarios.add(() -> scenario3());
 
 		for (int i = 0; i < scenarios.size(); i++) {
 			System.out.println("\n---------------------------------------------------------------");
@@ -59,34 +59,21 @@ public class DegreeSmartUI {
 	public void scenario2() {
 		System.out.println(" Load Courses Test. (Temp demo; not a real scenario!)\n");
 		ArrayList<Course> courses = DataLoader.getCourses();
-		for (Course course : courses) {
-			System.out.println("     UUID: " + course.getUuid());
-			System.out.println("  Subject: " + course.getSubject());
-			System.out.println("   Number: " + course.getNumber());
-			System.out.println("     Name: " + course.getName());
-			System.out.println("Semesters: " + course.getSemestersOffered());
-			System.out.println("Credit Hr: " + course.getCreditHours());
+		System.out.println(" Loaded " + courses.size() + " courses.");
 
-			if (course.getPrerequisites().size() > 0) {
-				System.out.println("  Prereqs: ");
-				for (CourseRequirement prereq : course.getPrerequisites()) {
-					System.out.print("     -      ");
-					if (prereq.getMinGrade() != Grade.F) {
-						System.out.print(prereq.getMinGrade() + " or higher in ");
-					}
+		ArrayList<String> selectedCourses = new ArrayList<String>();
+		selectedCourses.add("CSCE 247");
+		selectedCourses.add("CSCE 355");
+		selectedCourses.add("MATH 374");
+		selectedCourses.add("CSCE 212");
+		selectedCourses.add("CSCE 212");
+		selectedCourses.add("CHEM 111");
+		selectedCourses.add("MATH 241");
 
-					ArrayList<Course> options = prereq.getCourseOptions();
-					for (int i = 0; i < options.size(); i++) {
-						System.out.print(options.get(i).getSubject() + " " + options.get(i).getNumber());
-						if (i != options.size() - 1) {
-							System.out.print(" or ");
-						} else {
-							System.out.println("\n");
-						}
-					}
-				}
+		for (Course c : courses) {
+			if (selectedCourses.contains(c.getSubject() + " " + c.getNumber())) {
+				System.out.println("\n" + c);
 			}
-			System.out.println();
 		}
 	}
 
