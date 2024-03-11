@@ -128,7 +128,7 @@ public class DataLoader extends DataConstants {
 			coreqJson.put(course.getUuid(), corequisites);
 
 			course.setCreditHours(Double.parseDouble(creditHours));
-			course.setName(name);q
+			course.setName(name);
 			course.setDescription(description);
 
 			for (int k = 0; k < semesters.size(); k++) {

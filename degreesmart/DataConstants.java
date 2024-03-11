@@ -44,8 +44,9 @@ public abstract class DataConstants {
 	protected static final String COURSE_SUBJECT = "subject";
 	protected static final String COURSE_NUMBER = "number";
 	protected static final String COURSE_NAME = "name";
+	protected static final String COURSE_DESCRIPTION = "description";
 	protected static final String COURSE_PREREQUISITES = "prerequisites";
-	protected static final String REQUIREMENT_NUM_CHOICES = "num_choices";
+	protected static final String REQUIREMENT_NUM_CHOICES = "choices";
 	protected static final String COURSE_REQUIREMENT_MIN_GRADE = "min_grade";
 	protected static final String COURSE_REQUIREMENT_COURSE_OPTIONS = "course_options";
 	protected static final String NESTED_REQUIREMENT_REQUIREMENT_OPTIONS = "requirement_options";
