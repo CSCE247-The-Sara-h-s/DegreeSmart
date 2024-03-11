@@ -138,4 +138,48 @@ public class Course {
 
 		this.creditHours = creditHours;
 	}
+
+	public boolean equals(Object object) {
+		if (object == null || ! (object instanceof Course)) {
+			return false;
+		}
+		Course course = (Course)object;
+
+		return creditHours == course.getCreditHours()
+			&& uuid.equals(course.getUuid())
+			&& subject.equals(course.getSubject())
+			&& number.equals(course.getNumber())
+			&& name.equals(course.getName())
+			&& description.equals(course.getDescription())
+			&& prerequisites.size() == course.getPrerequisites().size()
+			&& prerequisites.containsAll(course.getPrerequisites())
+			&& course.getPrerequisites().containsAll(prerequisites)
+			&& corequisites.size() == course.getCorequisites().size()
+			&& corequisites.containsAll(course.getCorequisites())
+			&& course.getCorequisites().containsAll(corequisites)
+			&& semestersOffered.size() == course.getSemestersOffered().size()
+			&& semestersOffered.containsAll(course.getSemestersOffered())
+			&& course.getSemestersOffered().containsAll(semestersOffered)
+			&& coreCategories.size() == course.getCoreCategories().size()
+			&& coreCategories.containsAll(course.getCoreCategories())
+			&& course.getCoreCategories().containsAll(coreCategories);
+	}
+
+	public String toString() {
+		String prereqs = "";
+		for (CourseRequirement prereq : prerequisites) {
+			prereqs += "\n          - " + prereq;
+		}
+		prereqs = (prereqs.length() > 0)? prereqs : "None";
+
+		return ""
+			+ "       UUID: " + uuid + "\n"
+			+ "    Subject: " + subject + "\n"
+			+ "     Number: " + number + "\n"
+			+ "       Name: " + name + "\n"
+			+ "  Semesters: " + semestersOffered + "\n"
+			+ "  Credit Hr: " + creditHours + "\n"
+			+ "Description: " + description + "\n"
+			+ "     Prereq: " + prereqs;
+	}
 }
