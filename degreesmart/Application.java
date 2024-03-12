@@ -61,7 +61,8 @@ public class Application {
     }
 
     public void setName(User user, String firstName, String lastName) {
-
+        activeUser.setFirstName(firstName);
+        activeUser.setFirstName(lastName);
     }
 
     public void setPreferredName(User user, String firstName, String lastName) {
