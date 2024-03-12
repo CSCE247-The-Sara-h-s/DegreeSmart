@@ -145,24 +145,7 @@ public class Course {
 		}
 		Course course = (Course)object;
 
-		return creditHours == course.getCreditHours()
-			&& uuid.equals(course.getUuid())
-			&& subject.equals(course.getSubject())
-			&& number.equals(course.getNumber())
-			&& name.equals(course.getName())
-			&& description.equals(course.getDescription())
-			&& prerequisites.size() == course.getPrerequisites().size()
-			&& prerequisites.containsAll(course.getPrerequisites())
-			&& course.getPrerequisites().containsAll(prerequisites)
-			&& corequisites.size() == course.getCorequisites().size()
-			&& corequisites.containsAll(course.getCorequisites())
-			&& course.getCorequisites().containsAll(corequisites)
-			&& semestersOffered.size() == course.getSemestersOffered().size()
-			&& semestersOffered.containsAll(course.getSemestersOffered())
-			&& course.getSemestersOffered().containsAll(semestersOffered)
-			&& coreCategories.size() == course.getCoreCategories().size()
-			&& coreCategories.containsAll(course.getCoreCategories())
-			&& course.getCoreCategories().containsAll(coreCategories);
+		return uuid.equals(course.getUuid());
 	}
 
 	public String toString() {
