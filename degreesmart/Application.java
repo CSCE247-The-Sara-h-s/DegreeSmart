@@ -263,7 +263,10 @@ public class Application {
     }
 
     public void addScholarship () {
-
+        if (activeUser instanceof Administrator) {
+            Student activeStudent = (Student) activeUser;
+            activeStudent.addScholarship(null); // shoudln't be null?
+        }
     }
 
     public void removeScholarship () {
