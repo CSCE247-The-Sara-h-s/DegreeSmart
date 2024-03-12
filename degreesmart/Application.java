@@ -50,8 +50,6 @@ public class Application {
         // set user to active user
         // set username and password to null
         activeUser = null;
-        activeUser.setUsername(null);
-        activeUser.setPassword(null);
     }
 
     public void setUsername(User user, String username) {
