@@ -265,7 +265,8 @@ public class Application {
     public void addScholarship () {
         if (activeUser instanceof Administrator) {
             Student activeStudent = (Student) activeUser;
-            activeStudent.addScholarship(null); // shoudln't be null?
+            Scholarship scholarship = new Scholarship(null, getGpa(), getCompletedCreditHours());
+            activeStudent.addScholarship(scholarship);
         }
     }
 
