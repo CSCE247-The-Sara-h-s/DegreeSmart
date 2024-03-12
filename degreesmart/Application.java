@@ -70,7 +70,7 @@ public class Application {
     }
 
     public void setEmailAddress(User user, String emailAddress) {
-
+        activeUser.setEmailAddress(emailAddress);
     }
 
     // add methods for anything a user should be able to do
