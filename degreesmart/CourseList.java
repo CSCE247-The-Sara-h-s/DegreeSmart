@@ -11,34 +11,63 @@ public class CourseList {
 	private static CourseList courseList;
 
 	private CourseList() {
-		//array list of course build hashmap 
+		courses = DataLoader.getCourses();
+		ArrayList<Course> courses = new ArrayList<Course>();
+		HashMap<UUID, Course> coursesByUuid = new HashMap<UUID, Course>();
+		HashMap<String, UUID> uuidsBySubjectandNumber = new HashMap<String, UUID>();
 	}
 
 	public static CourseList getInstance() {
-		return new CourseList();
+		if (courseList == null) {
+			courseList= new CourseList();
+		}
+		
+		return courseList;
 	}
 
 	public ArrayList<Course> getCourses() {
-		return new ArrayList<Course>();
+		return courses;
 	}
 
 	public Course getCourse(UUID uuid) {
-		return courses.get(0);
+		return coursesByUuid.get(uuid);
 	}
 
 	public Course getCourse(Subject subject, String number) {
-		return courses.get(0);
+		return getCourse(uuidsBySubjectAndNumber.get(subject+ " "+ number));
 	}
 
 	public boolean createCourse(Course course) {
-		return true;
+		if(!coursesByUuid.containsKey(course.getUuid())){
+			uuidsBySubjectAndNumber.put(course.getSubject() + " " + course.getNumber(), course.getUuid());
+			coursesByUuid.put(course.getUuid(), course);
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 	public boolean deleteCourse(Course course) {
-		return true;
+		if(courses.remove(course)){
+			coursesByUuid.remove(course.getUuid());
+			uuidsBySubjectAndNumber.remove(course.getSubject() + " " + course.getNumber());
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean modifyCourse(Course course) {
-		return true;
+		Course original = coursesByUuid.get(course.getUuid());
+
+		if(original == null){
+			return false;
+		} else {
+			coursesByUuid.remove(course.getUuid());
+			coursesByUuid.put(course.getUuid(), course);
+			uuidsBySubjectAndNumber.remove(original.getSubject() + " " + original.getNumber());
+			uuidsBySubjectAndNumber.put(course.getSubject() + " " + course.getNumber(), course.getUuid());
+			return true;
+		}
 	}
 }
