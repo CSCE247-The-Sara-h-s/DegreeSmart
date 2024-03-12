@@ -175,6 +175,7 @@ public class DataLoader extends DataConstants {
 		
 	public static final ArrayList<RequirementSet> getRequirementSets() {
 		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
+		HashMap<UUID, JSONArray> reqHashMap = new HashMap<UUID, JSONArray>();
 		// TODO: inititalize hashmap for requirements section
 		JSONParser parser = new JSONParser();
 		FileReader reader;
