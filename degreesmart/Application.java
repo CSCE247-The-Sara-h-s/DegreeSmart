@@ -101,6 +101,10 @@ public class Application {
         return userList.getUsers();
     }
 
+    public ArrayList<User> getAssignedStudents() {
+        return userList.getUsers();
+    }
+
     public ArrayList<User> getUnassignedStudents() {
         return userList.getUsers();
     }
@@ -220,7 +224,7 @@ public class Application {
 
     }
 
-    public void setUscId() {
+    public void getUscId() {
 
     }
 
