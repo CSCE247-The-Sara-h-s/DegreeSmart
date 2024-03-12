@@ -66,7 +66,7 @@ public class Application {
     }
 
     public void setPreferredName(User user, String firstName, String lastName) {
-
+        activeUser.setPreferredName(firstName);
     }
 
     public void setEmailAddress(User user, String emailAddress) {
