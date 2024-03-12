@@ -175,31 +175,36 @@ public class DataLoader extends DataConstants {
 		
 	public static final ArrayList<RequirementSet> getRequirementSets() {
 		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
+		HashMap<UUID, JSONArray> reqHashMap = new HashMap<UUID, JSONArray>();
+		// TODO: inititalize hashmap for requirements section
+		JSONParser parser = new JSONParser();
+		FileReader reader;
+		JSONArray requirementsJSON;
+
 		
 		try {
-			FileReader reader = new FileReader(REQUIREMENT_FILE_NAME);
-			JSONParser parser = new JSONParser();
-			JSONArray requirementsJSON = (JSONArray)new JSONParser().parse(reader);
-			
-			for(int i=0; i < requirementsJSON.size(); i++) {
-				JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
-				UUID id = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
-				String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
-				String categoryString = (String) personJSON.get(REQUIREMENT_SET_CATEGORY);
-				RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
-				String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
-
-				requirementSets.add(new RequirementSet(id ,name, category));
-			}
-			
-			return requirementSets;
-			
+			reader = new FileReader(REQUIREMENT_FILE_NAME);
+			requirementsJSON = (JSONArray)new JSONParser().parse(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 
-		return null;
+		// first pass
+		for(int i= 0; i < requirementsJSON.size(); i++) {
+			JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
+			UUID id = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
+			String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
+			String categoryString = (String) personJSON.get(REQUIREMENT_SET_CATEGORY);
+			RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
+			String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
 
+			requirementSets.add(new RequirementSet(id ,name, category));
+		}
+
+		// second pass 
 		
+		return requirementSets;
+
 	}
 }

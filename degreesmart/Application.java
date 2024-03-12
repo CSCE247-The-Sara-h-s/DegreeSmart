@@ -47,8 +47,6 @@ public class Application {
     }
 
     public void logOut() {
-        // set user to active user
-        // set username and password to null
         activeUser = null;
     }
 
@@ -72,8 +70,6 @@ public class Application {
     public void setEmailAddress(User user, String emailAddress) {
         activeUser.setEmailAddress(emailAddress);
     }
-
-    // add methods for anything a user should be able to do
 
     public ArrayList<User> getUsers() {
         return userList.getUsers();
@@ -267,7 +263,10 @@ public class Application {
     }
 
     public void addScholarship () {
-
+        if (activeUser instanceof Administrator) {
+            Student activeStudent = (Student) activeUser;
+            activeStudent.addScholarship(null); // shoudln't be null?
+        }
     }
 
     public void removeScholarship () {
