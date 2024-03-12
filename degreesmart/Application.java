@@ -14,9 +14,9 @@ public class Application {
 
     private Application() {
         // userList = UserList.getInstance();
-        this.userList = userList;
-        this.courseList = courseList;
-        this.requirementSetList = requirementSetList;
+        userList = UserList.getInstance();
+        courseList = CourseList.getInstance();
+        requirementSetList = RequirementSetList.getInstance();
         this.activeUser = activeUser;
     }
 
