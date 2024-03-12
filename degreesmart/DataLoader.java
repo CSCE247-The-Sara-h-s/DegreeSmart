@@ -206,6 +206,11 @@ public class DataLoader extends DataConstants {
 		for (RequirementSet requirementSet : requirementSets) {
 			JSONArray requirements = reqHashMap.get(requirementSet.getUuid());
 
+			for (int k = 0; k < requirements.size(); k++) {
+				JSONObject requirement = (JSONObject) requirements.get(k);
+				String minGrade = (String) requirement.get(COURSE_REQUIREMENT_MIN_GRADE);	// are these the correct object keys?
+				JSONArray courseOptions = (JSONArray) requirement.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+			}
 		}
 		return requirementSets;
 
