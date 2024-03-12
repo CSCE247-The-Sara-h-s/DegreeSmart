@@ -47,11 +47,7 @@ public class Application {
     }
 
     public void logOut() {
-        // set user to active user
-        // set username and password to null
         activeUser = null;
-        activeUser.setUsername(null);
-        activeUser.setPassword(null);
     }
 
     public void setUsername(User user, String username) {
@@ -74,8 +70,6 @@ public class Application {
     public void setEmailAddress(User user, String emailAddress) {
         activeUser.setEmailAddress(emailAddress);
     }
-
-    // add methods for anything a user should be able to do
 
     public ArrayList<User> getUsers() {
         return userList.getUsers();
@@ -222,6 +216,10 @@ public class Application {
 
     public void ignoreAcessRequest(String username) {
 
+    }
+
+    public void setUscId() {
+        
     }
 
     public void getUscId() {
