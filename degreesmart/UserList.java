@@ -12,6 +12,9 @@ public class UserList {
 
     private UserList() {
         users = DataLoader.getUsers();
+        ArrayList<User> users = new ArrayList<User>();
+        HashMap<UUID, User> userbyId = new HashMap<UUID, User>();
+        HashMap<String, UUID> uuidsByUsername = new HashMap<String, UUID>();
     }
 
     public static UserList getInstance() {
@@ -27,35 +30,46 @@ public class UserList {
     }
 
     private User getUser(UUID uuid) {
-        return users.get(0);
+        return usersById.get(uuid);
     }
 
     public User getUser(String username) {
-        return users.get(0);
+        return getUser(uuidsByUsername.get(username));
     }
 
-    public void createUser(User user) {
-        UUID uuid = UUID.randomUUID();
-        usersById.put(uuid, user);
-        users.add(user);
-        uuidsByUsername.put(user.getUsername(), uuid);
+    public boolean createUser(User user) {
+        if(!usersById.containsKey(user.getUuid())){
+			uuidsByUsername.put(user.getUsername() , user.getUuid());
+			usersById.put(user.getUuid(), user);
+			return true;
+		} else{
+			return false;
+		}
     }
 
-    //just kinda messing around with this...it might be wrong but hopefully gives us good starting point
-    public void deleteUser(User user) {
-        UUID uuid = uuidsByUsername.get(user.getUsername());
-        usersById.remove(uuid);
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUsername().equals(user.getUsername())) {
-                users.remove(i);
-                break;
-            }
-        }
-        uuidsByUsername.remove(user.getUsername());
+
+    public boolean deleteUser(User user) {
+        if(users.remove(user)){
+			usersById.remove(user.getUsername());
+			uuidsByUsername.remove(user.getUuid());
+			return true;
+		} else {
+			return false;
+		}
     }
 
-    public void modifyUser(User modifiedUser) {
+    public boolean modifyUser(User modifiedUser) {
+        User original = usersById.get(modifiedUser.getUsername());
 
+		if(original == null){
+			return false;
+		} else {
+			usersById.remove(original.getUuid());
+			usersById.put(modifiedUser.getUuid(), modifiedUser);
+			uuidsByUsername.remove(original.getUsername());
+			uuidsByUsername.put(modifiedUser.getUsername(), modifiedUser.getUuid());
+			return true;
+		}
     }
 
 }
