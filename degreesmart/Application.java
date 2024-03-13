@@ -313,7 +313,10 @@ public class Application {
     }
 
     public void modifyRequirementSet(RequirementSet modifiedSet) {
-
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.modifyRequirementSet(modifiedSet);
+        }
     }
 
     // Ignore everything below this line
