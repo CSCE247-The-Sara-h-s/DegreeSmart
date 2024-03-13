@@ -300,7 +300,10 @@ public class Application {
     }
 
     public void createRequirementSet(RequirementSet requirementSet) {
-
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.createRequirementSet(requirementSet);
+        }
     }
 
     public void deleteRequirementSet(RequirementSet requirementSet) {
