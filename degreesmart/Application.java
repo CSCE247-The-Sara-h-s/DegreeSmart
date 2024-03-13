@@ -265,8 +265,7 @@ public class Application {
     public void addScholarship () {
         if (activeUser instanceof Administrator) {
             Student activeStudent = (Student) activeUser;
-            Scholarship scholarship = new Scholarship(null, getGpa(), getCompletedCreditHours());
-            activeStudent.addScholarship(scholarship);
+            activeStudent.addScholarship(null);
         }
     }
 
@@ -307,7 +306,10 @@ public class Application {
     }
 
     public void deleteRequirementSet(RequirementSet requirementSet) {
-
+        if (activeUser instanceof Administrator) {
+            Administrator activeAdministrator = (Administrator) activeUser;
+            activeAdministrator.deleteRequirementSet(requirementSet);
+        }
     }
 
     public void modifyRequirementSet(RequirementSet modifiedSet) {
