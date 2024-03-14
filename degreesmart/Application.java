@@ -154,26 +154,21 @@ public class Application {
 
     public void approveAdvisor(Advisor advisor) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.approveAdvisor(advisor);
+            advisor.setApproved(true);
         }
     }
 
     public void addAssignedStudent(Advisor advisor, Student student) {
-        if (activeUser instanceof Advisor){
-            Advisor activeAdvisor = (Advisor) activeUser;
-            activeAdvisor.addAssignedStudent(student);
+        if (activeUser instanceof Administrator || activeUser.equals(advisor)) {
+            advisor.addAssignedStudent(student);
         }
     }
 
     public void removeAssignedStuent(Advisor advisor, Student student) {
-        if (activeUser instanceof Advisor) {
-            Advisor activeAdvisor = (Advisor) activeUser;
-            activeAdvisor.removeAssignedStudent(student);
+        if (activeUser instanceof Administrator || activeUser.equals(advisor)) {
+           advisor.removeAssignedStudent(student);
         }
     }
-
-    // check user role from here down (admin)
 
     public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
         return new ArrayList<Scholarship>();
@@ -281,45 +276,41 @@ public class Application {
         }
     }
 
-    public void createCourse(String subject, String name, ArrayList<Semester> semestersOffered, double creditHours) {
+    public Course createCourse(Subject subject, String number) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.createCourse(null);
+            return courseList.createCourse(subject, number);
         }
+        return null;
     }
 
     public void deleteCourse(Course course) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.deleteCourse(course);
+            courseList.deleteCourse(course);
         }
     }
 
     public void modifyCourse(Course modifiedCourse) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.modifyCourse(modifiedCourse);
+            courseList.modifyCourse(modifiedCourse);
         }
     }
 
-    public void createRequirementSet(RequirementSet requirementSet) {
+    public RequirementSet createRequirementSet(RequirementSetCategory category, String name) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.createRequirementSet(requirementSet);
+            return requirementSetList.createRequirementSet(category, name);
         }
+        return null;
     }
 
     public void deleteRequirementSet(RequirementSet requirementSet) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.deleteRequirementSet(requirementSet);
+            requirementSetList.deleteRequirementSet(requirementSet);
         }
     }
 
-    public void modifyRequirementSet(RequirementSet modifiedSet) {
+    public void modifyRequirementSet(RequirementSet modifiedRequirementSet) {
         if (activeUser instanceof Administrator) {
-            Administrator activeAdministrator = (Administrator) activeUser;
-            activeAdministrator.modifyRequirementSet(modifiedSet);
+             requirementSetList.modifyRequirementSet(modifiedRequirementSet);
         }
     }
 
