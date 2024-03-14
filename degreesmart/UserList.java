@@ -12,8 +12,8 @@ public class UserList {
 
     private UserList() {
         users = DataLoader.getUsers();
-        HashMap<UUID, User> usersByUuid = new HashMap<UUID, User>();
-        HashMap<String, User> usersByUsername = new HashMap<String, User>();
+        usersByUuid = new HashMap<UUID, User>();
+        usersByUsername = new HashMap<String, User>();
 
         for (User user : users) {
         	usersByUuid.put(user.getUuid(), user);
