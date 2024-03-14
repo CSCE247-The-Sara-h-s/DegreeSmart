@@ -61,7 +61,11 @@ public abstract class User {
   }
 
   public String getPreferredName() {
-    return preferredName;
+    if (preferredName == null || preferredName.isEmpty()) {
+      return firstName;
+    } else {
+      return preferredName;
+    }
   }
 
   public void setPreferredName(String firstName) {
