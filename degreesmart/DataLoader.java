@@ -190,19 +190,19 @@ public class DataLoader extends DataConstants {
 			return null;
 		}
 
-		// first pass
+		// first pass -> create instance of requirementSet with uuid, name, category
 		for(int i= 0; i < requirementsJSON.size(); i++) {
 			JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
-			UUID id = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
+			UUID uuid = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
 			String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
 			String categoryString = (String) personJSON.get(REQUIREMENT_SET_CATEGORY);
 			RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
 			String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
 
-			requirementSets.add(new RequirementSet(id ,name, category));
+			requirementSets.add(new RequirementSet(uuid ,name, category));
 		}
 
-		// second pass 
+		// second pass -> store the requirement set from first pass with requirements of second pass in hashmap
 		for (RequirementSet requirementSet : requirementSets) {
 			JSONArray requirements = reqHashMap.get(requirementSet.getUuid());
 
