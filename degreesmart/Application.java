@@ -48,6 +48,7 @@ public class Application {
 
     public void logOut() {
         activeUser = null;
+        System.out.println("You have been logged out!");
     }
 
     public void setUsername(User user, String username) {
