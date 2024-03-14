@@ -46,4 +46,20 @@ public class RequirementSet {
 	public boolean removeRequirement(Requirement requirement) {
 		return requirements.remove(requirement);
 	}
+
+	public boolean equals(Object object) {
+		if (object == null || ! (object instanceof RequirementSet)) {
+			return false;
+		}
+		RequirementSet requirementSet = (RequirementSet)object;
+
+		return uuid.equals(requirementSet.getUuid());
+	}
+
+	public String toString() {
+		return ""
+			+ "        uuid: " + uuid
+			+ "    category: " + category
+			+ "requirements: " + "TODO";
+	}
 }
