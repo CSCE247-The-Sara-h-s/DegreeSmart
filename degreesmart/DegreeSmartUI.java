@@ -72,6 +72,7 @@ public class DegreeSmartUI {
 		selectedCourses.add("CSCE 212");
 		selectedCourses.add("CHEM 111");
 		selectedCourses.add("MATH 241");
+		selectedCourses.add("CSCE 330");
 
 		for (Course c : courses) {
 			if (selectedCourses.contains(c.getSubject() + " " + c.getNumber())) {
