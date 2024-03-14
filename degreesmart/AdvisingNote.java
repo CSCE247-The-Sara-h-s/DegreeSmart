@@ -1,6 +1,7 @@
 package degreesmart;
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AdvisingNote {
   private String note;
@@ -31,5 +32,22 @@ public class AdvisingNote {
 
   public ZonedDateTime getTime() {
     return time;
+  }
+
+  public boolean equals(Object object) {
+    if (object == null || ! (object instanceof AdvisingNote)) {
+      return false;
+    }
+    AdvisingNote advisingNote = (AdvisingNote)object;
+
+    return note.equals(advisingNote.getNote())
+      && author.getUuid().equals(advisingNote.getAuthor().getUuid())
+      && time.equals(advisingNote.getTime());
+  }
+
+  public String toString() {
+    return author.getLastName() + " " + author.getPreferredName() + " "
+      + time.format(DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss z"))
+      + " - " + note;
   }
 }
