@@ -75,4 +75,24 @@ public abstract class User {
   public void setEmailAddress(String emailAddress) {
     this.emailAddress = emailAddress;
   }
+
+  public boolean equals(Object object) {
+    if (object == null || ! (object instanceof User)) {
+      return false;
+    }
+    User user = (User)object;
+
+    return uuid.equals(user.getUuid());
+  }
+
+  public String toString() {
+    return ""
+      + "            UUID: " + uuid + "\n"
+      + "        Username: " + username + "\n"
+      + "        Password: " + password + "\n"
+      + "            Name: " + firstName + " "
+                     + ((preferredName == null)? "" : "(" + preferredName + ")")
+                     + lastName + "\n"
+      + "           Email: " + emailAddress;
+  }
 }
