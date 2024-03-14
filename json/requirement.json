@@ -3,7 +3,14 @@
 		"uuid": "145902ba-0a79-4eb3-87fb-8c3ecf91f240",
 		"name": "AIU",
 		"category": "CAROLINA_CORE",
-		"requirements": []
+		"requirements": [
+			{
+				"choices": 1,
+				"course_options": ["4e77986e-bc27-4898-b5bd-263fe872b348", "8c7ad8b6-3096-455c-810a-bebdc498bc77"
+								],
+				"min_grade": "C"
+			}
+		]
 	},
 	{
 		"uuid": "554472a9-c7cb-4ac6-bf69-0d8b58a99d3d",

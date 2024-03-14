@@ -193,13 +193,17 @@ public class DataLoader extends DataConstants {
 		// first pass -> create instance of requirementSet with uuid, name, category
 		for(int i= 0; i < requirementsJSON.size(); i++) {
 			JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
+
 			UUID uuid = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
 			String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
 			String categoryString = (String) personJSON.get(REQUIREMENT_SET_CATEGORY);
 			RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
-			String requirements = (String)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
+			JSONArray requirements = (JSONArray)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
 
-			requirementSets.add(new RequirementSet(uuid ,name, category));
+			RequirementSet requirementSet = new RequirementSet(uuid, name, category);
+			reqHashMap.put(requirementSet.getUuid(), requirements);
+
+			requirementSets.add(requirementSet);
 		}
 
 		// second pass -> store the requirement set from first pass with requirements of second pass in hashmap
@@ -208,8 +212,18 @@ public class DataLoader extends DataConstants {
 
 			for (int k = 0; k < requirements.size(); k++) {
 				JSONObject requirement = (JSONObject) requirements.get(k);
+
+				// check for nested vs course requirement HERE 
+
+				// WHAT WE ORIGINALLY HAD -> this is only for nestedRequirement
 				String minGrade = (String) requirement.get(COURSE_REQUIREMENT_MIN_GRADE);	// are these the correct object keys?
 				JSONArray courseOptions = (JSONArray) requirement.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+
+				// minimum grade -> course requirement
+				// arraylist of requirement, declare new coursrequirement but put it in arraylist of requirement
+				// Requirement req = new 
+
+				//requirements.add(req);
 			}
 		}
 		return requirementSets;
