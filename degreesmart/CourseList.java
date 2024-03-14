@@ -25,6 +25,18 @@ public class CourseList {
 		return courseList;
 	}
 
+	private UUID getNextUuid() {
+		UUID uuid;
+		do {
+			uuid = UUID.randomUUID();
+		} while (coursesByUuid.containsKey(uuid));
+		return uuid;
+	}
+
+	private String getSubjectNumberKey(Course course) {
+		return course.getSubject() + " " + course.getNumber();
+	}
+
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
@@ -37,13 +49,14 @@ public class CourseList {
 		return getCourse(uuidsBySubjectAndNumber.get(subject+ " "+ number));
 	}
 
-	public boolean createCourse(Course course) {
-		if(!coursesByUuid.containsKey(course.getUuid())){
-			uuidsBySubjectAndNumber.put(course.getSubject() + " " + course.getNumber(), course.getUuid());
+	public Course createCourse(Subject subject, String number) {
+		if (getCourse(subject, number) != null) {
+			return null;
+		} else {
+			Course course = new Course(getNextUuid(), subject, number);
 			coursesByUuid.put(course.getUuid(), course);
-			return true;
-		} else{
-			return false;
+			uuidsBySubjectAndNumber.put(getSubjectNumberKey(course), course.getUuid());
+			return course;
 		}
 	}
 

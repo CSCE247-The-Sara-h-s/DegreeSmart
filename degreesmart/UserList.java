@@ -29,6 +29,14 @@ public class UserList {
 		return userList;
     }
 
+    private UUID getNextUuid() {
+		UUID uuid;
+		do {
+			uuid = UUID.randomUUID();
+		} while (usersByUuid.containsKey(uuid));
+		return uuid;
+	}
+
     public ArrayList<User> getUsers() {
         return users;
     }

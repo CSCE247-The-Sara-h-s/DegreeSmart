@@ -23,6 +23,18 @@ public class RequirementSetList {
 		return requirementSetList;
 	}
 
+	private UUID getNextUuid() {
+		UUID uuid;
+		do {
+			uuid = UUID.randomUUID();
+		} while (requirementSetsByUuid.containsKey(uuid));
+		return uuid;
+	}
+
+	private String getCategoryNameKey(RequirementSet requirementSet) {
+		return requirementSet.getCategory() + " " + requirementSet.getName();
+	}
+
 	public ArrayList<RequirementSet> getRequirementSets() {
 		return requirementSets;
 	}
@@ -35,13 +47,14 @@ public class RequirementSetList {
 		return getRequirementSet(uuidsByCategoryAndName.get(category + " " + name));
 	}
 
-	public boolean createRequirementSet(RequirementSet requirementSet) {
-		if (!requirementSetsByUuid.containsKey(requirementSet.getUuid())) {
-			uuidsByCategoryAndName.put(requirementSet.getCategory() + " " + requirementSet.getName(), requirementSet.getUuid());
-			requirementSetsByUuid.put(requirementSet.getUuid(), requirementSet);
-			return true;
+	public RequirementSet createRequirementSet(RequirementSetCategory category, String name) {
+		if (getRequirementSet(category, name) != null) {
+			return null;
 		} else {
-			return false;
+			RequirementSet requirementSet = new RequirementSet(getNextUuid(), name, category);
+			requirementSetsByUuid.put(requirementSet.getUuid(), requirementSet);
+			uuidsByCategoryAndName.put(getCategoryNameKey(requirementSet), requirementSet.getUuid());
+			return requirementSet;
 		}
 	}
 
