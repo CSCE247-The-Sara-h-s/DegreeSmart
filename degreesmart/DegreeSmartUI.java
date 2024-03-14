@@ -37,28 +37,7 @@ public class DegreeSmartUI {
 		System.out.println(" Loaded " + users.size() + " users.\n");
 
 		for (User user : users) {
-			System.out.println("       Role: " + user.getClass().getSimpleName());
-			System.out.println("       UUID: " + user.getUuid());
-			System.out.println("   Username: " + user.getUsername());
-			System.out.println("   Password: " + user.getPassword());
-			System.out.println(" Email Addr: " + user.getEmailAddress());
-			System.out.println(" First Name: " + user.getFirstName());
-			System.out.println("  Last Name: " + user.getLastName());
-			if (user.getClass().getSimpleName().equals("Advisor")) {
-				System.out.println("   approved: " + ((Advisor)user).getApproved());
-				System.out.print("   students: ");
-				int count = 0;
-				for (Student student : ((Advisor)user).getAssignedStudents()) {
-					System.out.print(student.getFirstName() + " " + student.getLastName());
-
-					if (count++ != ((Advisor)user).getAssignedStudents().size() - 1) {
-						System.out.print(", ");
-					} else {
-						System.out.println();
-					}
-				}
-			}
-			System.out.println();
+			System.out.println(user + "\n");
 		}
 	}
 
