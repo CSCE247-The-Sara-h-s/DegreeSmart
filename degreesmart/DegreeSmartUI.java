@@ -118,12 +118,30 @@ public class DegreeSmartUI {
 			System.out.println("   Username: " + user.getUsername());
 			System.out.println("   Password: " + user.getPassword());
 			if (appy.logIn(user.getUsername(), user.getPassword()) != null) {
-				System.out.println("It worked");				
-			} else {
-				System.out.println("It didnt work");
+				System.out.println(user.getUsername() + " has been logged in");				
+			} 
+			else {
+				System.out.println("Login Failed");
 			}
-			appy.logOut();
+			
 		}
+		for( User user : users){
+			System.out.println("\n Testing Invaild Logins\n");
+			System.out.println("Ivaild Username Test:");
+			if (appy.logIn("TacoLover123", user.getPassword()) != null) {
+				System.out.println(user.getUsername() + " has been logged in");				
+			} else {
+				System.out.println("Login Failed");
+			}
+			System.out.println("Ivaild Password Test:");
+			if (appy.logIn(user.getUsername(), "IncorrectPassord")!= null) {
+				System.out.println(user.getUsername() + " has been logged in");				
+			} else {
+				System.out.println("Login Failed");
+			}
+			break;
+		}
+		
 			System.out.println();
 	}
 	
