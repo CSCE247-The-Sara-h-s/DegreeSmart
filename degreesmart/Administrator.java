@@ -43,5 +43,11 @@ public class Administrator extends User {
   public void modifyRequirementSet(RequirementSet modifiedSet) {
     
   }
+
+  public String toString() {
+    return ""
+      + "            Role: Administrator\n"
+      + super.toString();
+  }
 }
 

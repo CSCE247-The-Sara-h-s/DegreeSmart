@@ -113,4 +113,38 @@ public class Student extends User {
   public GraduationPlan getGraduationPlan() {
     return graduationPlan;
   }
+
+  public String toString() {
+    String advisorString = "";
+    if (advisor != null) {
+      advisorString = advisor.getLastName() + ", " + advisor.getPreferredName();
+    }
+
+    ArrayList<String> parentList = new ArrayList<String>();
+    for (Parent parent : parents) {
+      parentList.add(parent.getUsername());
+    }
+
+    ArrayList<String> requesterList = new ArrayList<String>();
+    for (Parent requester : accessRequests) {
+      requesterList.add(requester.getUsername());
+    }
+
+    ArrayList<String> advisingNoteList = new ArrayList<String>();
+    for (AdvisingNote advisingNote : advisingNotes) {
+      advisingNoteList.add(advisingNote.toString());
+    }
+
+    return ""
+      + "            Role: Student\n"
+      + super.toString() + "\n"
+      + "          USC ID: " + uscId + "\n"
+      + "         Advisor: " + advisorString + "\n"
+      + "         Parents: " + parentList + "\n"
+      + " Access Requests: " + requesterList + "\n"
+      + "  Advising Notes: " + String.join("\n\t", advisingNoteList) + "\n"
+      + "    Scholarships: " + "<TODO>" + "\n"
+      + "      Transcript: " + "<TODO>" + "\n"
+      + " Graduation Plan: " + "<TODO>";
+  }
 }

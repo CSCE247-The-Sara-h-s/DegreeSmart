@@ -44,4 +44,22 @@ public class Parent extends User {
   public boolean removePendingAccessRequest(Student student) {
     return pendingAccessRequests.remove(student);
   }
+
+  public String toString() {
+    ArrayList<String> childList = new ArrayList<String>();
+    for (Student child : children) {
+      childList.add(child.getUsername());
+    }
+
+    ArrayList<String> requestList = new ArrayList<String>();
+    for (Student request : pendingAccessRequests) {
+      requestList.add(request.getUsername());
+    }
+
+    return ""
+      + "            Role: Parent\n"
+      + super.toString() + "\n"
+      + "        Children: " + childList + "\n"
+      + "        Requests: " + requestList;
+  }
 }

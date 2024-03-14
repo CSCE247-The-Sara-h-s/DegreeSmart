@@ -44,4 +44,17 @@ public class Advisor extends User {
   public boolean removeCompletedCourse(Student student, CompletedCourse course) {
     return student.removeCompletedCourse(course);
   }
+
+  public String toString() {
+    ArrayList<String> studentList = new ArrayList<String>();
+    for (Student student : assignedStudents) {
+      studentList.add(student.getUsername());
+    }
+
+    return ""
+      + "            Role: Advisor\n"
+      + super.toString() + "\n"
+      + "        Approved: " + approved + "\n"
+      + "        Students: " + studentList;
+  }
 }
