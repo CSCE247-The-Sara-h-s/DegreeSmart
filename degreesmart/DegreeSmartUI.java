@@ -14,11 +14,12 @@ public class DegreeSmartUI {
 		scenarios.add(() -> scenario1());
 		scenarios.add(() -> scenario2());
 		scenarios.add(() -> scenario3());
+		scenarios.add(() -> scenario4());
 
 		for (int i = 0; i < scenarios.size(); i++) {
 			System.out.println("\n\n\n---------------------------------------------"
 				+ "---------------------------------------------\n"
-				+ "-------------------------------------- Scenario #" + (i + 1) 
+				+ "--------------------------------------- Scenario " + (i + 1) 
 				+ " ---------------------------------------");
 			try {
 				scenarios.get(i).run();
@@ -29,8 +30,9 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario1() {
-		System.out.println(" Loading Users...\n");
-		ArrayList<User> users = DataLoader.getUsers();
+		System.out.println(" Loading users from UserList...\n");
+		UserList userList = UserList.getInstance();
+		ArrayList<User> users = userList.getUsers();
 		System.out.println(" Loaded " + users.size() + " users.\n");
 
 		for (User user : users) {
@@ -60,8 +62,9 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario2() {
-		System.out.println(" Loading Courses...\n");
-		ArrayList<Course> courses = DataLoader.getCourses();
+		System.out.println(" Loading courses from CourseList...\n");
+		CourseList courseList = CourseList.getInstance();
+		ArrayList<Course> courses = courseList.getCourses();
 		System.out.println(" Loaded " + courses.size() + " courses.");
 
 		ArrayList<String> selectedCourses = new ArrayList<String>();
@@ -82,9 +85,23 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario3() {
-		System.out.println(" Loading Requirement Sets...\n");
-		ArrayList<RequirementSet> requirementSets = DataLoader.getRequirementSets();
-		System.out.println(" Loaded " + requirementSets.size() + " requirement sets.");
+		try {
+			System.out.println(" Loading requirement sets from RequirementSetList...\n");
+			RequirementSetList requirementSetList = RequirementSetList.getInstance();
+			ArrayList<RequirementSet> requirementSets = requirementSetList.getRequirementSets();
+			System.out.println(" Loaded " + requirementSets.size() + " requirement sets.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("\n Failed to load requirement sets from RequirementSetList.");
+			System.out.println("\n\n Loading requirement sets directly...\n");
+			ArrayList<RequirementSet> requirementSets = DataLoader.getRequirementSets();
+			System.out.println(" Loaded " + requirementSets.size() + " requirement sets.");
+		}
+		
+	}
+
+	public void scenario4() {
+
 	}
 
 	public static void main(String args[]) {
