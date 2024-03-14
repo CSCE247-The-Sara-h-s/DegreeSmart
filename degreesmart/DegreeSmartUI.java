@@ -16,8 +16,10 @@ public class DegreeSmartUI {
 		scenarios.add(() -> scenario3());
 
 		for (int i = 0; i < scenarios.size(); i++) {
-			System.out.println("\n---------------------------------------------------------------");
-			System.out.println("      ------------------- Scenario #" + (i + 1) + " ------------------- ");
+			System.out.println("\n\n\n---------------------------------------------"
+				+ "---------------------------------------------\n"
+				+ "-------------------------------------- Scenario #" + (i + 1) 
+				+ " ---------------------------------------");
 			try {
 				scenarios.get(i).run();
 			} catch (Exception e) {
@@ -27,8 +29,9 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario1() {
-		System.out.println(" Load Users Test. (Temp demo; not a real scenario!)\n");
+		System.out.println(" Loading Users...\n");
 		ArrayList<User> users = DataLoader.getUsers();
+		System.out.println(" Loaded " + users.size() + " users.\n");
 
 		for (User user : users) {
 			System.out.println("       Role: " + user.getClass().getSimpleName());
@@ -57,7 +60,7 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario2() {
-		System.out.println(" Load Courses Test. (Temp demo; not a real scenario!)\n");
+		System.out.println(" Loading Courses...\n");
 		ArrayList<Course> courses = DataLoader.getCourses();
 		System.out.println(" Loaded " + courses.size() + " courses.");
 
@@ -78,7 +81,9 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario3() {
-
+		System.out.println(" Loading Requirement Sets...\n");
+		ArrayList<RequirementSet> requirementSets = DataLoader.getRequirementSets();
+		System.out.println(" Loaded " + requirementSets.size() + " requirement sets.");
 	}
 
 	public static void main(String args[]) {
