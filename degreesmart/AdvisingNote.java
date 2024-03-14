@@ -41,7 +41,7 @@ public class AdvisingNote {
     AdvisingNote advisingNote = (AdvisingNote)object;
 
     return note.equals(advisingNote.getNote())
-      && author.getUuid().equals(advisingNote.getAuthor().getUuid())
+      && author.equals(advisingNote.getAuthor())
       && time.equals(advisingNote.getTime());
   }
 
