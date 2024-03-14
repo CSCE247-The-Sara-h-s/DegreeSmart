@@ -18,9 +18,12 @@ public class Student extends User {
       String uscId) {
     super(uuid, username, password, email, firstName, lastName);
     parents = new ArrayList<Parent>();
+    accessRequests = new ArrayList<Parent>();
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
     graduationPlan = new GraduationPlan();
+
+    this.uscId = uscId;
   }
 
   public String getUscId() {
