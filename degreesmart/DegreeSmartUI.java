@@ -15,6 +15,7 @@ public class DegreeSmartUI {
 		scenarios.add(() -> scenario2());
 		scenarios.add(() -> scenario3());
 		scenarios.add(() -> scenario4());
+		scenarios.add(() -> scenario5());
 
 		for (int i = 0; i < scenarios.size(); i++) {
 			System.out.println("\n\n\n---------------------------------------------"
@@ -103,6 +104,47 @@ public class DegreeSmartUI {
 	public void scenario4() {
 
 	}
+
+	public void scenario5() {
+		System.out.println(" Checking the logIn and Logout method\n Loading users from UserList...\n");
+		UserList userList = UserList.getInstance();
+		ArrayList<User> users = userList.getUsers();
+		Application appy = Application.getInstance();
+		System.out.println(" Loaded " + users.size() + " users.\n");
+
+		for (User user : users) {
+			System.out.println("       Role: " + user.getClass().getSimpleName());
+			System.out.println("       UUID: " + user.getUuid());
+			System.out.println("   Username: " + user.getUsername());
+			System.out.println("   Password: " + user.getPassword());
+			if (appy.logIn(user.getUsername(), user.getPassword()) != null) {
+				System.out.println(user.getUsername() + " has been logged in");				
+			} 
+			else {
+				System.out.println("Login Failed");
+			}
+			
+		}
+		for( User user : users){
+			System.out.println("\n Testing Invaild Logins\n");
+			System.out.println("Ivaild Username Test:");
+			if (appy.logIn("TacoLover123", user.getPassword()) != null) {
+				System.out.println(user.getUsername() + " has been logged in");				
+			} else {
+				System.out.println("Login Failed");
+			}
+			System.out.println("Ivaild Password Test:");
+			if (appy.logIn(user.getUsername(), "IncorrectPassord")!= null) {
+				System.out.println(user.getUsername() + " has been logged in");				
+			} else {
+				System.out.println("Login Failed");
+			}
+			break;
+		}
+		
+			System.out.println();
+	}
+	
 
 	public static void main(String args[]) {
 		DegreeSmartUI degreeSmartInterface = new DegreeSmartUI();
