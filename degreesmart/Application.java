@@ -219,7 +219,10 @@ public class Application {
     }
 
     public void setUscId() {
-        
+        if (activeUser instanceof Administrator) {
+            Student activeStudent = (Student) activeUser;
+            activeStudent.setUscId(null);
+        }
     }
 
     public void getUscId() {
