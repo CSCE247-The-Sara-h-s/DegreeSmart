@@ -15,10 +15,6 @@ public class RequirementSet {
 		this.category = category;
 	}
 
-	public RequirementSet(String name, RequirementSetCategory category) {
-		this(UUID.randomUUID(), name, category);
-	}
-
 	public UUID getUuid() {
 		return uuid;
 	}
