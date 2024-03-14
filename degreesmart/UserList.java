@@ -6,15 +6,19 @@ import java.util.HashMap;
 
 public class UserList {
     private ArrayList<User> users;
-    private HashMap<UUID, User> usersById;
-    private HashMap<String, UUID> uuidsByUsername;
+    private HashMap<UUID, User> usersByUuid;
+    private HashMap<String, User> usersByUsername;
     private static UserList userList;
 
     private UserList() {
         users = DataLoader.getUsers();
-        ArrayList<User> users = new ArrayList<User>();
-        HashMap<UUID, User> userbyId = new HashMap<UUID, User>();
-        HashMap<String, UUID> uuidsByUsername = new HashMap<String, UUID>();
+        HashMap<UUID, User> usersByUuid = new HashMap<UUID, User>();
+        HashMap<String, User> usersByUsername = new HashMap<String, User>();
+
+        for (User user : users) {
+        	usersByUuid.put(user.getUuid(), user);
+        	usersByUsername.put(user.getUsername(), user);
+        }
     }
 
     public static UserList getInstance() {
@@ -30,17 +34,17 @@ public class UserList {
     }
 
     private User getUser(UUID uuid) {
-        return usersById.get(uuid);
+        return usersByUuid.get(uuid);
     }
 
     public User getUser(String username) {
-        return getUser(uuidsByUsername.get(username));
+        return usersByUsername.get(username);
     }
 
     public boolean createUser(User user) {
-        if(!usersById.containsKey(user.getUuid())){
-			uuidsByUsername.put(user.getUsername() , user.getUuid());
-			usersById.put(user.getUuid(), user);
+        if(!usersByUuid.containsKey(user.getUuid())){
+			usersByUsername.put(user.getUsername() , user);
+			usersByUuid.put(user.getUuid(), user);
 			return true;
 		} else{
 			return false;
@@ -50,8 +54,8 @@ public class UserList {
 
     public boolean deleteUser(User user) {
         if(users.remove(user)){
-			usersById.remove(user.getUsername());
-			uuidsByUsername.remove(user.getUuid());
+			usersByUuid.remove(user.getUuid());
+			usersByUsername.remove(user.getUsername());
 			return true;
 		} else {
 			return false;
@@ -59,15 +63,15 @@ public class UserList {
     }
 
     public boolean modifyUser(User modifiedUser) {
-        User original = usersById.get(modifiedUser.getUsername());
+        User original = usersByUuid.get(modifiedUser.getUsername());
 
 		if(original == null){
 			return false;
 		} else {
-			usersById.remove(original.getUuid());
-			usersById.put(modifiedUser.getUuid(), modifiedUser);
-			uuidsByUsername.remove(original.getUsername());
-			uuidsByUsername.put(modifiedUser.getUsername(), modifiedUser.getUuid());
+			usersByUuid.remove(original.getUuid());
+			usersByUuid.put(modifiedUser.getUuid(), modifiedUser);
+			usersByUsername.remove(original.getUsername());
+			usersByUsername.put(modifiedUser.getUsername(), modifiedUser);
 			return true;
 		}
     }
