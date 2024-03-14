@@ -20,10 +20,6 @@ public abstract class User {
     this.lastName = lastName;
   }
 
-  public User(String username, String password, String emailAddress, String firstName, String lastName) {
-    this(UUID.randomUUID(), username, password, emailAddress, firstName, lastName);
-  }
-
   public UUID getUuid() {
     return uuid;
   }
@@ -56,7 +52,7 @@ public abstract class User {
     return lastName;
   }
 
-  public void setLastName() {
+  public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
@@ -68,8 +64,8 @@ public abstract class User {
     }
   }
 
-  public void setPreferredName(String firstName) {
-    this.firstName = preferredName;
+  public void setPreferredName(String preferredName) {
+    this.preferredName = preferredName;
   }
 
   public String getEmailAddress() {
