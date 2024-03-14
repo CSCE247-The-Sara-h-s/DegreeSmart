@@ -225,7 +225,7 @@ public class DataLoader extends DataConstants {
 
 				//requirements.add(req);
 			}
-		}
+		} 
 		return requirementSets;
 
 	}
