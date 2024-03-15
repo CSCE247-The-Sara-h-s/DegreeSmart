@@ -37,8 +37,12 @@ public class CourseList {
 		return uuid;
 	}
 
-	private String getSubjectNumberKey(Course course) {
-		return course.getSubject() + " " + course.getNumber();
+	private String getShortName(Subject subject, String number) {
+		return subject + " " + number;
+	}
+
+	private String getShortName(Course course) {
+		return getShortName(course.getSubject(), course.getNumber());
 	}
 
 	public ArrayList<Course> getCourses() {
@@ -50,7 +54,7 @@ public class CourseList {
 	}
 
 	public Course getCourse(Subject subject, String number) {
-		return getCourse(uuidsBySubjectAndNumber.get(subject+ " "+ number));
+		return coursesByShortName.get(getShortName(subject, number));
 	}
 
 	public Course createCourse(Subject subject, String number) {
@@ -59,15 +63,15 @@ public class CourseList {
 		} else {
 			Course course = new Course(getNextUuid(), subject, number);
 			coursesByUuid.put(course.getUuid(), course);
-			uuidsBySubjectAndNumber.put(getSubjectNumberKey(course), course.getUuid());
+			coursesByShortName.put(getShortName(course), course);
 			return course;
 		}
 	}
 
 	public boolean deleteCourse(Course course) {
-		if(courses.remove(course)){
+		if (courses.remove(course)) {
 			coursesByUuid.remove(course.getUuid());
-			uuidsBySubjectAndNumber.remove(course.getSubject() + " " + course.getNumber());
+			coursesByShortName.remove(getShortName(course));
 			return true;
 		} else {
 			return false;
@@ -77,13 +81,12 @@ public class CourseList {
 	public boolean modifyCourse(Course course) {
 		Course original = coursesByUuid.get(course.getUuid());
 
-		if(original == null){
+		if (original == null) {
 			return false;
 		} else {
-			coursesByUuid.remove(course.getUuid());
 			coursesByUuid.put(course.getUuid(), course);
-			uuidsBySubjectAndNumber.remove(original.getSubject() + " " + original.getNumber());
-			uuidsBySubjectAndNumber.put(course.getSubject() + " " + course.getNumber(), course.getUuid());
+			coursesByShortName.remove(getShortName(original));
+			coursesByShortName.put(getShortName(course), course);
 			return true;
 		}
 	}
