@@ -13,7 +13,7 @@ public class DataWriter extends DataConstants {
 		JSONArray jsonUsers = new JSONArray();
 
 		for(int i = 0; i < users.size(); i++) {
-			jsonUsers.add(users.get(i));
+			// jsonUsers.add(users.get(i));
 		}
 
 		// where to assign students?
