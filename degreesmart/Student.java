@@ -166,7 +166,7 @@ public class Student extends User {
   public String toString() {
     String advisorString = "";
     if (advisor != null) {
-      advisorString = advisor.getLastName() + ", " + advisor.getPreferredName();
+      advisorString = advisor.getUsername();
     }
 
     ArrayList<String> parentList = new ArrayList<String>();
@@ -184,6 +184,11 @@ public class Student extends User {
       advisingNoteList.add(advisingNote.toString());
     }
 
+    String notes = "";
+    if (advisingNotes.size() > 0) {
+      notes = "\n   -  " + String.join("\n   -  ", advisingNoteList);
+    }
+
     ArrayList<String> completedCourseList = new ArrayList<String>();
     for (CompletedCourse c : completedCourses) {
         completedCourseList.add(c.toString());
@@ -191,7 +196,7 @@ public class Student extends User {
 
     String transcript = "";
     if (completedCourses.size() > 0) {
-      transcript = "\n   -  " + String.join("\n   -  ", completedCourseList) + "\n";
+      transcript = "\n   -  " + String.join("\n   -  ", completedCourseList);
     }
 
     return ""
@@ -201,11 +206,11 @@ public class Student extends User {
       + "         Advisor: " + advisorString + "\n"
       + "         Parents: " + parentList + "\n"
       + " Access Requests: " + requesterList + "\n"
-      + "  Advising Notes: " + String.join("\n\t", advisingNoteList) + "\n"
+      + "  Advising Notes: " + notes + "\n"
       + "    Scholarships: " + "<TODO>" + "\n"
       + " Attempted Hours: " + getAttemptedHours() + "\n"
-            + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
-            + "      Transcript: " + transcript + "\n"
+      + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
+      + "      Transcript: " + transcript + "\n"
       + " Graduation Plan: " + "<TODO>";
   }
 }
