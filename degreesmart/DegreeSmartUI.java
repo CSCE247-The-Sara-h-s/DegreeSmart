@@ -1,6 +1,7 @@
 package degreesmart;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class DegreeSmartUI {
 	private Application application;
@@ -101,6 +102,10 @@ public class DegreeSmartUI {
 		student.addAdvisingNote(student.getAdvisor(), "Student was advised to take CSCE 355, CHEM 111.");
 		student.addAdvisingNote(student.getAdvisor(), "Student was advised to take CSCE 247, RUSS 121.");
 
+		student.addParent(new Parent(UUID.randomUUID(), "TestParent-1", "pw", "email", "first", "last"));
+		student.addParent(new Parent(UUID.randomUUID(), "TestParent-2", "pw", "email", "first", "last"));
+		student.addAccessRequest(new Parent(UUID.randomUUID(), "TestParent-3", "pw", "email", "first", "last"));
+		student.addAccessRequest(new Parent(UUID.randomUUID(), "TestParent-4", "pw", "email", "first", "last"));
 
 		student.addCompletedCourse(CourseList.getInstance().getCourse(Subject.CSCE, "247"),
 				Grade.A, Semester.SPRING, 2024);
