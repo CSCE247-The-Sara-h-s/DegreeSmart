@@ -7,14 +7,18 @@ import java.util.HashMap;
 public class CourseList {
 	private ArrayList<Course> courses;
 	private HashMap<UUID, Course> coursesByUuid;
-	private HashMap<String, UUID> uuidsBySubjectAndNumber;
+	private HashMap<String, Course> coursesByShortName;
 	private static CourseList courseList;
 
 	private CourseList() {
 		courses = DataLoader.getCourses();
-		ArrayList<Course> courses = new ArrayList<Course>();
-		HashMap<UUID, Course> coursesByUuid = new HashMap<UUID, Course>();
-		HashMap<String, UUID> uuidsBySubjectandNumber = new HashMap<String, UUID>();
+		coursesByUuid = new HashMap<UUID, Course>();
+		coursesByShortName = new HashMap<String, Course>();
+
+		for (Course course : courses) {
+			coursesByUuid.put(course.getUuid(), course);
+			coursesByShortName.put(getShortName(course), course);
+		}
 	}
 
 	public static CourseList getInstance() {
