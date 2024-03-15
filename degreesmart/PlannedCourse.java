@@ -2,13 +2,11 @@ package degreesmart;
 
 public class PlannedCourse {
     private Course course;
-    private int year;
-    private Semester semester;
+    private Term term;
 
-    public PlannedCourse(Course course, Semester semester, int year) {
+    public PlannedCourse(Course course, Term term) {
         setCourse(course);
-        setSemester(semester);
-        setYear(year);
+        setTerm(term);
     }
 
     public Course getCourse() {
@@ -19,21 +17,11 @@ public class PlannedCourse {
         this.course = course;
     }
 
-    public Semester getSemester() {
-        return semester;
+    public Term getTerm() {
+        return term;
     }
 
-    public void setSemester(Semester semester) {
-        this.semester = semester;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        // TODO - how should we validate the year?
-        year = (year < 0)? 0 : year;
-        this.year = year;   
+    public void setTerm(Term term) {
+        this.term = term;
     }
 }
