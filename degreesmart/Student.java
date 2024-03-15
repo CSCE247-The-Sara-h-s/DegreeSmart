@@ -14,18 +14,17 @@ public class Student extends User {
   private ArrayList<CompletedCourse> completedCourses;
   private GraduationPlan graduationPlan;
 
-  public Student(
-      UUID uuid, String username, String password, String email, String firstName, String lastName, 
+  public Student(UUID uuid, String username, String password, String email, String firstName, String lastName, 
       String uscId) {
     super(uuid, username, password, email, firstName, lastName);
+    this.uscId = uscId;
+
     parents = new ArrayList<Parent>();
     accessRequests = new ArrayList<Parent>();
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
     completedCourses = new ArrayList<CompletedCourse>();
     graduationPlan = new GraduationPlan();
-
-    this.uscId = uscId;
   }
 
   public String getUscId() {
