@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Student extends User {
+  private final double QUALITY_POINT_STEP = 0.5;
   private String uscId;
   private Advisor advisor;
   private ArrayList<Parent> parents;
   private ArrayList<Parent> accessRequests;
   private ArrayList<AdvisingNote> advisingNotes;
   private ArrayList<Scholarship> scholarships;
-  private Transcript transcript;
+  private ArrayList<CompletedCourse> completedCourses;
   private GraduationPlan graduationPlan;
 
   public Student(
@@ -21,6 +22,7 @@ public class Student extends User {
     accessRequests = new ArrayList<Parent>();
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
+    completedCourses = new ArrayList<CompletedCourse>();
     graduationPlan = new GraduationPlan();
 
     this.uscId = uscId;
@@ -75,15 +77,15 @@ public class Student extends User {
   }
 
   public ArrayList<CompletedCourse> getCompletedCourses() {
-    return transcript.getCompletedCourses();
+    return completedCourses;
   }
 
-  public boolean addCompletedCourse(CompletedCourse course) {
-    return transcript.addCompletedCourse(course);
+  public boolean addCompletedCourse(Course course, Grade grade, Semester semester, int year) {
+    return completedCourses.add(new CompletedCourse(course, grade, semester, year));
   }
 
-  public boolean removeCompletedCourse(CompletedCourse course) {
-    return transcript.removeCompletedCourse(course);
+  public boolean removeCompletedCourse(CompletedCourse completedCourse) {
+    return completedCourses.remove(completedCourse);
   }
 
   public ArrayList<AdvisingNote> getAdvisingNotes() {
@@ -114,6 +116,54 @@ public class Student extends User {
     return graduationPlan;
   }
 
+  public double getAttemptedHours() {
+    double attemptedHours = 0.0;
+    for (CompletedCourse c : completedCourses) {
+        attemptedHours += c.getCourse().getCreditHours();
+    }
+    return attemptedHours;
+  }
+
+  public double getGpa() {
+    double earnedHours = 0.0;
+
+    for (CompletedCourse c : completedCourses) {
+      double qualityPoints = 0.0;
+
+      switch (c.getGrade()) {
+        case A:
+          qualityPoints += QUALITY_POINT_STEP;
+        case B_PLUS:
+          qualityPoints += QUALITY_POINT_STEP;
+        case B:
+          qualityPoints += QUALITY_POINT_STEP;
+        case C_PLUS:
+          qualityPoints += QUALITY_POINT_STEP;
+        case C:
+          qualityPoints += QUALITY_POINT_STEP;
+        case D_PLUS:
+          qualityPoints += QUALITY_POINT_STEP;
+        case D:
+          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints += QUALITY_POINT_STEP;
+      }
+
+      earnedHours += c.getCourse().getCreditHours() * qualityPoints;
+    }
+
+    if (earnedHours == 0.0) {
+      return 0.0;
+    } else {
+      return earnedHours / getAttemptedHours();
+    }
+  }
+
+  public ArrayList<PlannedCourse> generateSemesterSchedule() {
+    ArrayList<ArrayList<PlannedCourse>> plannedCourses = graduationPlan.getSelectedCourses();
+
+    return new ArrayList<PlannedCourse>();
+  }
+
   public String toString() {
     String advisorString = "";
     if (advisor != null) {
@@ -135,6 +185,16 @@ public class Student extends User {
       advisingNoteList.add(advisingNote.toString());
     }
 
+    ArrayList<String> completedCourseList = new ArrayList<String>();
+    for (CompletedCourse c : completedCourses) {
+        completedCourseList.add(c.toString());
+    }
+
+    String transcript = "";
+    if (completedCourses.size() > 0) {
+      transcript = "\n   -  " + String.join("\n   -  ", completedCourseList) + "\n";
+    }
+
     return ""
       + "            Role: Student\n"
       + super.toString() + "\n"
@@ -144,7 +204,9 @@ public class Student extends User {
       + " Access Requests: " + requesterList + "\n"
       + "  Advising Notes: " + String.join("\n\t", advisingNoteList) + "\n"
       + "    Scholarships: " + "<TODO>" + "\n"
-      + "      Transcript: " + "<TODO>" + "\n"
+      + " Attempted Hours: " + getAttemptedHours() + "\n"
+            + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
+            + "      Transcript: " + transcript + "\n"
       + " Graduation Plan: " + "<TODO>";
   }
 }
