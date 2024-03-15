@@ -26,7 +26,6 @@ public class CompletedCourse {
 	}
 
 	public void setGrade(Grade grade) {
-		// does a failed class count as a completed course?
 		this.grade = grade;
 	}
 
@@ -44,5 +43,12 @@ public class CompletedCourse {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public String toString() {
+		return course.getSubject() + " " + course.getNumber() + ", "
+			+ course.getCreditHours() + ", "
+			+ grade + ", "
+			+ semester + " " + year;
 	}
 }
