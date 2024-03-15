@@ -17,7 +17,7 @@ public class CourseList {
 
 		for (Course course : courses) {
 			coursesByUuid.put(course.getUuid(), course);
-			coursesByShortName.put(getShortName(course), course);
+			coursesByShortName.put(course.getShortName(), course);
 		}
 	}
 
@@ -41,10 +41,6 @@ public class CourseList {
 		return subject + " " + number;
 	}
 
-	private String getShortName(Course course) {
-		return getShortName(course.getSubject(), course.getNumber());
-	}
-
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
@@ -63,7 +59,7 @@ public class CourseList {
 		} else {
 			Course course = new Course(getNextUuid(), subject, number);
 			coursesByUuid.put(course.getUuid(), course);
-			coursesByShortName.put(getShortName(course), course);
+			coursesByShortName.put(course.getShortName(), course);
 			return course;
 		}
 	}
@@ -71,7 +67,7 @@ public class CourseList {
 	public boolean deleteCourse(Course course) {
 		if (courses.remove(course)) {
 			coursesByUuid.remove(course.getUuid());
-			coursesByShortName.remove(getShortName(course));
+			coursesByShortName.remove(course.getShortName());
 			return true;
 		} else {
 			return false;
@@ -85,8 +81,8 @@ public class CourseList {
 			return false;
 		} else {
 			coursesByUuid.put(course.getUuid(), course);
-			coursesByShortName.remove(getShortName(original));
-			coursesByShortName.put(getShortName(course), course);
+			coursesByShortName.remove(original.getShortName());
+			coursesByShortName.put(course.getShortName(), course);
 			return true;
 		}
 	}

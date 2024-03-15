@@ -139,6 +139,10 @@ public class Course {
 		this.creditHours = creditHours;
 	}
 
+	public String getShortName() {
+		return subject + " " + number;
+	}
+
 	public boolean equals(Object object) {
 		if (object == null || ! (object instanceof Course)) {
 			return false;
