@@ -1,16 +1,16 @@
 package degreesmart;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GraduationPlan {
 	private ArrayList<RequirementSet> requirementSets;
 	private ArrayList<Requirement> requirements;
 	private	ArrayList<ArrayList<PlannedCourse>> selectedCourses;
-
-	private int preferredGraduationYear;
-	private Semester preferredGraduationSemester;
-	private double preferredMinCreditHoursPerSemester;
-	private double preferredMaxCreditHoursPerSemester;
+	// private int preferredGraduationYear;
+	// private Semester preferredGraduationSemester;
+	// private double preferredMinCreditHoursPerSemester;
+	// private double preferredMaxCreditHoursPerSemester;
 
 	public GraduationPlan() {
 		requirementSets = new ArrayList<RequirementSet>();
@@ -54,39 +54,60 @@ public class GraduationPlan {
 
 		return true;
 	}
+
+	public boolean addPlannedCourse(Requirement requirement, PlannedCourse course) {
+		if (!requirements.contains(requirement)) {
+			return false;
+		}
+
+		ArrayList<PlannedCourse> courses = selectedCourses.get(requirements.indexOf(requirement));
+
+		for (int i = 0; i < courses.size(); ++i) {
+			if (courses.get(i) != null) {
+				courses.set(i, course);
+			}
+		}
+
+		return false;
+	}
+
+	public boolean removePlannedCourse(Requirement requirement, PlannedCourse course) {
+		if (!requirements.contains(requirement)) {
+			return false;
+		}
+
+		ArrayList<PlannedCourse> courses = selectedCourses.get(requirements.indexOf(requirement));
+		return removePlannedCourse(requirement, courses.indexOf(course));
+	}
+
+	public boolean removePlannedCourse(Requirement requirement, int index) {
+		if (!requirements.contains(requirement)) {
+			return false;
+		}
+
+		ArrayList<PlannedCourse> courses = selectedCourses.get(requirements.indexOf(requirement));
+		if (index <= 0 || index <= courses.size()) {
+			return false;
+		}
+
+		selectedCourses.set(index, null);
+		return true;
+	}
+
+	public ArrayList<PlannedCourse> getSchedule() {
+		ArrayList<PlannedCourse> schedule = new ArrayList<PlannedCourse>();
+
+		for (ArrayList<PlannedCourse> courses : selectedCourses) {
+			for (PlannedCourse course : courses) {
+				schedule.add(course);
+			}
+		}
+
+		Collections.sort(schedule, (c1, c2) -> c1.getTerm().compareTo(c2.getTerm()));
+
+		return schedule;
+	}
 	
-	public int getPreferredGraduationYear() {
-		return preferredGraduationYear;
-	}
-
-	public void setPreferredGraduationYear(int preferredGraduationYear) {
-		this.preferredGraduationYear = preferredGraduationYear;
-	}
-
-	public Semester getPreferredGraduationSemester() {
-		return preferredGraduationSemester;
-	}
-
-	public void setPreferredGraduationSemester(Semester semester) {
-		this.preferredGraduationSemester = preferredGraduationSemester;
-	}
-
-	public double getPreferredMinCreditHoursPerSemester() {
-		return preferredMinCreditHoursPerSemester;
-	}
-
-	public void setPreferredMinCreditHoursPerSemester(double preferredMinCreditHoursPerSemester) {
-		this.preferredMinCreditHoursPerSemester = preferredMinCreditHoursPerSemester;
-	}
-
-	public double getPreferredMaxCreditHoursPerSemester() {
-		return preferredMinCreditHoursPerSemester;
-	}
-
-	public void setPreferredMaxCreditHoursPerSemester(double preferredMaxCreditHoursPerSemester) {
-		this.preferredMaxCreditHoursPerSemester = preferredMaxCreditHoursPerSemester;
-	}
-
 	public ArrayList<ArrayList<PlannedCourse>> getSelectedCourses() {
 		return selectedCourses;
 	}
