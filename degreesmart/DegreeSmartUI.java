@@ -31,34 +31,47 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario1() {
-		System.out.println(" Loading users from UserList...\n");
-		UserList userList = UserList.getInstance();
-		ArrayList<User> users = userList.getUsers();
-		System.out.println(" Loaded " + users.size() + " users.\n");
+		ArrayList<User> users = UserList.getInstance().getUsers();
+		System.out.println(" Loaded " + users.size() + " users from UserList.\n");
 
+		boolean admin = false;
+		boolean advisor = false;
+		boolean student = false;
+		boolean parent = false;
 		for (User user : users) {
-			System.out.println(user + "\n");
+			if (!admin && user instanceof Administrator) {
+				System.out.println(user + "\n");
+				admin = true;
+			}
+
+			if (!advisor && user instanceof Advisor) {
+				System.out.println(user + "\n");
+				advisor = true;
+			}
+
+			if (!student && user instanceof Student) {
+				System.out.println(user + "\n");
+				student = true;
+			}
+
+			if (!parent && user instanceof Parent) {
+				System.out.println(user + "\n");
+				parent = true;
+			}
 		}
 	}
 
 	public void scenario2() {
-		System.out.println(" Loading courses from CourseList...\n");
-		CourseList courseList = CourseList.getInstance();
-		ArrayList<Course> courses = courseList.getCourses();
-		System.out.println(" Loaded " + courses.size() + " courses.");
+		ArrayList<Course> courses = CourseList.getInstance().getCourses();
+		System.out.println(" Loaded " + courses.size() + " courses from CourseList.");
 
 		ArrayList<String> selectedCourses = new ArrayList<String>();
-		selectedCourses.add("CSCE 247");
 		selectedCourses.add("CSCE 355");
-		selectedCourses.add("MATH 374");
-		selectedCourses.add("CSCE 212");
-		selectedCourses.add("CSCE 212");
 		selectedCourses.add("CHEM 111");
-		selectedCourses.add("MATH 241");
 		selectedCourses.add("CSCE 330");
 
 		for (Course c : courses) {
-			if (selectedCourses.contains(c.getSubject() + " " + c.getNumber())) {
+			if (selectedCourses.contains(c.getShortName())) {
 				System.out.println("\n" + c);
 			}
 		}
@@ -81,7 +94,24 @@ public class DegreeSmartUI {
 	}
 
 	public void scenario4() {
+		System.out.println(" Testing Student...\n");
 
+		Student student = (Student) UserList.getInstance().getUser("Jsmith");
+		student.setAdvisor((Advisor) UserList.getInstance().getUser("KClark"));
+		student.addAdvisingNote(student.getAdvisor(), "Student was advised to take CSCE 355, CHEM 111.");
+		student.addAdvisingNote(student.getAdvisor(), "Student was advised to take CSCE 247, RUSS 121.");
+
+
+		student.addCompletedCourse(CourseList.getInstance().getCourse(Subject.CSCE, "247"),
+				Grade.A, Semester.SPRING, 2024);
+		student.addCompletedCourse(CourseList.getInstance().getCourse(Subject.CSCE, "355"),
+				Grade.B, Semester.SPRING, 2024);
+		student.addCompletedCourse(CourseList.getInstance().getCourse(Subject.CHEM, "111"),
+				Grade.C, Semester.SPRING, 2024);
+		student.addCompletedCourse(CourseList.getInstance().getCourse(Subject.RUSS, "121"),
+				Grade.D, Semester.SPRING, 2024);
+
+		System.out.println(student + "\n");
 	}
 
 	public void scenario5() {
