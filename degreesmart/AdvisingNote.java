@@ -46,7 +46,7 @@ public class AdvisingNote {
   }
 
   public String toString() {
-    return author.getLastName() + " " + author.getPreferredName() + " "
+    return author.getUsername()  + ", "
       + time.format(DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss z"))
       + " - " + note;
   }
