@@ -3,5 +3,10 @@ package degreesmart;
 public enum RequirementSetCategory {
 	CAROLINA_CORE,
 	MAJOR,
-	APPLICATION_AREA
+	MINOR,
+	MINOR_ELECTIVE,
+	MAJOR_ELECTIVE,
+	ELECTIVE,
+	APPLICATION_AREA,
+	LANGUAGE
 }
