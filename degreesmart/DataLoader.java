@@ -207,17 +207,27 @@ public class DataLoader extends DataConstants {
 		}
 
 		// second pass -> store the requirement set from first pass with requirements of second pass in hashmap
+
+		// step into arrayList of type RequirementSet and pull a value from the first pass
 		for (RequirementSet requirementSet : requirementSets) {
 			JSONArray requirements = reqHashMap.get(requirementSet.getUuid());
 
 			for (int k = 0; k < requirements.size(); k++) {
+				// pull a requirement value 
 				JSONObject requirement = (JSONObject) requirements.get(k);
 
 				// check for nested vs course requirement HERE 
+				try {
+					String minGrade = (String)requirement.get(REQUIREMENT_SET_NAME);
+
+				} catch(Exception e) {
+					e.printStackTrace();
+					return null;
+				}
 
 				// WHAT WE ORIGINALLY HAD -> this is only for nestedRequirement
 				String minGrade = (String) requirement.get(COURSE_REQUIREMENT_MIN_GRADE);	// are these the correct object keys?
-				JSONArray courseOptions = (JSONArray) requirement.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+				JSONArray courseOptions = (JSONArray) requirement.get(COURSE_REQUIREMENT_MIN_GRADE);
 
 				// minimum grade -> course requirement
 				// arraylist of requirement, declare new coursrequirement but put it in arraylist of requirement
