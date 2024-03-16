@@ -3,36 +3,42 @@ package degreesmart;
 import java.util.ArrayList;
 
 public class CourseRequirement extends Requirement {
-	private ArrayList<Course> courseOptions;
-	private Grade minGrade;
+	private ArrayList<Course> options;
+	private Grade grade;
 
 	public CourseRequirement() {
-		courseOptions = new ArrayList<Course>();
-		minGrade = Grade.F;
+		options = new ArrayList<Course>();
+		grade = Grade.F;
+	}
+
+	public CourseRequirement(int choices, Grade grade) {
+		super(choices);
+		this.grade = grade;
+		options = new ArrayList<Course>();
 	}
 
 	public ArrayList<Course> getCourseOptions() {
-		return courseOptions;
+		return options;
 	}
 
 	public boolean addCourseOption(Course course) {
-		if (!courseOptions.contains(course)) {
-			return courseOptions.add(course);
+		if (!options.contains(course)) {
+			return options.add(course);
 		} else {
 			return false;
 		}
 	}
 
 	public boolean removeCourseOption(Course course) {
-		return courseOptions.remove(course);
+		return options.remove(course);
 	}
 
 	public Grade getMinGrade() {
-		return minGrade;
+		return grade;
 	}
 
-	public void setMinGrade(Grade minGrade) {
-		this.minGrade = minGrade;
+	public void setMinGrade(Grade grade) {
+		this.grade = grade;
 	}
 
 	public boolean equals(Object object) {
@@ -41,20 +47,20 @@ public class CourseRequirement extends Requirement {
 		}
 		CourseRequirement requirement = (CourseRequirement)object;
 
-		return minGrade.equals(requirement.getMinGrade())
+		return grade.equals(requirement.getMinGrade())
 			&& getNumChoices() == requirement.getNumChoices()
-			&& courseOptions.size() == requirement.getCourseOptions().size()
-			&& courseOptions.containsAll(requirement.getCourseOptions())
-			&& requirement.getCourseOptions().containsAll(courseOptions);
+			&& options.size() == requirement.getCourseOptions().size()
+			&& options.containsAll(requirement.getCourseOptions())
+			&& requirement.getCourseOptions().containsAll(options);
 	}
 
 	public String toString() {
-		String str = minGrade + " or higher in ";
+		String str = grade + " or higher in ";
 
-		for (int i = 0; i < courseOptions.size(); i++) {
-			str += courseOptions.get(i).getSubject() + " " + courseOptions.get(i).getNumber();
+		for (int i = 0; i < options.size(); i++) {
+			str += options.get(i).getSubject() + " " + options.get(i).getNumber();
 
-			if (i != courseOptions.size() - 1) {
+			if (i != options.size() - 1) {
 				str += " or ";
 			}
 		}

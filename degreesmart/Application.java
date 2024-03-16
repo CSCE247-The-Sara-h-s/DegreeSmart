@@ -124,10 +124,6 @@ public class Application {
         return courseList.getCourses();
     }
 
-    public ArrayList<Course> getCourses(CoreCategory category) {
-        return courseList.getCourses();
-    }
-
     public ArrayList<RequirementSet> getRequirementSets() {
         return requirementSetList.getRequirementSets();
     }

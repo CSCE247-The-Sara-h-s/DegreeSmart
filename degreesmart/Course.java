@@ -13,7 +13,6 @@ public class Course {
 	private ArrayList<CourseRequirement> prerequisites;
 	private ArrayList<Course> corequisites;
 	private ArrayList<Semester> semestersOffered;
-	private ArrayList<CoreCategory> coreCategories;
 
 	public Course(UUID uuid, Subject subject, String number) {
 		this.uuid = uuid;
@@ -22,7 +21,6 @@ public class Course {
 		prerequisites = new ArrayList<CourseRequirement>();
 		corequisites = new ArrayList<Course>();
 		semestersOffered = new ArrayList<Semester>();
-		coreCategories = new ArrayList<CoreCategory>();
 		creditHours = 0.0;
 		description = "";
 	}
@@ -109,22 +107,6 @@ public class Course {
 
 	public boolean removeSemesterOffered(Semester semester) {
 		return semestersOffered.remove(semester);
-	}
-
-	public ArrayList<CoreCategory> getCoreCategories() {
-		return coreCategories;
-	}
-
-	public boolean addSemesterOffered(CoreCategory coreCategory) {
-		if (!semestersOffered.contains(coreCategory)) {
-			return coreCategories.add(coreCategory);
-		} else {
-			return false;
-		}
-	}
-
-	public boolean removeSemesterOffered(CoreCategory coreCategory) {
-		return coreCategories.remove(coreCategory);
 	}
 
 	public double getCreditHours() {
