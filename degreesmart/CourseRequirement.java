@@ -21,16 +21,16 @@ public class CourseRequirement extends Requirement {
 		return options;
 	}
 
-	public boolean addCourseOption(Course course) {
-		if (!options.contains(course)) {
-			return options.add(course);
+	public boolean addCourseOption(Course option) {
+		if (!options.contains(option)) {
+			return options.add(option);
 		} else {
 			return false;
 		}
 	}
 
-	public boolean removeCourseOption(Course course) {
-		return options.remove(course);
+	public boolean removeCourseOption(Course option) {
+		return options.remove(option);
 	}
 
 	public Grade getMinGrade() {

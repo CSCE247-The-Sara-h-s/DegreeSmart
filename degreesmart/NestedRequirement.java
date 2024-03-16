@@ -3,25 +3,25 @@ package degreesmart;
 import java.util.ArrayList;
 
 public class NestedRequirement extends Requirement {
-	private ArrayList<RequirementSet> requirementOptions;
+	private ArrayList<RequirementSet> options;
 
 	public NestedRequirement() {
-		requirementOptions = new ArrayList<RequirementSet>();
+		options = new ArrayList<RequirementSet>();
 	}
 
 	public ArrayList<RequirementSet> getRequirementOptions() {
-		return requirementOptions;
+		return options;
 	}
 
-	public boolean addRequirementOption(RequirementSet requirement) {
-		if (!requirementOptions.contains(requirement)) {
-			return requirementOptions.add(requirement);
+	public boolean addRequirementOption(RequirementSet option) {
+		if (!options.contains(option)) {
+			return options.add(option);
 		} else {
 			return false;
 		}
 	}
 
-	public boolean removeRequirementOption(RequirementSet requirement) {
-		return requirementOptions.remove(requirement);
+	public boolean removeRequirementOption(RequirementSet option) {
+		return options.remove(option);
 	}
 }
