@@ -145,9 +145,9 @@ public class DataLoader extends DataConstants {
 
 			for (int k = 0; k < prerequisites.size(); k++) {
 				JSONObject prerequisite = (JSONObject) prerequisites.get(k);
-				String minGrade = (String) prerequisite.get(COURSE_REQUIREMENT_MIN_GRADE);
-				Long choices = (Long) prerequisite.get(REQUIREMENT_NUM_CHOICES);
-				JSONArray courseOptions = (JSONArray) prerequisite.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+				String minGrade = (String) prerequisite.get(REQUIREMENT_GRADE);
+				Long choices = (Long) prerequisite.get(REQUIREMENT_CHOICES);
+				JSONArray courseOptions = (JSONArray) prerequisite.get(REQUIREMENT_OPTIONS);
 
 				CourseRequirement requirement = new CourseRequirement(Math.toIntExact(choices), Grade.valueOf(minGrade));
 
