@@ -10,6 +10,7 @@ public abstract class User {
   private String lastName;
   private String preferredName;
   private String emailAddress;
+  protected Role role;
 
   public User(UUID uuid, String username, String password, String emailAddress, String firstName, String lastName) {
     this.uuid = uuid;
@@ -18,10 +19,15 @@ public abstract class User {
     this.emailAddress = emailAddress;
     this.firstName = firstName;
     this.lastName = lastName;
+    role = Role.USER;
   }
 
   public UUID getUuid() {
     return uuid;
+  }
+
+  public Role getRole() {
+    return role;
   }
 
   public String getUsername() {
@@ -80,13 +86,14 @@ public abstract class User {
     if (object == null || ! (object instanceof User)) {
       return false;
     }
-    User user = (User)object;
+    User user = (User) object;
 
-    return uuid.equals(user.getUuid());
+    return uuid.equals(user.getUuid()) && username.equals(user.getUsername());
   }
 
   public String toString() {
     return ""
+      + "            Role: " + role + "\n"
       + "            UUID: " + uuid + "\n"
       + "        Username: " + username + "\n"
       + "        Password: " + password + "\n"

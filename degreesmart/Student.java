@@ -17,6 +17,7 @@ public class Student extends User {
   public Student(UUID uuid, String username, String password, String email, String firstName, String lastName, 
       String uscId) {
     super(uuid, username, password, email, firstName, lastName);
+    role = Role.STUDENT;
     this.uscId = uscId;
 
     parents = new ArrayList<Parent>();
@@ -199,9 +200,7 @@ public class Student extends User {
       transcript = "\n   -  " + String.join("\n   -  ", completedCourseList);
     }
 
-    return ""
-      + "            Role: Student\n"
-      + super.toString() + "\n"
+    return super.toString() + "\n"
       + "          USC ID: " + uscId + "\n"
       + "         Advisor: " + advisorString + "\n"
       + "         Parents: " + parentList + "\n"
@@ -212,5 +211,10 @@ public class Student extends User {
       + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
       + "      Transcript: " + transcript + "\n"
       + " Graduation Plan: " + "<TODO>";
+  }
+
+  public boolean equals(Object object) {
+    return super.equals(object) && object instanceof Student
+      && ((Student)object).getUscId().equals(uscId);
   }
 }

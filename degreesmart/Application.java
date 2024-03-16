@@ -9,15 +9,11 @@ public class Application {
     private User activeUser;
     private static Application application;
 
-    // TODO: check if activeUser is null 
-
-
     private Application() {
-        // userList = UserList.getInstance();
         userList = UserList.getInstance();
         courseList = CourseList.getInstance();
         requirementSetList = RequirementSetList.getInstance();
-        this.activeUser = activeUser;
+        activeUser = userList.getGuest();
     }
 
     public static Application getInstance() {
@@ -35,20 +31,21 @@ public class Application {
         return userList.getUsers().get(0);
     }
 
-    public User logIn(String username, String password) {
-        for (User user : userList.getUsers()) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                activeUser = user;
-                return user;
-            }
-        }
-        // Username not found/ Password is incorrect 
-        return null;
+    public boolean userLoggedIn() {
+        return !userList.getGuest().equals(activeUser);
     }
 
-    public void logOut() {
-        activeUser = null;
-        System.out.println("You have been logged out!");
+    public User logIn(String username, String password) {
+        if (!userLoggedIn()) {
+            User user = userList.getUser(username);
+            activeUser = user.getPassword().equals(password)? user : activeUser;
+        }
+        return activeUser;
+    }
+
+    public User logOut() {
+        activeUser = userList.getGuest();
+        return activeUser;
     }
 
     public void setUsername(User user, String username) {
@@ -73,22 +70,51 @@ public class Application {
     }
 
     public ArrayList<User> getUsers() {
-        return userList.getUsers();
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUsers();
+        }
+        return null;
     }
 
     public User getUser(String username) {
-        return userList.getUsers().get(0);
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUser(username);
+        }
+        return null;
     }
     
     public ArrayList<User> getUsers(String firstName, String lastName) {
-        return userList.getUsers();
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUsers(firstName, lastName);
+        }
+        return null;
+    }
+
+    public ArrayList<Student> getStudents() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR
+                || activeUser.getRole() == Role.ADVISOR) {
+            return userList.getStudents();
+        }
+        return null;
+    }
+
+    public User getStudent(String username) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR
+                || activeUser.getRole() == Role.ADVISOR) {
+            return userList.getUser(username);
+        }
+        return null;
+    }
+
+    public ArrayList<User> getStudents(String firstName, String lastName) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR
+                || activeUser.getRole() == Role.ADVISOR) {
+            return userList.getUsers(firstName, lastName);
+        }
+        return null;
     }
 
     public ArrayList<User> getAdvisors() {
-        return userList.getUsers();
-    }
-
-    public ArrayList<User> getStudents() {
         return userList.getUsers();
     }
 
@@ -106,10 +132,6 @@ public class Application {
 
     public Student getStudent(Student uscId) {
         return (Student)userList.getUsers().get(0);
-    }
-
-    public ArrayList<User> getStudents(String firstName, String lastName) {
-        return userList.getUsers();
     }
 
     public ArrayList<Course> getCourses() {
@@ -149,19 +171,21 @@ public class Application {
     }
 
     public void approveAdvisor(Advisor advisor) {
-        if (activeUser instanceof Administrator) {
-            advisor.setApproved(true);
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            advisor.setAdvisorRole();
         }
     }
 
     public void addAssignedStudent(Advisor advisor, Student student) {
-        if (activeUser instanceof Administrator || activeUser.equals(advisor)) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR
+                || (activeUser.equals(advisor) && activeUser.getRole() == Role.ADVISOR)) {
             advisor.addAssignedStudent(student);
         }
     }
 
     public void removeAssignedStuent(Advisor advisor, Student student) {
-        if (activeUser instanceof Administrator || activeUser.equals(advisor)) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR
+                || (activeUser.equals(advisor) && activeUser.getRole() == Role.ADVISOR)) {
            advisor.removeAssignedStudent(student);
         }
     }
