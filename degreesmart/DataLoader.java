@@ -216,8 +216,8 @@ public class DataLoader extends DataConstants {
 				// check for nested vs course requirement HERE 
 
 				// WHAT WE ORIGINALLY HAD -> this is only for nestedRequirement
-				String minGrade = (String) requirement.get(COURSE_REQUIREMENT_MIN_GRADE);	// are these the correct object keys?
-				JSONArray courseOptions = (JSONArray) requirement.get(COURSE_REQUIREMENT_COURSE_OPTIONS);
+				String minGrade = (String) requirement.get(REQUIREMENT_GRADE);	// are these the correct object keys?
+				JSONArray courseOptions = (JSONArray) requirement.get(REQUIREMENT_OPTIONS);
 
 				// minimum grade -> course requirement
 				// arraylist of requirement, declare new coursrequirement but put it in arraylist of requirement
