@@ -13,6 +13,7 @@ public class DegreeSmartUI {
 
 	public void run() {
 		ArrayList<Runnable> scenarios = new ArrayList<>(); // https://stackoverflow.com/a/67292304
+		scenarios.add(() -> scriptedScenarioZero());
 		scenarios.add(() -> scriptedScenarioThree());
 		scenarios.add(() -> scriptedScenarioOne());
 		scenarios.add(() -> scriptedScenarioTwo());
@@ -29,16 +30,14 @@ public class DegreeSmartUI {
 		}
 	}
 
-	public void scriptedScenarioOne() {
+	public void scriptedScenarioZero() {
 		Scanner stdin = new Scanner(System.in);
 		String invalidUsername = "username";
 		String invalidPassword = "password";
 		String adminUsername = "Rgreen";
 		String adminPassword = "PurpleDaisy22";
-		String studentUsername = "Hdawson";
-		String studentPassword = "ILoveFootball35";
 
-		System.out.println(" Scripted Scenario One\t(Press ENTER to advance)\n\n");
+		System.out.println(" Scripted Scenario Zero\t(Press ENTER to advance)\n\n");
 		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
@@ -92,6 +91,18 @@ public class DegreeSmartUI {
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
 
+	}
+
+	public void scriptedScenarioOne() {
+		Scanner stdin = new Scanner(System.in);
+		String studentUsername = "Hdawson";
+		String studentPassword = "ILoveFootball35";
+
+		System.out.println(" Scripted Scenario One\t(Press ENTER to advance)\n\n");
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
 		System.out.println("\n Attempting to login with username='" + studentUsername
 			+ "', password='" + studentPassword + "'");
 		application.logIn(studentUsername, studentPassword);
@@ -108,8 +119,6 @@ public class DegreeSmartUI {
 
 	public void scriptedScenarioTwo() {
 		Scanner stdin = new Scanner(System.in);
-		String adminUsername = "Rgreen";
-		String adminPassword = "PurpleDaisy22";
 		String newUsername = "";
 		String newPassword = "";
 
@@ -117,6 +126,21 @@ public class DegreeSmartUI {
 		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
+
+		User user = null;
+		for (User u : UserList.getInstance().getUsers()) {
+			if (u.getFirstName().equals("Osbert") && u.getLastName().equals("Odden")) {
+				System.out.println(" User '" + u.getFirstName() + " " + u.getLastName() + "'"
+						+ " already exists! Deleting user...\n");
+					user = u;
+			}
+		}
+
+		if (user != null) {
+			UserList.getInstance().deleteUser(user);
+			UserList.getInstance().saveUsers();
+			return;
+		}
 
 		System.out.println("\n Creating a new Advisor acccount\n");
 		do {
@@ -165,6 +189,7 @@ public class DegreeSmartUI {
 			return;
 		}
 
+		System.out.println(" Scripted Scenario Three\t(Press ENTER to advance)\n\n");
 		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
@@ -175,13 +200,6 @@ public class DegreeSmartUI {
 		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
-
-		UserList.getInstance().deleteUser(user);
-		for (User u : UserList.getInstance().getAdvisors()) {
-			if (u.getFirstName().equals("Osbert") && u.getLastName().equals("Odden")) {
-				System.out.println(u);
-			}
-		}
 
 		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
 		application.logOut();
