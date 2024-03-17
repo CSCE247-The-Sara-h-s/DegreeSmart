@@ -12,6 +12,10 @@ public class Advisor extends User {
     assignedStudents = new ArrayList<Student>();
   }
 
+  public boolean getApproved() {
+    return role == Role.ADVISOR;
+  }
+
   public void unsetAdvisorRole() {
     role = Role.UNAPPROVED_ADVISOR;
   }
@@ -43,6 +47,6 @@ public class Advisor extends User {
     }
 
     return super.toString() + "\n"
-      + "        Students: " + studentList;
+      + "          Students: " + studentList;
   }
 }

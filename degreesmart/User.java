@@ -93,13 +93,13 @@ public abstract class User {
 
   public String toString() {
     return ""
-      + "            Role: " + role + "\n"
-      + "            UUID: " + uuid + "\n"
-      + "        Username: " + username + "\n"
-      + "        Password: " + password + "\n"
-      + "            Name: " + firstName + " "
-                     + ((preferredName == null)? "" : "(" + preferredName + ")")
+      + "              Role: " + role + "\n"
+      + "              UUID: " + uuid + "\n"
+      + "          Username: " + username + "\n"
+      + "          Password: " + password + "\n"
+      + "              Name: " + firstName + " "
+                     + ((getPreferredName() != preferredName)? "" : "(" + preferredName + ") ")
                      + lastName + "\n"
-      + "           Email: " + emailAddress;
+      + "             Email: " + emailAddress;
   }
 }

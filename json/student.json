@@ -19,7 +19,7 @@
             }
         ],
         "scholarships": [],
-        "requirement_sets": [],
+        "requirement_sets": ["9e184dcb-e3ed-4009-8dbb-5ca501efc4bf"],
         "completed_courses": [
             {
                 "course": "4b7e5af2-1d76-4829-8316-e92076ee61e2",
@@ -50,7 +50,7 @@
             }
         ],
         "scholarships": [],
-        "requirement_sets": [],
+        "requirement_sets": ["d7ba57e5-db03-45f6-9342-3652466a9675", "0804255b-a98c-43d8-a450-2a145f3b1e90"],
         "completed_courses": [
             {
                 "course": "d06739f6-9fc3-4e4d-8cff-9e57383bf0a1",
@@ -81,7 +81,7 @@
             }
         ],
         "scholarships": [],
-        "requirement_sets": [],
+        "requirement_sets": ["0804255b-a98c-43d8-a450-2a145f3b1e90"],
         "completed_courses": [
             {
                 "course": "1c265e6f-3516-4445-b52e-868c6b630886",

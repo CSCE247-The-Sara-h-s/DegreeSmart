@@ -43,6 +43,13 @@ public class UserList {
         return userList;
     }
 
+    public void saveUsers() {
+        DataWriter.saveAdministrators();
+        DataWriter.saveAdvisors();
+        DataWriter.saveParents();
+        // DataWriter.saveStudents();
+    }
+
     public User getGuest() {
         if (guest == null) {
             guest = new Guest(UUID.fromString(UUID.randomUUID().toString().replaceAll("[a-zA-Z0-9]", "0")));

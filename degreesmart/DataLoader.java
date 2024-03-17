@@ -34,8 +34,8 @@ public class DataLoader extends DataConstants {
 	public static final ArrayList<User> getUsers(
 			ArrayList<Course> courses, ArrayList<RequirementSet> requirementSets) {
 		ArrayList<User> users = new ArrayList<User>();
+		ArrayList<Student> students = new ArrayList<Student>();
 		HashMap<UUID, Advisor> uuidToAdvisor = new HashMap<UUID, Advisor>();
-		HashMap<UUID, Student> uuidToStudent = new HashMap<UUID, Student>();
 		HashMap<UUID, Parent> uuidToParent = new HashMap<UUID, Parent>();
 		JSONParser parser = new JSONParser();
 		FileReader reader;
@@ -48,9 +48,9 @@ public class DataLoader extends DataConstants {
 			uuidToCourse.put(course.getUuid(), course);
 		}
 
-		// for (RequirementSet requirementSet : requirementSets) {
-		// 	uuidToSet.put(requirementSet.getUuid(), requirementSet);
-		// }
+		for (RequirementSet requirementSet : requirementSets) {
+			uuidToSet.put(requirementSet.getUuid(), requirementSet);
+		}
 		
 		// first pass
 		JSONArray administratorsJSON = null;
@@ -67,15 +67,18 @@ public class DataLoader extends DataConstants {
 			String username = (String) administratorJSON.get(USER_USERNAME);
 			String password = (String) administratorJSON.get(USER_PASSWORD);
 			String firstName = (String) administratorJSON.get(USER_FIRST_NAME);
+			String preferredName = (String) administratorJSON.get(USER_PREFERRED_NAME);
 			String lastName = (String) administratorJSON.get(USER_LAST_NAME);
 			String emailAddress = (String) administratorJSON.get(USER_EMAIL_ADDRESS);
 
-			users.add(new Administrator(UUID.fromString(uuid), username, password, emailAddress,
-					firstName, lastName));
+			Administrator administrator = new Administrator(UUID.fromString(uuid), username, password, 
+				emailAddress, firstName, lastName);
+			administrator.setPreferredName(preferredName);
+
+			users.add(administrator);
 		}
 
 		JSONArray advisorsJSON = null;
-		HashMap<UUID, JSONArray> adviseeJSON = new HashMap<UUID, JSONArray>();
 		try {
 			reader = new FileReader(ADVISOR_FILE);
 			advisorsJSON = (JSONArray)new JSONParser().parse(reader);
@@ -89,61 +92,23 @@ public class DataLoader extends DataConstants {
 			String username = (String) advisorJSON.get(USER_USERNAME);
 			String password = (String) advisorJSON.get(USER_PASSWORD);
 			String firstName = (String) advisorJSON.get(USER_FIRST_NAME);
+			String preferredName = (String) advisorJSON.get(USER_PREFERRED_NAME);
 			String lastName = (String) advisorJSON.get(USER_LAST_NAME);
 			String emailAddress = (String) advisorJSON.get(USER_EMAIL_ADDRESS);
-			JSONArray advisees = (JSONArray) advisorJSON.get(ADVISOR_ADVISEES);
+			String approved = (String) advisorJSON.get(ADVISOR_APPROVED);
 
 			Advisor advisor = new Advisor(UUID.fromString(uuid), username, password, emailAddress,
 					firstName, lastName);
+			advisor.setPreferredName(preferredName);
+			if (Boolean.parseBoolean(approved)) {
+				advisor.setAdvisorRole();
+			}
+
 			users.add(advisor);
 			uuidToAdvisor.put(advisor.getUuid(), advisor);
-			adviseeJSON.put(advisor.getUuid(), advisees);
-		}
-
-		JSONArray studentsJSON = null;
-		HashMap<UUID, String> students_advisorJSON = new HashMap<UUID, String>();
-		HashMap<UUID, JSONArray> students_parentJSON = new HashMap<UUID, JSONArray>();
-		HashMap<UUID, JSONArray> accessJSON = new HashMap<UUID, JSONArray>();
-		HashMap<UUID, JSONArray> noteJSON = new HashMap<UUID, JSONArray>();
-		try {
-			reader = new FileReader(STUDENT_FILE);
-			studentsJSON = (JSONArray)new JSONParser().parse(reader);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		for (int i = 0; studentsJSON != null && i < studentsJSON.size(); i++) {
-			JSONObject studentJSON = (JSONObject) studentsJSON.get(i);
-			String uuid = (String) studentJSON.get(USER_UUID);
-			String username = (String) studentJSON.get(USER_USERNAME);
-			String password = (String) studentJSON.get(USER_PASSWORD);
-			String firstName = (String) studentJSON.get(USER_FIRST_NAME);
-			String lastName = (String) studentJSON.get(USER_LAST_NAME);
-			String emailAddress = (String) studentJSON.get(USER_EMAIL_ADDRESS);
-			String uscId = (String) studentJSON.get(STUDENT_USC_ID);
-			String advisor = (String) studentJSON.get(STUDENT_ADVISOR);
-			JSONArray parents = (JSONArray) studentJSON.get(STUDENT_PARENTS);
-			JSONArray accessRequests = (JSONArray) studentJSON.get(STUDENT_ACCESS_REQUESTS);
-			JSONArray advisingNotes = (JSONArray) studentJSON.get(STUDENT_ADVISING_NOTES);
-			JSONArray scholarships = (JSONArray) studentJSON.get(STUDENT_SCHOLARSHIPS);
-			JSONArray student_requirementSets = (JSONArray) studentJSON.get(STUDENT_REQUIREMENT_SETS);
-			JSONArray completedCourses = (JSONArray) studentJSON.get(STUDENT_COMPLETED_COURSES);
-			JSONArray plannedCourses = (JSONArray) studentJSON.get(STUDENT_PLANNED_COURSES);
-
-			Student student = new Student(UUID.fromString(uuid), username, password, emailAddress,
-					firstName, lastName);
-			users.add(student);
-			student.setUscId(uscId);
-			uuidToStudent.put(student.getUuid(), student);
-			students_advisorJSON.put(student.getUuid(), advisor);
-			students_parentJSON.put(student.getUuid(), parents);
-			noteJSON.put(student.getUuid(), advisingNotes);
-			accessJSON.put(student.getUuid(), accessRequests);
 		}
 
 		JSONArray parentsJSON = null;
-		HashMap<UUID, JSONArray> requestJSON = new HashMap<UUID, JSONArray>();
-		HashMap<UUID, JSONArray> childJSON = new HashMap<UUID, JSONArray>();
 		try {
 			reader = new FileReader(PARENT_FILE);
 			parentsJSON = (JSONArray)new JSONParser().parse(reader);
@@ -157,23 +122,89 @@ public class DataLoader extends DataConstants {
 			String username = (String) parentJSON.get(USER_USERNAME);
 			String password = (String) parentJSON.get(USER_PASSWORD);
 			String firstName = (String) parentJSON.get(USER_FIRST_NAME);
+			String preferredName = (String) parentJSON.get(USER_PREFERRED_NAME);
 			String lastName = (String) parentJSON.get(USER_LAST_NAME);
 			String emailAddress = (String) parentJSON.get(USER_EMAIL_ADDRESS);
 			String uscId = (String) parentJSON.get(STUDENT_USC_ID);
-			JSONArray accessRequests = (JSONArray) parentJSON.get(STUDENT_ADVISOR);
-			JSONArray children = (JSONArray) parentJSON.get(STUDENT_PARENTS);
 
 			Parent parent = new Parent(UUID.fromString(uuid), username, password, emailAddress,
 					firstName, lastName);
+			parent.setPreferredName(preferredName);
+
 			users.add(parent);
 			uuidToParent.put(parent.getUuid(), parent);
-			childJSON.put(parent.getUuid(), children);
-			requestJSON.put(parent.getUuid(), accessRequests);
 		}
 
-		// second pass
-		for (User user : users) {
+		JSONArray studentsJSON = null;
+		try {
+			reader = new FileReader(STUDENT_FILE);
+			studentsJSON = (JSONArray)new JSONParser().parse(reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		for (int i = 0; studentsJSON != null && i < studentsJSON.size(); i++) {
+			JSONObject studentJSON = (JSONObject) studentsJSON.get(i);
+			String uuidStr = (String) studentJSON.get(USER_UUID);
+			String username = (String) studentJSON.get(USER_USERNAME);
+			String password = (String) studentJSON.get(USER_PASSWORD);
+			String firstName = (String) studentJSON.get(USER_FIRST_NAME);
+			String preferredName = (String) studentJSON.get(USER_PREFERRED_NAME);
+			String lastName = (String) studentJSON.get(USER_LAST_NAME);
+			String emailAddress = (String) studentJSON.get(USER_EMAIL_ADDRESS);
+			String uscId = (String) studentJSON.get(STUDENT_USC_ID);
+			String advisorStr = (String) studentJSON.get(STUDENT_ADVISOR);
+			JSONArray parents = (JSONArray) studentJSON.get(STUDENT_PARENTS);
+			JSONArray accessRequests = (JSONArray) studentJSON.get(STUDENT_ACCESS_REQUESTS);
+			JSONArray advisingNotes = (JSONArray) studentJSON.get(STUDENT_ADVISING_NOTES);
+			JSONArray scholarships = (JSONArray) studentJSON.get(STUDENT_SCHOLARSHIPS);
+			JSONArray student_requirementSets = (JSONArray) studentJSON.get(STUDENT_REQUIREMENT_SETS);
+			JSONArray completedCourses = (JSONArray) studentJSON.get(STUDENT_COMPLETED_COURSES);
+			JSONArray plannedCourses = (JSONArray) studentJSON.get(STUDENT_PLANNED_COURSES);
+
+			Student student = new Student(UUID.fromString(uuidStr), username, password, emailAddress,
+					firstName, lastName);
+			users.add(student);
+			student.setPreferredName(preferredName);
+			student.setUscId(uscId);
+			Advisor advisor = uuidToAdvisor.get(UUID.fromString(advisorStr));
+			student.setAdvisor(advisor);
+			advisor.addAssignedStudent(student);
+
+			for (int k = 0; k < parents.size(); k++) {
+				String uuid = (String) parents.get(k);
+				Parent parent = uuidToParent.get(UUID.fromString(uuid));
+				student.addParent(parent);
+				parent.addChild(student);
+			}
+
+			for (int k = 0; k < accessRequests.size(); k++) {
+				String uuid = (String) accessRequests.get(k);
+				Parent parent = uuidToParent.get(UUID.fromString(uuid));
+				student.addAccessRequest(parent);
+				parent.addPendingAccessRequest(student);
+			}
+
+			for (int k = 0; k < advisingNotes.size(); k++) {
+				JSONObject advisingNote = (JSONObject) advisingNotes.get(k);
+				String note = (String) advisingNote.get(ADVISING_NOTE_NOTE);
+				String author = (String) advisingNote.get(ADVISING_NOTE_AUTHOR);
+				String time = (String) advisingNote.get(ADVISING_NOTE_TIME);
+
+				student.addAdvisingNote(new AdvisingNote(uuidToAdvisor.get(UUID.fromString(author)), note, time));
+			}
+
+			// for (int k = 0; k < scholarships.size(); k++) {
+			// 	String uuid = (String) scholarships.get(k);
+			// 	Scholarship scholarship = uuidToScholarship.get(UUID.fromString(uuid));
+
+			// 	student.addScholarship(scholarship);
+			// }
+
+			for (int k = 0; k < student_requirementSets.size(); k++) {
+				String uuid = (String) student_requirementSets.get(k);
+				student.getGraduationPlan().addRequirementSet(uuidToSet.get(UUID.fromString(uuid)));
+			}
 		}
 
 		return users;

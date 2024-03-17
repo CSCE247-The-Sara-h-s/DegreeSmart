@@ -55,9 +55,9 @@ public class Application {
         return activeUser;
     }
 
-    public User logOut() {
+    public void logOut() {
         activeUser = userList.getGuest();
-        return activeUser;
+        userList.saveUsers();
     }
 
     private boolean validUsername(String username) {

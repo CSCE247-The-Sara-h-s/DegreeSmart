@@ -73,6 +73,18 @@ public class DegreeSmartUI {
 		System.out.println("          Application Areas:  " + application.getApplicationAreas().size());
 		stdin.nextLine();
 
+		for (Advisor advisor : application.getAdvisors()) {
+			System.out.println("\n" + advisor);
+		}
+
+		for (Parent parent : application.getParents()) {
+			System.out.println("\n" + parent);
+		}
+
+		for (Student student : application.getStudents()) {
+			System.out.println("\n" + student);
+		}
+
 		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
 		application.logOut();
 		System.out.println(" Current User");

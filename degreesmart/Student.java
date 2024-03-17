@@ -90,6 +90,10 @@ public class Student extends User {
     return advisingNotes;
   }
 
+  public void addAdvisingNote(AdvisingNote advisingNote) {
+    advisingNotes.add(advisingNote);
+  }
+
   public void addAdvisingNote(Advisor advisor, String note) {
     advisingNotes.add(new AdvisingNote(advisor, note));
   }
@@ -185,7 +189,7 @@ public class Student extends User {
 
     String notes = "";
     if (advisingNotes.size() > 0) {
-      notes = "\n   -  " + String.join("\n   -  ", advisingNoteList);
+      notes = "\n\t\t   -  " + String.join("\n\t\t   -  ", advisingNoteList);
     }
 
     ArrayList<String> completedCourseList = new ArrayList<String>();
@@ -195,20 +199,31 @@ public class Student extends User {
 
     String transcript = "";
     if (completedCourses.size() > 0) {
-      transcript = "\n   -  " + String.join("\n   -  ", completedCourseList);
+      transcript = "\n\t\t   -  " + String.join("\n\t\t   -  ", completedCourseList);
+    }
+
+    ArrayList<String> requirements = new ArrayList<String>();
+    for (RequirementSet req : graduationPlan.getRequirementSets()) {
+      requirements.add(req.getType() + " - " + req.getName());
+    }
+
+    String reqs = "";
+    if (requirements.size() > 0) {
+      reqs = "\n\t\t   -  " + String.join("\n\t\t   -  ", requirements);
     }
 
     return super.toString() + "\n"
-      + "          USC ID: " + uscId + "\n"
-      + "         Advisor: " + advisorString + "\n"
-      + "         Parents: " + parentList + "\n"
-      + " Access Requests: " + requesterList + "\n"
-      + "  Advising Notes: " + notes + "\n"
-      + "    Scholarships: " + "<TODO>" + "\n"
-      + " Attempted Hours: " + getAttemptedHours() + "\n"
-      + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
-      + "      Transcript: " + transcript + "\n"
-      + " Graduation Plan: " + "<TODO>";
+      + "            USC ID: " + uscId + "\n"
+      + "           Advisor: " + advisorString + "\n"
+      + "           Parents: " + parentList + "\n"
+      + "   Access Requests: " + requesterList + "\n"
+      + "    Advising Notes: " + notes + "\n"
+      + "      Scholarships: " + " " + "\n"
+      + "      Requirements: " + reqs + "\n"
+      + "   Attempted Hours: " + getAttemptedHours() + "\n"
+      + "       Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
+      + " Completed Courses: " + transcript + "\n"
+      + "   Graduation Plan: " + " " + "\n";
   }
 
   public boolean equals(Object object) {

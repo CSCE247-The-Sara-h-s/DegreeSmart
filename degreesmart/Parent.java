@@ -58,7 +58,7 @@ public class Parent extends User {
     }
 
     return super.toString() + "\n"
-      + "        Children: " + childList + "\n"
-      + "        Requests: " + requestList;
+      + "          Children: " + childList + "\n"
+      + "          Requests: " + requestList;
   }
 }

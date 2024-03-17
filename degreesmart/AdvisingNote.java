@@ -7,6 +7,13 @@ public class AdvisingNote {
   private String note;
   private Advisor author;
   private ZonedDateTime time;
+  private static final String timeFormat = "dd MMMM yyyy HH:mm:ss z";
+
+  public AdvisingNote(Advisor author, String note, String time) {
+    this.author = author;
+    this.note = note;
+    this.time = ZonedDateTime.parse(time, DateTimeFormatter.ofPattern(timeFormat));
+  }
 
   public AdvisingNote(Advisor author, String note) {
     this.author = author;
@@ -34,6 +41,10 @@ public class AdvisingNote {
     return time;
   }
 
+  public String getTimeString() {
+    return time.format(DateTimeFormatter.ofPattern(timeFormat));
+  }
+
   public boolean equals(Object object) {
     if (object == null || ! (object instanceof AdvisingNote)) {
       return false;
@@ -47,7 +58,7 @@ public class AdvisingNote {
 
   public String toString() {
     return author.getUsername()  + ", "
-      + time.format(DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss z"))
+      + time.format(DateTimeFormatter.ofPattern(timeFormat))
       + " - " + note;
   }
 }
