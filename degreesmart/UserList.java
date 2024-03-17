@@ -8,6 +8,8 @@ public class UserList {
     private ArrayList<User> users;
     private ArrayList<Student> students;
     private ArrayList<Advisor> advisors;
+    private ArrayList<Administrator> administrators;
+    private ArrayList<Parent> parents;
     private HashMap<UUID, User> usersByUuid;
     private HashMap<String, User> usersByUsername;
     private HashMap<String, Student> studentsByUscId;
@@ -18,6 +20,8 @@ public class UserList {
         users = new ArrayList<User>();
         students = new ArrayList<Student>();
         advisors = new ArrayList<Advisor>();
+        administrators = new ArrayList<Administrator>();
+        parents = new ArrayList<Parent>();
         usersByUuid = new HashMap<UUID, User>();
         usersByUsername = new HashMap<String, User>();
         studentsByUscId = new HashMap<String, Student>();
@@ -92,6 +96,14 @@ public class UserList {
         return advisors;
     }
 
+    public ArrayList<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    public ArrayList<Parent> getParents() {
+        return parents;
+    }
+
     private User getUser(UUID uuid) {
         return usersByUuid.get(uuid);
     }
@@ -119,6 +131,12 @@ public class UserList {
                 case ADVISOR:
                 case UNAPPROVED_ADVISOR:
                     advisors.add((Advisor)user);
+                    break;
+                case ADMINISTRATOR:
+                    administrators.add((Administrator)user);
+                    break;
+                case PARENT:
+                    parents.add((Parent)user);
                     break;
             }
         }

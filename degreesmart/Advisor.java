@@ -13,7 +13,7 @@ public class Advisor extends User {
   }
 
   public void unsetAdvisorRole() {
-    role = Role.GUEST;
+    role = Role.UNAPPROVED_ADVISOR;
   }
 
   public void setAdvisorRole() {

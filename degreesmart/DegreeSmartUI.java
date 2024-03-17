@@ -57,18 +57,20 @@ public class DegreeSmartUI {
 		stdin.nextLine();
 
 		System.out.println("\n System Status");
-		System.out.println("           TOTAL Users: " + application.getUsers().size());
-		// System.out.println("        Administrators: " + application.getAdministrators().size());
-		System.out.println("              Advisors: " + application.getAdvisors().size());
-		System.out.println("              Students: " + application.getStudents().size());
-		// System.out.println("               Parents: " + application.getParents().size());
-		System.out.println("   Unapproved Advisors: " + application.getUnapprovedAdvisors().size());
-		System.out.println("   Unassigned Students: " + application.getUnassignedStudents().size());
-		System.out.println("         TOTAL Courses: " + application.getCourses().size());
-		// System.out.println("TOTAL Requirement Sets: " + application.getRequirementSets().size());
-		// System.out.println("                Majors: " + application.getMajors().size());
-		// System.out.println("                Minors: " + application.getMinors().size());
-		// System.out.println("     Application Areas: " + application.getApplicationAreas().size());
+		System.out.println(" - TOTAL ------------ Users:  " + application.getUsers().size());
+		System.out.println("             Administrators:  " + application.getAdministrators().size());
+		System.out.println("                   Advisors:  " + application.getAdvisors().size());
+		System.out.println("                   Students:  " + application.getStudents().size());
+		System.out.println("                    Parents:  " + application.getParents().size());
+		System.out.println("        Unapproved Advisors:  " + application.getUnapprovedAdvisors().size());
+		System.out.println("        Unassigned Students:  " + application.getUnassignedStudents().size());
+		System.out.println();
+		System.out.println(" - TOTAL ---------- Courses:  " + application.getCourses().size());
+		System.out.println();
+		System.out.println(" - TOTAL - Requirement Sets:  " + application.getRequirementSets().size());
+		System.out.println("                     Majors:  " + application.getMajors().size());
+		System.out.println("                     Minors:  " + application.getMinors().size());
+		System.out.println("          Application Areas:  " + application.getApplicationAreas().size());
 		stdin.nextLine();
 
 		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");

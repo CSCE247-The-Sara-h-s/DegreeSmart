@@ -291,7 +291,7 @@ public class DataLoader extends DataConstants {
 			JSONArray requirements = (JSONArray) requirementSetJSON.get(REQUIREMENT_SET_REQUIREMENTS);
 
 			RequirementSet requirementSet = new RequirementSet(
-				UUID.fromString(uuid), name, RequirementSetCategory.valueOf(category));
+				UUID.fromString(uuid), name, RequirementType.valueOf(category));
 
 			uuidToSet.put(requirementSet.getUuid(), requirementSet);
 			reqJSON.put(requirementSet.getUuid(), requirements);

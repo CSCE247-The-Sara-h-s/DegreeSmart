@@ -5,21 +5,49 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RequirementSetList {
-	private ArrayList<RequirementSet> requirementSets;
-	private HashMap<UUID, RequirementSet> requirementSetsByUuid;
-	private HashMap<String, UUID> uuidsByCategoryAndName;
+	private ArrayList<RequirementSet> sets;
+	private ArrayList<RequirementSet> majors;
+	private ArrayList<RequirementSet> minors;
+	private ArrayList<RequirementSet> applicationAreas;
+	private HashMap<UUID, RequirementSet> uuidToSet;
+	private HashMap<String, RequirementSet> fullNameToSet;
 	private static RequirementSetList requirementSetList;
 
-	private RequirementSetList() {
-		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
-		HashMap<UUID, RequirementSet> requirementSetsByUuid = new HashMap<UUID, RequirementSet>();
-		HashMap<String, UUID> uuidsByCategoryAndName = new HashMap<String, UUID>();
+	private RequirementSetList(ArrayList<Course> courses) {
+		sets = DataLoader.getRequirementSets(courses);
+		majors = new ArrayList<RequirementSet>();
+		minors = new ArrayList<RequirementSet>();
+		applicationAreas = new ArrayList<RequirementSet>();
+		uuidToSet = new HashMap<UUID, RequirementSet>();
+		fullNameToSet = new HashMap<String, RequirementSet>();
+
+		for (RequirementSet set : sets) {
+			uuidToSet.put(set.getUuid(), set);
+			fullNameToSet.put(getFullName(set), set);
+
+			switch (set.getType()) {
+				case MAJOR:
+					majors.add(set);
+					break;
+				case MINOR:
+					minors.add(set);
+					break;
+				case APPLICATION_AREA:
+					applicationAreas.add(set);
+					break;
+			}
+		}
+	}
+
+	public static RequirementSetList getInstance(ArrayList<Course> courses) {
+		if (requirementSetList == null) {
+			requirementSetList = new RequirementSetList(courses);
+		}
+
+		return requirementSetList;
 	}
 
 	public static RequirementSetList getInstance() {
-		if (requirementSetList == null) {
-			requirementSetList = new RequirementSetList();
-		}
 		return requirementSetList;
 	}
 
@@ -27,54 +55,70 @@ public class RequirementSetList {
 		UUID uuid;
 		do {
 			uuid = UUID.randomUUID();
-		} while (requirementSetsByUuid.containsKey(uuid));
+		} while (uuidToSet.containsKey(uuid));
 		return uuid;
 	}
 
-	private String getCategoryNameKey(RequirementSet requirementSet) {
-		return requirementSet.getCategory() + " " + requirementSet.getName();
+	private String getFullName(RequirementSet set) {
+		return getFullName(set.getName(), set.getType());
+	}
+
+	private String getFullName(String name, RequirementType type) {
+		return name + " " + type;
 	}
 
 	public ArrayList<RequirementSet> getRequirementSets() {
-		return requirementSets;
+		return sets;
 	}
 
 	public RequirementSet getRequirementSet(UUID uuid) {
-		return requirementSetsByUuid.get(uuid);
+		return uuidToSet.get(uuid);
 	}
 
-	public RequirementSet getRequirementSet(RequirementSetCategory category, String name) {
-		return getRequirementSet(uuidsByCategoryAndName.get(category + " " + name));
+	public RequirementSet getRequirementSet(String name, RequirementType type) {
+		return fullNameToSet.get(name + " " + type);
 	}
 
-	public RequirementSet createRequirementSet(RequirementSetCategory category, String name) {
-		if (getRequirementSet(category, name) != null) {
+	public ArrayList<RequirementSet> getMajors() {
+		return majors;
+	}
+
+	public ArrayList<RequirementSet> getMinors() {
+		return minors;
+	}
+
+	public ArrayList<RequirementSet> getApplicationAreas() {
+		return applicationAreas;
+	}
+
+	public RequirementSet createRequirementSet(String name, RequirementType type) {
+		if (getRequirementSet(name, type) != null) {
 			return null;
 		} else {
-			RequirementSet requirementSet = new RequirementSet(getNextUuid(), name, category);
-			requirementSetsByUuid.put(requirementSet.getUuid(), requirementSet);
-			uuidsByCategoryAndName.put(getCategoryNameKey(requirementSet), requirementSet.getUuid());
-			return requirementSet;
+			RequirementSet set = new RequirementSet(getNextUuid(), name, type);
+			uuidToSet.put(set.getUuid(), set);
+			fullNameToSet.put(getFullName(set), set);
+			return set;
 		}
 	}
 
-	public boolean deleteRequirementSet(RequirementSet requirementSet) {
-		if (requirementSets.remove(requirementSet)) {
-			requirementSetsByUuid.remove(requirementSet.getUuid());
-			uuidsByCategoryAndName.remove(requirementSet.getCategory() + " " + requirementSet.getName());
+	public boolean deleteRequirementSet(RequirementSet set) {
+		if (sets.remove(set)) {
+			uuidToSet.remove(set.getUuid());
+			fullNameToSet.remove(getFullName(set));
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public boolean modifyRequirementSet(RequirementSet requirementSet) {
-		RequirementSet old = requirementSetsByUuid.get(requirementSet.getUuid());
+	public boolean modifyRequirementSet(RequirementSet set) {
+		RequirementSet old = uuidToSet.get(set.getUuid());
 
 		if (old != null) {
-			uuidsByCategoryAndName.remove(old.getCategory() + " " + old.getName());
-			uuidsByCategoryAndName.put(requirementSet.getCategory() + " " + requirementSet.getName(), requirementSet.getUuid());
-			requirementSetsByUuid.replace(requirementSet.getUuid(), requirementSet);
+			fullNameToSet.remove(getFullName(old));
+			fullNameToSet.put(getFullName(set), set);
+			uuidToSet.replace(set.getUuid(), set);
 			return true;
 		} else {
 			return false;

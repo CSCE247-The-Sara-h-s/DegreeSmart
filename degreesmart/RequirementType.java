@@ -1,6 +1,6 @@
 package degreesmart;
 
-public enum RequirementSetCategory {
+public enum RequirementType {
 	CAROLINA_CORE,
 	MAJOR,
 	MINOR,

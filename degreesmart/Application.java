@@ -11,7 +11,7 @@ public class Application {
 
     private Application() {
         courseList = CourseList.getInstance();
-        requirementSetList = RequirementSetList.getInstance();
+        requirementSetList = RequirementSetList.getInstance(courseList.getCourses());
         userList = UserList.getInstance(courseList.getCourses(), requirementSetList.getRequirementSets());
         activeUser = userList.getGuest();
     }
@@ -191,6 +191,20 @@ public class Application {
         return null;
     }
 
+    public ArrayList<Administrator> getAdministrators() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getAdministrators();
+        }
+        return null;
+    }
+
+    public ArrayList<Parent> getParents() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getParents();
+        }
+        return null;
+    }
+
     public ArrayList<User> getUnapprovedAdvisors() {
         return userList.getUsers();
     }
@@ -236,27 +250,39 @@ public class Application {
     }
 
     public ArrayList<RequirementSet> getRequirementSets() {
-        return requirementSetList.getRequirementSets();
+        if (userLoggedIn()) {
+            return requirementSetList.getRequirementSets();
+        }
+        return null;
     }
 
-    public ArrayList<RequirementSet> getRequirementSets(RequirementSetCategory category) {
+    public ArrayList<RequirementSet> getRequirementSets(RequirementType category) {
         return requirementSetList.getRequirementSets();
     }
     
-    public RequirementSet getRequirementSet(String name, RequirementSetCategory category) {
-        return requirementSetList.getRequirementSets().get(0);
-    }
-
-    public RequirementSet getCarolinaCore() {
+    public RequirementSet getRequirementSet(String name, RequirementType category) {
         return requirementSetList.getRequirementSets().get(0);
     }
 
     public ArrayList<RequirementSet> getMajors() {
-        return requirementSetList.getRequirementSets();
+        if (userLoggedIn()) {
+             return requirementSetList.getMajors();
+        }
+        return null;
+    }
+
+    public ArrayList<RequirementSet> getMinors() {
+        if (userLoggedIn()) {
+             return requirementSetList.getMinors();
+        }
+        return null;
     }
 
     public ArrayList<RequirementSet> getApplicationAreas() {
-        return requirementSetList.getRequirementSets();
+        if (userLoggedIn()) {
+             return requirementSetList.getApplicationAreas();
+        }
+        return null;
     }
 
     public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
@@ -384,9 +410,9 @@ public class Application {
         }
     }
 
-    public RequirementSet createRequirementSet(RequirementSetCategory category, String name) {
+    public RequirementSet createRequirementSet(String name, RequirementType type) {
         if (activeUser instanceof Administrator) {
-            return requirementSetList.createRequirementSet(category, name);
+            return requirementSetList.createRequirementSet(name, type);
         }
         return null;
     }
@@ -403,7 +429,6 @@ public class Application {
         }
     }
 
-    // Ignore everything below this line
     public void selectMajor() {
 
     }
