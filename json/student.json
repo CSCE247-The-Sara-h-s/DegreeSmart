@@ -10,12 +10,12 @@
         "usc_id": "R12345678",
         "advisor": "cefb8873-3961-4cbb-828e-171daf42f723",
         "parents": [],
-        "access_requests": ["b8291586-30a8-46b1-beeb-bc147c15f735", "0ca6019b-9457-410e-bba4-10181802c042", "baada357-e763-472f-bf51-65f83f36083a"],
+        "access_requests": [],
         "advising_notes": [
             {
                 "note": "You're losing your scholarship!",
                 "author": "cefb8873-3961-4cbb-828e-171daf42f723",
-                "time": "2024-02-28T00:01:42.719035500-05:00[America/New_York]"
+                "time": "17 March 2024 02:37:22 EDT"
             }
         ],
         "scholarships": [],
@@ -40,13 +40,13 @@
         "email_address": "Hdawson@email.sc.edu",
         "usc_id": "P87654321",
         "advisor": "ccee0619-484b-4ece-a5b0-188ba7a54c3a",
-        "parents": [],
-        "access_requests": ["b8291586-30a8-46b1-beeb-bc147c15f735", "0ca6019b-9457-410e-bba4-10181802c042", "baada357-e763-472f-bf51-65f83f36083a"],
+        "parents": ["baada357-e763-472f-bf51-65f83f36083a"],
+        "access_requests": ["b8291586-30a8-46b1-beeb-bc147c15f735"],
         "advising_notes": [
             {
                 "note": "Hey",
                 "author": "ccee0619-484b-4ece-a5b0-188ba7a54c3a",
-                "time": "2024-02-28T00:01:42.719035500-05:00[America/New_York]"
+                "time": "17 March 2024 02:37:22 EDT"
             }
         ],
         "scholarships": [],
@@ -71,13 +71,13 @@
         "email_address": "Mkate@email.sc.edu",
         "usc_id": "L22334567",
         "advisor": "8e9ae814-bf29-4cc7-ac40-462687a1c9b2",
-        "parents": [],
-        "access_requests": ["b8291586-30a8-46b1-beeb-bc147c15f735", "0ca6019b-9457-410e-bba4-10181802c042", "baada357-e763-472f-bf51-65f83f36083a"],
+        "parents": ["baada357-e763-472f-bf51-65f83f36083a", "0ca6019b-9457-410e-bba4-10181802c042"],
+        "access_requests": ["b8291586-30a8-46b1-beeb-bc147c15f735"],
         "advising_notes": [
             {
                 "note": "Good job!",
                 "author": "8e9ae814-bf29-4cc7-ac40-462687a1c9b2",
-                "time": "2024-02-28T00:01:42.719035500-05:00[America/New_York]"
+                "time": "17 March 2024 02:37:22 EDT"
             }
         ],
         "scholarships": [],
