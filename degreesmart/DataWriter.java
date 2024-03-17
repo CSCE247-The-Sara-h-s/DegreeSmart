@@ -63,7 +63,69 @@ public class DataWriter extends DataConstants {
 		JSONArray studentsJSON = new JSONArray();
 
 		for (Student student : UserList.getInstance().getStudents()) {
-			studentsJSON.add(userToJSON(student));
+			JSONObject studentJSON = userToJSON(student);
+			studentJSON.put(STUDENT_USC_ID, student.getUscId());
+
+			if (student.getAdvisor() != null) {
+				studentJSON.put(STUDENT_ADVISOR, student.getAdvisor().getUuid().toString());
+			}
+
+			JSONArray parentsJSON = new JSONArray();
+			for (Parent parent : student.getParents()) {
+				parentsJSON.add(parent.getUuid().toString());
+			}
+			studentJSON.put(STUDENT_PARENTS, parentsJSON);
+
+			JSONArray requestsJSON = new JSONArray();
+			for (Parent parent : student.getAccessRequests()) {
+				requestsJSON.add(parent.getUuid().toString());
+			}
+			studentJSON.put(STUDENT_ACCESS_REQUESTS, requestsJSON);
+
+			JSONArray notesJSON = new JSONArray();
+			for (AdvisingNote advisingNote : student.getAdvisingNotes()) {
+				JSONObject noteJSON = new JSONObject();
+				noteJSON.put(ADVISING_NOTE_NOTE, advisingNote.getNote());
+				noteJSON.put(ADVISING_NOTE_AUTHOR, advisingNote.getAuthor().getUuid().toString());
+				noteJSON.put(ADVISING_NOTE_TIME, advisingNote.getTimeString());
+				notesJSON.add(noteJSON);
+			}
+			studentJSON.put(STUDENT_ADVISING_NOTES, notesJSON);
+
+			JSONArray scholarshipsJSON = new JSONArray();
+			// for (Scholarship scholarship : student.getScholarships()) {
+			// 	scholarshipsJSON.add(scholarship.getUuid().toString());
+			// }
+			studentJSON.put(STUDENT_SCHOLARSHIPS, scholarshipsJSON);
+
+			JSONArray requirementSetsJSON = new JSONArray();
+			for (RequirementSet set : student.getGraduationPlan().getRequirementSets()) {
+				requirementSetsJSON.add(set.getUuid().toString());
+			}
+			studentJSON.put(STUDENT_REQUIREMENT_SETS, requirementSetsJSON);
+
+			JSONArray completedCoursesJSON = new JSONArray();
+			for (CompletedCourse completedCourse : student.getCompletedCourses()) {
+				JSONObject completedCourseJSON = new JSONObject();
+				completedCourseJSON.put(STUDENT_COURSE, completedCourse.getCourse().getUuid().toString());
+				completedCourseJSON.put(STUDENT_COURSE_GRADE, completedCourse.getGrade().name());
+				completedCourseJSON.put(STUDENT_COURSE_SEMESTER, completedCourse.getSemester().name());
+				completedCourseJSON.put(STUDENT_COURSE_YEAR, ((Integer)completedCourse.getYear()).toString());
+				completedCoursesJSON.add(completedCourseJSON);
+			}
+			studentJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesJSON);
+
+			JSONArray plannedCoursesJSON = new JSONArray();
+			for (PlannedCourse plannedCourse : student.getPlannedCourses()) {
+				JSONObject plannedCourseJSON = new JSONObject();
+				plannedCourseJSON.put(STUDENT_COURSE, plannedCourse.getCourse().getUuid().toString());
+				plannedCourseJSON.put(STUDENT_COURSE_SEMESTER, plannedCourse.getTerm().getSemester().name());
+				plannedCourseJSON.put(STUDENT_COURSE_YEAR, ((Integer)plannedCourse.getTerm().getYear()).toString());
+				plannedCoursesJSON.add(plannedCourseJSON);
+			}
+			studentJSON.put(STUDENT_PLANNED_COURSES, plannedCoursesJSON);
+
+			studentsJSON.add(studentJSON);
 		}
 
 		try {

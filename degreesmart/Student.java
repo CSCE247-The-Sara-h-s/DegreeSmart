@@ -88,6 +88,10 @@ public class Student extends User {
     return completedCourses.remove(completedCourse);
   }
 
+  public ArrayList<PlannedCourse> getPlannedCourses() {
+    return plannedCourses;
+  }
+
   public boolean addPlannedCourse(Course course, Semester semester, int year) {
     return plannedCourses.add(new PlannedCourse(course, semester, year));
   }

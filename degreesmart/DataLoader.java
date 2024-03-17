@@ -167,9 +167,11 @@ public class DataLoader extends DataConstants {
 			users.add(student);
 			student.setPreferredName(preferredName);
 			student.setUscId(uscId);
-			Advisor advisor = uuidToAdvisor.get(UUID.fromString(advisorStr));
-			student.setAdvisor(advisor);
-			advisor.addAssignedStudent(student);
+			if (advisorStr != null && advisorStr.length() != 0) {
+				Advisor advisor = uuidToAdvisor.get(UUID.fromString(advisorStr));
+				student.setAdvisor(advisor);
+				advisor.addAssignedStudent(student);
+			}
 
 			for (int k = 0; k < parents.size(); k++) {
 				String uuid = (String) parents.get(k);
