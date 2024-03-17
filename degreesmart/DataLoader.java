@@ -67,7 +67,8 @@ public class DataLoader extends DataConstants {
 				String emailAddress = (String)studentJSON.get(USER_EMAIL_ADDRESS);
 				String uscId = (String)studentJSON.get(STUDENT_USC_ID);
 
-				Student student = new Student(uuid, username, password, emailAddress, firstName, lastName, uscId);
+				Student student = new Student(uuid, username, password, emailAddress, firstName, lastName);
+				student.setUscId(uscId);
 				uuidToUser.put(student.getUuid(), student);
 
 				users.add(student);

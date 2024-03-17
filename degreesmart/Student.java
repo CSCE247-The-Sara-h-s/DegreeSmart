@@ -14,11 +14,9 @@ public class Student extends User {
   private ArrayList<CompletedCourse> completedCourses;
   private GraduationPlan graduationPlan;
 
-  public Student(UUID uuid, String username, String password, String email, String firstName, String lastName, 
-      String uscId) {
+  public Student(UUID uuid, String username, String password, String email, String firstName, String lastName) {
     super(uuid, username, password, email, firstName, lastName);
     role = Role.STUDENT;
-    this.uscId = uscId;
 
     parents = new ArrayList<Parent>();
     accessRequests = new ArrayList<Parent>();
