@@ -205,6 +205,27 @@ public class DataLoader extends DataConstants {
 				String uuid = (String) student_requirementSets.get(k);
 				student.getGraduationPlan().addRequirementSet(uuidToSet.get(UUID.fromString(uuid)));
 			}
+
+			for (int k = 0; k < completedCourses.size(); k++) {
+				JSONObject completedCourse = (JSONObject) completedCourses.get(k);
+				String course = (String) completedCourse.get(STUDENT_COURSE);
+				String grade = (String) completedCourse.get(STUDENT_COURSE_GRADE);
+				String semester = (String) completedCourse.get(STUDENT_COURSE_SEMESTER);
+				String year = (String) completedCourse.get(STUDENT_COURSE_YEAR);
+
+				student.addCompletedCourse(uuidToCourse.get(UUID.fromString(course)), 
+					Grade.valueOf(grade), Semester.valueOf(semester), Integer.parseInt(year));
+			}
+
+			for (int k = 0; k < plannedCourses.size(); k++) {
+				JSONObject plannedCourse = (JSONObject) plannedCourses.get(k);
+				String course = (String) plannedCourse.get(STUDENT_COURSE);
+				String semester = (String) plannedCourse.get(STUDENT_COURSE_SEMESTER);
+				String year = (String) plannedCourse.get(STUDENT_COURSE_YEAR);
+
+				student.addPlannedCourse(uuidToCourse.get(UUID.fromString(course)),
+					Semester.valueOf(semester), Integer.parseInt(year));
+			}
 		}
 
 		return users;

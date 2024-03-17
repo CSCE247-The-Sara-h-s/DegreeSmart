@@ -13,6 +13,7 @@ public class DegreeSmartUI {
 
 	public void run() {
 		ArrayList<Runnable> scenarios = new ArrayList<>(); // https://stackoverflow.com/a/67292304
+		scenarios.add(() -> scriptedScenarioThree());
 		scenarios.add(() -> scriptedScenarioOne());
 		scenarios.add(() -> scriptedScenarioTwo());
 
@@ -117,7 +118,7 @@ public class DegreeSmartUI {
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
 
-		System.out.println("\n Creating a new Student acccount\n");
+		System.out.println("\n Creating a new Advisor acccount\n");
 		do {
 			if (newUsername.length() != 0) {
 				System.out.println("\n '" + newUsername + "' is already in use! "
@@ -136,9 +137,55 @@ public class DegreeSmartUI {
 				newPassword = stdin.nextLine();
 			} while (newPassword.length() == 0);
 
-			application.createAccount(Role.STUDENT, newUsername, newPassword, "Test_Email", "Brax", "West");
+			application.createAccount(
+				Role.ADVISOR, newUsername, newPassword, "osbert_odden@email.sc.edu", "Osbert", "Odden");
 		} while (!application.userLoggedIn());
 		System.out.println("\n Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
+		application.logOut();
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+	}
+
+	public void scriptedScenarioThree() {
+		Scanner stdin = new Scanner(System.in);
+		User user = null;
+
+		for (User u : UserList.getInstance().getUsers()) {
+			if (u.getFirstName().equals("Osbert") && u.getLastName().equals("Odden")) {
+				user = u;
+			}
+		}
+
+		if (user == null) {
+			return;
+		}
+
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Attempting to login with username='" + user.getUsername()
+			+ "', password='" + user.getPassword() + "'");
+		application.logIn(user.getUsername(), user.getPassword());
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		UserList.getInstance().deleteUser(user);
+		for (User u : UserList.getInstance().getAdvisors()) {
+			if (u.getFirstName().equals("Osbert") && u.getLastName().equals("Odden")) {
+				System.out.println(u);
+			}
+		}
+
+		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
+		application.logOut();
+		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
 	}

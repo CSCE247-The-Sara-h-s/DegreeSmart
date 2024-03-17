@@ -30,7 +30,7 @@ public abstract class DataConstants {
 	protected static final String STUDENT_PLANNED_COURSES = "planned_courses";
 	protected static final String STUDENT_COURSE = "course";
 	protected static final String STUDENT_COURSE_GRADE = "grade";
-	protected static final String STUDENT_COURSE_SEMESTER = "semeseter";
+	protected static final String STUDENT_COURSE_SEMESTER = "semester";
 	protected static final String STUDENT_COURSE_YEAR = "year";
 	protected static final String COURSE_UUID = "uuid";
 	protected static final String COURSE_SUBJECT = "subject";

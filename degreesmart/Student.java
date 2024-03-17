@@ -12,6 +12,7 @@ public class Student extends User {
   private ArrayList<AdvisingNote> advisingNotes;
   private ArrayList<Scholarship> scholarships;
   private ArrayList<CompletedCourse> completedCourses;
+  private ArrayList<PlannedCourse> plannedCourses;
   private GraduationPlan graduationPlan;
 
   public Student(UUID uuid, String username, String password, String email, String firstName, String lastName) {
@@ -23,6 +24,7 @@ public class Student extends User {
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
     completedCourses = new ArrayList<CompletedCourse>();
+    plannedCourses = new ArrayList<PlannedCourse>();
     graduationPlan = new GraduationPlan();
   }
 
@@ -84,6 +86,10 @@ public class Student extends User {
 
   public boolean removeCompletedCourse(CompletedCourse completedCourse) {
     return completedCourses.remove(completedCourse);
+  }
+
+  public boolean addPlannedCourse(Course course, Semester semester, int year) {
+    return plannedCourses.add(new PlannedCourse(course, semester, year));
   }
 
   public ArrayList<AdvisingNote> getAdvisingNotes() {
@@ -202,6 +208,16 @@ public class Student extends User {
       transcript = "\n\t\t   -  " + String.join("\n\t\t   -  ", completedCourseList);
     }
 
+    ArrayList<String> plannedCourseList = new ArrayList<String>();
+    for (PlannedCourse c : plannedCourses) {
+        plannedCourseList.add(c.toString());
+    }
+
+    String plannedCourse = "";
+    if (plannedCourses.size() > 0) {
+      plannedCourse = "\n\t\t   -  " + String.join("\n\t\t   -  ", plannedCourseList);
+    }
+
     ArrayList<String> requirements = new ArrayList<String>();
     for (RequirementSet req : graduationPlan.getRequirementSets()) {
       requirements.add(req.getType() + " - " + req.getName());
@@ -223,7 +239,7 @@ public class Student extends User {
       + "   Attempted Hours: " + getAttemptedHours() + "\n"
       + "       Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
       + " Completed Courses: " + transcript + "\n"
-      + "   Graduation Plan: " + " " + "\n";
+      + "   Planned Courses: " + plannedCourse + "\n";
   }
 
   public boolean equals(Object object) {

@@ -48,4 +48,8 @@ public class Term implements Comparable<Term> {
 			return semester.compareTo(term.getSemester());
 		}
 	}
+
+	public String toString() {
+		return semester + " " + year;
+	}
 }

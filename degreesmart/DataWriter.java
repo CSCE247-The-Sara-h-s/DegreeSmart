@@ -59,6 +59,22 @@ public class DataWriter extends DataConstants {
 		}
 	}
 
+	public static void saveStudents() {
+		JSONArray studentsJSON = new JSONArray();
+
+		for (Student student : UserList.getInstance().getStudents()) {
+			studentsJSON.add(userToJSON(student));
+		}
+
+		try {
+			FileWriter file = new FileWriter(STUDENT_FILE);
+			file.write(studentsJSON.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private static JSONObject userToJSON(User user) {
 		JSONObject userJSON = new JSONObject();
 
