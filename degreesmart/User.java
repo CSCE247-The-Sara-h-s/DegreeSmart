@@ -19,7 +19,7 @@ public abstract class User {
     this.emailAddress = emailAddress;
     this.firstName = firstName;
     this.lastName = lastName;
-    role = Role.USER;
+    role = Role.GUEST;
   }
 
   public UUID getUuid() {

@@ -8,12 +8,12 @@ public class Advisor extends User {
 
   public Advisor(UUID uuid, String username, String password, String email, String firstName, String lastName) {
     super(uuid, username, password, email, firstName, lastName);
-    role = Role.USER;
+    unsetAdvisorRole();
     assignedStudents = new ArrayList<Student>();
   }
 
   public void unsetAdvisorRole() {
-    role = Role.USER;
+    role = Role.GUEST;
   }
 
   public void setAdvisorRole() {

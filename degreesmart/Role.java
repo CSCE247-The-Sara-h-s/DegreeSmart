@@ -1,7 +1,7 @@
 package degreesmart;
 
 public enum Role {
-	USER,
+	GUEST,
 	ADMINISTRATOR,
 	PARENT,
 	STUDENT,
