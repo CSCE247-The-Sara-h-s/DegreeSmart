@@ -37,14 +37,13 @@ public class UserList {
 
     public User getGuest() {
         if (guest == null) {
-            UUID uuid = UUID.fromString(UUID.randomUUID().toString().replaceAll("[a-zA-Z0-9]", "0"));
-            guest = new Guest(uuid, "GUEST_USER");
+            guest = new Guest(UUID.fromString(UUID.randomUUID().toString().replaceAll("[a-zA-Z0-9]", "0")));
         }
 
         return guest;
     }
 
-    public UUID getNextUuid() {
+    private UUID getNextUuid() {
 		UUID uuid;
 		do {
 			uuid = UUID.randomUUID();
@@ -97,11 +96,15 @@ public class UserList {
         return usersByUsername.get(username);
     }
 
+    public Student getStudent(String uscId) {
+        return studentsByUscId.get(uscId);
+    }
+
     public boolean createUser(User user) {
         boolean created = user != null && !users.contains(user) && users.add(user);
 
         if (created) {
-			usersByUuid.put(user.getUuid(), user);
+            usersByUuid.put(user.getUuid(), user);
             usersByUsername.put(user.getUsername(), user);
 
             switch (user.getRole()) {
@@ -114,9 +117,37 @@ public class UserList {
                     advisors.add((Advisor)user);
                     break;
             }
-		}
+        }
 
         return created;
+    }
+
+    public void createUser(Role role, String username, String password, String email, String firstName, String lastName) {
+        User user = null;
+        UUID uuid = getNextUuid();
+
+        switch (role) {
+            case ADMINISTRATOR:
+                user = new Administrator(uuid, username, password, email, firstName, lastName);
+                break;
+            case ADVISOR:
+            case UNAPPROVED_ADVISOR:
+                user = new Advisor(uuid, username, password, email, firstName, lastName);
+                advisors.add((Advisor)user);
+                break;
+            case STUDENT:
+                user = new Student(uuid, username, password, email, firstName, lastName);
+                students.add((Student)user);
+                break;
+            case PARENT:
+                user = new Parent(uuid, username, password, email, firstName, lastName);
+                break;
+        }
+
+        if (user != null) {
+            usersByUuid.put(user.getUuid(), user);
+            usersByUsername.put(user.getUsername(), user);
+        }
     }
 
     public boolean deleteUser(User user) {
@@ -141,24 +172,26 @@ public class UserList {
         return removed;
     }
 
-    public boolean updateUsername(User user) {
+    public boolean changeUsername(User user, String username) {
         boolean shouldChange = user != null && users.contains(user)
             && !usersByUsername.containsKey(user.getUsername());
 
         if (shouldChange) {
-            usersByUsername.remove(getUser(user.getUuid()).getUsername());
+            usersByUsername.remove(user.getUsername());
+            user.setUsername(username);
             usersByUsername.put(user.getUsername(), user);
         }
 
         return shouldChange;
     }
 
-    public boolean updateUscId(Student student) {
+    public boolean changeUscId(Student student, String uscId) {
         boolean shouldChange = student != null && users.contains(student)
             && !studentsByUscId.containsKey(student.getUscId());
 
         if (shouldChange) {
             studentsByUscId.remove(student.getUscId());
+            student.setUscId(uscId);
             studentsByUscId.put(student.getUscId(), student);
         }
 

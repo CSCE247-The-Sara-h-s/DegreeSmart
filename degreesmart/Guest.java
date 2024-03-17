@@ -3,8 +3,14 @@ package degreesmart;
 import java.util.UUID;
 
 public class Guest extends User {
-	public Guest(UUID uuid, String username) {
+	public Guest(UUID uuid) {
 		super(uuid, "", "", "", "", "");
+	}
+
+	public String toString() {
+		return ""
+		+ "            Role: " + role + "\n"
+		+ "            UUID: " + getUuid() + "\n";
 	}
 
 	public boolean equals(Object object) {
