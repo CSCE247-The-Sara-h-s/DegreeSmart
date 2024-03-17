@@ -27,7 +27,7 @@ public class Application {
         return activeUser;
     }
 
-    public User createAccount(Role role, String username, String password, String emailAddress, String firstName,
+    public boolean createAccount(Role role, String username, String password, String emailAddress, String firstName,
             String lastName) {
         boolean canCreate = !userLoggedIn() && role != null
             && validUsername(username) && validPassword(password) && validEmailAddress(emailAddress)
@@ -35,9 +35,10 @@ public class Application {
 
         if (canCreate) {
            userList.createUser(role, username, password, emailAddress, firstName, lastName);
+           activeUser = (userList.getUser(username) == null)? activeUser : userList.getUser(username);
         }
 
-        return ((canCreate)? userList.getUser(username) : activeUser);
+        return canCreate;
     }
 
     public boolean userLoggedIn() {
@@ -75,11 +76,25 @@ public class Application {
         return name != null;
     }
 
+    private boolean validUscId(String uscId) {
+        return uscId != null && userList.getStudent(uscId) == null;
+    }
+
     public boolean changeUsername(String username) {
         boolean canChange = userLoggedIn() && validUsername(username);
 
         if (canChange) {
             userList.changeUsername(activeUser, username);
+        }
+
+        return canChange;
+    }
+
+    public boolean changeUscId(String uscId) {
+        boolean canChange = userLoggedIn() && validUscId(uscId) && activeUser.getRole() == Role.STUDENT;
+
+        if (canChange) {
+            userList.changeUscId((Student)activeUser, uscId);
         }
 
         return canChange;
@@ -95,7 +110,7 @@ public class Application {
         return canChange;
     }
 
-    public boolean setFirstName(String firstName) {
+    public boolean changeFirstName(String firstName) {
         boolean canChange = userLoggedIn() && validName(firstName);
 
         if (canChange) {
@@ -105,7 +120,7 @@ public class Application {
         return canChange;
     }
 
-    public boolean setLastName(String lastName) {
+    public boolean changeLastName(String lastName) {
         boolean canChange = userLoggedIn() && validName(lastName);
 
         if (canChange) {
@@ -115,7 +130,7 @@ public class Application {
         return canChange;
     }
 
-    public boolean setPreferredName(String preferredName) {
+    public boolean changePreferredName(String preferredName) {
         boolean canChange = userLoggedIn() && validName(preferredName);
 
         if (canChange) {
@@ -125,7 +140,7 @@ public class Application {
         return canChange;
     }
 
-    public boolean setEmailAddress(String emailAddress) {
+    public boolean changeEmailAddress(String emailAddress) {
         boolean canChange = userLoggedIn() && validEmailAddress(emailAddress);
 
         if (canChange) {
@@ -205,16 +220,18 @@ public class Application {
         return null;
     }
 
-    public ArrayList<User> getUnapprovedAdvisors() {
-        return userList.getUsers();
+    public ArrayList<Advisor> getUnapprovedAdvisors() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUnapprovedAdvisors();
+        }
+        return null;
     }
 
-    public ArrayList<User> getAssignedStudents() {
-        return userList.getUsers();
-    }
-
-    public ArrayList<User> getUnassignedStudents() {
-        return userList.getUsers();
+    public ArrayList<Student> getUnassignedStudents() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUnassignedStudents();
+        }
+        return null;
     }
 
     public ArrayList<Course> getCourses() {

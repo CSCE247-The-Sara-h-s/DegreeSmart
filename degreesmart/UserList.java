@@ -104,6 +104,30 @@ public class UserList {
         return parents;
     }
 
+    public ArrayList<Advisor> getUnapprovedAdvisors() {
+        ArrayList<Advisor> unapprovedAdvisors = new ArrayList<Advisor>();
+
+        for (Advisor advisor : advisors) {
+            if (advisor.getRole() == Role.UNAPPROVED_ADVISOR) {
+                unapprovedAdvisors.add(advisor);
+            }
+        }
+
+        return unapprovedAdvisors;
+    }
+
+    public ArrayList<Student> getUnassignedStudents() {
+        ArrayList<Student> unassignedStudents = new ArrayList<Student>();
+
+        for (Student student : students) {
+            if (student.getRole() == Role.UNAPPROVED_ADVISOR) {
+                unassignedStudents.add(student);
+            }
+        }
+
+        return unassignedStudents;
+    }
+
     private User getUser(UUID uuid) {
         return usersByUuid.get(uuid);
     }

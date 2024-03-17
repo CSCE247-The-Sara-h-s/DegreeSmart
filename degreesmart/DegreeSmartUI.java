@@ -34,8 +34,8 @@ public class DegreeSmartUI {
 		String invalidPassword = "password";
 		String adminUsername = "Rgreen";
 		String adminPassword = "PurpleDaisy22";
-		String studentUsername = "brax_west";
-		String studentPassword = "password";
+		String studentUsername = "Hdawson";
+		String studentPassword = "ILoveFootball35";
 
 		System.out.println(" Scripted Scenario One\t(Press ENTER to advance)\n\n");
 		System.out.println(" Current User");
@@ -86,10 +86,49 @@ public class DegreeSmartUI {
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
 
+		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
+		application.logOut();
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
 	}
 
 	public void scriptedScenarioTwo() {
+		Scanner stdin = new Scanner(System.in);
+		String adminUsername = "Rgreen";
+		String adminPassword = "PurpleDaisy22";
+		String newUsername = "";
+		String newPassword = "";
 
+		System.out.println(" Scripted Scenario Two\t(Press ENTER to advance)\n\n");
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Creating a new Student acccount\n");
+		do {
+			if (newUsername.length() != 0) {
+				System.out.println("\n '" + newUsername + "' is already in use! "
+					+ "Please choose a different username.\n");
+			}
+			newUsername = "";
+			newPassword = "";
+
+			do {
+				System.out.print(" Enter a username:  ");
+				newUsername = stdin.nextLine();
+			} while (newUsername.length() == 0);
+
+			do {
+				System.out.print(" Enter a password:  ");
+				newPassword = stdin.nextLine();
+			} while (newPassword.length() == 0);
+
+			application.createAccount(Role.STUDENT, newUsername, newPassword, "Test_Email", "Brax", "West");
+		} while (!application.userLoggedIn());
+		System.out.println("\n Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
 	}
 
 	public static void main(String args[]) {

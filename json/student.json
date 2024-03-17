@@ -91,36 +91,5 @@
             }
         ],
         "planned_courses": []
-    },
-    {
-        "uuid": "d4a39b23-0c1b-4c04-86cc-614e9b2ea728",
-        "username": "brax_west",
-        "password": "password",
-        "first_name": "Brax",
-        "preferred_name": "",
-        "last_name": "West",
-        "email_address": "braxwest@email.sc.edu",
-        "usc_id": "A123456789",
-        "advisor": "8e9ae814-bf29-4cc7-ac40-462687a1c9b2",
-        "parents": [],
-        "access_requests": [],
-        "advising_notes": [
-            {
-                "note": "URGENT - Please select a course for your GFL elective",
-                "author": "8e9ae814-bf29-4cc7-ac40-462687a1c9b2",
-                "time": "2024-03-15T00:01:42.719035500-05:00[America/New_York]"
-            }
-        ],
-        "scholarships": [],
-        "requirement_sets": [],
-        "completed_courses": [
-            {
-                "course": "1c265e6f-3516-4445-b52e-868c6b630886",
-                "grade": "B",
-                "semester": "SPRING",
-                "year": 2023
-            }
-        ],
-        "planned_courses": []
     }
 ]
