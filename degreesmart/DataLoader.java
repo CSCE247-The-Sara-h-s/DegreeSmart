@@ -193,7 +193,10 @@ public class DataLoader extends DataConstants {
 				String author = (String) advisingNote.get(ADVISING_NOTE_AUTHOR);
 				String time = (String) advisingNote.get(ADVISING_NOTE_TIME);
 
-				student.addAdvisingNote(new AdvisingNote(uuidToAdvisor.get(UUID.fromString(author)), note, time));
+				Advisor noteAuthor = 
+					(author == null || author.length() == 0)? null : uuidToAdvisor.get(UUID.fromString(author));
+
+				student.addAdvisingNote(new AdvisingNote(noteAuthor, note, time));
 			}
 
 			// for (int k = 0; k < scholarships.size(); k++) {

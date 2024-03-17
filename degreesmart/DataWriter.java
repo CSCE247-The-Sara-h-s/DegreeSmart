@@ -86,7 +86,8 @@ public class DataWriter extends DataConstants {
 			for (AdvisingNote advisingNote : student.getAdvisingNotes()) {
 				JSONObject noteJSON = new JSONObject();
 				noteJSON.put(ADVISING_NOTE_NOTE, advisingNote.getNote());
-				noteJSON.put(ADVISING_NOTE_AUTHOR, advisingNote.getAuthor().getUuid().toString());
+				noteJSON.put(ADVISING_NOTE_AUTHOR, 
+					(advisingNote.getAuthor() == null)? null : advisingNote.getAuthor().getUuid().toString());
 				noteJSON.put(ADVISING_NOTE_TIME, advisingNote.getTimeString());
 				notesJSON.add(noteJSON);
 			}

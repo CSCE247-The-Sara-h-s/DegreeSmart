@@ -42,10 +42,11 @@ public class Application {
     }
 
     public boolean deleteAccount(User user) {
+        boolean deleted = false;
         if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.deleteUser(user);
+            deleted = userList.deleteUser(user);
         }
-        return false;
+        return deleted;
     }
 
     public boolean deleteAccount() {
@@ -61,14 +62,14 @@ public class Application {
         return !userList.getGuest().equals(activeUser);
     }
 
-    public User logIn(String username, String password) {
+    public boolean logIn(String username, String password) {
         if (!userLoggedIn()) {
             User user = userList.getUser(username);
             if (user != null && user.getPassword().equals(password)) {
                 activeUser = user;
             }
         }
-        return activeUser;
+        return userLoggedIn();
     }
 
     public void logOut() {
@@ -201,6 +202,13 @@ public class Application {
         return null;
     }
 
+    public ArrayList<Student> getUnassignedStudents() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUnassignedStudents();
+        }
+        return null;
+    }
+
     public Student getStudentByUsername(String username) {
         if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
             return (Student)userList.getUser(username);
@@ -222,6 +230,13 @@ public class Application {
         return null;
     }
 
+    public ArrayList<Advisor> getUnapprovedAdvisors() {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.getUnapprovedAdvisors();
+        }
+        return null;
+    }
+
     public ArrayList<Administrator> getAdministrators() {
         if (activeUser.getRole() == Role.ADMINISTRATOR) {
             return userList.getAdministrators();
@@ -236,50 +251,55 @@ public class Application {
         return null;
     }
 
-    public ArrayList<Advisor> getUnapprovedAdvisors() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.getUnapprovedAdvisors();
+    public boolean approveAdvisor(Advisor advisor) {
+        boolean canApprove = activeUser.getRole() == Role.ADMINISTRATOR;
+        if (canApprove) {
+            advisor.setAdvisorRole();
         }
-        return null;
+        return canApprove;
     }
 
-    public ArrayList<Student> getUnassignedStudents() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.getUnassignedStudents();
+    public boolean assignStudent(Student student) {
+        boolean canAssign = activeUser.getRole() == Role.ADVISOR;
+        if (canAssign) {
+            ((Advisor)activeUser).addAssignedStudent(student);
+            student.setAdvisor((Advisor)activeUser);
         }
-        return null;
+        return canAssign;
+    }
+
+    public boolean addAssignedStudent(Advisor advisor, Student student) {
+        boolean canAssign = activeUser.getRole() == Role.ADMINISTRATOR;
+        if (canAssign) {
+            advisor.addAssignedStudent(student);
+            student.setAdvisor(advisor);
+        }
+        return canAssign;
+    }
+
+    public boolean removeAssignedStuent(Student student) {
+        boolean canAssign = activeUser.getRole() == Role.ADVISOR;
+        if (canAssign) {
+           ((Advisor)activeUser).removeAssignedStudent(student);
+           student.setAdvisor(null);
+        }
+        return canAssign;
+    }
+
+    public boolean removeAssignedStuent(Advisor advisor, Student student) {
+        boolean canAssign = activeUser.getRole() == Role.ADMINISTRATOR;
+        if (canAssign) {
+           advisor.removeAssignedStudent(student);
+           student.setAdvisor(null);
+        }
+        return canAssign;
     }
 
     public ArrayList<Course> getCourses() {
-        return courseList.getCourses();
-    }
-
-    public void approveAdvisor(Advisor advisor) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            advisor.setAdvisorRole();
+        if (userLoggedIn()) {
+            return courseList.getCourses();
         }
-    }
-
-    public void addAssignedStudent(Advisor advisor, Student student) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR
-                || (activeUser.equals(advisor) && activeUser.getRole() == Role.ADVISOR)) {
-            advisor.addAssignedStudent(student);
-        }
-    }
-
-    public void removeAssignedStuent(Advisor advisor, Student student) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR
-                || (activeUser.equals(advisor) && activeUser.getRole() == Role.ADVISOR)) {
-           advisor.removeAssignedStudent(student);
-        }
-    }
-
-    public Course getCourse(Subject subject, String number) {
-        return courseList.getCourses().get(0);
-    }
-
-    public ArrayList<Course> getCourses(Subject subject) {
-        return courseList.getCourses();
+        return null;
     }
 
     public ArrayList<RequirementSet> getRequirementSets() {
@@ -287,14 +307,6 @@ public class Application {
             return requirementSetList.getRequirementSets();
         }
         return null;
-    }
-
-    public ArrayList<RequirementSet> getRequirementSets(RequirementType category) {
-        return requirementSetList.getRequirementSets();
-    }
-    
-    public RequirementSet getRequirementSet(String name, RequirementType category) {
-        return requirementSetList.getRequirementSets().get(0);
     }
 
     public ArrayList<RequirementSet> getMajors() {
@@ -318,12 +330,36 @@ public class Application {
         return null;
     }
 
-    public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
-        return new ArrayList<Scholarship>();
+    public ArrayList<AdvisingNote> addAdvisingNote(Student student, String message) {
+        if (student != null && activeUser.getRole() == Role.ADVISOR) {
+            student.addAdvisingNote((Advisor)activeUser, message);
+            return student.getAdvisingNotes();
+        }
+        return null;
     }
 
-    public void addAdvisingNote(Student student, String message) {
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
+//  Everything above this line is done.
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
+    
+    public Course getCourse(Subject subject, String number) {
+        return courseList.getCourses().get(0);
+    }
 
+    public ArrayList<Course> getCourses(Subject subject) {
+        return courseList.getCourses();
+    }
+
+    public ArrayList<RequirementSet> getRequirementSets(RequirementType category) {
+        return requirementSetList.getRequirementSets();
+    }
+    
+    public RequirementSet getRequirementSet(String name, RequirementType category) {
+        return requirementSetList.getRequirementSets().get(0);
+    }
+
+    public ArrayList<Scholarship> getIneligibleScholarships(Student student) {
+        return new ArrayList<Scholarship>();
     }
     
     public boolean removeAdvisingNote(Student student, AdvisingNote note) {

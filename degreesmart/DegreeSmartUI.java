@@ -111,6 +111,7 @@ public class DegreeSmartUI {
 		String adminPassword = "PurpleDaisy22";
 		String newUsername = "";
 		String newPassword = "";
+		String studentId = "T59710340";
 
 		System.out.println(" Scripted Scenario Two\t(Press ENTER to advance)\n\n");
 		System.out.println(" Current User");
@@ -120,6 +121,9 @@ public class DegreeSmartUI {
 		application.logIn(adminUsername, adminPassword);
 		if (!application.userLoggedIn()) {
 			return;
+		}
+		if (application.getStudentByUscId(studentId) != null) {
+			application.getStudentByUscId(studentId).setAdvisor(null);
 		}
 		ArrayList<User> users = application.getUsers();
 		application.logOut();
@@ -161,6 +165,56 @@ public class DegreeSmartUI {
 		} while (!application.userLoggedIn());
 		System.out.println("\n Current User");
 		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
+		application.logOut();
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Attempting to login with username='" + adminUsername
+			+ "', password='" + adminPassword + "'");
+		application.logIn(adminUsername, adminPassword);
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println(" Approving Advisor: '" + newUsername + "'");
+		for (Advisor advisor : application.getUnapprovedAdvisors()) {
+			if (advisor.getUsername().equals(newUsername)) {
+				application.approveAdvisor(advisor);
+				break;
+			}
+		}
+
+		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
+		application.logOut();
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Attempting to login with username='" + newUsername
+			+ "', password='" + newPassword + "'");
+		application.logIn(newUsername, newPassword);
+		System.out.println(" Current User");
+		System.out.println(application.getActiveUser());
+		stdin.nextLine();
+
+		System.out.println("\n Searching for Student: '" + studentId + "'");
+		Student student = application.getStudentByUscId(studentId);
+		System.out.println(student);
+		stdin.nextLine();
+
+		System.out.println("\n Adding '" + studentId + "' as advisee");
+		application.assignStudent(student);
+		System.out.println(student);
+		stdin.nextLine();
+
+		System.out.println("\n Writing advising note");
+		application.addAdvisingNote(student, "Since you have already taken 2 STAT courses, "
+			+ "would you like to declare Statistics as your application area?");
+		System.out.println(student);
 		stdin.nextLine();
 
 		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");

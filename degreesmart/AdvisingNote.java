@@ -57,7 +57,7 @@ public class AdvisingNote {
   }
 
   public String toString() {
-    return author.getUsername()  + ", "
+    return ((author == null)? "(deleted user)" : author.getUsername())  + ", "
       + time.format(DateTimeFormatter.ofPattern(timeFormat))
       + " - " + note;
   }
