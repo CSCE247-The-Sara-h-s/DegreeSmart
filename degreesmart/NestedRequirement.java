@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class NestedRequirement extends Requirement {
 	private ArrayList<RequirementSet> options;
 
-	public NestedRequirement() {
+	public NestedRequirement(int choices) {
+		super(choices);
 		options = new ArrayList<RequirementSet>();
 	}
 

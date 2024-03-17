@@ -9,7 +9,28 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/* TODO - convert to Singleton */
 public class DataLoader extends DataConstants {
+	// private ArrayList<User> users;
+	// private ArrayList<Course> courses;
+	// private ArrayList<RequirementSet> requirementSets;
+	// private HashMap<UUID, User> uuidToUser;
+	// private HashMap<UUID, Course> uuidToCourse;
+	// private HashMap<UUID, RequirementSet> uuidToRequirementSet;
+	// private static DataLoader dataLoader;
+
+	// private DataLoader() {
+	// 	ArrayList<User> users = new ArrayList<User>();
+	// }
+
+	// public static DataLoader getInstance() {
+	// 	if (dataLoader == null) {
+	// 		dataLoader = new DataLoader();
+	// 	}
+		
+	// 	return dataLoader;
+	// }
+
 	public static final ArrayList<User> getUsers(
 			ArrayList<Course> courses, ArrayList<RequirementSet> requirementSets) {
 		ArrayList<User> users = new ArrayList<User>();
@@ -18,6 +39,18 @@ public class DataLoader extends DataConstants {
 		HashMap<UUID, Parent> uuidToParent = new HashMap<UUID, Parent>();
 		JSONParser parser = new JSONParser();
 		FileReader reader;
+
+		HashMap<UUID, Course> uuidToCourse = new HashMap<UUID, Course>();
+		HashMap<UUID, RequirementSet> uuidToSet = new HashMap<UUID, RequirementSet>();
+		// HashMap<UUID, Scholarship> uuidToScholarship = new HashMap<UUID, Scholarship>();
+
+		for (Course course : courses) {
+			uuidToCourse.put(course.getUuid(), course);
+		}
+
+		// for (RequirementSet requirementSet : requirementSets) {
+		// 	uuidToSet.put(requirementSet.getUuid(), requirementSet);
+		// }
 		
 		// first pass
 		JSONArray administratorsJSON = null;
@@ -71,6 +104,7 @@ public class DataLoader extends DataConstants {
 		HashMap<UUID, String> students_advisorJSON = new HashMap<UUID, String>();
 		HashMap<UUID, JSONArray> students_parentJSON = new HashMap<UUID, JSONArray>();
 		HashMap<UUID, JSONArray> accessJSON = new HashMap<UUID, JSONArray>();
+		HashMap<UUID, JSONArray> noteJSON = new HashMap<UUID, JSONArray>();
 		try {
 			reader = new FileReader(STUDENT_FILE);
 			studentsJSON = (JSONArray)new JSONParser().parse(reader);
@@ -103,6 +137,7 @@ public class DataLoader extends DataConstants {
 			uuidToStudent.put(student.getUuid(), student);
 			students_advisorJSON.put(student.getUuid(), advisor);
 			students_parentJSON.put(student.getUuid(), parents);
+			noteJSON.put(student.getUuid(), advisingNotes);
 			accessJSON.put(student.getUuid(), accessRequests);
 		}
 
@@ -150,19 +185,18 @@ public class DataLoader extends DataConstants {
 		JSONParser parser = new JSONParser();
 		FileReader reader;
 
-		JSONArray coursesJSON;
+		JSONArray coursesJSON = null;
 		try {
 			reader = new FileReader(COURSE_FILE);
-			coursesJSON = (JSONArray)new JSONParser().parse(reader);
+			coursesJSON = (JSONArray) new JSONParser().parse(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
 			
 		// first pass
-		HashMap<UUID, JSONArray> prereqJson = new HashMap<UUID, JSONArray>();
-		HashMap<UUID, JSONArray> coreqJson = new HashMap<UUID, JSONArray>();
-		for (int i = 0; i < coursesJSON.size(); i++) {
+		HashMap<UUID, JSONArray> prereqJSON = new HashMap<UUID, JSONArray>();
+		HashMap<UUID, JSONArray> coreqJSON = new HashMap<UUID, JSONArray>();
+		for (int i = 0; coursesJSON != null && i < coursesJSON.size(); i++) {
 			JSONObject courseJSON = (JSONObject) coursesJSON.get(i);
 
 			String uuid = (String) courseJSON.get(COURSE_UUID);
@@ -181,8 +215,8 @@ public class DataLoader extends DataConstants {
 			course.setDescription(description);
 
 			uuidToCourse.put(course.getUuid(), course);
-			prereqJson.put(course.getUuid(), prerequisites);
-			coreqJson.put(course.getUuid(), corequisites);
+			prereqJSON.put(course.getUuid(), prerequisites);
+			coreqJSON.put(course.getUuid(), corequisites);
 
 			for (int k = 0; k < semesters.size(); k++) {
 				String semester = (String) semesters.get(k);
@@ -194,7 +228,7 @@ public class DataLoader extends DataConstants {
 
 		// second pass
 		for (Course course : courses) {
-			JSONArray prerequisites = prereqJson.get(course.getUuid());
+			JSONArray prerequisites = prereqJSON.get(course.getUuid());
 
 			for (int i = 0; i < prerequisites.size(); i++) {
 				JSONObject prerequisite = (JSONObject) prerequisites.get(i);
@@ -202,7 +236,8 @@ public class DataLoader extends DataConstants {
 				Long choices = (Long) prerequisite.get(REQUIREMENT_CHOICES);
 				JSONArray courseOptions = (JSONArray) prerequisite.get(REQUIREMENT_OPTIONS);
 
-				CourseRequirement requirement = new CourseRequirement(Math.toIntExact(choices), Grade.valueOf(minGrade));
+				CourseRequirement requirement = new CourseRequirement(
+					Math.toIntExact(choices), Grade.valueOf(minGrade));
 
 				for (int k = 0; k < courseOptions.size(); k++) {
 					String uuid = (String) courseOptions.get(k);
@@ -213,7 +248,7 @@ public class DataLoader extends DataConstants {
 				course.addPrerequisite(requirement);
 			}
 
-			JSONArray corequisites = coreqJson.get(course.getUuid());
+			JSONArray corequisites = coreqJSON.get(course.getUuid());
 
 			for (int i = 0; i < corequisites.size(); i++) {
 				String uuid = (String) corequisites.get(i);
@@ -226,60 +261,74 @@ public class DataLoader extends DataConstants {
 		return courses;
 	}
 		
-	public static final ArrayList<RequirementSet> getRequirementSets() {
+	public static final ArrayList<RequirementSet> getRequirementSets(ArrayList<Course> courses) {
 		ArrayList<RequirementSet> requirementSets = new ArrayList<RequirementSet>();
-		HashMap<UUID, JSONArray> reqHashMap = new HashMap<UUID, JSONArray>();
-		// TODO: inititalize hashmap for requirements section
+		HashMap<UUID, RequirementSet> uuidToSet = new HashMap<UUID, RequirementSet>();
 		JSONParser parser = new JSONParser();
 		FileReader reader;
-		JSONArray requirementsJSON;
 
-		
-		try {
-			reader = new FileReader(REQUIREMENT_FILE);
-			requirementsJSON = (JSONArray)new JSONParser().parse(reader);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+		HashMap<UUID, Course> uuidToCourse = new HashMap<UUID, Course>();
+		for (Course course : courses) {
+			uuidToCourse.put(course.getUuid(), course);
 		}
 
-		// first pass -> create instance of requirementSet with uuid, name, category
-		for(int i= 0; i < requirementsJSON.size(); i++) {
-			JSONObject personJSON = (JSONObject)requirementsJSON.get(i);
+		JSONArray requirementSetsJSON = null;
+		try {
+			reader = new FileReader(REQUIREMENT_FILE);
+			requirementSetsJSON = (JSONArray) new JSONParser().parse(reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-			UUID uuid = UUID.fromString((String)personJSON.get(REQUIREMENT_SET_UUID));
-			String name = (String)personJSON.get(REQUIREMENT_SET_NAME);
-			String categoryString = (String) personJSON.get(REQUIREMENT_SET_CATEGORY);
-			RequirementSetCategory category = RequirementSetCategory.valueOf(categoryString);	
-			JSONArray requirements = (JSONArray)personJSON.get(REQUIREMENT_SET_REQUIREMENTS);
+		// first pass
+		HashMap<UUID, JSONArray> reqJSON = new HashMap<UUID, JSONArray>();
+		for (int i = 0; requirementSetsJSON != null && i < requirementSetsJSON.size(); i++) {
+			JSONObject requirementSetJSON = (JSONObject) requirementSetsJSON.get(i);
 
-			RequirementSet requirementSet = new RequirementSet(uuid, name, category);
-			reqHashMap.put(requirementSet.getUuid(), requirements);
+			String uuid = (String) requirementSetJSON.get(REQUIREMENT_SET_UUID);
+			String name = (String) requirementSetJSON.get(REQUIREMENT_SET_NAME);
+			String category = (String) requirementSetJSON.get(REQUIREMENT_SET_CATEGORY);
+			JSONArray requirements = (JSONArray) requirementSetJSON.get(REQUIREMENT_SET_REQUIREMENTS);
+
+			RequirementSet requirementSet = new RequirementSet(
+				UUID.fromString(uuid), name, RequirementSetCategory.valueOf(category));
+
+			uuidToSet.put(requirementSet.getUuid(), requirementSet);
+			reqJSON.put(requirementSet.getUuid(), requirements);
 
 			requirementSets.add(requirementSet);
 		}
 
-		// second pass -> store the requirement set from first pass with requirements of second pass in hashmap
+		// second pass
 		for (RequirementSet requirementSet : requirementSets) {
-			JSONArray requirements = reqHashMap.get(requirementSet.getUuid());
+			JSONArray requirements = reqJSON.get(requirementSet.getUuid());
 
-			for (int k = 0; k < requirements.size(); k++) {
-				JSONObject requirement = (JSONObject) requirements.get(k);
+			for (int i = 0; i < requirements.size(); i++) {
+				JSONObject requirement = (JSONObject) requirements.get(i);
+				Long choices = (Long) requirement.get(REQUIREMENT_CHOICES);
+				JSONArray options = (JSONArray) requirement.get(REQUIREMENT_OPTIONS);
+				String grade = (String) requirement.get(REQUIREMENT_GRADE);
 
-				// check for nested vs course requirement HERE 
+				Requirement req;
+				if (grade == null) {
+					req = new NestedRequirement(Math.toIntExact(choices));
 
-				// WHAT WE ORIGINALLY HAD -> this is only for nestedRequirement
-				String minGrade = (String) requirement.get(REQUIREMENT_GRADE);	// are these the correct object keys?
-				JSONArray courseOptions = (JSONArray) requirement.get(REQUIREMENT_OPTIONS);
+					for (int k = 0; k < options.size(); k++) {
+						String uuid = (String) options.get(k);
+						((NestedRequirement)req).addRequirementOption(uuidToSet.get(UUID.fromString(uuid)));
+					}
+				} else {
+					req = new CourseRequirement(Math.toIntExact(choices), Grade.valueOf(grade));
 
-				// minimum grade -> course requirement
-				// arraylist of requirement, declare new coursrequirement but put it in arraylist of requirement
-				// Requirement req = new 
-
-				//requirements.add(req);
+					for (int k = 0; k < options.size(); k++) {
+						String uuid = (String) options.get(k);
+						((CourseRequirement)req).addCourseOption(uuidToCourse.get(UUID.fromString(uuid)));
+					}
+				}
+				requirementSet.addRequirement(req);
 			}
-		} 
-		return requirementSets;
+		}
 
+		return requirementSets;
 	}
 }

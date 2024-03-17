@@ -13,6 +13,7 @@ public class RequirementSet {
 		this.uuid = uuid;
 		this.name = name;
 		this.category = category;
+		requirements = new ArrayList<Requirement>();
 	}
 
 	public UUID getUuid() {

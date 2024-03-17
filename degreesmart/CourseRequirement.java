@@ -6,11 +6,6 @@ public class CourseRequirement extends Requirement {
 	private ArrayList<Course> options;
 	private Grade grade;
 
-	public CourseRequirement() {
-		options = new ArrayList<Course>();
-		grade = Grade.F;
-	}
-
 	public CourseRequirement(int choices, Grade grade) {
 		super(choices);
 		this.grade = grade;
