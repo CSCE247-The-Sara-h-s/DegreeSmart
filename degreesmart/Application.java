@@ -378,71 +378,12 @@ public class Application {
         return new ArrayList<CompletedCourse>();
     }
 
-    public double getGpa(Student student) {
-        return 0.0;
-    }
-
-    public double getCompletedCreditHours(Student student) {
-        return 0.0;
-    }
-
-    public void sendAccessRequest(String username) {
-
-    }
-
-    public void approveAccessRequest(String username) {
-
-    }
-
-    public void ignoreAcessRequest(String username) {
-
-    }
-
-    public void setUscId() {
-        if (activeUser instanceof Administrator) {
-            Student activeStudent = (Student) activeUser;
-            activeStudent.setUscId(null);
-        }
-    }
-
-    public void getUscId() {
-
-    }
-
     public double getGpa() {
         return 0.0;
     }
 
     public double getCompletedCreditHours() {
         return 0.0;
-    }
-
-    public ArrayList<String> getAccessRequests() {
-        return new ArrayList<String>();
-    }
-
-    public void approveAccessRequest() {
-
-    }
-
-    public void ignoreAccessRequest() {
-        
-    }
-
-    public void removeParent() {
-
-    }
-
-    public ArrayList<AdvisingNote> getAdvisingNotes() {
-        return new ArrayList<AdvisingNote>();
-    }
-
-    public Advisor getAdvisor() {
-        return (Advisor)userList.getUsers().get(0);
-    }
-
-    public Parent getParent() {
-        return (Parent)userList.getUsers().get(0);
     }
 
     public void addScholarship () {

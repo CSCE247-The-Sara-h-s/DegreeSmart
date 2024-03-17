@@ -52,7 +52,6 @@ public class DataLoader extends DataConstants {
 			uuidToSet.put(requirementSet.getUuid(), requirementSet);
 		}
 		
-		// first pass
 		JSONArray administratorsJSON = null;
 		try {
 			reader = new FileReader(ADMINISTRATOR_FILE);
