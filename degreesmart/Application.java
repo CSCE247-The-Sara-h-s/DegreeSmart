@@ -41,6 +41,22 @@ public class Application {
         return canCreate;
     }
 
+    public boolean deleteAccount(User user) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return userList.deleteUser(user);
+        }
+        return false;
+    }
+
+    public boolean deleteAccount() {
+        boolean deleted = false;
+        if (userLoggedIn()) {
+            deleted = userList.deleteUser(activeUser);
+            logOut();
+        }
+        return deleted;
+    }
+
     public boolean userLoggedIn() {
         return !userList.getGuest().equals(activeUser);
     }

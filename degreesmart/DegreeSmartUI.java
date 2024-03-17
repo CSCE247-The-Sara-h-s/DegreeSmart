@@ -73,18 +73,6 @@ public class DegreeSmartUI {
 		System.out.println("          Application Areas:  " + application.getApplicationAreas().size());
 		stdin.nextLine();
 
-		for (Advisor advisor : application.getAdvisors()) {
-			System.out.println("\n" + advisor);
-		}
-
-		for (Parent parent : application.getParents()) {
-			System.out.println("\n" + parent);
-		}
-
-		for (Student student : application.getStudents()) {
-			System.out.println("\n" + student);
-		}
-
 		System.out.println("\n Logging out '" + application.getActiveUser().getUsername() + "'");
 		application.logOut();
 		System.out.println(" Current User");
@@ -119,6 +107,8 @@ public class DegreeSmartUI {
 
 	public void scriptedScenarioTwo() {
 		Scanner stdin = new Scanner(System.in);
+		String adminUsername = "Rgreen";
+		String adminPassword = "PurpleDaisy22";
 		String newUsername = "";
 		String newPassword = "";
 
@@ -127,18 +117,23 @@ public class DegreeSmartUI {
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
 
-		User user = null;
-		for (User u : UserList.getInstance().getUsers()) {
+		application.logIn(adminUsername, adminPassword);
+		if (!application.userLoggedIn()) {
+			return;
+		}
+		ArrayList<User> users = application.getUsers();
+		application.logOut();
+
+		for (User u : users) {
 			if (u.getFirstName().equals("Osbert") && u.getLastName().equals("Odden")) {
 				System.out.println(" User '" + u.getFirstName() + " " + u.getLastName() + "'"
-						+ " already exists! Deleting user...\n");
-					user = u;
+						+ " already exists! Attempting to delete user\n");
+					application.logIn(u.getUsername(), u.getPassword());
 			}
 		}
 
-		if (user != null) {
-			UserList.getInstance().deleteUser(user);
-			UserList.getInstance().saveUsers();
+		if (application.userLoggedIn() && application.deleteAccount()) {
+			System.out.println(" Account deleted\n");
 			return;
 		}
 
