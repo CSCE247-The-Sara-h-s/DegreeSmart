@@ -14,7 +14,7 @@ public class UserList {
     private Guest guest;
     private static UserList userList;
 
-    private UserList() {
+    private UserList(ArrayList<Course> courses, ArrayList<RequirementSet> requirementSets) {
         users = new ArrayList<User>();
         students = new ArrayList<Student>();
         advisors = new ArrayList<Advisor>();
@@ -22,17 +22,21 @@ public class UserList {
         usersByUsername = new HashMap<String, User>();
         studentsByUscId = new HashMap<String, Student>();
 
-        for (User user : DataLoader.getUsers()) {
+        for (User user : DataLoader.getUsers(courses, requirementSets)) {
             createUser(user);
         }
     }
 
-    public static UserList getInstance() {
+    public static UserList getInstance(ArrayList<Course> courses, ArrayList<RequirementSet> requirementSets) {
         if (userList == null) {
-			userList = new UserList();
+			userList = new UserList(courses, requirementSets);
 		}
 		
 		return userList;
+    }
+
+    public static UserList getInstance() {
+        return userList;
     }
 
     public User getGuest() {

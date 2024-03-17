@@ -4,6 +4,7 @@
         "username": "Rgreen",
         "password": "PurpleDaisy22",
         "first_name": "Rachel",
+        "preferred_name": "",
         "last_name": "Green",
         "email_address": "Rgreen@email.sc.edu"
     },
@@ -12,6 +13,7 @@
         "username": "Tmiller",
         "password": "GreenGecko77",
         "first_name": "Tyler",
+        "preferred_name": "",
         "last_name": "Miller",
         "email_address": "Tmiller@email.sc.edu"
     }

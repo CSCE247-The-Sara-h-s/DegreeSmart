@@ -10,9 +10,9 @@ public class Application {
     private static Application application;
 
     private Application() {
-        userList = UserList.getInstance();
         courseList = CourseList.getInstance();
         requirementSetList = RequirementSetList.getInstance();
+        userList = UserList.getInstance(courseList.getCourses(), requirementSetList.getRequirementSets());
         activeUser = userList.getGuest();
     }
 

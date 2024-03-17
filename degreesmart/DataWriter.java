@@ -17,7 +17,7 @@ public class DataWriter extends DataConstants {
 		}
 
 		// where to assign students?
-		try (FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
+		try (FileWriter file = new FileWriter(ADVISOR_FILE)) {
 			file.write(jsonUsers.toJSONString());
 			file.flush();
 		} catch (IOException e) {
