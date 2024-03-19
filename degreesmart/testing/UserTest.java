@@ -1,4 +1,4 @@
-package testing;
+package degreesmart.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
