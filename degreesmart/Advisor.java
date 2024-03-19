@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Advisor extends User {
-  private boolean approved;
   private ArrayList<Student> assignedStudents;
 
   public Advisor(UUID uuid, String username, String password, String email, String firstName, String lastName) {
     super(uuid, username, password, email, firstName, lastName);
+    unsetAdvisorRole();
     assignedStudents = new ArrayList<Student>();
-    approved = false;
   }
 
   public boolean getApproved() {
-    return approved;
+    return role == Role.ADVISOR;
   }
 
-  public void setApproved(boolean approved) {
-    this.approved = approved;
+  public void unsetAdvisorRole() {
+    role = Role.UNAPPROVED_ADVISOR;
+  }
+
+  public void setAdvisorRole() {
+    role = Role.ADVISOR;
   }
 
   public ArrayList<Student> getAssignedStudents() {
@@ -43,10 +46,7 @@ public class Advisor extends User {
       studentList.add(student.getUsername());
     }
 
-    return ""
-      + "            Role: Advisor\n"
-      + super.toString() + "\n"
-      + "        Approved: " + approved + "\n"
-      + "        Students: " + studentList;
+    return super.toString() + "\n"
+      + "          Students: " + studentList;
   }
 }

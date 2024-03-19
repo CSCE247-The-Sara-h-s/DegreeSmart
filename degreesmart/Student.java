@@ -12,18 +12,19 @@ public class Student extends User {
   private ArrayList<AdvisingNote> advisingNotes;
   private ArrayList<Scholarship> scholarships;
   private ArrayList<CompletedCourse> completedCourses;
+  private ArrayList<PlannedCourse> plannedCourses;
   private GraduationPlan graduationPlan;
 
-  public Student(UUID uuid, String username, String password, String email, String firstName, String lastName, 
-      String uscId) {
+  public Student(UUID uuid, String username, String password, String email, String firstName, String lastName) {
     super(uuid, username, password, email, firstName, lastName);
-    this.uscId = uscId;
+    role = Role.STUDENT;
 
     parents = new ArrayList<Parent>();
     accessRequests = new ArrayList<Parent>();
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
     completedCourses = new ArrayList<CompletedCourse>();
+    plannedCourses = new ArrayList<PlannedCourse>();
     graduationPlan = new GraduationPlan();
   }
 
@@ -87,8 +88,20 @@ public class Student extends User {
     return completedCourses.remove(completedCourse);
   }
 
+  public ArrayList<PlannedCourse> getPlannedCourses() {
+    return plannedCourses;
+  }
+
+  public boolean addPlannedCourse(Course course, Semester semester, int year) {
+    return plannedCourses.add(new PlannedCourse(course, semester, year));
+  }
+
   public ArrayList<AdvisingNote> getAdvisingNotes() {
     return advisingNotes;
+  }
+
+  public void addAdvisingNote(AdvisingNote advisingNote) {
+    advisingNotes.add(advisingNote);
   }
 
   public void addAdvisingNote(Advisor advisor, String note) {
@@ -186,7 +199,7 @@ public class Student extends User {
 
     String notes = "";
     if (advisingNotes.size() > 0) {
-      notes = "\n   -  " + String.join("\n   -  ", advisingNoteList);
+      notes = "\n\t\t   -  " + String.join("\n\t\t   -  ", advisingNoteList);
     }
 
     ArrayList<String> completedCourseList = new ArrayList<String>();
@@ -196,21 +209,45 @@ public class Student extends User {
 
     String transcript = "";
     if (completedCourses.size() > 0) {
-      transcript = "\n   -  " + String.join("\n   -  ", completedCourseList);
+      transcript = "\n\t\t   -  " + String.join("\n\t\t   -  ", completedCourseList);
     }
 
-    return ""
-      + "            Role: Student\n"
-      + super.toString() + "\n"
-      + "          USC ID: " + uscId + "\n"
-      + "         Advisor: " + advisorString + "\n"
-      + "         Parents: " + parentList + "\n"
-      + " Access Requests: " + requesterList + "\n"
-      + "  Advising Notes: " + notes + "\n"
-      + "    Scholarships: " + "<TODO>" + "\n"
-      + " Attempted Hours: " + getAttemptedHours() + "\n"
-      + "     Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
-      + "      Transcript: " + transcript + "\n"
-      + " Graduation Plan: " + "<TODO>";
+    ArrayList<String> plannedCourseList = new ArrayList<String>();
+    for (PlannedCourse c : plannedCourses) {
+        plannedCourseList.add(c.toString());
+    }
+
+    String plannedCourse = "";
+    if (plannedCourses.size() > 0) {
+      plannedCourse = "\n\t\t   -  " + String.join("\n\t\t   -  ", plannedCourseList);
+    }
+
+    ArrayList<String> requirements = new ArrayList<String>();
+    for (RequirementSet req : graduationPlan.getRequirementSets()) {
+      requirements.add(req.getType() + " - " + req.getName());
+    }
+
+    String reqs = "";
+    if (requirements.size() > 0) {
+      reqs = "\n\t\t   -  " + String.join("\n\t\t   -  ", requirements);
+    }
+
+    return super.toString() + "\n"
+      + "            USC ID: " + uscId + "\n"
+      + "           Advisor: " + advisorString + "\n"
+      + "           Parents: " + parentList + "\n"
+      + "   Access Requests: " + requesterList + "\n"
+      + "    Advising Notes: " + notes + "\n"
+      + "      Scholarships: " + " " + "\n"
+      + "      Requirements: " + reqs + "\n"
+      + "   Attempted Hours: " + getAttemptedHours() + "\n"
+      + "       Overall GPA: " + String.format("%.4f", getGpa()) + "\n"
+      + " Completed Courses: " + transcript + "\n"
+      + "   Planned Courses: " + plannedCourse + "\n";
+  }
+
+  public boolean equals(Object object) {
+    return super.equals(object) && object instanceof Student
+      && ((Student)object).getUscId().equals(uscId);
   }
 }

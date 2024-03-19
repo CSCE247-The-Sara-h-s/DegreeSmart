@@ -6,13 +6,14 @@ import java.util.ArrayList;
 public class RequirementSet {
 	private UUID uuid;
 	private String name;
-	private RequirementSetCategory category;
+	private RequirementType type;
 	private ArrayList<Requirement> requirements;
 
-	public RequirementSet(UUID uuid, String name, RequirementSetCategory category) {
+	public RequirementSet(UUID uuid, String name, RequirementType type) {
 		this.uuid = uuid;
 		this.name = name;
-		this.category = category;
+		this.type = type;
+		requirements = new ArrayList<Requirement>();
 	}
 
 	public UUID getUuid() {
@@ -27,12 +28,12 @@ public class RequirementSet {
 		this.name = name;
 	}
 
-	public RequirementSetCategory getCategory() {
-		return category;
+	public RequirementType getType() {
+		return type;
 	}
 
-	public void setCategory(RequirementSetCategory category) {
-		this.category = category;
+	public void setType(RequirementType type) {
+		this.type = type;
 	}
 
 	public ArrayList<Requirement> getRequirements() {
@@ -59,7 +60,7 @@ public class RequirementSet {
 	public String toString() {
 		return ""
 			+ "        uuid: " + uuid
-			+ "    category: " + category
+			+ "        type: " + type
 			+ "requirements: " + "TODO";
 	}
 }

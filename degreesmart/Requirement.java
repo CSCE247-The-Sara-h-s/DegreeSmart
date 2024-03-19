@@ -1,21 +1,21 @@
 package degreesmart;
 
-public abstract class Requirement {
-	private int numChoices;
+public class Requirement {
+	private int choices;
 
 	public Requirement() {
-		numChoices = 1;
+		choices = 1;
 	}
 
-	public Requirement(int numChoices) {
-		this.numChoices = numChoices;
+	public Requirement(int choices) {
+		this.choices = choices;
 	}
 
 	public int getNumChoices() {
-		return numChoices;
+		return choices;
 	}
 
-	public void setNumChoices(int numChoices) {
-		this.numChoices = numChoices;
+	public void setNumChoices(int choices) {
+		this.choices = choices;
 	}
 }

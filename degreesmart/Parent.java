@@ -9,6 +9,7 @@ public class Parent extends User {
 
   public Parent(UUID uuid, String username, String password, String email, String firstName, String lastName) {
     super(uuid, username, password, email, firstName, lastName);
+    role = Role.PARENT;
     children = new ArrayList<Student>();
     pendingAccessRequests = new ArrayList<Student>();
   }
@@ -56,10 +57,8 @@ public class Parent extends User {
       requestList.add(request.getUsername());
     }
 
-    return ""
-      + "            Role: Parent\n"
-      + super.toString() + "\n"
-      + "        Children: " + childList + "\n"
-      + "        Requests: " + requestList;
+    return super.toString() + "\n"
+      + "          Children: " + childList + "\n"
+      + "          Requests: " + requestList;
   }
 }
