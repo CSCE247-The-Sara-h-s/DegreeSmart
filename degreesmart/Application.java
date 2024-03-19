@@ -342,6 +342,60 @@ public class Application {
 //  Everything above this line is done.
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
     
+    public void addScholarship () {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            ((Student)activeUser).addScholarship(null);
+        }
+    }
+
+    public void removeScholarship () {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            ((Student)activeUser).removeScholarship(null);
+        }
+    }
+
+    public Course createCourse(Subject subject, String number) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return courseList.createCourse(subject, number);
+        }
+        return null;
+    }
+
+    public void deleteCourse(Course course) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            courseList.deleteCourse(course);
+        }
+    }
+
+    public void modifyCourse(Course modifiedCourse) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            courseList.modifyCourse(modifiedCourse);
+        }
+    }
+
+    public RequirementSet createRequirementSet(String name, RequirementType type) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            return requirementSetList.createRequirementSet(name, type);
+        }
+        return null;
+    }
+
+    public void deleteRequirementSet(RequirementSet requirementSet) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+            requirementSetList.deleteRequirementSet(requirementSet);
+        }
+    }
+
+    public void modifyRequirementSet(RequirementSet modifiedRequirementSet) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+             requirementSetList.modifyRequirementSet(modifiedRequirementSet);
+        }
+    }
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
+//  I believe everything above this line is done if anyone would like to review them and confirm :)
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
+
     public Course getCourse(Subject subject, String number) {
         return courseList.getCourses().get(0);
     }
@@ -384,59 +438,6 @@ public class Application {
 
     public double getCompletedCreditHours() {
         return 0.0;
-    }
-
-    public void addScholarship () {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            Student activeStudent = (Student) activeUser;
-            activeStudent.addScholarship(null);
-        }
-    }
-
-    public void removeScholarship () {
-        // confused here.. should Administrator have a removeScholarship method?
-        if (activeUser instanceof Administrator) {
-            Student activeStudent = (Student) activeUser;
-            activeStudent.removeScholarship(null);
-        }
-    }
-
-    public Course createCourse(Subject subject, String number) {
-        if (activeUser instanceof Administrator) {
-            return courseList.createCourse(subject, number);
-        }
-        return null;
-    }
-
-    public void deleteCourse(Course course) {
-        if (activeUser instanceof Administrator) {
-            courseList.deleteCourse(course);
-        }
-    }
-
-    public void modifyCourse(Course modifiedCourse) {
-        if (activeUser instanceof Administrator) {
-            courseList.modifyCourse(modifiedCourse);
-        }
-    }
-
-    public RequirementSet createRequirementSet(String name, RequirementType type) {
-        if (activeUser instanceof Administrator) {
-            return requirementSetList.createRequirementSet(name, type);
-        }
-        return null;
-    }
-
-    public void deleteRequirementSet(RequirementSet requirementSet) {
-        if (activeUser instanceof Administrator) {
-            requirementSetList.deleteRequirementSet(requirementSet);
-        }
-    }
-
-    public void modifyRequirementSet(RequirementSet modifiedRequirementSet) {
-        if (activeUser instanceof Administrator) {
-             requirementSetList.modifyRequirementSet(modifiedRequirementSet);
-        }
     }
 
     public void selectMajor() {
