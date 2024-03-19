@@ -69,10 +69,6 @@ public class RequirementSet {
 			reqStr = "\n\t-  " + String.join("\n\t-  ", reqList);
 		}
 
-		return ""
-			+ "        uuid: " + uuid + "\n"
-			+ "        name: " + name + "\n"
-			+ "        type: " + type + "\n"
-			+ "requirements: " + reqStr;
+		return name + " - " + type + reqStr;
 	}
 }

@@ -389,9 +389,6 @@ public class DataLoader extends DataConstants {
 			}
 		}
 
-		for (RequirementSet set : requirementSets) {
-			System.out.println("\n\n" + set);
-		}
 		return requirementSets;
 	}
 

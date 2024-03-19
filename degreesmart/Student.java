@@ -229,7 +229,7 @@ public class Student extends User {
 
     String reqs = "";
     if (requirements.size() > 0) {
-      reqs = "\n\t\t   -  " + String.join("\n\t\t   -  ", requirements);
+      reqs = "\n -  " + String.join("\n -  ", requirements);
     }
 
     return super.toString() + "\n"
