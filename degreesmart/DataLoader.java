@@ -367,11 +367,15 @@ public class DataLoader extends DataConstants {
 
 				Requirement req;
 				if (grade == null) {
-					req = new NestedRequirement(Math.toIntExact(choices));
-
-					for (int k = 0; k < options.size(); k++) {
-						String uuid = (String) options.get(k);
-						((NestedRequirement)req).addRequirementOption(uuidToSet.get(UUID.fromString(uuid)));
+					if (options.get(0) instanceof String) {
+						req = new SetRequirement(Math.toIntExact(choices));
+						for (int k = 0; k < options.size(); k++) {
+							String uuid = (String) options.get(k);
+							((SetRequirement)req).addSetOption(uuidToSet.get(UUID.fromString(uuid)));
+						}
+					} else {
+						req = new NestedRequirement(Math.toIntExact(choices));
+						// req = getNestedRequirement(requirement, courses);
 					}
 				} else {
 					req = new CourseRequirement(Math.toIntExact(choices), Grade.valueOf(grade));
@@ -385,6 +389,15 @@ public class DataLoader extends DataConstants {
 			}
 		}
 
+		for (RequirementSet set : requirementSets) {
+			System.out.println("\n\n" + set);
+		}
 		return requirementSets;
 	}
+
+	// private static getRequirement(JSONObject reqJSON, ArrayList<Courses> courses) {
+	// 	// if grade --> return CourseRequirement
+	// 	// if array of strings -> return SetRequirement
+	// 	// else, recursee
+	// }
 }

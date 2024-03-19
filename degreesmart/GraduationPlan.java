@@ -44,12 +44,12 @@ public class GraduationPlan {
 
 		ArrayList<Requirement> requirementsToRemove = requirementSet.getRequirements();
 		for (int i = 0; i < requirementsToRemove.size(); ++i) {
-			int index = requirements.indexOf(requirementsToRemove.get(i));
+			// int index = requirements.indexOf(requirementsToRemove.get(i));
 
-			selectedCourses.get(i).remove(selectedCourses.get(i).size() - 1);
-			if (selectedCourses.get(i).size() == 0) {
-				selectedCourses.remove(i);
-			}
+			// selectedCourses.get(i).remove(selectedCourses.get(i).size() - 1);
+			// if (selectedCourses.get(i).size() == 0) {
+			// 	selectedCourses.remove(i);
+			// }
 		}
 
 		return true;

@@ -50,16 +50,30 @@ public class CourseRequirement extends Requirement {
 	}
 
 	public String toString() {
-		String str = grade + " or higher in ";
+		int max = 3;
 
-		for (int i = 0; i < options.size(); i++) {
-			str += options.get(i).getSubject() + " " + options.get(i).getNumber();
-
-			if (i != options.size() - 1) {
-				str += " or ";
+		String courses = "";
+		int count = 0;
+		for (Course option : options) {
+			if (options.size() > max + 1 && count == max) {
+				courses += "... (+" + (options.size() - count) + " courses)";
+				break;
+			} else {
+				courses += option.getShortName() 
+					+ ((++count != options.size())? " or " : "");
 			}
 		}
 
-		return str;
+		String choiceStr = "";
+		if (getNumChoices() == options.size()) {
+			courses = courses.replaceAll(" or ", " and ");
+		} else if (getNumChoices() > 1) {
+			choiceStr = getNumChoices() + " of ";
+		}
+
+		return ""
+			+ grade + " or higher in " 
+			+ choiceStr
+			+ courses;
 	}
 }

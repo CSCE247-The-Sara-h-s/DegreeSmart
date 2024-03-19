@@ -224,7 +224,7 @@ public class Student extends User {
 
     ArrayList<String> requirements = new ArrayList<String>();
     for (RequirementSet req : graduationPlan.getRequirementSets()) {
-      requirements.add(req.getType() + " - " + req.getName());
+      requirements.add(req.toString());
     }
 
     String reqs = "";

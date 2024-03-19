@@ -8,6 +8,7 @@ public class RequirementSet {
 	private String name;
 	private RequirementType type;
 	private ArrayList<Requirement> requirements;
+	private ArrayList<RequirementSet> requirementSets;
 
 	public RequirementSet(UUID uuid, String name, RequirementType type) {
 		this.uuid = uuid;
@@ -58,9 +59,20 @@ public class RequirementSet {
 	}
 
 	public String toString() {
+		ArrayList<String> reqList = new ArrayList<String>();
+		for (Requirement req : requirements) {
+			reqList.add(req.toString());
+		}
+
+		String reqStr = "";
+		if (requirements.size() > 0) {
+			reqStr = "\n\t-  " + String.join("\n\t-  ", reqList);
+		}
+
 		return ""
-			+ "        uuid: " + uuid
-			+ "        type: " + type
-			+ "requirements: " + "TODO";
+			+ "        uuid: " + uuid + "\n"
+			+ "        name: " + name + "\n"
+			+ "        type: " + type + "\n"
+			+ "requirements: " + reqStr;
 	}
 }
