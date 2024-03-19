@@ -387,7 +387,7 @@ public class Application {
     }
 
     public void addScholarship () {
-        if (activeUser instanceof Administrator) {
+        if (activeUser.getRole() == Role.ADMINISTRATOR) {
             Student activeStudent = (Student) activeUser;
             activeStudent.addScholarship(null);
         }
