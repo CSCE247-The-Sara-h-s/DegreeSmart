@@ -2,7 +2,7 @@ name: DegreeSmart Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -18,4 +18,6 @@ jobs:
         distribution: 'microsoft'
     - name: Compile all .java files with javac
       shell: pwsh
-      run: javac -Xlint:unchecked -d bin -cp "lib/json-simple-1.1.1.jar" $(foreach ($File in (Get-ChildItem degreesmart | Where-Object Name -like "*.java")) { "degreesmart/$($File.Name)"})
+      run: |
+        . .\scripts\BuildTools.ps1
+          Invoke-Test
