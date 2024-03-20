@@ -1,8 +1,10 @@
-name: DegreeSmart Build
+name: Run Tests
 
 on:
   push:
-    branches: [ "dev" ]
+    branches:
+      - main
+      - dev
 
 jobs:
   build:
@@ -16,7 +18,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'microsoft'
-    - name: Compile all .java files with javac
+    - name: Run JUnit Tests
       shell: pwsh
       run: |
         . .\scripts\BuildTools.ps1

@@ -6,22 +6,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-// import degreesmart.User;
-
-class UserTest {
-//    private User user = new User();
+public class UserTest {
     @Test
-    public void testTest1() {
-    	assertEquals(2, 2);
-    }
-
-    @Test
-    public void testTest2() {
-    	assertEquals(1, 2);
-    }
-
-    @Test
-    public void testTest3() {
+    public void testTest() {
+        Scholarship scholarship = new Scholarship("test");
     	assertEquals(2, 2);
     }
 }

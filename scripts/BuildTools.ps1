@@ -1,17 +1,49 @@
 
 # Dot source this file:	. .\BuildTools.ps1
 
-function Build-Java {
+function Build-Test {
 	[CmdletBinding()]
-	param(
-		[Parameter( Mandatory = $True )]
-		[String]
-		$Folder
-	)
+	param( )
 
 	process {
-		$Bin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', $Folder )
-		$Src = [IO.Path]::Combine( $PSScriptRoot, '..', 'src', $Folder, 'java' )
+		$Bin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'test' )
+		$Test = [IO.Path]::Combine( $PSScriptRoot, '..', 'src', 'test', 'java' )
+		$Main = [IO.Path]::Combine( $PSScriptRoot, '..', 'src', 'main', 'java' )
+		$Lib = [IO.Path]::Combine( $PSScriptRoot, '..', 'lib', '*' )
+		$Package = 'degreesmart'
+
+		[void]( Remove-Item -Path $Bin -Recurse -Force -ErrorAction 'SilentlyContinue' )
+		[void]( New-Item -Path $Bin -Type 'Directory' -Force -ErrorAction 'Stop' )
+
+		$MainFiles = Get-ChildItem ( Join-Path $Main $Package ) |
+			Where-Object Name -like '*.java'
+		$FileNames += foreach ( $File in $MainFiles ) {
+				Write-Output "${Main}/${Package}/$($File.name)"
+			}
+
+		$TestFiles = Get-ChildItem ( Join-Path $Test $Package ) |
+			Where-Object Name -like '*.java'
+		$FileNames = foreach ( $File in $TestFiles ) {
+				Write-Output "${Test}/${Package}/$($File.name)"
+			}
+
+
+		try {
+			javac -Xlint:unchecked -d $Bin -cp "${Lib};${Main};${Test}" $FileNames
+			Write-Verbose -Verbose "Build finished: $Bin"
+		} catch {
+			Write-Error "Build failed: $($Error[0])"
+		}
+	}
+}
+
+function Build-DegreeSmart {
+	[CmdletBinding()]
+	param( )
+
+	process {
+		$Bin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'main' )
+		$Src = [IO.Path]::Combine( $PSScriptRoot, '..', 'src', 'main', 'java' )
 		$Lib = [IO.Path]::Combine( $PSScriptRoot, '..', 'lib', '*' )
 		$Package = 'degreesmart'
 
@@ -22,12 +54,12 @@ function Build-Java {
 			Where-Object Name -like '*.java'
 
 		$FileNames = foreach ( $File in $Files ) {
-			Write-Output "${Src}/${Package}/$($File.name)"
-		}
+				Write-Output "${Src}/${Package}/$($File.name)"
+			}
 
 		try {
 			javac -Xlint:unchecked -d $Bin -cp "${Lib};${Src}" $FileNames
-			Write-Verbose -Verbose "Build finished: $Src"
+			Write-Verbose -Verbose "Build finished: $Bin"
 		} catch {
 			Write-Error "Build failed: $($Error[0])"
 		}
@@ -39,15 +71,14 @@ function Invoke-DegreeSmart {
 	param( )
 
 	process {
-		Build-Java -Folder 'main'
+		Build-DegreeSmart -ErrorAction 'Stop'
 
 		$Bin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'main' )
-		$Src = [IO.Path]::Combine( $PSScriptRoot, '..', 'src', 'main', 'java' )
 		$Lib = [IO.Path]::Combine( $PSScriptRoot, '..', 'lib', '*' )
 		$Package = 'degreesmart'
 		$Main = 'DegreeSmartUI'
 
-		java -cp "${Bin};${Lib};${Src}" "${Package}.${Main}"
+		java -cp "${Bin};${Lib}" "${Package}.${Main}"
 	}
 }
 
@@ -56,24 +87,12 @@ function Invoke-Test {
 	param( )
 
 	process {
-		Build-Java -Folder 'main' -ErrorAction 'Stop'
-		Build-Java -Folder 'test' -ErrorAction 'Stop'
+		Build-Test -ErrorAction 'Stop'
 
-		$MainBin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'main' )
-		$TestBin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'test' )
-		    $Lib = [IO.Path]::Combine( $PSScriptRoot, '..', 'lib', '*' )
+		$Bin = [IO.Path]::Combine( $PSScriptRoot, '..', 'bin', 'test' )
+		$Lib = [IO.Path]::Combine( $PSScriptRoot, '..', 'lib', '*' )
 		$JUnit = 'org.junit.platform.console.ConsoleLauncher'
 
-		java -cp "${MainBin};${TestBin};${Lib}" $JUnit execute --scan-classpath #|
-			#Tee-Object -Variable JUnitResult
-
-		# [Regex]$Regex = "\s*\[\s*(?<fail>\d+)\s*tests\s*failed\s*\]\s*"
-		# $Match = $Regex.match( $JUnitResult )
-
-		# if ( $Match.Groups["fail"].Value -ne "0" ) {
-		# 	[Console]::ForegroundColor = "Red"
-		# 	[Console]::Error.WriteLine("ERROR: $( $Match.Value -replace '\s\s+|[\[\]]','' )")
-		# 	[Console]::ResetColor()
-		# }
+		java -cp "${Bin};${Lib}" $JUnit execute --scan-classpath
 	}
 }
