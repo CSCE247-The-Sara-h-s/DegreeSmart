@@ -17,22 +17,22 @@ function Build-Test {
 
 		$MainFiles = Get-ChildItem ( Join-Path $Main $Package ) |
 			Where-Object Name -like '*.java'
-		$FileNames += foreach ( $File in $MainFiles ) {
+		$FileNames = foreach ( $File in $MainFiles ) {
 				Write-Output "${Main}/${Package}/$($File.name)"
 			}
 
 		$TestFiles = Get-ChildItem ( Join-Path $Test $Package ) |
 			Where-Object Name -like '*.java'
-		$FileNames = foreach ( $File in $TestFiles ) {
+		$FileNames += foreach ( $File in $TestFiles ) {
 				Write-Output "${Test}/${Package}/$($File.name)"
 			}
 
+		javac -Xlint:unchecked -d $Bin -cp "${Lib};${Bin}" $FileNames
 
-		try {
-			javac -Xlint:unchecked -d $Bin -cp "${Lib};${Main};${Test}" $FileNames
+		if ( $LastExitCode -eq 0 ) {
 			Write-Verbose -Verbose "Build finished: $Bin"
-		} catch {
-			Write-Error "Build failed: $($Error[0])"
+		} else {
+			Write-Error "Build failed!"
 		}
 	}
 }
@@ -57,11 +57,12 @@ function Build-DegreeSmart {
 				Write-Output "${Src}/${Package}/$($File.name)"
 			}
 
-		try {
-			javac -Xlint:unchecked -d $Bin -cp "${Lib};${Src}" $FileNames
+		javac -Xlint:unchecked -d $Bin -cp "${Lib};${Src}" $FileNames
+
+		if ( $LastExitCode -eq 0 ) {
 			Write-Verbose -Verbose "Build finished: $Bin"
-		} catch {
-			Write-Error "Build failed: $($Error[0])"
+		} else {
+			Write-Error "Build failed!"
 		}
 	}
 }
