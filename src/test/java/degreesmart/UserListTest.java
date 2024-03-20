@@ -7,5 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserListTest {
-
+	@Test
+    public void testTest_FAIL() {
+    	assertEquals(1, 2);
+    }
 }

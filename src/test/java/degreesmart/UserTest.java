@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class UserTest {
     @Test
-    public void testTest() {
-        Scholarship scholarship = new Scholarship("test");
+    public void testTest_SUCCESS() {
     	assertEquals(2, 2);
     }
 }
