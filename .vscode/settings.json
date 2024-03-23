@@ -4,6 +4,7 @@
 
         "workingDirectory": "${workspaceFolder}"
 
-    }
+    },
+    "java.debug.settings.onBuildFailureProceed": true
 
 }
