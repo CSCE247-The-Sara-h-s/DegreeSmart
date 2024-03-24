@@ -20,6 +20,10 @@ public class AdvisingNote {
   }
 
   private void setTime(String time) throws IllegalArgumentException {
+    if (time == null) {
+      throw new IllegalArgumentException("time cannot be null");
+    }
+
     try {
       this.time = ZonedDateTime.parse(time, DateTimeFormatter.ofPattern(timeFormat));
     } catch (Exception e) {
