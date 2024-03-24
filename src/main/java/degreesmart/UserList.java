@@ -159,7 +159,11 @@ public class UserList {
     }
 
     public boolean createUser(User user) {
-        boolean created = user != null && !users.contains(user) && users.add(user);
+        boolean created = user != null && !users.contains(user)
+            && !usersByUuid.containsKey(user.getUuid())
+            && !usersByUsername.containsKey(user.getUsername())
+            && (!(user instanceof Student) || !studentsByUscId.containsKey(((Student)user).getUscId()))
+            && users.add(user);
 
         if (created) {
             usersByUuid.put(user.getUuid(), user);
