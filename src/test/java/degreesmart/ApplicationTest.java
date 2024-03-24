@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -26,10 +28,12 @@ import degreesmart.UserList;
 public class ApplicationTest {
 
     private Application application;
+    private static ArrayList<User> initialState;
 
     @Before
     public void setUp() {
         application = application.getInstance();
+        initialState = new ArrayList<>(UserList.getInstance().getUsers());
         application.createAccount(Role.ADMINISTRATOR, "ADMIN", "password", "test@example.com", "DJ", "Khaled");
         application.createAccount(Role.ADMINISTRATOR, "ADMIN2", "password", "test1@example.com", "DJ", "Khaled");
         application.createAccount(Role.STUDENT, "STUDENT_1", "password", "test2@example.com", "Alexander", "Hamilton");
@@ -44,6 +48,15 @@ public class ApplicationTest {
     @After
     public void tearDown() {
         application = null;
+        UserList.getInstance().getUsers().clear();
+        UserList.getInstance().getAdministrators().clear();
+        UserList.getInstance().getAdvisors().clear();
+        UserList.getInstance().getStudents().clear();
+        UserList.getInstance().getParents().clear();
+        for (User u : initialState) {
+            UserList.getInstance().createUser(u);
+        }
+        UserList.getInstance().saveUsers();
     }
 
 
