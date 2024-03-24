@@ -169,12 +169,12 @@ public class UserList {
 
         if (created) {
             usersByUuid.put(user.getUuid(), user);
-            usersByUsername.put(user.getUsername(), user);
+            usersByUsername.put(user.getUsername().toLowerCase(), user);
 
             switch (user.getRole()) {
                 case STUDENT:
                     students.add((Student)user);
-                    studentsByUscId.put(((Student)user).getUscId(), (Student)user);
+                    studentsByUscId.put(((Student)user).getUscId().toLowerCase(), (Student)user);
                     break;
                 case ADVISOR:
                 case UNAPPROVED_ADVISOR:
@@ -216,7 +216,7 @@ public class UserList {
 
         if (user != null) {
             usersByUuid.put(user.getUuid(), user);
-            usersByUsername.put(user.getUsername(), user);
+            usersByUsername.put(user.getUsername().toLowerCase(), user);
         }
     }
 
@@ -225,12 +225,12 @@ public class UserList {
 
         if (removed) {
 			usersByUuid.remove(user.getUuid());
-			usersByUsername.remove(user.getUsername());
+			usersByUsername.remove(user.getUsername().toLowerCase());
 
             switch (user.getRole()) {
                 case STUDENT:
                     students.remove((Student)user);
-                    studentsByUscId.remove(((Student)user).getUscId());
+                    studentsByUscId.remove(((Student)user).getUscId().toLowerCase());
                     break;
                 case ADVISOR:
                 case UNAPPROVED_ADVISOR:
@@ -244,16 +244,16 @@ public class UserList {
 
     public boolean changeUsername(User user, String username) {
         boolean shouldChange = user != null && users.contains(user)
-            && !usersByUsername.containsKey(user.getUsername());
+            && !usersByUsername.containsKey(user.getUsername().toLowerCase());
 
         if (shouldChange) {
-            usersByUsername.remove(user.getUsername());
+            usersByUsername.remove(user.getUsername().toLowerCase());
             try {
                 user.setUsername(username);
             } catch (IllegalArgumentException e) {
                 return false;
             } finally {
-                usersByUsername.put(user.getUsername(), user);
+                usersByUsername.put(user.getUsername().toLowerCase(), user);
             }
         }
 
@@ -262,16 +262,16 @@ public class UserList {
 
     public boolean changeUscId(Student student, String uscId) {
         boolean shouldChange = student != null && users.contains(student)
-            && !studentsByUscId.containsKey(student.getUscId());
+            && !studentsByUscId.containsKey(student.getUscId().toLowerCase());
 
         if (shouldChange) {
-            studentsByUscId.remove(student.getUscId());
+            studentsByUscId.remove(student.getUscId().toLowerCase());
             try {
                 student.setUscId(uscId);
             } catch (IllegalArgumentException e) {
                 return false;
             } finally {
-                studentsByUscId.put(student.getUscId(), student);
+                studentsByUscId.put(student.getUscId().toLowerCase(), student);
             }
         }
 
