@@ -32,7 +32,7 @@ public class Student extends User {
     return uscId;
   }
 
-  public void setUscId(String uscId) {
+  public void setUscId(String uscId) throws IllegalArgumentException {
     if (uscId == null) {
       throw new IllegalArgumentException("USC ID cannot be null");
     }
