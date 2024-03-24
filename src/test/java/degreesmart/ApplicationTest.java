@@ -48,11 +48,7 @@ public class ApplicationTest {
     @After
     public void tearDown() {
         application = null;
-        UserList.getInstance().getUsers().clear();
-        UserList.getInstance().getAdministrators().clear();
-        UserList.getInstance().getAdvisors().clear();
-        UserList.getInstance().getStudents().clear();
-        UserList.getInstance().getParents().clear();
+        UserList.getInstance().clear();
         for (User u : initialState) {
             UserList.getInstance().createUser(u);
         }
