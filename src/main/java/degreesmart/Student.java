@@ -33,6 +33,14 @@ public class Student extends User {
   }
 
   public void setUscId(String uscId) {
+    if (uscId == null) {
+      throw new IllegalArgumentException("USC ID cannot be null");
+    }
+
+    if (uscId.equals("")) {
+      throw new IllegalArgumentException("USC ID cannot be empty");
+    }
+
     this.uscId = uscId;
   }
 
