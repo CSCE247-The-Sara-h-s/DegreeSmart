@@ -247,7 +247,13 @@ public class Student extends User {
   }
 
   public boolean equals(Object object) {
-    return super.equals(object) && object instanceof Student
-      && ((Student)object).getUscId().equals(uscId);
+    if (object == null || ! (object instanceof Student)) {
+      return false;
+    }
+    Student student = (Student) object;
+
+    return super.equals(object)
+      && ((uscId == null && student.getUscId() == null)
+        || (uscId != null && uscId.equals(student.getUscId())));
   }
 }
