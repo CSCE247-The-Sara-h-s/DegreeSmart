@@ -70,7 +70,8 @@ public class AdvisingNote {
     AdvisingNote advisingNote = (AdvisingNote)object;
 
     return note.equals(advisingNote.getNote())
-      && author.equals(advisingNote.getAuthor())
+      && ((author == null && advisingNote.getAuthor() == null)
+        || (author != null && author.equals(advisingNote.getAuthor())))
       && time.equals(advisingNote.getTime());
   }
 
