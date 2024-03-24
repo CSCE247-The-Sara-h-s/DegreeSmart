@@ -2,6 +2,8 @@ package degreesmart;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,25 @@ class UserListTest {
     private ArrayList<RequirementSet> requirementSets = DataLoader.getRequirementSets(courses);
     private UserList userList = UserList.getInstance(courses, requirementSets);
     private ArrayList<User> users = userList.getUsers();
+    private static ArrayList<User> initialState;
+
+    @BeforeAll
+    public static void saveState() {
+        initialState = new ArrayList<>(UserList.getInstance().getUsers());
+    }
+
+    @AfterAll
+    public static void revertState() {
+        UserList.getInstance().getUsers().clear();
+        UserList.getInstance().getAdministrators().clear();
+        UserList.getInstance().getAdvisors().clear();
+        UserList.getInstance().getStudents().clear();
+        UserList.getInstance().getParents().clear();
+        for (User u : initialState) {
+            UserList.getInstance().createUser(u);
+        }
+        UserList.getInstance().saveUsers();
+    }
 
     @BeforeEach
     public void setup() {
