@@ -49,7 +49,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateAdministrator_NullEmail_ShouldThrowException() {
+	public void TestCreateAdministrator_NullEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(NullPointerException.class,
 			() -> new Administrator(uuid, "username", "password", null, "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be null");
@@ -90,7 +90,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateAdministrator_EmptyEmail_ShouldThrowException() {
+	public void TestCreateAdministrator_EmptyEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Administrator(uuid, "username", "password", "", "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be empty");
@@ -108,6 +108,100 @@ public class UserTest {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Administrator(uuid, "username", "password", "email", "firstName", ""));
 		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetUsername_Null_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setUsername(null));
+		assertEquals(e.getMessage(), "username cannot be null");
+	}
+
+	@Test
+	public void TestAdministratorSetPassword_Null_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be null");
+	}
+
+	@Test
+	public void TestAdministratorSetEmailAddress_Null_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setEmailAddress(null));
+		assertEquals(e.getMessage(), "email cannot be null");
+	}
+
+	@Test
+	public void TestAdministratorSetFirstName_Null_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setFirstName(null));
+		assertEquals(e.getMessage(), "first name cannot be null");
+	}
+
+	@Test
+	public void TestAdministratorSetLastName_Null_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setLastName(null));
+		assertEquals(e.getMessage(), "last name cannot be null");
+	}
+
+	@Test
+	public void TestAdministratorSetUsername_Empty_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setUsername(""));
+		assertEquals(e.getMessage(), "username cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetPassword_Empty_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetEmailAddress_Empty_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setEmailAddress(""));
+		assertEquals(e.getMessage(), "email cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetFirstName_Empty_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setFirstName(""));
+		assertEquals(e.getMessage(), "first name cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetLastName_Empty_ShouldThrowException() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setLastName(""));
+		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestAdministratorSetPreferredName_Null_ShouldSetEmptyString() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(null));
+		assertEquals(u.getPreferredName(), "");
+	}
+
+	@Test
+	public void TestAdministratorSetPreferredName_Empty_ShouldSetEmptyString() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(""));
+		assertEquals(u.getPreferredName(), "");
 	}
 
 	@Test
@@ -144,7 +238,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateAdvisor_NullEmail_ShouldThrowException() {
+	public void TestCreateAdvisor_NullEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(NullPointerException.class,
 			() -> new Advisor(uuid, "username", "password", null, "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be null");
@@ -185,7 +279,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateAdvisor_EmptyEmail_ShouldThrowException() {
+	public void TestCreateAdvisor_EmptyEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Advisor(uuid, "username", "password", "", "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be empty");
@@ -203,6 +297,100 @@ public class UserTest {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Advisor(uuid, "username", "password", "email", "firstName", ""));
 		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetUsername_Null_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setUsername(null));
+		assertEquals(e.getMessage(), "username cannot be null");
+	}
+
+	@Test
+	public void TestAdvisorSetPassword_Null_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be null");
+	}
+
+	@Test
+	public void TestAdvisorSetEmailAddress_Null_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setEmailAddress(null));
+		assertEquals(e.getMessage(), "email cannot be null");
+	}
+
+	@Test
+	public void TestAdvisorSetFirstName_Null_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setFirstName(null));
+		assertEquals(e.getMessage(), "first name cannot be null");
+	}
+
+	@Test
+	public void TestAdvisorSetLastName_Null_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setLastName(null));
+		assertEquals(e.getMessage(), "last name cannot be null");
+	}
+
+	@Test
+	public void TestAdvisorSetUsername_Empty_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setUsername(""));
+		assertEquals(e.getMessage(), "username cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetPassword_Empty_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetEmailAddress_Empty_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setEmailAddress(""));
+		assertEquals(e.getMessage(), "email cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetFirstName_Empty_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setFirstName(""));
+		assertEquals(e.getMessage(), "first name cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetLastName_Empty_ShouldThrowException() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setLastName(""));
+		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestAdvisorSetPreferredName_Null_ShouldSetEmptyString() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(null));
+		assertEquals(u.getPreferredName(), "");
+	}
+
+	@Test
+	public void TestAdvisorSetPreferredName_Empty_ShouldSetEmptyString() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(""));
+		assertEquals(u.getPreferredName(), "");
 	}
 
 	@Test
@@ -239,7 +427,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateParent_NullEmail_ShouldThrowException() {
+	public void TestCreateParent_NullEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(NullPointerException.class,
 			() -> new Parent(uuid, "username", "password", null, "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be null");
@@ -280,7 +468,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateParent_EmptyEmail_ShouldThrowException() {
+	public void TestCreateParent_EmptyEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Parent(uuid, "username", "password", "", "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be empty");
@@ -298,6 +486,100 @@ public class UserTest {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Parent(uuid, "username", "password", "email", "firstName", ""));
 		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetUsername_Null_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setUsername(null));
+		assertEquals(e.getMessage(), "username cannot be null");
+	}
+
+	@Test
+	public void TestParentSetPassword_Null_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be null");
+	}
+
+	@Test
+	public void TestParentSetEmailAddress_Null_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setEmailAddress(null));
+		assertEquals(e.getMessage(), "email cannot be null");
+	}
+
+	@Test
+	public void TestParentSetFirstName_Null_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setFirstName(null));
+		assertEquals(e.getMessage(), "first name cannot be null");
+	}
+
+	@Test
+	public void TestParentSetLastName_Null_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setLastName(null));
+		assertEquals(e.getMessage(), "last name cannot be null");
+	}
+
+	@Test
+	public void TestParentSetUsername_Empty_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setUsername(""));
+		assertEquals(e.getMessage(), "username cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetPassword_Empty_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetEmailAddress_Empty_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setEmailAddress(""));
+		assertEquals(e.getMessage(), "email cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetFirstName_Empty_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setFirstName(""));
+		assertEquals(e.getMessage(), "first name cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetLastName_Empty_ShouldThrowException() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setLastName(""));
+		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestParentSetPreferredName_Null_ShouldSetEmptyString() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(null));
+		assertEquals(u.getPreferredName(), "");
+	}
+
+	@Test
+	public void TestParentSetPreferredName_Empty_ShouldSetEmptyString() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(""));
+		assertEquals(u.getPreferredName(), "");
 	}
 
 	@Test
@@ -334,7 +616,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateStudent_NullEmail_ShouldThrowException() {
+	public void TestCreateStudent_NullEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(NullPointerException.class,
 			() -> new Student(uuid, "username", "password", null, "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be null");
@@ -375,7 +657,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void TestCreateStudent_EmptyEmail_ShouldThrowException() {
+	public void TestCreateStudent_EmptyEmailAddress_ShouldThrowException() {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Student(uuid, "username", "password", "", "firstName", "lastName"));
 		assertEquals(e.getMessage(), "email cannot be empty");
@@ -393,6 +675,100 @@ public class UserTest {
 		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new Student(uuid, "username", "password", "email", "firstName", ""));
 		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetUsername_Null_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setUsername(null));
+		assertEquals(e.getMessage(), "username cannot be null");
+	}
+
+	@Test
+	public void TestStudentSetPassword_Null_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be null");
+	}
+
+	@Test
+	public void TestStudentSetEmailAddress_Null_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setEmailAddress(null));
+		assertEquals(e.getMessage(), "email cannot be null");
+	}
+
+	@Test
+	public void TestStudentSetFirstName_Null_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setFirstName(null));
+		assertEquals(e.getMessage(), "first name cannot be null");
+	}
+
+	@Test
+	public void TestStudentSetLastName_Null_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(NullPointerException.class,
+			() -> u.setLastName(null));
+		assertEquals(e.getMessage(), "last name cannot be null");
+	}
+
+	@Test
+	public void TestStudentSetUsername_Empty_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setUsername(""));
+		assertEquals(e.getMessage(), "username cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetPassword_Empty_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setPassword(""));
+		assertEquals(e.getMessage(), "password cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetEmailAddress_Empty_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setEmailAddress(""));
+		assertEquals(e.getMessage(), "email cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetFirstName_Empty_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setFirstName(""));
+		assertEquals(e.getMessage(), "first name cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetLastName_Empty_ShouldThrowException() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		Exception e = assertThrows(IllegalArgumentException.class,
+			() -> u.setLastName(""));
+		assertEquals(e.getMessage(), "last name cannot be empty");
+	}
+
+	@Test
+	public void TestStudentSetPreferredName_Null_ShouldSetEmptyString() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(null));
+		assertEquals(u.getPreferredName(), "");
+	}
+
+	@Test
+	public void TestStudentSetPreferredName_Empty_ShouldSetEmptyString() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		assertDoesNotThrow(() -> u.setPreferredName(""));
+		assertEquals(u.getPreferredName(), "");
 	}
 
 	@Test
