@@ -25,7 +25,7 @@ public abstract class User {
     role = Role.GUEST;
   }
 
-  private void setUuid(UUID uuid) {
+  private void setUuid(UUID uuid) throws IllegalArgumentException {
     if (uuid == null) {
       throw new IllegalArgumentException("UUID cannot be null");
     }
@@ -61,7 +61,7 @@ public abstract class User {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(String password) throws IllegalArgumentException {
     if (password == null) {
       throw new IllegalArgumentException("password cannot be null");
     }
@@ -77,7 +77,7 @@ public abstract class User {
     return firstName;
   }
 
-  public void setFirstName(String firstName) {
+  public void setFirstName(String firstName) throws IllegalArgumentException {
     if (firstName == null) {
       throw new IllegalArgumentException("first name cannot be null");
     }
@@ -93,7 +93,7 @@ public abstract class User {
     return lastName;
   }
 
-  public void setLastName(String lastName) {
+  public void setLastName(String lastName) throws IllegalArgumentException {
     if (lastName == null) {
       throw new IllegalArgumentException("last name cannot be null");
     }
@@ -129,7 +129,7 @@ public abstract class User {
     return emailAddress;
   }
 
-  public void setEmailAddress(String emailAddress) {
+  public void setEmailAddress(String emailAddress) throws IllegalArgumentException {
     if (emailAddress == null) {
       throw new IllegalArgumentException("email address cannot be null");
     }
