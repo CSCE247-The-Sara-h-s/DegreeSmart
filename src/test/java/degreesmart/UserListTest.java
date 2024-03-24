@@ -20,7 +20,10 @@ class UserListTest {
 
     @BeforeAll
     public static void saveState() {
-        initialState = new ArrayList<>(UserList.getInstance().getUsers());
+        initialState = new ArrayList<>(
+            UserList.getInstance(
+                DataLoader.getCourses(), DataLoader.getRequirementSets(DataLoader.getCourses()))
+                    .getUsers());
     }
 
     @AfterAll
