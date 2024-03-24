@@ -10,22 +10,36 @@ public class AdvisingNote {
   private static final String timeFormat = "dd MMMM yyyy HH:mm:ss z";
 
   public AdvisingNote(Advisor author, String note, String time) {
-    this.author = author;
-    this.note = note;
-    this.time = ZonedDateTime.parse(time, DateTimeFormatter.ofPattern(timeFormat));
+    setAuthor(author);
+    setNote(note);
+    setTime(time);
   }
 
   public AdvisingNote(Advisor author, String note) {
-    this.author = author;
-    this.note = note;
-    time = ZonedDateTime.now();
+    this(author, note, ZonedDateTime.now().format(DateTimeFormatter.ofPattern(timeFormat)));
+  }
+
+  private void setTime(String time) throws IllegalArgumentException {
+    try {
+      this.time = ZonedDateTime.parse(time, DateTimeFormatter.ofPattern(timeFormat));
+    } catch (Exception e) {
+      throw new IllegalArgumentException(e.getMessage());
+    }
   }
 
   public String getNote() {
     return note;
   }
 
-  public void setNote(String note) {
+  public void setNote(String note) throws IllegalArgumentException {
+    if (note == null) {
+      throw new IllegalArgumentException("note cannot be null");
+    }
+
+    if (note.equals("")) {
+      throw new IllegalArgumentException("note cannot be empty");
+    }
+
     this.note = note;
   }
 
