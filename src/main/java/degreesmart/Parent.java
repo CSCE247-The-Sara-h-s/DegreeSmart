@@ -19,15 +19,17 @@ public class Parent extends User {
   }
 
   public boolean addChild(Student student) {
-    if (!children.contains(student)) {
-      return children.add(student);
-    } else {
-      return false;
+    boolean added = false;
+
+    if (student != null && !children.contains(student)) {
+      added = children.add(student);
     }
+
+    return added;
   }
 
   public boolean removeChild(Student student) {
-    return children.remove(student);
+      return children.remove(student);
   }
 
   public ArrayList<Student> getPendingAccessRequests() {
@@ -35,11 +37,13 @@ public class Parent extends User {
   }
 
   public boolean addPendingAccessRequest(Student student) {
-    if (!pendingAccessRequests.contains(student)) {
-      return pendingAccessRequests.add(student);
-    } else {
-      return false;
+    boolean added = false;
+
+    if (student != null && !pendingAccessRequests.contains(student)) {
+      added = pendingAccessRequests.add(student);
     }
+
+    return added;
   }
 
   public boolean removePendingAccessRequest(Student student) {
