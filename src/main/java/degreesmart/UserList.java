@@ -43,6 +43,17 @@ public class UserList {
         return userList;
     }
 
+    public void clear() {
+        users.clear();
+        students.clear();
+        advisors.clear();
+        administrators.clear();
+        parents.clear();
+        usersByUuid.clear();
+        usersByUsername.clear();
+        studentsByUscId.clear();
+    }
+
     public void saveUsers() {
         DataWriter.saveAdministrators();
         DataWriter.saveAdvisors();
