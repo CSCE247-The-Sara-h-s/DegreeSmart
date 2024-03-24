@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Guest extends User {
 	public Guest(UUID uuid) {
-		super(uuid, "", "", "", "", "");
+		super(uuid, "GUEST", "GUEST", "GUEST", "GUEST", "GUEST");
 	}
 
 	public String toString() {

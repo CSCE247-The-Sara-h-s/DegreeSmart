@@ -1,5 +1,6 @@
 package degreesmart;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class User {
@@ -12,14 +13,24 @@ public abstract class User {
   private String emailAddress;
   protected Role role;
 
-  public User(UUID uuid, String username, String password, String emailAddress, String firstName, String lastName) {
-    this.uuid = uuid;
-    this.username = username;
-    this.password = password;
-    this.emailAddress = emailAddress;
-    this.firstName = firstName;
-    this.lastName = lastName;
+  public User(UUID uuid, String username, String password, String emailAddress,
+      String firstName, String lastName) {
+    setUuid(uuid);
+    setUsername(username);
+    setPassword(password);
+    setEmailAddress(emailAddress);
+    setFirstName(firstName);
+    setLastName(lastName);
+
     role = Role.GUEST;
+  }
+
+  private void setUuid(UUID uuid) {
+    if (uuid == null) {
+      throw new IllegalArgumentException("UUID cannot be null");
+    }
+
+    this.uuid = uuid;
   }
 
   public UUID getUuid() {
@@ -34,7 +45,15 @@ public abstract class User {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(String username) throws IllegalArgumentException {
+    if (username == null) {
+      throw new IllegalArgumentException("username cannot be null");
+    }
+
+    if (username.equals("")) {
+      throw new IllegalArgumentException("username cannot be empty");
+    }
+
     this.username = username;
   }
 
@@ -43,6 +62,14 @@ public abstract class User {
   }
 
   public void setPassword(String password) {
+    if (password == null) {
+      throw new IllegalArgumentException("password cannot be null");
+    }
+
+    if (password.equals("")) {
+      throw new IllegalArgumentException("password cannot be empty");
+    }
+
     this.password = password;
   }
 
@@ -51,6 +78,14 @@ public abstract class User {
   }
 
   public void setFirstName(String firstName) {
+    if (firstName == null) {
+      throw new IllegalArgumentException("first name cannot be null");
+    }
+
+    if (firstName.equals("")) {
+      throw new IllegalArgumentException("first name cannot be empty");
+    }
+
     this.firstName = firstName;
   }
 
@@ -59,10 +94,18 @@ public abstract class User {
   }
 
   public void setLastName(String lastName) {
+    if (lastName == null) {
+      throw new IllegalArgumentException("last name cannot be null");
+    }
+
+    if (lastName.equals("")) {
+      throw new IllegalArgumentException("last name cannot be empty");
+    }
+
     this.lastName = lastName;
   }
 
-  public String getPreferredName() {
+  public String getPreferredFirstName() {
     if (preferredName == null || preferredName.isEmpty()) {
       return firstName;
     } else {
@@ -70,7 +113,15 @@ public abstract class User {
     }
   }
 
+  public String getPreferredName() {
+    return preferredName;
+  }
+
   public void setPreferredName(String preferredName) {
+    if (preferredName == null) {
+      preferredName = "";
+    }
+
     this.preferredName = preferredName;
   }
 
@@ -79,6 +130,14 @@ public abstract class User {
   }
 
   public void setEmailAddress(String emailAddress) {
+    if (emailAddress == null) {
+      throw new IllegalArgumentException("email address cannot be null");
+    }
+
+    if (emailAddress.equals("")) {
+      throw new IllegalArgumentException("email address cannot be empty");
+    }
+
     this.emailAddress = emailAddress;
   }
 
