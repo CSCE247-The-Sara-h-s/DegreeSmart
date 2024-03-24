@@ -102,7 +102,7 @@ public class ParentTest {
 	@Test
 	public void testRemoveChild_NotInList_ShouldEqualFalse() {
 		p.addChild(s1);
-		assertEquals(false, p.removeChild(s1));
+		assertEquals(false, p.removeChild(s2));
 	}
 
 	@Test
@@ -183,7 +183,7 @@ public class ParentTest {
 	@Test
 	public void testRemoveRequest_NotInList_ShouldEqualFalse() {
 		p.addPendingAccessRequest(s1);
-		assertEquals(false, p.removePendingAccessRequest(s1));
+		assertEquals(false, p.removePendingAccessRequest(s2));
 	}
 
 	@Test
