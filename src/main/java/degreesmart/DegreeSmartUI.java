@@ -32,19 +32,10 @@ public class DegreeSmartUI {
 
 	public void scriptedScenarioZero() {
 		Scanner stdin = new Scanner(System.in);
-		String invalidUsername = "username";
-		String invalidPassword = "password";
 		String adminUsername = "Rgreen";
 		String adminPassword = "PurpleDaisy22";
 
 		System.out.println(" Scripted Scenario Zero\t(Press ENTER to advance)\n\n");
-		System.out.println(" Current User");
-		System.out.println(application.getActiveUser());
-		stdin.nextLine();
-
-		System.out.println("\n Attempting to login with username='" + invalidUsername
-			+ "', password='" + invalidPassword + "'");
-		application.logIn(invalidUsername, invalidPassword);
 		System.out.println(" Current User");
 		System.out.println(application.getActiveUser());
 		stdin.nextLine();
