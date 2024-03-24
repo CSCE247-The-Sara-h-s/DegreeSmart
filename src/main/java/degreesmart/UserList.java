@@ -246,8 +246,13 @@ public class UserList {
 
         if (shouldChange) {
             usersByUsername.remove(user.getUsername());
-            user.setUsername(username);
-            usersByUsername.put(user.getUsername(), user);
+            try {
+                user.setUsername(username);
+            } catch (IllegalArgumentException e) {
+                return false;
+            } finally {
+                usersByUsername.put(user.getUsername(), user);
+            }
         }
 
         return shouldChange;
@@ -259,8 +264,13 @@ public class UserList {
 
         if (shouldChange) {
             studentsByUscId.remove(student.getUscId());
-            student.setUscId(uscId);
-            studentsByUscId.put(student.getUscId(), student);
+            try {
+                student.setUscId(uscId);
+            } catch (IllegalArgumentException e) {
+                return false;
+            } finally {
+                studentsByUscId.put(student.getUscId(), student);
+            }
         }
 
         return shouldChange;
