@@ -138,7 +138,7 @@ public class UserList {
         ArrayList<Student> unassignedStudents = new ArrayList<Student>();
 
         for (Student student : students) {
-            if (student.getRole() == Role.UNAPPROVED_ADVISOR) {
+            if (student.getAdvisor() == null) {
                 unassignedStudents.add(student);
             }
         }
