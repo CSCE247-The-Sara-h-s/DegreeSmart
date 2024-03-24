@@ -29,11 +29,13 @@ public class Advisor extends User {
   }
 
   public boolean addAssignedStudent(Student student) {
-    if (!assignedStudents.contains(student)) {
-      return assignedStudents.add(student);
-    } else {
-      return false;
+    boolean added = false;
+
+    if (student != null && !assignedStudents.contains(student)) {
+      added = assignedStudents.add(student);
     }
+    
+    return added;
   }
 
   public boolean removeAssignedStudent(Student student) {
