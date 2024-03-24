@@ -153,7 +153,35 @@ public class DataWriter extends DataConstants {
 		return userJSON;
 	}
 
+	private static JSONObject courseToJSON(Course course){
+		JSONObject courseJSON = new JSONObject();
+
+		courseJSON.put(COURSE_UUID, course.getUuid());
+		courseJSON.put(COURSE_NAME, course.getName());
+		courseJSON.put(COURSE_NUMBER, course.getNumber().toString());
+		courseJSON.put(COURSE_SUBJECT, course.getSubject());
+		courseJSON.put(COURSE_CREDIT_HOURS, course.getCreditHours());
+		courseJSON.put(COURSE_PREREQUISITES, course.getPrerequisites());
+		courseJSON.put(COURSE_COREQUISITES, course.getCorequisites());
+		courseJSON.put(COURSE_DESCRIPTION, course.getDescription());
+		courseJSON.put(COURSE_SEMESTERS, course.getSemestersOffered());
+		return courseJSON;
+	}
+
 	public static void saveCourses() {
+		JSONArray coursesJSON = new JSONArray();
+
+		for (Course course : CourseList.getInstance().getCourses()) {
+			coursesJSON.add(courseToJSON(course));
+		}
+
+		try {
+			FileWriter file = new FileWriter(COURSE_FILE);
+			file.write(coursesJSON.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
