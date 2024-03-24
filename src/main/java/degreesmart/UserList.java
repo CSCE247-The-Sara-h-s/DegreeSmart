@@ -86,7 +86,8 @@ public class UserList {
         ArrayList<User> filteredUsers = new ArrayList<User>();
 
         for (User user : users) {
-            if (user.getLastName().equals(lastName) && user.getFirstName().equals(firstName)) {
+            if (user.getLastName().equalsIgnoreCase(lastName)
+                && user.getFirstName().equalsIgnoreCase(firstName)) {
                 filteredUsers.add(user);
             }
         }
@@ -102,7 +103,8 @@ public class UserList {
         ArrayList<Student> filteredStudents = new ArrayList<Student>();
 
         for (Student student : students) {
-            if (student.getLastName().equals(lastName) && student.getFirstName().equals(firstName)) {
+            if (student.getLastName().equalsIgnoreCase(lastName)
+                    && student.getFirstName().equalsIgnoreCase(firstName)) {
                 filteredStudents.add(student);
             }
         }
@@ -151,11 +153,11 @@ public class UserList {
     }
 
     public User getUser(String username) {
-        return usersByUsername.get(username);
+        return usersByUsername.get(username.toLowerCase());
     }
 
     public Student getStudent(String uscId) {
-        return studentsByUscId.get(uscId);
+        return studentsByUscId.get(uscId.toLowerCase());
     }
 
     public boolean createUser(User user) {
