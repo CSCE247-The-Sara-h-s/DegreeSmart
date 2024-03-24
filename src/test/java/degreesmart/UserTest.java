@@ -211,6 +211,20 @@ public class UserTest {
 	}
 
 	@Test
+	public void testAdministratorGetPreferredFirstName_NoPreferred_ShouldEqualFirstName() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("");
+		assertEquals(u.getFirstName(), u.getPreferredFirstName());
+	}
+
+	@Test
+	public void testAdministratorGetPreferredFirstName_SetPreferred_ShouldEqualPreferredName() {
+		Administrator u = new Administrator(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("preferredName");
+		assertEquals(u.getPreferredName(), u.getPreferredFirstName());
+	}
+
+	@Test
 	public void testCreateAdvisor_ValidData_ShouldNotThrowException() {
 		assertDoesNotThrow(
 			() -> new Advisor(uuid, "username", "password", "email", "firstName", "lastName"));
@@ -397,6 +411,20 @@ public class UserTest {
 		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
 		assertDoesNotThrow(() -> u.setPreferredName(""));
 		assertEquals("", u.getPreferredName());
+	}
+
+	@Test
+	public void testAdvisorGetPreferredFirstName_NoPreferred_ShouldEqualFirstName() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("");
+		assertEquals(u.getFirstName(), u.getPreferredFirstName());
+	}
+
+	@Test
+	public void testAdvisorGetPreferredFirstName_SetPreferred_ShouldEqualPreferredName() {
+		Advisor u = new Advisor(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("preferredName");
+		assertEquals(u.getPreferredName(), u.getPreferredFirstName());
 	}
 
 	@Test
@@ -589,6 +617,20 @@ public class UserTest {
 	}
 
 	@Test
+	public void testParentGetPreferredFirstName_NoPreferred_ShouldEqualFirstName() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("");
+		assertEquals(u.getFirstName(), u.getPreferredFirstName());
+	}
+
+	@Test
+	public void testParentGetPreferredFirstName_SetPreferred_ShouldEqualPreferredName() {
+		Parent u = new Parent(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("preferredName");
+		assertEquals(u.getPreferredName(), u.getPreferredFirstName());
+	}
+
+	@Test
 	public void testCreateStudent_ValidData_ShouldNotThrowException() {
 		assertDoesNotThrow(
 			() -> new Student(uuid, "username", "password", "email", "firstName", "lastName"));
@@ -775,6 +817,20 @@ public class UserTest {
 		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
 		assertDoesNotThrow(() -> u.setPreferredName(""));
 		assertEquals("", u.getPreferredName());
+	}
+
+	@Test
+	public void testStudentGetPreferredFirstName_NoPreferred_ShouldEqualFirstName() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("");
+		assertEquals(u.getFirstName(), u.getPreferredFirstName());
+	}
+
+	@Test
+	public void testStudentGetPreferredFirstName_SetPreferred_ShouldEqualPreferredName() {
+		Student u = new Student(uuid, "username", "password", "email", "firstName", "lastName");
+		u.setPreferredName("preferredName");
+		assertEquals(u.getPreferredName(), u.getPreferredFirstName());
 	}
 
 	@Test
