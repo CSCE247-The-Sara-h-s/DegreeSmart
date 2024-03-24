@@ -53,20 +53,20 @@ public class AdvisingNoteTest {
 
 	@Test
 	public void testCreateNote_InvalidDate_ShouldThrowException() {
-		assertThrows(DateTimeParseException.class,
+		assertThrows(IllegalArgumentException.class,
 			() -> new AdvisingNote(a, "note", "x17 March 2024 02:37:22 EDT"));
 	}
 
 	@Test
 	public void testCreateNote_NullDate_ShouldThrowException() {
-		Exception e = assertThrows(NullPointerException.class,
+		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new AdvisingNote(a, "note", null));
-		assertEquals("date cannot be null", e.getMessage());
+		assertEquals("time cannot be null", e.getMessage());
 	}
 
 	@Test
 	public void testCreateNote_NullNote_ShouldThrowException() {
-		Exception e = assertThrows(NullPointerException.class,
+		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> new AdvisingNote(a, null, "17 March 2024 02:37:22 EDT"));
 		assertEquals("note cannot be null", e.getMessage());
 	}
@@ -85,7 +85,7 @@ public class AdvisingNoteTest {
 
 	@Test
 	public void testSetNote_Null_ShouldThrowException() {
-		Exception e = assertThrows(NullPointerException.class,
+		Exception e = assertThrows(IllegalArgumentException.class,
 			() -> n.setNote(null));
 		assertEquals("note cannot be null", e.getMessage());
 	}
