@@ -1,4 +1,4 @@
-package src.test.java.degreesmart;
+package degreesmart;
 
 import static org.junit.Assert.*;
 
