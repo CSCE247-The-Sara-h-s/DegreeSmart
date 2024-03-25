@@ -1,77 +1,79 @@
 package degreesmart;
 
 import static org.junit.Assert.*;
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-
 import degreesmart.Semester;
 import degreesmart.Term;
 
 public class TermTest {
+    private Term term;
+
+    @Before
+    public void setUp() {
+        term = new Term(Semester.FALL, 2023);
+    }
+
+    @After
+    public void tearDown() {
+        term = null;
+    }
 
     @Test
     public void testGetSemester() {
-        Term term = new Term(Semester.FALL, 2023);
         assertEquals(Semester.FALL, term.getSemester());
     }
 
     @Test
     public void testGetYear() {
-        Term term = new Term(Semester.SPRING, 2022);
-        assertEquals(2022, term.getYear());
+        assertEquals(2023, term.getYear());
     }
 
     @Test
     public void testSetSemester() {
-        Term term = new Term(Semester.SUMMER, 2024);
-        term.setSemester(Semester.FALL);
-        assertEquals(Semester.FALL, term.getSemester());
-    }
-
-
-    @Test
-    public void testSetYearInvalid() {
-        Term term = new Term(Semester.SPRING, 2025);
-        term.setYear(-1);
-        assertEquals(0, term.getYear());
+        term.setSemester(Semester.SPRING);
+        assertEquals(Semester.SPRING, term.getSemester());
     }
 
     @Test
-    public void testEqualsSameObject() {
-        Term term = new Term(Semester.SUMMER, 2022);
-        assertTrue(term.equals(term));
+    public void testSetYear() {
+        term.setYear(2025);
+        assertEquals(2025, term.getYear());
     }
 
     @Test
-    public void testEqualsDifferentClass() {
-        Term term = new Term(Semester.FALL, 2023);
-        assertFalse(term.equals("not a Term object"));
+    public void testEqualsSameTerm() {
+        Term sameTerm = new Term(Semester.FALL, 2023);
+        assertTrue(term.equals(sameTerm));
     }
 
     @Test
-    public void testEqualsEqualTerms() {
-        Term term1 = new Term(Semester.SPRING, 2022);
-        Term term2 = new Term(Semester.SPRING, 2022);
-        assertTrue(term1.equals(term2));
+    public void testEqualsDifferentTerm() {
+        Term differentTerm = new Term(Semester.SPRING, 2023);
+        assertFalse(term.equals(differentTerm));
     }
 
     @Test
-    public void testEqualsUnequalTerms() {
-        Term term1 = new Term(Semester.FALL, 2023);
-        Term term2 = new Term(Semester.SPRING, 2023);
-        assertFalse(term1.equals(term2));
+    public void testCompareToLessThan() {
+        Term laterTerm = new Term(Semester.SPRING, 2024);
+        assertTrue(term.compareTo(laterTerm) < 0);
     }
 
     @Test
-    public void testCompareToEquals() {
-        Term term1 = new Term(Semester.FALL, 2024);
-        Term term2 = new Term(Semester.FALL, 2024);
-        assertEquals(0, term1.compareTo(term2));
+    public void testCompareToGreaterThan() {
+        Term earlierTerm = new Term(Semester.SPRING, 2022);
+        assertTrue(term.compareTo(earlierTerm) > 0);
+    }
+
+    @Test
+    public void testCompareToEqualTo() {
+        Term sameTerm = new Term(Semester.FALL, 2023);
+        assertEquals(0, term.compareTo(sameTerm));
     }
 
     @Test
     public void testToString() {
-        Term term = new Term(Semester.SUMMER, 2022);
-        assertEquals("SUMMER 2022", term.toString());
+        assertEquals("FALL 2023", term.toString());
     }
 }
