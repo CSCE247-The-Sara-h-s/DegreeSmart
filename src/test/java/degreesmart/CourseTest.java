@@ -78,6 +78,13 @@ class CourseTest {
     }
 
     @Test
+    void testAddInvalidCorequisite() {
+        Course courseCoreq = new Course(UUID.randomUUID(), Subject.CSCE, "-1924");
+        course.addCorequisite(courseCoreq);
+        assertFalse(course.getCorequisites().contains(courseCoreq));
+    }
+
+    @Test
     void testRemoveCorequisite() {
         Course courseCoreq = new Course(UUID.randomUUID(), Subject.CSCE, "220");
         course.addCorequisite(courseCoreq);
