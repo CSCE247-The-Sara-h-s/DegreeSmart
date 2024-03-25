@@ -42,7 +42,7 @@ class CourseTest {
     }
 
     @Test
-    void testModifyCourse() {
+    void testModifyCourseToString() {
         String original = course.toString();
 
         course.setSubject(Subject.AERO);
@@ -155,3 +155,4 @@ class CourseTest {
         assertEquals(course.getCreditHours(), 0);
     }
 }
+
