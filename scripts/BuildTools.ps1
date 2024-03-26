@@ -27,7 +27,7 @@ function Build-Test {
 				Write-Output "${Test}/${Package}/$($File.name)"
 			}
 
-		javac -Xlint:unchecked -d $Bin -cp "${Lib};${Bin}" $FileNames
+		javac -Xlint:all -d $Bin -cp "${Lib};${Bin}" $FileNames
 
 		if ( $LastExitCode -eq 0 ) {
 			Write-Verbose -Verbose "Build finished: $Bin"
@@ -57,7 +57,7 @@ function Build-DegreeSmart {
 				Write-Output "${Src}/${Package}/$($File.name)"
 			}
 
-		javac -Xlint:unchecked -d $Bin -cp "${Lib};${Src}" $FileNames
+		javac -Xlint:all -d $Bin -cp "${Lib};${Src}" $FileNames
 
 		if ( $LastExitCode -eq 0 ) {
 			Write-Verbose -Verbose "Build finished: $Bin"
