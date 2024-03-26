@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Student extends User {
-  private final double QUALITY_POINT_STEP = 0.5;
   private String uscId;
   private Advisor advisor;
   private ArrayList<Parent> parents;
@@ -148,34 +147,38 @@ public class Student extends User {
     double earnedHours = 0.0;
 
     for (CompletedCourse c : completedCourses) {
-      double qualityPoints = 0.0;
+      double qualityPoints;
 
       switch (c.getGrade()) {
         case A:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 4.0;
+          break;
         case B_PLUS:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 3.5;
+          break;
         case B:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 3.0;
+          break;
         case C_PLUS:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 2.5;
+          break;
         case C:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 2.0;
+          break;
         case D_PLUS:
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 1.5;
+          break;
         case D:
-          qualityPoints += QUALITY_POINT_STEP;
-          qualityPoints += QUALITY_POINT_STEP;
+          qualityPoints = 1.0;
+          break;
+        default:
+          qualityPoints = 0.0;
       }
 
       earnedHours += c.getCourse().getCreditHours() * qualityPoints;
     }
 
-    if (earnedHours == 0.0) {
-      return 0.0;
-    } else {
-      return earnedHours / getAttemptedHours();
-    }
+    return (earnedHours == 0.0)? 0.0 : earnedHours / getAttemptedHours();
   }
 
   public ArrayList<PlannedCourse> generateSemesterSchedule() {
