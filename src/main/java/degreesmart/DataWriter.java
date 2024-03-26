@@ -120,8 +120,8 @@ public class DataWriter extends DataConstants {
 			for (PlannedCourse plannedCourse : student.getPlannedCourses()) {
 				JSONObject plannedCourseJSON = new JSONObject();
 				plannedCourseJSON.put(STUDENT_COURSE, plannedCourse.getCourse().getUuid().toString());
-				plannedCourseJSON.put(STUDENT_COURSE_SEMESTER, plannedCourse.getTerm().getSemester().name());
-				plannedCourseJSON.put(STUDENT_COURSE_YEAR, ((Integer)plannedCourse.getTerm().getYear()).toString());
+				plannedCourseJSON.put(STUDENT_COURSE_SEMESTER, plannedCourse.getSemester().name());
+				plannedCourseJSON.put(STUDENT_COURSE_YEAR, ((Integer)plannedCourse.getYear()).toString());
 				plannedCoursesJSON.add(plannedCourseJSON);
 			}
 			studentJSON.put(STUDENT_PLANNED_COURSES, plannedCoursesJSON);

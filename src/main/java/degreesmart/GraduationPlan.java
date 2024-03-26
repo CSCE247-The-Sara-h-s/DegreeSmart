@@ -103,7 +103,7 @@ public class GraduationPlan {
 			}
 		}
 
-		Collections.sort(schedule, (c1, c2) -> c1.getTerm().compareTo(c2.getTerm()));
+		// Collections.sort(schedule, (c1, c2) -> c1.getTerm().compareTo(c2.getTerm()));
 
 		return schedule;
 	}
