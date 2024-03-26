@@ -17,13 +17,16 @@ public class Term implements Comparable<Term> {
 		return year;
 	}
 
-	public void setSemester(Semester semester) {
+	public void setSemester(Semester semester) throws IllegalArgumentException {
+		if (semester == null) {
+            throw new IllegalArgumentException("semester cannot be null");
+        }
 		this.semester = semester;
 	}
 
-	public void setYear(int year) {
-		if (year < 0) {
-			year = 0;
+	public void setYear(int year) throws IllegalArgumentException {
+		if (year <= 0) {
+			throw new IllegalArgumentException("year cannot be less than one");
 		}
 
 		this.year = year;
@@ -33,10 +36,10 @@ public class Term implements Comparable<Term> {
 		if (object == null || ! (object instanceof Term)) {
 			return false;
 		}
-		Term course = (Term)object;
+		Term term = (Term)object;
 
-		return semester.equals(course.getSemester())
-			&& year == course.getYear();
+		return semester.equals(term.getSemester())
+			&& year == term.getYear();
 	}
 
 	public int compareTo(Term term) {
