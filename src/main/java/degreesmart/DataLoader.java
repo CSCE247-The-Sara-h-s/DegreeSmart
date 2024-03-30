@@ -224,11 +224,11 @@ public class DataLoader extends DataConstants {
 		case ADVISOR:
 			user = new Advisor(
 				UUID.fromString(uuid), username, password, email, firstName, lastName);
+				((Advisor) user).setAdvisorRole();
 			break;
 		case UNAPPROVED_ADVISOR:
 			user = new Advisor(
 				UUID.fromString(uuid), username, password, email, firstName, lastName);
-			((Advisor) user).setAdvisorRole();
 			break;
 		case PARENT:
 			user = new Parent(
