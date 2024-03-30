@@ -32,7 +32,7 @@ public class ApplicationTest {
 
     @Before
     public void setUp() {
-        application = application.getInstance();
+        application = Application.getInstance();
         initialState = new ArrayList<>(UserList.getInstance().getUsers());
         application.createAccount(Role.ADMINISTRATOR, "ADMIN", "password", "test@example.com", "DJ", "Khaled");
         application.createAccount(Role.ADMINISTRATOR, "ADMIN2", "password", "test1@example.com", "DJ", "Khaled");
