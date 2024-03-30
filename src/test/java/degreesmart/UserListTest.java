@@ -12,18 +12,13 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 class UserListTest {
-    private ArrayList<Course> courses = DataLoader.getCourses();
-    private ArrayList<RequirementSet> requirementSets = DataLoader.getRequirementSets(courses);
-    private UserList userList = UserList.getInstance(courses, requirementSets);
+    private UserList userList = UserList.getInstance();
     private ArrayList<User> users = userList.getUsers();
     private static ArrayList<User> initialState;
 
     @BeforeAll
     public static void saveState() {
-        initialState = new ArrayList<>(
-            UserList.getInstance(
-                DataLoader.getCourses(), DataLoader.getRequirementSets(DataLoader.getCourses()))
-                    .getUsers());
+        initialState = new ArrayList<>(UserList.getInstance().getUsers());
     }
 
     @AfterAll

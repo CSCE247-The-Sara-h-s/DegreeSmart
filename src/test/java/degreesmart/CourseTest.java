@@ -17,7 +17,7 @@ class CourseTest {
     
     @BeforeEach
     public void setup() {
-        courses = DataLoader.getCourses();
+        courses = DataLoader.getInstance().courses;
 
         Random rand = new Random();
         int index = rand.nextInt(5000);
