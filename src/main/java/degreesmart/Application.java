@@ -11,8 +11,8 @@ public class Application {
 
     private Application() {
         courseList = CourseList.getInstance();
-        requirementSetList = RequirementSetList.getInstance(courseList.getCourses());
-        userList = UserList.getInstance(courseList.getCourses(), requirementSetList.getRequirementSets());
+        requirementSetList = RequirementSetList.getInstance();
+        userList = UserList.getInstance();
         activeUser = userList.getGuest();
     }
 

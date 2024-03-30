@@ -11,12 +11,11 @@ public class CourseList {
 	private static CourseList courseList;
 
 	private CourseList() {
-		courses = DataLoader.getCourses();
-		coursesByUuid = new HashMap<UUID, Course>();
+		courses = DataLoader.getInstance().courses;
+		coursesByUuid = DataLoader.getInstance().uuidToCourse;
 		coursesByShortName = new HashMap<String, Course>();
 
 		for (Course course : courses) {
-			coursesByUuid.put(course.getUuid(), course);
 			coursesByShortName.put(course.getShortName(), course);
 		}
 	}

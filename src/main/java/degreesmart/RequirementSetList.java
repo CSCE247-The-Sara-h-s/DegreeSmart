@@ -13,16 +13,15 @@ public class RequirementSetList {
 	private HashMap<String, RequirementSet> fullNameToSet;
 	private static RequirementSetList requirementSetList;
 
-	private RequirementSetList(ArrayList<Course> courses) {
-		sets = DataLoader.getRequirementSets(courses);
+	private RequirementSetList() {
+		sets = DataLoader.getInstance().sets;
+		uuidToSet = DataLoader.getInstance().uuidToSet;
 		majors = new ArrayList<RequirementSet>();
 		minors = new ArrayList<RequirementSet>();
 		applicationAreas = new ArrayList<RequirementSet>();
-		uuidToSet = new HashMap<UUID, RequirementSet>();
 		fullNameToSet = new HashMap<String, RequirementSet>();
 
 		for (RequirementSet set : sets) {
-			uuidToSet.put(set.getUuid(), set);
 			fullNameToSet.put(getFullName(set), set);
 
 			switch (set.getType()) {
@@ -39,15 +38,11 @@ public class RequirementSetList {
 		}
 	}
 
-	public static RequirementSetList getInstance(ArrayList<Course> courses) {
+	public static RequirementSetList getInstance() {
 		if (requirementSetList == null) {
-			requirementSetList = new RequirementSetList(courses);
+			requirementSetList = new RequirementSetList();
 		}
 
-		return requirementSetList;
-	}
-
-	public static RequirementSetList getInstance() {
 		return requirementSetList;
 	}
 
