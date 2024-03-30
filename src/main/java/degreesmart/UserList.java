@@ -51,10 +51,7 @@ public class UserList {
     }
 
     public void saveUsers() {
-        DataWriter.saveAdministrators();
-        DataWriter.saveAdvisors();
-        DataWriter.saveParents();
-        DataWriter.saveStudents();
+        DataWriter.saveUsers();
     }
 
     public User getGuest() {

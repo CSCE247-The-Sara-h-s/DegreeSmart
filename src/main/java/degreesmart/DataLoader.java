@@ -18,13 +18,6 @@ public class DataLoader extends DataConstants {
 	protected HashMap<UUID, RequirementSet> uuidToSet;
 	private static DataLoader dataLoader;
 
-	private static String[] userFiles = new String[]{
-		ADMINISTRATOR_FILE,
-		ADVISOR_FILE,
-		PARENT_FILE,
-		STUDENT_FILE,
-	};
-
 	private DataLoader() {
 		users = new ArrayList<User>();
 		uuidToUser = new HashMap<UUID, User>();
@@ -178,28 +171,26 @@ public class DataLoader extends DataConstants {
 	private void loadUsers() {
 		HashMap<UUID, JSONObject> studentsJSON = new HashMap<UUID, JSONObject>();
 
-		for (String userFile : userFiles) {
-			JSONArray usersJSON = readJSONFile(userFile);
+		JSONArray usersJSON = readJSONFile(DataConstants.USER_FILE);
 
-			for (Object object : usersJSON) {
-				User user = loadUser((JSONObject) object);
+		for (Object object : usersJSON) {
+			User user = loadUser((JSONObject) object);
 
-				if (user == null) {
-					continue;
-				}
-
-				users.add(user);
-				uuidToUser.put(user.getUuid(), user);
-
-				if (user.getRole() == Role.STUDENT) {
-					studentsJSON.put(user.getUuid(), (JSONObject) object);
-				}
+			if (user == null) {
+				continue;
 			}
 
-			for (User user : users) {
-				if (user.getRole() == Role.STUDENT) {
-					loadStudent((Student) user, studentsJSON.get(user.getUuid()));
-				}
+			users.add(user);
+			uuidToUser.put(user.getUuid(), user);
+
+			if (user.getRole() == Role.STUDENT) {
+				studentsJSON.put(user.getUuid(), (JSONObject) object);
+			}
+		}
+
+		for (User user : users) {
+			if (user.getRole() == Role.STUDENT) {
+				loadStudent((Student) user, studentsJSON.get(user.getUuid()));
 			}
 		}
 	}

@@ -2,10 +2,7 @@
 package degreesmart;
 
 public abstract class DataConstants {
-	protected static final String ADMINISTRATOR_FILE = "json/administrator.json";
-	protected static final String ADVISOR_FILE = "json/advisor.json";
-	protected static final String PARENT_FILE = "json/parent.json";
-	protected static final String STUDENT_FILE = "json/student.json";
+	protected static final String USER_FILE = "json/user.json";
 	protected static final String COURSE_FILE = "json/course.json";
 	protected static final String REQUIREMENT_FILE = "json/requirement.json";
 	protected static final String USER_ROLE = "role";
