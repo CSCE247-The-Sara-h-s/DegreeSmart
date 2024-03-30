@@ -30,7 +30,6 @@ public class DataWriter extends DataConstants {
 
 		for (Advisor advisor : UserList.getInstance().getAdvisors()) {
 			JSONObject advisorJSON = userToJSON(advisor);
-			advisorJSON.put(ADVISOR_APPROVED, ((Boolean)advisor.getApproved()).toString());
 			advisorsJSON.add(advisorJSON);
 		}
 
