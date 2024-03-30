@@ -141,6 +141,7 @@ public class DataWriter extends DataConstants {
 	private static JSONObject userToJSON(User user) {
 		JSONObject userJSON = new JSONObject();
 
+		userJSON.put(USER_ROLE, user.getRole().toString());
 		userJSON.put(USER_UUID, user.getUuid().toString());
 		userJSON.put(USER_USERNAME, user.getUsername());
 		userJSON.put(USER_PASSWORD, user.getPassword());
