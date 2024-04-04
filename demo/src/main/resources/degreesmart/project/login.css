@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color: #650808;
+}
+
+Label {
+    -fx-font-size: 50px;
+}
+
+TextField, PasswordField {
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
+}
+
+Button {
+    -fx-font-size: 14px;
+    -fx-pref-width: 120px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+Button:hover {
+    -fx-background-color: #45a049; 
+}
