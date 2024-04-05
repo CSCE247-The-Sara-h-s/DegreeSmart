@@ -18,6 +18,6 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <stylesheets>
-      <URL value = "@styles.css"/>
+      <URL value = "@../styles/styles.css"/>
    </stylesheets>
 </VBox>
