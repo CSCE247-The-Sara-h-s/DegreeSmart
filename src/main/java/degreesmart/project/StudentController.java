@@ -12,13 +12,48 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
-import java.lang.reflect.*;
+import javafx.event.ActionEvent;
 
 public class StudentController implements Initializable {
 	@FXML
     private HeaderPaneController headerPaneController;
 
+    @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle rb) {
+        headerPaneController.getComboBox().getItems().addAll(
+            "My Account",
+            "Settings",
+            "Print Transcript",
+            "Help",
+            "Log Out"
+        );
+        headerPaneController.getComboBox().setValue("Hello <user>!");
+        headerPaneController.getComboBox().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    switch(headerPaneController.getComboBox().getValue().toString().toLowerCase()) {
+                    case "my account":
+                        // App.setRoot("loginpage");
+                        break;
+                    case "settings":
+                        // App.setRoot("loginpage");
+                        break;
+                     case "print transcript":
+                        // App.setRoot("loginpage");
+                        break;
+                    case "help":
+                        // App.setRoot("loginpage");
+                        break;
+                    case "log out":
+                        App.setRoot("loginpage");
+                        break;
+                    }
+                } catch (Exception e) {
+                }
+            }
+        });
+
        	Label graduationPlan = new Label("Graduation Plan");
         Label advisingNotes = new Label("View Advising Notes");
         Label whatIf = new Label("What If Scenario");
