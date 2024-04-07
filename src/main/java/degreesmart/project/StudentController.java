@@ -37,7 +37,7 @@ public class StudentController implements Initializable {
                         // App.setRoot("loginpage");
                         break;
                     case "settings":
-                        // App.setRoot("loginpage");
+                        App.setRoot("student-settings");
                         break;
                      case "print transcript":
                         // App.setRoot("loginpage");
