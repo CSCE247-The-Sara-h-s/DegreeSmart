@@ -11,6 +11,7 @@
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <VBox style="-fx-background-color: lightgray;" maxHeight="Infinity" VBox.vgrow="ALWAYS"></VBox>
+        <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <padding>
     </padding>
