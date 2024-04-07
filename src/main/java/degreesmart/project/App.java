@@ -16,7 +16,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("DegreeSmart");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/icon.png")));
-        scene = new Scene(loadFXML("student-settings"), 640, 480);
+        scene = new Scene(loadFXML("loginPage"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
