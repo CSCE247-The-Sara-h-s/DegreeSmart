@@ -14,12 +14,12 @@ import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import java.lang.reflect.*;
 
-public class StudentGraduationPlanController extends StudentController implements Initializable {
+public class StudentAdvisingNoteController extends StudentController implements Initializable {
     @FXML
     private HeaderPaneController headerPaneController;
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
-        headerPaneController.getPageTitle().setText("Graduation Plan");
+        headerPaneController.getPageTitle().setText("Advising Notes");
     }
 }

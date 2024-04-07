@@ -7,7 +7,7 @@
 <?import java.net.*?>
 
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.StudentGraduationPlanController">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.StudentAdvisingNoteController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <VBox style="-fx-background-color: lightgray;" maxHeight="Infinity" VBox.vgrow="ALWAYS"></VBox>
