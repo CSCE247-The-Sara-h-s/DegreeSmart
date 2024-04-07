@@ -1,12 +1,17 @@
 package degreesmart.project;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.application.Platform;
 
-public class LoginPageController {
+public class LoginPageController implements Initializable {
 	@FXML
 	private TextField usernameField;
     
@@ -19,6 +24,7 @@ public class LoginPageController {
     	try {
     		switch (usernameField.getText().toLowerCase()) {
 	    	case "admin":
+	    	case "administrator":
 	    		App.setRoot("adminHome");
 	    		break;
 	    	case "advisor":
@@ -33,5 +39,11 @@ public class LoginPageController {
 	    	}
     	} catch (Exception e) {
     	}
+    }
+
+    public void initialize(URL url, ResourceBundle rb) {
+    	usernameField.setPromptText("<testing> Enter a user type here: (\"student\", etc..)");
+    	// https://stackoverflow.com/a/38374747
+    	Platform.runLater(() -> usernameField.getParent().requestFocus());
     }
 }
