@@ -1,0 +1,51 @@
+.fieldLabel {
+	-fx-text-fill: #650808;
+	-fx-padding: 5 10 5 30;
+}
+
+.fieldData {
+	-fx-background-color: white;
+	-fx-padding: 5;
+}
+
+.semester {
+	-fx-background-color: white;
+	-fx-padding: 10;
+}
+
+#semesterName, .pieChartStatus, .pieChartLabel {
+	-fx-text-fill: #650808;
+}
+
+.pieChartStatus, .pieChartLabel {
+	-fx-padding: 0 0 0 5;
+}
+
+.chart {
+	-fx-padding: 0;
+	-fx-min-width: 30;
+	-fx-max-width: 30;
+	-fx-min-height: 30;
+	-fx-max-height: 30;
+}
+
+.chart-content {
+	-fx-padding: 0;
+	-fx-min-width: 30;
+	-fx-max-width: 30;
+	-fx-min-height: 30;
+	-fx-max-height: 30;
+}
+
+.chart-pie {
+	-fx-border-width: 0;
+	-fx-background-insets: 0;
+}
+
+.default-color0.chart-pie {
+	-fx-pie-color: #650808;
+}
+
+.default-color1.chart-pie {
+	-fx-pie-color: lightgray;
+}

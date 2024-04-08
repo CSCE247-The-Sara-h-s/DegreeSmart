@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.StackPane?>
+<?import java.net.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.GraduationPlanSemesterController" fx:id="graduationPlanSemester" styleClass="semester">
+    <children>
+        <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" style="-fx-background-color: white">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="5" />
+                <ColumnConstraints percentWidth="15" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+            </columnConstraints>
+
+            <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
+                <Image url="@../images/downarrow.png"/>
+            </ImageView>
+            <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1"/>
+             <HBox GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                <StackPane alignment="CENTER">
+                    <PieChart fx:id="numCourses" startAngle="90"/>
+                    <Circle radius="7.5" style="-fx-fill: white"/>
+                </StackPane> 
+                <VBox>
+                    <Label styleClass="pieChartStatus" fx:id="coursesStatus"></Label>
+                    <Label styleClass="pieChartLabel">Courses</Label>
+                </VBox>
+            </HBox>
+            <HBox GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                <StackPane alignment="CENTER">
+                    <PieChart fx:id="totalCreditHours" startAngle="90"/>
+                    <Circle radius="7.5" style="-fx-fill: white"/>
+                </StackPane> 
+                <VBox>
+                    <Label styleClass="pieChartStatus" fx:id="totalCreditHoursStatus"></Label>
+                    <Label styleClass="pieChartLabel">Total Credit Hours</Label>
+                </VBox>
+            </HBox>
+            <HBox GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                <StackPane alignment="CENTER">
+                    <PieChart fx:id="creditHours" startAngle="90"/>
+                    <Circle radius="7.5" style="-fx-fill: white"/>
+                </StackPane> 
+                <VBox>
+                    <Label styleClass="pieChartStatus" fx:id="creditHoursStatus"></Label>
+                    <Label styleClass="pieChartLabel">Credit Hours</Label>
+                </VBox>
+            </HBox>
+            <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                <GridPane maxHeight="Infinity" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" style="-fx-background-color: white">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="5" />
+                        <ColumnConstraints percentWidth="15" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                    </columnConstraints>
+                </GridPane>
+            </HBox>
+        </GridPane>
+    </children>
+</VBox>
