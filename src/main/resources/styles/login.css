@@ -1,23 +1,27 @@
-.root {
-    -fx-background-color: #650808;
+.vbox-border {
+    -fx-border-color: #410202; 
+    -fx-border-width: 100px; 
+    -fx-border-radius: 0px; 
+    -fx-background-color: #f0f0f0; 
 }
 
 Label {
-    -fx-font-size: 50px;
+    -fx-font-size: 18px; 
 }
 
 TextField, PasswordField {
-    -fx-font-size: 14px;
-    -fx-pref-width: 200px;
+    -fx-font-size: 14px; 
+    -fx-pref-width: 200px; 
 }
 
 Button {
-    -fx-font-size: 14px;
-    -fx-pref-width: 120px;
-    -fx-background-color: #4CAF50;
+    -fx-font-size: 14px; 
+    -fx-pref-width: 120px; 
+    -fx-background-color: #300303; 
     -fx-text-fill: white;
 }
 
 Button:hover {
-    -fx-background-color: #45a049; 
+    -fx-background-color: #070707; 
 }
+
