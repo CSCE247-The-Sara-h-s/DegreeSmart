@@ -28,7 +28,7 @@ public class LoginPageController implements Initializable {
 	    		App.setRoot("adminHome");
 	    		break;
 	    	case "advisor":
-	    		App.setRoot("loginpage");
+	    		App.setRoot("student-list");
 	    		break;
 	    	case "student":
 	    		App.setRoot("student-graduation-plan");
