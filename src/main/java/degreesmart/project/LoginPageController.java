@@ -25,7 +25,7 @@ public class LoginPageController implements Initializable {
     		switch (usernameField.getText().toLowerCase()) {
 	    	case "admin":
 	    	case "administrator":
-	    		App.setRoot("adminHome");
+	    		App.setRoot("admin-home");
 	    		break;
 	    	case "advisor":
 	    		App.setRoot("student-list");
