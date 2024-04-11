@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import java.net.*?>
+
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.AdminHomeController">
+    <children>
+        <fx:include fx:id="headerPane" source="header-pane.fxml"/>
+        <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" fx:id="background">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="8" />
+                <ColumnConstraints percentWidth="8" />
+                <ColumnConstraints percentWidth="17" />
+                <ColumnConstraints percentWidth="17" />
+                <ColumnConstraints percentWidth="34" />
+                <ColumnConstraints percentWidth="16" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="5" />
+                <RowConstraints percentHeight="8" />
+                <RowConstraints percentHeight="47" />
+            </rowConstraints>
+            <VBox fx:id="message" styleClass="messageBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                <HBox>
+                    <Label text="over "/>
+                    <Label text="35,470 " style="-fx-font-size: 16pt;"/>
+                    <Label text="undergrad"/>
+                </HBox>
+            </VBox>
+            <VBox GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                <HBox>
+                    <Button text="Student" styleClass="button"/>
+                    <Button text="Courses" styleClass="button"/>
+                    <Button text="Advisors" styleClass="button"/>
+                </HBox>
+            </VBox>
+            <VBox fx:id="search" styleClass="searchBox" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
+                <HBox>
+                    <!-- <Label text="FirstName"/> -->
+                    <TextField fx:id="firstNameField" promptText="firstname"/>
+                        <Region HBox.hgrow="ALWAYS">
+                            <HBox.margin>
+                                <Insets right="2"/>
+                            </HBox.margin>
+                        </Region>
+                    <TextField fx:id="lastNameField" promptText="lastname"/>
+                        <Region HBox.hgrow="ALWAYS">
+                            <HBox.margin>
+                                <Insets left="2"/>
+                            </HBox.margin>
+                        </Region>
+                    <TextField fx:id="uuidField" promptText="UUID"/>
+                    <Region HBox.hgrow="ALWAYS">
+                            <HBox.margin>
+                                <Insets left="5"/>
+                            </HBox.margin>
+                        </Region>
+                </HBox>
+            </VBox>
+        </GridPane>
+        <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+    </padding>
+        <stylesheets>
+      <URL value="@../styles/adminHome.css"/>
+   </stylesheets>
+</VBox>

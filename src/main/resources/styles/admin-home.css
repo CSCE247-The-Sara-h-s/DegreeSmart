@@ -1,0 +1,12 @@
+.searchBox {
+    -fx-background-color: white;
+	-fx-padding: 5;
+}
+
+.button {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-text-fill: black;
+}
+/* .studentSizeFont {
+    -fx-font-size: 16pt;
+} */
