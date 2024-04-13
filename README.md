@@ -1,1 +1,1 @@
-# DegreeSmartGUI
+# DegreeSmart
