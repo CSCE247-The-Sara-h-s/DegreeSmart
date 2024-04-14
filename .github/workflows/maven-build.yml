@@ -19,4 +19,4 @@ jobs:
         distribution: 'microsoft'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install --fail-at-end -DSkipTests
+      run: mvn clean install -DSkipTests=true --fail-at-end
