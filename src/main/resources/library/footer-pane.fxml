@@ -12,6 +12,6 @@
 <?import javafx.geometry.Insets?>
 <?import java.net.*?>
 
-<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.FooterPaneController" fx:id="footerPane">
+<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.FooterPaneController" fx:id="footerPane">
     <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #650808; -fx-text-fill: white;" text="&#x00A9; 2024 DegreeSmart. All Rights Reserved"/>
 </HBox>

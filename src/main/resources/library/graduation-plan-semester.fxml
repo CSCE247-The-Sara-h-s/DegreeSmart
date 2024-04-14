@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import java.net.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.GraduationPlanSemesterController" fx:id="graduationPlanSemester" styleClass="semester">
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.GraduationPlanSemesterController" fx:id="graduationPlanSemester" styleClass="semester">
     <children>
         <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" style="-fx-background-color: white">
             <columnConstraints>

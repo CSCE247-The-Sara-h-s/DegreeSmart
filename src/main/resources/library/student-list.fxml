@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import java.net.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.StudentListController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.StudentListController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <Label text="Student List for Fall 2024" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
