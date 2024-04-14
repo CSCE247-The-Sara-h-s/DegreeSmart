@@ -1,4 +1,4 @@
-name: Build with Maven
+name: Test with Maven
 
 on:
   push:
@@ -18,5 +18,10 @@ jobs:
         java-version: '11'
         distribution: 'microsoft'
         cache: maven
-    - name: Build with Maven
-      run: mvn install --% -Dmaven.test.skip=true --fail-at-end
+    - name: Run Tests
+      run: mvn test --batch-mode --fail-at-end
+    - name: Publish Test Report
+      if: success() || failure()
+      uses: scacap/action-surefire-report@v1.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
