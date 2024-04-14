@@ -4,7 +4,6 @@ module degreesmart {
     requires json.simple;
 
     opens degreesmart.view to javafx.fxml;
-    opens degreesmart.model to degreesmart;
 
     exports degreesmart.view;
     exports degreesmart.model;
