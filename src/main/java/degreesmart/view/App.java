@@ -19,7 +19,7 @@ public class App extends Application {
         UserList.getInstance();
         stage.setTitle("DegreeSmart");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/icon.png")));
-        scene = new Scene(loadFXML("loginpage"), 640, 480);
+        scene = new Scene(loadFXML("loginpage"), 710, 675);
         stage.setScene(scene);
         stage.show();
     }
