@@ -2,9 +2,9 @@
 package degreesmart.model;
 
 public abstract class DataConstants {
-	protected static final String USER_FILE = "/data/user.json";
-	protected static final String COURSE_FILE = "/data/course.json";
-	protected static final String REQUIREMENT_FILE = "/data/requirement.json";
+	public static final String USER_FILE = "/data/user.json";
+	public static final String COURSE_FILE = "/data/course.json";
+	public static final String REQUIREMENT_FILE = "/data/requirement.json";
 	protected static final String USER_ROLE = "role";
 	protected static final String USER_UUID = "uuid";
 	protected static final String USER_USERNAME = "username";

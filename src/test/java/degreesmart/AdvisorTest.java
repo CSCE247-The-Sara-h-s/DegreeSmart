@@ -36,14 +36,12 @@ public class AdvisorTest {
 
 	@Test
 	public void testRole_DefaultRole_ShouldEqualUnapprovedAdvisor() {
-		assertEquals(Role.UNAPPROVED_ADVISOR, a.role);
 		assertEquals(Role.UNAPPROVED_ADVISOR, a.getRole());
 	}
 
 	@Test
 	public void testSetRole_Approved_ShouldEqualAdvisor() {
 		a.setAdvisorRole();
-		assertEquals(Role.ADVISOR, a.role);
 		assertEquals(Role.ADVISOR, a.getRole());
 	}
 
@@ -51,7 +49,6 @@ public class AdvisorTest {
 	public void testSetRole_Unapproved_ShouldEqualUnapprovedAdvisor() {
 		a.setAdvisorRole();
 		a.unsetAdvisorRole();
-		assertEquals(Role.UNAPPROVED_ADVISOR, a.role);
 		assertEquals(Role.UNAPPROVED_ADVISOR, a.getRole());
 	}
 

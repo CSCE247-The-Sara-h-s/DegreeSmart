@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 public class DataLoader extends DataConstants {
 	protected ArrayList<User> users;
 	protected HashMap<UUID, User> uuidToUser;
-	protected ArrayList<Course> courses;
+	public ArrayList<Course> courses;
 	protected HashMap<UUID, Course> uuidToCourse;
 	protected ArrayList<RequirementSet> sets;
 	protected HashMap<UUID, RequirementSet> uuidToSet;

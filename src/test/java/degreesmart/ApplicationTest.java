@@ -340,7 +340,7 @@ public class ApplicationTest {
         application.logOut();
         application.logIn("ADMIN", "password");
         application.changeUsername("ADVISOR");
-        assertNotEquals("ADVISOR", application.getActiveUser().getUsername());
+        assertEquals(false, application.getActiveUser().getUsername().equals("ADVISOR"));
         application.logOut();
     }
 

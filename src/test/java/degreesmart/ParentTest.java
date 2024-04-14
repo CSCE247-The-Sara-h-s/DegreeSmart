@@ -36,7 +36,6 @@ public class ParentTest {
 
 	@Test
 	public void testRole_DefaultRole_ShouldEqualParent() {
-		assertEquals(Role.PARENT, p.role);
 		assertEquals(Role.PARENT, p.getRole());
 	}
 

@@ -26,7 +26,6 @@ public class AdministratorTest {
 
 	@Test
 	public void testRole_DefaultRole_ShouldEqualAdministrator() {
-		assertEquals(Role.ADMINISTRATOR, a.role);
 		assertEquals(Role.ADMINISTRATOR, a.getRole());
 	}
 }
