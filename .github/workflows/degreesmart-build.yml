@@ -3,7 +3,6 @@ name: Build DegreeSmart
 on:
   push:
     branches:
-      - main
       - dev
 
 jobs:
