@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -43,7 +43,8 @@ public class DataLoader extends DataConstants {
 		JSONArray json = new JSONArray();
 
 		try {
-			json = (JSONArray) (new JSONParser()).parse(new FileReader(file));
+			json = (JSONArray) (new JSONParser()).parse( // TODO - fix path string
+				new FileReader(DataLoader.class.getResource(file).toURI().toString().substring(5)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

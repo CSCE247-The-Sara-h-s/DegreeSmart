@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 public class Requirement {
 	private int choices;

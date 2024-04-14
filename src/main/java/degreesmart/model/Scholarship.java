@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 public class Scholarship {
     private String name;
     private double minGpa;

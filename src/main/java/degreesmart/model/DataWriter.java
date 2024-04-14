@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 import java.io.FileWriter;
 import java.io.IOException;

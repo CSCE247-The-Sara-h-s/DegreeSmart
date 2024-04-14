@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 public class CompletedCourse {
 	private Course course;

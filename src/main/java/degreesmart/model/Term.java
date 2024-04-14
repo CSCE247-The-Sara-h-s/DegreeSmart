@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 public class Term implements Comparable<Term> {
 	private Semester semester;

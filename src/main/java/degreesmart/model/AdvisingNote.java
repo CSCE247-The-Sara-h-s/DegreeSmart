@@ -1,4 +1,4 @@
-package degreesmart;
+package degreesmart.model;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
