@@ -1,4 +1,4 @@
-package degreesmart.project;
+package degreesmart.view;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,12 +14,12 @@ import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import java.lang.reflect.*;
 
-public class StudentGpaCalculatorController extends StudentController implements Initializable {
-	@FXML
+public class StudentAdvisingNoteController extends StudentController implements Initializable {
+    @FXML
     private HeaderPaneController headerPaneController;
 
     public void initialize(URL url, ResourceBundle rb) {
-    	super.initialize(url, rb);
-    	headerPaneController.getPageTitle().setText("GPA Calculator");
+        super.initialize(url, rb);
+        headerPaneController.getPageTitle().setText("Advising Notes");
     }
 }

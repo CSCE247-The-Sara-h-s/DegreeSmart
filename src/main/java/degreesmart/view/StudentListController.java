@@ -1,4 +1,4 @@
-package degreesmart.project;
+package degreesmart.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 

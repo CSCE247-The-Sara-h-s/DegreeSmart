@@ -1,4 +1,4 @@
-package degreesmart.project;
+package degreesmart.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
+import degreesmart.model.UserList;
+
 import java.io.IOException;
 
 public class App extends Application {
@@ -14,9 +16,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        UserList.getInstance();
         stage.setTitle("DegreeSmart");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/icon.png")));
-        scene = new Scene(loadFXML("loginPage"), 640, 480);
+        scene = new Scene(loadFXML("loginpage"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
