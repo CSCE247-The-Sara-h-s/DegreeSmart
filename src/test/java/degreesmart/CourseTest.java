@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
+import degreesmart.model.*;
+
 class CourseTest {
 
     private Course course;

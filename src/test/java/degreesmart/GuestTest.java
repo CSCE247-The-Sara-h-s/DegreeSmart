@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import degreesmart.Guest;
+import degreesmart.model.*;
 
 public class GuestTest {
 

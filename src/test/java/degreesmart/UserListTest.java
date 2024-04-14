@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import degreesmart.model.*;
+
 class UserListTest {
     private UserList userList = UserList.getInstance();
     private ArrayList<User> users = userList.getUsers();

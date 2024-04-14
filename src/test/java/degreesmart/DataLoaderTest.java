@@ -17,6 +17,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import degreesmart.model.*;
+
 public class DataLoaderTest {
 	private static HashMap<String, Byte[]> state;
 	private static String[] files;

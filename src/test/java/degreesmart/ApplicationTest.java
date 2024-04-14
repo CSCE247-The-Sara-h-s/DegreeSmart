@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import javax.sound.midi.SysexMessage;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -16,14 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import degreesmart.AdvisingNote;
-import degreesmart.Advisor;
-import degreesmart.Application;
-import degreesmart.DataLoader;
-import degreesmart.Role;
-import degreesmart.Student;
-import degreesmart.User;
-import degreesmart.UserList;
+import degreesmart.model.*;
 
 public class ApplicationTest {
 
