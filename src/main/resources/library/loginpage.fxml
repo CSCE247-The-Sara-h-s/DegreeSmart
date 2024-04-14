@@ -12,10 +12,14 @@
 
 <VBox alignment="CENTER" prefHeight="474.0" prefWidth="785.0" spacing="20.0" styleClass="vbox-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.LoginPageController">
    <children>
-      <Label text="Login" />
-      <TextField fx:id="usernameField" promptText="Username" onKeyPressed="#DEV_test_login"/>
+      <ImageView fitWidth="250" fitHeight="200">
+         <image>
+            <Image url="@../images/degreesmart_logo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="usernameField" promptText="Username" />
       <PasswordField fx:id="passwordField" promptText="Password" />
-      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Login" />
+      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Login" onMouseClicked="#logIn"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

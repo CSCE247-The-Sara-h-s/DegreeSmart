@@ -2,7 +2,7 @@
     -fx-border-color: #410202; 
     -fx-border-width: 100px; 
     -fx-border-radius: 0px; 
-    -fx-background-color: #f0f0f0; 
+    -fx-background-color: #ffffff; 
 }
 
 Label {
@@ -25,3 +25,6 @@ Button:hover {
     -fx-background-color: #070707; 
 }
 
+.image-view {
+    
+}

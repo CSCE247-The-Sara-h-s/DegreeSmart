@@ -66,17 +66,21 @@
                 </VBox>
             </HBox>
             <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <GridPane maxHeight="Infinity" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" style="-fx-background-color: white">
-                    <columnConstraints>
-                        <ColumnConstraints percentWidth="5" />
-                        <ColumnConstraints percentWidth="15" />
-                        <ColumnConstraints percentWidth="20" />
-                        <ColumnConstraints percentWidth="20" />
-                        <ColumnConstraints percentWidth="20" />
-                        <ColumnConstraints percentWidth="20" />
-                    </columnConstraints>
-                </GridPane>
             </HBox>
+        </GridPane>
+        <GridPane fx:id="semesterDetails" maxHeight="Infinity" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" style="-fx-background-color: white">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="35" />
+                <ColumnConstraints percentWidth="10" />
+                <ColumnConstraints percentWidth="10" />
+                <ColumnConstraints percentWidth="35" />
+                <ColumnConstraints percentWidth="10" />
+            </columnConstraints>
+            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Course and Title</Label>
+            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Min Grade</Label>
+            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Credit Hours</Label>
+            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Prerequisites</Label>
+            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Completed Grade</Label>
         </GridPane>
     </children>
 </VBox>

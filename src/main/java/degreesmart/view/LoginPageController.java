@@ -8,40 +8,56 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyCode;
 import javafx.application.Platform;
+
+import degreesmart.model.Application;
+import degreesmart.model.Role;
 
 public class LoginPageController implements Initializable {
 	@FXML
 	private TextField usernameField;
+
+	@FXML
+	private TextField passwordField;
     
     @FXML
-    private void DEV_test_login(KeyEvent event) {
-    	if (event.getCode() != KeyCode.ENTER) {
-    		return;
-    	}
+    private void logIn(MouseEvent event) {
+    	Application application = Application.getInstance();
 
-    	try {
-    		switch (usernameField.getText().toLowerCase()) {
-	    	case "admin":
-	    	case "administrator":
-	    		App.setRoot("admin-home");
-	    		break;
-	    	case "advisor":
-	    		App.setRoot("student-list");
-	    		break;
-	    	case "student":
-	    		App.setRoot("student-graduation-plan");
-	    		break;
-	    	case "parent":
-	    		App.setRoot("loginpage");
-	    		break;
+    	application.logIn(usernameField.getText(), passwordField.getText());
+
+    	if (application.userLoggedIn()) {
+    		try {
+    			switch (application.getActiveUser().getRole()) {
+		    	case ADMINISTRATOR:
+		    		App.setRoot("admin-home");
+		    		application.logOut();
+		    		break;
+		    	case ADVISOR:
+		    		App.setRoot("student-list");
+		    		application.logOut();
+		    		break;
+		    	case STUDENT:
+		    		App.setRoot("student-graduation-plan");
+		    		break;
+		    	case PARENT:
+		    		App.setRoot("loginpage");
+		    		application.logOut();
+		    		break;
+		    	}
+	    	} catch (Exception e) {
 	    	}
-    	} catch (Exception e) {
+    	} else {
+    		// TODO - display failed login message
     	}
     }
 
     public void initialize(URL url, ResourceBundle rb) {
+    	if (Application.getInstance().userLoggedIn()) {
+    		Application.getInstance().logOut();
+    	}
     	usernameField.setPromptText("<testing> Enter a user type here: (\"student\", etc..)");
     	// https://stackoverflow.com/a/38374747
     	Platform.runLater(() -> usernameField.getParent().requestFocus());
