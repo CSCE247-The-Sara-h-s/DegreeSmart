@@ -21,11 +21,12 @@ public class DataWriter extends DataConstants {
 		}
 
 		try {
-			FileWriter file = new FileWriter(USER_FILE);
+			FileWriter file = new FileWriter(DataLoader.class.getResource(USER_FILE).toURI().toString().substring(5));
 			file.write(usersJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
 		}
 	}
 
@@ -135,11 +136,12 @@ public class DataWriter extends DataConstants {
 		}
 
 		try {
-			FileWriter file = new FileWriter(COURSE_FILE);
+			FileWriter file = new FileWriter(DataLoader.class.getResource(COURSE_FILE).toURI().toString().substring(5));
 			file.write(coursesJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
 		}
 
 	}
