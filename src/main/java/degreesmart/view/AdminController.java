@@ -91,3 +91,4 @@ public class AdminController implements Initializable {
         headerPaneController.getLinks().getChildren().add(advisorManagement);
     }
 }
+
