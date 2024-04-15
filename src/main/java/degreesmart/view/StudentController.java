@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 
+import degreesmart.model.Application;
+
 public class StudentController implements Initializable {
 	@FXML
     private HeaderPaneController headerPaneController;
@@ -46,10 +48,12 @@ public class StudentController implements Initializable {
                         // App.setRoot("loginpage");
                         break;
                     case "log out":
+                        Application.getInstance().logOut();
                         App.setRoot("loginpage");
                         break;
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
