@@ -25,5 +25,6 @@ public class AdminHomeController extends AdminController implements Initializabl
         headerPaneController.getPageTitle().setText("Welcome");
 
 
+
     }
 }
