@@ -2,6 +2,8 @@ package degreesmart.model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -24,9 +26,23 @@ public class DataWriter extends DataConstants {
 			FileWriter file = new FileWriter(DataLoader.class.getResource(USER_FILE).toURI().toString().substring(5));
 			file.write(usersJSON.toJSONString());
 			file.flush();
+
+			// https://coderanch.com/t/384661/java/find-physical-path-current-java
+			// This is an awful hack.
+			String path = DataWriter.class.getResource("DataWriter.class").toString().substring(6);
+			if (path.matches(".*/target/classes.*")) {
+				path = path.replace("target/classes/degreesmart/model/DataWriter.class", "src/main/resources" + USER_FILE);
+
+				if (Files.exists(Paths.get(path))) {
+					file = new FileWriter("/" + path);
+					file.write(usersJSON.toJSONString());
+					file.flush();
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
