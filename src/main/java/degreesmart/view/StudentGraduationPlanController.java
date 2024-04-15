@@ -262,23 +262,7 @@ public class StudentGraduationPlanController extends StudentController implement
             });
 
             ((Label)semester.lookup("#semesterName")).setText(label);
-           /* ((PieChart)semester.lookup("#numCourses")).getData().add(
-                new PieChart.Data("a", ((1.0 * numCourses) / maxCourses) * 100));
-            ((PieChart)semester.lookup("#numCourses")).getData().add(
-                new PieChart.Data("b", 100 - ((1.0 * numCourses) / maxCourses) * 100));
-            ((PieChart)semester.lookup("#totalCreditHours")).getData().add(
-                new PieChart.Data("a", ((1.0 * completedHours) / totalCreditHours) * 100));
-            ((PieChart)semester.lookup("#totalCreditHours")).getData().add(
-                new PieChart.Data("b", 100 - ((1.0 * completedHours) / totalCreditHours) * 100));
-            ((PieChart)semester.lookup("#creditHours")).getData().add(
-                new PieChart.Data("a", ((1.0 * creditHours) / maxCreditHours) * 100));
-            ((PieChart)semester.lookup("#creditHours")).getData().add(
-                new PieChart.Data("b", 100 - ((1.0 * creditHours) / maxCreditHours) * 100));
-
-            ((Label)semester.lookup("#coursesStatus")).setText(numCourses + "/" + maxCourses);
-            ((Label)semester.lookup("#totalCreditHoursStatus")).setText(completedHours + "/" + totalCreditHours);
-            ((Label)semester.lookup("#creditHoursStatus")).setText(creditHours + "/" + maxCreditHours);
-*/
+           
             GridPane details = (GridPane)semester.lookup("#semesterDetails");
             for (int i = 0; i < courses.length; i++) {
                 Label tmp = new Label(courses[i]);
