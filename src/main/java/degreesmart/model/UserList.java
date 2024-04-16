@@ -194,7 +194,7 @@ public class UserList {
             throw new IllegalArgumentException("Username is already in use");
         }
 
-        User user = null;
+        User user;
         UUID uuid = getNextUuid();
 
         switch (role) {
@@ -213,12 +213,14 @@ public class UserList {
             case PARENT:
                 user = new Parent(uuid, username, password, email, firstName, lastName);
                 break;
+            default:
+                throw new IllegalArgumentException("Invalid role: " + role);
         }
 
-        if (user != null) {
-            usersByUuid.put(user.getUuid(), user);
-            usersByUsername.put(user.getUsername().toLowerCase(), user);
-        }
+
+        users.add(user);
+        usersByUuid.put(user.getUuid(), user);
+        usersByUsername.put(user.getUsername().toLowerCase(), user);
     }
 
     public boolean deleteUser(User user) {
