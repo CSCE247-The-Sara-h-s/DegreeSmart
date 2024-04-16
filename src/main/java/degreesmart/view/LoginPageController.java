@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.application.Platform;
 
 import degreesmart.model.Application;
+import degreesmart.model.StudentApplication;
 import degreesmart.model.Role;
 
 public class LoginPageController implements Initializable {
@@ -40,6 +41,7 @@ public class LoginPageController implements Initializable {
 		    		application.logOut();
 		    		break;
 		    	case STUDENT:
+					StudentApplication.getInstance();
 		    		App.setRoot("student-graduation-plan");
 		    		break;
 		    	case PARENT:
