@@ -9,7 +9,7 @@ public class Application {
     private User activeUser;
     private static Application application;
 
-    private Application() {
+    protected Application() {
         courseList = CourseList.getInstance();
         requirementSetList = RequirementSetList.getInstance();
         userList = UserList.getInstance();
@@ -39,14 +39,6 @@ public class Application {
         }
 
         return canCreate;
-    }
-
-    public boolean deleteAccount(User user) {
-        boolean deleted = false;
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            deleted = userList.deleteUser(user);
-        }
-        return deleted;
     }
 
     public boolean deleteAccount() {
@@ -93,25 +85,11 @@ public class Application {
         return name != null;
     }
 
-    private boolean validUscId(String uscId) {
-        return uscId != null && userList.getStudent(uscId) == null;
-    }
-
     public boolean changeUsername(String username) {
         boolean canChange = userLoggedIn() && validUsername(username);
 
         if (canChange) {
             userList.changeUsername(activeUser, username);
-        }
-
-        return canChange;
-    }
-
-    public boolean changeUscId(String uscId) {
-        boolean canChange = userLoggedIn() && validUscId(uscId) && activeUser.getRole() == Role.STUDENT;
-
-        if (canChange) {
-            userList.changeUscId((Student)activeUser, uscId);
         }
 
         return canChange;
@@ -166,27 +144,6 @@ public class Application {
 
         return canChange;
     }
-
-    public ArrayList<User> getUsers() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.getUsers();
-        }
-        return null;
-    }
-
-    public ArrayList<User> getUsers(String firstName, String lastName) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.getUsers(firstName, lastName);
-        }
-        return null;
-    }
-
-    public User getUser(String username) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            return userList.getUser(username);
-        }
-        return null;
-    }
     
     public ArrayList<Student> getStudents() {
         if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
@@ -205,13 +162,6 @@ public class Application {
     public ArrayList<Student> getUnassignedStudents() {
         if (activeUser.getRole() == Role.ADMINISTRATOR) {
             return userList.getUnassignedStudents();
-        }
-        return null;
-    }
-
-    public Student getStudentByUsername(String username) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
-            return (Student)userList.getUser(username);
         }
         return null;
     }
@@ -309,7 +259,7 @@ public class Application {
         return null;
     }
 
-    public ArrayList<RequirementSet> getMajors() {
+    public ArrayList<RequirementSet> getAllMajors() {
         if (userLoggedIn()) {
              return requirementSetList.getMajors();
         }

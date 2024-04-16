@@ -135,6 +135,34 @@ public class Student extends User {
     return graduationPlan;
   }
 
+  public ArrayList<RequirementSet> getMajors() {
+    ArrayList<RequirementSet> majors = new ArrayList<RequirementSet>();
+
+    for (RequirementSet set : graduationPlan.getRequirementSets()) {
+      if (set.getType() == RequirementType.MAJOR) {
+        majors.add(set);
+      }
+    }
+
+    return majors;
+  }
+
+  public ArrayList<RequirementSet> getMinors() {
+    ArrayList<RequirementSet> minors = new ArrayList<RequirementSet>();
+
+    for (RequirementSet set : graduationPlan.getRequirementSets()) {
+      if (set.getType() == RequirementType.MINOR) {
+        minors.add(set);
+      }
+    }
+
+    return minors;
+  }
+
+  public ArrayList<RequirementSet> getDegreeRequirements() {
+    return graduationPlan.getRequirementSets();
+  }
+
   public double getAttemptedHours() {
     double attemptedHours = 0.0;
     for (CompletedCourse c : completedCourses) {

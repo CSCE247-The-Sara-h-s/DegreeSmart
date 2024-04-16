@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 
-import degreesmart.model.Application;
+import degreesmart.model.StudentApplication;
 
 public class StudentController implements Initializable {
 	@FXML
@@ -48,7 +48,7 @@ public class StudentController implements Initializable {
                         // App.setRoot("loginpage");
                         break;
                     case "log out":
-                        Application.getInstance().logOut();
+                        StudentApplication.getInstance().logOut();
                         App.setRoot("loginpage");
                         break;
                     }
