@@ -17,37 +17,16 @@ import javafx.event.ActionEvent;
 import degreesmart.model.StudentApplication;
 
 public class StudentController implements Initializable {
-	@FXML
+    @FXML
     private HeaderPaneController headerPaneController;
 
     @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle rb) {
-        headerPaneController.getComboBox().getItems().addAll(
-            "Settings",
-            "Log Out"
-        );
-        headerPaneController.getComboBox().setValue("Hello <user>!");
-        headerPaneController.getComboBox().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    switch(headerPaneController.getComboBox().getValue().toString().toLowerCase()) {
-                    case "settings":
-                        App.setRoot("student-settings");
-                        break;
-                    case "log out":
-                        StudentApplication.getInstance().logOut();
-                        App.setRoot("loginpage");
-                        break;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-       	Label graduationPlan = new Label("Graduation Plan");
-        Label parents = new Label("Parent List");
+        
+        Label graduationPlan = new Label("Graduation Plan");
+        Label advisingNotes = new Label("View Advising Notes");
+        Label whatIf = new Label("What If Scenario");
+        Label gpaCalculator = new Label("GPA Calculator");
 
         graduationPlan.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -58,26 +37,52 @@ public class StudentController implements Initializable {
                 }
             }
         });
-        parents.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        advisingNotes.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    App.setRoot("parent-list");
+                    App.setRoot("advising-notes");
+                } catch (Exception e) {
+                }
+            }
+        });
+        whatIf.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    App.setRoot("what-if");
+                } catch (Exception e) {
+                }
+            }
+        });
+        gpaCalculator.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    App.setRoot("gpa-calculator");
                 } catch (Exception e) {
                 }
             }
         });
 
         HBox.setHgrow(graduationPlan, Priority.ALWAYS);
-        HBox.setHgrow(parents, Priority.ALWAYS);
+        HBox.setHgrow(advisingNotes, Priority.ALWAYS);
+        HBox.setHgrow(whatIf, Priority.ALWAYS);
+        HBox.setHgrow(gpaCalculator, Priority.ALWAYS);
 
         graduationPlan.setMaxWidth(Double.MAX_VALUE);
-        parents.setMaxWidth(Double.MAX_VALUE);
+        advisingNotes.setMaxWidth(Double.MAX_VALUE);
+        whatIf.setMaxWidth(Double.MAX_VALUE);
+        gpaCalculator.setMaxWidth(Double.MAX_VALUE);
 
         graduationPlan.setAlignment(Pos.CENTER);
-        parents.setAlignment(Pos.CENTER);
+        advisingNotes.setAlignment(Pos.CENTER);
+        whatIf.setAlignment(Pos.CENTER);
+        gpaCalculator.setAlignment(Pos.CENTER);
 
         headerPaneController.getLinks().getChildren().add(graduationPlan);
-        headerPaneController.getLinks().getChildren().add(parents);
+        headerPaneController.getLinks().getChildren().add(advisingNotes);
+        headerPaneController.getLinks().getChildren().add(whatIf);
+        headerPaneController.getLinks().getChildren().add(gpaCalculator);
     }
 }

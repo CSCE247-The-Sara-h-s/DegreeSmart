@@ -37,15 +37,6 @@ public class StudentSettingsController implements Initializable {
 
         headerPaneController.getPageTitle().setText("Settings");
 
-        headerPaneController.getComboBox().setValue("Home");
-        headerPaneController.getComboBox().setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("student-graduation-plan");
-                } catch (Exception e) {
-                }
-            }
-        });
+        
     }
 }

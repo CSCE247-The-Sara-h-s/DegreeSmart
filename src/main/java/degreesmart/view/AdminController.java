@@ -20,25 +20,7 @@ public class AdminController implements Initializable {
 
     @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle rb) {
-        headerPaneController.getComboBox().getItems().addAll(
-            "Log Out"
-        );
-
-        headerPaneController.getComboBox().setValue("Hello <user>!");
-
-        headerPaneController.getComboBox().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    switch(headerPaneController.getComboBox().getValue().toString().toLowerCase()) {
-                        case "log out":
-                            App.setRoot("loginpage");
-                            break;
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
+        
         
         Label studentManagement = new Label("Student Management");
         Label courseManagement = new Label("Course Management");
