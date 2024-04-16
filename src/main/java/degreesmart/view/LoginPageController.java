@@ -60,7 +60,6 @@ public class LoginPageController implements Initializable {
     	if (Application.getInstance().userLoggedIn()) {
     		Application.getInstance().logOut();
     	}
-    	usernameField.setPromptText("<testing> Enter a user type here: (\"student\", etc..)");
     	// https://stackoverflow.com/a/38374747
     	Platform.runLater(() -> usernameField.getParent().requestFocus());
     }
