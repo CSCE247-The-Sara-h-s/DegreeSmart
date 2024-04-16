@@ -22,9 +22,11 @@
             </HBox>
             <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10;">Page Title</Label>
             <HBox style="-fx-padding: 10;">
-                <ComboBox fx:id="headerComboBox"/>
-                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 0 100 0 0;">
-                    <Image url="@../images/default_profile.png" />
+                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 5;" onMouseClicked="#handleSettingsClick">
+                    <Image url="@../images/gear.png" />
+                </ImageView>
+                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 10;" onMouseClicked="#handleLogoutClick">
+                    <Image url="@../images/logout.png" />
                 </ImageView>
             </HBox>
         </HBox>
