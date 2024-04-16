@@ -188,6 +188,12 @@ public class UserList {
     }
 
     public void createUser(Role role, String username, String password, String email, String firstName, String lastName) {
+        if (role == null) {
+            throw new IllegalArgumentException("Role cannot be null");
+        } else if (username != null && usersByUsername.containsKey(username.toLowerCase())) {
+            throw new IllegalArgumentException("Username is already in use");
+        }
+
         User user = null;
         UUID uuid = getNextUuid();
 
@@ -255,21 +261,18 @@ public class UserList {
         return shouldChange;
     }
 
-    public boolean changeUscId(Student student, String uscId) {
-        boolean shouldChange = student != null && users.contains(student)
-            && !studentsByUscId.containsKey(student.getUscId().toLowerCase());
-
-        if (shouldChange) {
-            studentsByUscId.remove(student.getUscId().toLowerCase());
-            try {
-                student.setUscId(uscId);
-            } catch (IllegalArgumentException e) {
-                return false;
-            } finally {
-                studentsByUscId.put(student.getUscId().toLowerCase(), student);
-            }
+    public void changeUscId(Student student, String uscId) {
+        if (student == null) {
+            throw new IllegalArgumentException("Student cannot be null");
+        } else if (!users.contains(student)) {
+            throw new IllegalStateException("User does not exist");
+        } else if (studentsByUscId.containsKey(student.getUscId().toLowerCase())) {
+            throw new IllegalStateException("USC ID is already in use");
         }
 
-        return shouldChange;
+        String oldUscId = student.getUscId();
+        student.setUscId(uscId);
+        studentsByUscId.remove(oldUscId.toLowerCase());
+        studentsByUscId.put(student.getUscId().toLowerCase(), student);
     }
 }

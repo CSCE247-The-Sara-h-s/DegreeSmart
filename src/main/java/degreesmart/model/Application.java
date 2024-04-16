@@ -27,18 +27,32 @@ public class Application {
         return activeUser;
     }
 
-    public boolean createAccount(Role role, String username, String password, String emailAddress, String firstName,
-            String lastName) {
-        boolean canCreate = !userLoggedIn() && role != null
-            && validUsername(username) && validPassword(password) && validEmailAddress(emailAddress)
-            && validName(firstName) && validName(lastName);
-
-        if (canCreate) {
-           userList.createUser(role, username, password, emailAddress, firstName, lastName);
-           activeUser = (userList.getUser(username) == null)? activeUser : userList.getUser(username);
+    public String createAccount(Role role, String username, String password, String emailAddress, String firstName,
+            String lastName, String uscId) {
+        if (userLoggedIn()) {
+            throw new IllegalStateException("Cannot create new account while a user is logged in");
         }
 
-        return canCreate;
+        try {
+            userList.createUser(role, username, password, emailAddress, firstName, lastName);
+            if (userList.getUser(username) != null && userList.getUser(username).getRole() == Role.STUDENT) {
+                ((Student) userList.getUser(username)).setUscId(uscId);
+            }
+            activeUser = (userList.getUser(username) == null)? activeUser : userList.getUser(username);
+        } catch (Exception e) {
+            try {
+                userList.deleteUser(userList.getUser(username));
+            } catch (Exception e2) {
+            }
+
+            return "Failed to create account: " + e.getMessage();
+        }
+
+        if (activeUser == null) {
+            return "Failed to create account: Unknown error";
+        }
+
+        return "";
     }
 
     public boolean deleteAccount() {

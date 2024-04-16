@@ -25,34 +25,16 @@ public class LoginPageController implements Initializable {
     
     @FXML
     private void logIn(MouseEvent event) {
-    	Application application = Application.getInstance();
+    	Application.getInstance().logIn(usernameField.getText(), passwordField.getText());
+    	App.showUserHomePage();
+    }
 
-    	application.logIn(usernameField.getText(), passwordField.getText());
-
-    	if (application.userLoggedIn()) {
-    		try {
-    			switch (application.getActiveUser().getRole()) {
-		    	case ADMINISTRATOR:
-		    		App.setRoot("admin-home");
-		    		application.logOut();
-		    		break;
-		    	case ADVISOR:
-		    		App.setRoot("student-list");
-		    		application.logOut();
-		    		break;
-		    	case STUDENT:
-					StudentApplication.getInstance();
-		    		App.setRoot("student-graduation-plan");
-		    		break;
-		    	case PARENT:
-		    		App.setRoot("loginpage");
-		    		application.logOut();
-		    		break;
-		    	}
-	    	} catch (Exception e) {
-	    	}
-    	} else {
-    		// TODO - display failed login message
+    @FXML
+    private void createAccount(MouseEvent event) {
+    	try {
+    		App.setRoot("create-account");
+    	} catch (Exception e) {
+    		e.printStackTrace();
     	}
     }
 

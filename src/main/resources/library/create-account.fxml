@@ -5,22 +5,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.*?>
 
-<VBox alignment="CENTER" prefHeight="474.0" prefWidth="785.0" spacing="20.0" styleClass="vbox-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.LoginPageController">
+<VBox alignment="CENTER" prefHeight="474.0" prefWidth="785.0" spacing="20.0" styleClass="vbox-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.CreateAccountController">
    <children>
-      <ImageView fitWidth="250" fitHeight="200">
-         <image>
-            <Image url="@../images/degreesmart_logo.png" />
-         </image>
-      </ImageView>
+      <ComboBox fx:id="roleSelect" onAction="#roleChanged"/>
       <TextField fx:id="usernameField" promptText="Username" />
       <PasswordField fx:id="passwordField" promptText="Password" />
-      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Login" onMouseClicked="#logIn"/>
+      <TextField fx:id="emailField" promptText="Email Address" />
+      <TextField fx:id="firstNameField" promptText="First Name" />
+      <TextField fx:id="lastNameField" promptText="Last Name" />
+      <TextField fx:id="uscIdField" promptText="USC ID" />
       <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Create Account" onMouseClicked="#createAccount"/>
+      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Cancel" onMouseClicked="#cancel"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
