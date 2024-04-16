@@ -25,8 +25,12 @@ public class App extends javafx.application.Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml) {
+        try {
+            scene.setRoot(loadFXML(fxml));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -36,24 +40,21 @@ public class App extends javafx.application.Application {
 
     public static void showUserHomePage() {
         if (Application.getInstance().userLoggedIn()) {
-            try {
-                switch (Application.getInstance().getActiveUser().getRole()) {
-                case ADMINISTRATOR:
-                    setRoot("admin-home");
-                    break;
-                case ADVISOR:
-                    setRoot("student-list");
-                    break;
-                case STUDENT:
-                    StudentApplication.getInstance();
-                    setRoot("student-graduation-plan");
-                    break;
-                case PARENT:
-                    setRoot("loginpage");
-                    Application.getInstance().logOut();
-                    break;
-                }
-            } catch (Exception e) {
+            switch (Application.getInstance().getActiveUser().getRole()) {
+            case ADMINISTRATOR:
+                setRoot("admin-home");
+                break;
+            case ADVISOR:
+                setRoot("student-list");
+                break;
+            case STUDENT:
+                StudentApplication.getInstance();
+                setRoot("student-graduation-plan");
+                break;
+            case PARENT:
+                setRoot("loginpage");
+                Application.getInstance().logOut();
+                break;
             }
         } else {
             // TODO - display failed login message
