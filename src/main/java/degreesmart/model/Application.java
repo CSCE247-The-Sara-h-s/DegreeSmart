@@ -36,7 +36,7 @@ public class Application {
         try {
             userList.createUser(role, username, password, emailAddress, firstName, lastName);
             if (userList.getUser(username) != null && userList.getUser(username).getRole() == Role.STUDENT) {
-                ((Student) userList.getUser(username)).setUscId(uscId);
+                UserList.getInstance().changeUscId((Student) userList.getUser(username), uscId);
             }
             activeUser = (userList.getUser(username) == null)? activeUser : userList.getUser(username);
         } catch (Exception e) {
