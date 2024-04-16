@@ -20,31 +20,7 @@ public class AdvisorController implements Initializable {
 
     @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle rb) {
-        headerPaneController.getComboBox().getItems().addAll(
-            "My Account",
-            "Settings",
-            "Log Out"
-        );
-        headerPaneController.getComboBox().setValue("Hello <Advisor>!");
-        headerPaneController.getComboBox().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    switch(headerPaneController.getComboBox().getValue().toString().toLowerCase()) {
-                    case "my account":
-                        // App.setRoot("loginpage");
-                        break;
-                    case "settings":
-                        //App.setRoot("advisor-settings");
-                        break;
-                    case "log out":
-                        App.setRoot("loginpage");
-                        break;
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
+        
 
        	Label studentList = new Label("Student List");
         Label modifyStudentList = new Label("Modify Student List");
