@@ -40,11 +40,9 @@ public class App extends javafx.application.Application {
                 switch (Application.getInstance().getActiveUser().getRole()) {
                 case ADMINISTRATOR:
                     setRoot("admin-home");
-                    Application.getInstance().logOut();
                     break;
                 case ADVISOR:
                     setRoot("student-list");
-                    Application.getInstance().logOut();
                     break;
                 case STUDENT:
                     StudentApplication.getInstance();
