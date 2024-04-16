@@ -268,13 +268,15 @@ public class UserList {
             throw new IllegalArgumentException("Student cannot be null");
         } else if (!users.contains(student)) {
             throw new IllegalStateException("User does not exist");
-        } else if (studentsByUscId.containsKey(student.getUscId().toLowerCase())) {
+        } else if (student.getUscId() != null && studentsByUscId.containsKey(student.getUscId().toLowerCase())) {
             throw new IllegalStateException("USC ID is already in use");
         }
 
         String oldUscId = student.getUscId();
         student.setUscId(uscId);
-        studentsByUscId.remove(oldUscId.toLowerCase());
+        if (oldUscId != null) {
+            studentsByUscId.remove(oldUscId.toLowerCase());
+        }
         studentsByUscId.put(student.getUscId().toLowerCase(), student);
     }
 }
