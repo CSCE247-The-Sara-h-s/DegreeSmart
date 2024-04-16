@@ -24,9 +24,7 @@ public class StudentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         Label graduationPlan = new Label("Graduation Plan");
-        Label advisingNotes = new Label("View Advising Notes");
-        Label whatIf = new Label("What If Scenario");
-        Label gpaCalculator = new Label("GPA Calculator");
+        Label parentList = new Label("Parent List");
 
         graduationPlan.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -37,52 +35,26 @@ public class StudentController implements Initializable {
                 }
             }
         });
-        advisingNotes.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        parentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    App.setRoot("advising-notes");
-                } catch (Exception e) {
-                }
-            }
-        });
-        whatIf.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("what-if");
-                } catch (Exception e) {
-                }
-            }
-        });
-        gpaCalculator.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("gpa-calculator");
+                    App.setRoot("parent-list");
                 } catch (Exception e) {
                 }
             }
         });
 
         HBox.setHgrow(graduationPlan, Priority.ALWAYS);
-        HBox.setHgrow(advisingNotes, Priority.ALWAYS);
-        HBox.setHgrow(whatIf, Priority.ALWAYS);
-        HBox.setHgrow(gpaCalculator, Priority.ALWAYS);
+        HBox.setHgrow(parentList, Priority.ALWAYS);
 
         graduationPlan.setMaxWidth(Double.MAX_VALUE);
-        advisingNotes.setMaxWidth(Double.MAX_VALUE);
-        whatIf.setMaxWidth(Double.MAX_VALUE);
-        gpaCalculator.setMaxWidth(Double.MAX_VALUE);
+        parentList.setMaxWidth(Double.MAX_VALUE);
 
         graduationPlan.setAlignment(Pos.CENTER);
-        advisingNotes.setAlignment(Pos.CENTER);
-        whatIf.setAlignment(Pos.CENTER);
-        gpaCalculator.setAlignment(Pos.CENTER);
+        parentList.setAlignment(Pos.CENTER);
 
         headerPaneController.getLinks().getChildren().add(graduationPlan);
-        headerPaneController.getLinks().getChildren().add(advisingNotes);
-        headerPaneController.getLinks().getChildren().add(whatIf);
-        headerPaneController.getLinks().getChildren().add(gpaCalculator);
+        headerPaneController.getLinks().getChildren().add(parentList);
     }
 }
