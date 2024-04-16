@@ -14,7 +14,7 @@ public class StudentApplication extends Application {
 		Role role = Application.getInstance().getActiveUser().getRole();
 
 		if (role != Role.STUDENT) {
-			throw new IllegalArgumentException("Logged in user must have '" + role + "' role");
+			throw new IllegalStateException("Logged in user must have '" + role + "' role");
 		}
 
 		if (studentApplication == null) {
@@ -107,11 +107,7 @@ public class StudentApplication extends Application {
 	}
 
 	public String changeUscId(String uscId) {
-		if (uscId == null) {
-			throw new IllegalArgumentException("USC ID cannot be null");
-		}
-
-		if (uscId == "") {
+		if (uscId == null || uscId == "") {
 			return "Failed to modify USC ID: USC ID cannot be empty.";
 		} else if (UserList.getInstance().getStudent(uscId).equals(user)) {
 			return "";

@@ -55,6 +55,11 @@ public class Application {
         return "";
     }
 
+    public String createAccount(Role role, String username, String password, String emailAddress, String firstName,
+            String lastName) {
+        return createAccount(role, username, password, emailAddress, firstName, lastName, "");
+    }
+
     public boolean deleteAccount() {
         boolean deleted = false;
         if (userLoggedIn()) {
