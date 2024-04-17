@@ -34,7 +34,7 @@
             <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
                 <Image url="@../images/downarrow.png"/>
             </ImageView>
-            <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1"/>
+            <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="1"/>
             <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
             </HBox>
         </GridPane>

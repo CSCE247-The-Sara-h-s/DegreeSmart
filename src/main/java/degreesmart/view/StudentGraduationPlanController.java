@@ -110,7 +110,7 @@ public class StudentGraduationPlanController extends StudentController implement
         }
 
         for (String term : plannedCoursesByTerm.keySet()) {
-            addSemester(term,
+            addSemester(term + "  (planned)",
                 new ArrayList<String>(plannedCoursesByTerm.get(term).stream()
                     .map((c) -> (c.getCourse().getShortName() == null)? "" : c.getCourse().getShortName()
                         + " - " + c.getCourse().getName())
