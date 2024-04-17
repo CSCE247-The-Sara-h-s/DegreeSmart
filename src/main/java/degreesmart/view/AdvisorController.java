@@ -38,7 +38,7 @@ public class AdvisorController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    App.setRoot("advisor-notes");
+                    App.setRoot("advisor-notes-home");
                 } catch (Exception e) {
                 }
             }
