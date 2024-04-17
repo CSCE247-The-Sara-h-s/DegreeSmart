@@ -23,13 +23,13 @@ public class DataWriter extends DataConstants {
 		}
 
 		try {
-			FileWriter file = new FileWriter(DataLoader.class.getResource(USER_FILE).toURI().toString().substring(5));
+			FileWriter file = new FileWriter(DataLoader.class.getResource(USER_FILE).toURI().toString().replace("%20", " ").substring(5));
 			file.write(usersJSON.toJSONString());
 			file.flush();
 
 			// https://coderanch.com/t/384661/java/find-physical-path-current-java
 			// This is an awful hack.
-			String path = DataWriter.class.getResource("DataWriter.class").toString().substring(6);
+			String path = DataWriter.class.getResource("DataWriter.class").toString().replace("%20", " ").substring(6);
 			if (path.matches(".*/target/classes.*")) {
 				path = path.replace("target/classes/degreesmart/model/DataWriter.class", "src/main/resources" + USER_FILE);
 
@@ -152,7 +152,7 @@ public class DataWriter extends DataConstants {
 		}
 
 		try {
-			FileWriter file = new FileWriter(DataLoader.class.getResource(COURSE_FILE).toURI().toString().substring(5));
+			FileWriter file = new FileWriter(DataLoader.class.getResource(COURSE_FILE).toURI().toString().replace("%20", " ").substring(5));
 			file.write(coursesJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {

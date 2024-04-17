@@ -43,8 +43,8 @@ public class DataLoader extends DataConstants {
 		JSONArray json = new JSONArray();
 
 		try {
-			json = (JSONArray) (new JSONParser()).parse( // TODO - fix path string
-				new FileReader(DataLoader.class.getResource(file).toURI().toString().substring(5)));
+			json = (JSONArray) (new JSONParser()).parse(
+				new FileReader(DataLoader.class.getResource(file).toURI().toString().replace("%20", " ").substring(5)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
