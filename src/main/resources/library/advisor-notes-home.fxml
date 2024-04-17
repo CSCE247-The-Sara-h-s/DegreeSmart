@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
 <?import java.net.*?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdvisorNotesHomeController">
@@ -14,9 +15,10 @@
    </children>
    <HBox>
         <TextField fx:id="myTextField" promptText="Enter student name..." />
-        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Search"/>
+        <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
    </HBox>
     <children>
+        <ListView fx:id="listView" />
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>
     <stylesheets>

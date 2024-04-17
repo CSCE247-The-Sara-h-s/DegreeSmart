@@ -2,6 +2,7 @@ module degreesmart {
     requires javafx.controls;
     requires javafx.fxml;
     requires json.simple;
+    requires javafx.base;
 
     opens degreesmart.view to javafx.fxml;
 
