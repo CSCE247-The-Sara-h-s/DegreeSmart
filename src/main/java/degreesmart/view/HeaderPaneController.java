@@ -31,7 +31,7 @@ public class HeaderPaneController {
 
 	@FXML
     private void handleSettingsClick(MouseEvent event) {
-        App.setRoot("student-settings");
+        App.setRoot("settings");
         
     }
 

@@ -18,7 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import java.lang.reflect.*;
 
-public class StudentSettingsController implements Initializable {
+public class SettingsController implements Initializable {
     @FXML
     private HeaderPaneController headerPaneController;
 
