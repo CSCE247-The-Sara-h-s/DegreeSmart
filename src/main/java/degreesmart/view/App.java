@@ -17,7 +17,6 @@ public class App extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        UserList.getInstance();
         stage.setTitle("DegreeSmart");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/icon.png")));
         scene = new Scene(loadFXML("loginpage"), 710, 675);
@@ -48,7 +47,6 @@ public class App extends javafx.application.Application {
                 setRoot("student-list");
                 break;
             case STUDENT:
-                StudentApplication.getInstance();
                 setRoot("student-graduation-plan");
                 break;
             case PARENT:
