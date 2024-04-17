@@ -21,13 +21,23 @@
                 </ImageView>
             </HBox>
             <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10;">Page Title</Label>
-            <HBox style="-fx-padding: 10;">
-                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 5;" onMouseClicked="#handleSettingsClick">
-                    <Image url="@../images/gear.png" />
-                </ImageView>
-                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 10;" onMouseClicked="#handleLogoutClick">
-                    <Image url="@../images/logout.png" />
-                </ImageView>
+            <HBox style="-fx-padding: 10;" spacing="10">
+                <HBox onMouseClicked="#showUserHomePage">
+                    <Label>Home</Label>
+                    <!-- <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 5;" onMouseClicked="#handleSettingsClick">
+                        <Image url="@../images/gear.png"/>
+                    </ImageView> -->
+                </HBox>
+                <HBox onMouseClicked="#handleSettingsClick">
+                    <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 5;">
+                        <Image url="@../images/gear.png"/>
+                    </ImageView>
+                </HBox>
+                <HBox onMouseClicked="#handleLogoutClick">
+                    <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 10;">
+                        <Image url="@../images/logout.png"/>
+                    </ImageView>
+                </HBox>
             </HBox>
         </HBox>
         <HBox fx:id="links" />

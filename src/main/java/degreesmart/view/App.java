@@ -29,7 +29,7 @@ public class App extends javafx.application.Application {
         try {
             scene.setRoot(loadFXML(fxml));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
