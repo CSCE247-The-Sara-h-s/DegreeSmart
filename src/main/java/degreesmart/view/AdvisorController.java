@@ -103,6 +103,12 @@ public class AdvisorController implements Initializable {
         public StringProperty majorProperty() {
             return major;
         }
+
+        public String toString() {
+            return name.toString();
+        }
     }
+
+
 
 }

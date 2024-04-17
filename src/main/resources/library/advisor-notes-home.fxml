@@ -17,8 +17,10 @@
         <TextField fx:id="myTextField" promptText="Enter student name..." />
         <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
    </HBox>
+   <ListView fx:id="listView">
+
+   </ListView>
     <children>
-        <ListView fx:id="listView" />
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>
     <stylesheets>

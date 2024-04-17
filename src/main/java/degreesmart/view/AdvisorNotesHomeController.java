@@ -25,7 +25,7 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
-        headerPaneController.getPageTitle().setText("ADVISING NOTES");
+        headerPaneController.getPageTitle().setText("Advising Notes");
 
         listView.setItems(data);
     }
