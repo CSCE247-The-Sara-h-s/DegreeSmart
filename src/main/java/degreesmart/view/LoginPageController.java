@@ -25,7 +25,11 @@ public class LoginPageController implements Initializable {
     
     @FXML
     private void logIn(MouseEvent event) {
-    	Application.getInstance().logIn(usernameField.getText(), passwordField.getText());
+        String message = Application.getInstance().logIn(usernameField.getText(), passwordField.getText());
+        if (message.length() > 0) {
+            System.out.println(message);
+        }
+
     	App.showUserHomePage();
     }
 

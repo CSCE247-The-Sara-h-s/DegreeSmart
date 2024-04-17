@@ -166,7 +166,9 @@ public class Student extends User {
   public double getAttemptedHours() {
     double attemptedHours = 0.0;
     for (CompletedCourse c : completedCourses) {
+      if (c.getGrade() != Grade.F) {
         attemptedHours += c.getCourse().getCreditHours();
+      }
     }
     return attemptedHours;
   }

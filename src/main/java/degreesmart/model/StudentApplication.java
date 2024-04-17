@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 public class StudentApplication extends Application {
 	private static StudentApplication studentApplication;
-	private Student user;
-
-	private StudentApplication() {
-		user = (Student) Application.getInstance().getActiveUser();
-	}
 
 	public static StudentApplication getInstance() throws IllegalArgumentException {
 		Role role = Application.getInstance().getActiveUser().getRole();
@@ -25,57 +20,55 @@ public class StudentApplication extends Application {
 	}
 
 	public Student getActiveUser() {
-		return user;
-	}
-
-	public void logOut() {
-		user = null;
-		studentApplication = null;
-		super.logOut();
+		return (Student) Application.getInstance().getActiveUser();
 	}
 
 	public String getUscId() {
-		return user.getUscId();
+		return getActiveUser().getUscId();
 	}
 
 	public Advisor getAdvisor() {
-		return user.getAdvisor();
+		return getActiveUser().getAdvisor();
 	}
 
 	public ArrayList<Parent> getParents() {
-		return user.getParents();
+		return getActiveUser().getParents();
 	}
 
 	public ArrayList<Parent> getAccessRequests() {
-		return user.getAccessRequests();
+		return getActiveUser().getAccessRequests();
 	}
 
 	public ArrayList<AdvisingNote> getAdvisingNotes() {
-		return user.getAdvisingNotes();
+		return getActiveUser().getAdvisingNotes();
 	}
 
 	public ArrayList<Scholarship> getScholarships() {
-		return user.getScholarships();
+		return getActiveUser().getScholarships();
 	}
 
 	public ArrayList<RequirementSet> getMajors() {
-		return user.getMajors();
+		return getActiveUser().getMajors();
 	}
 
 	public ArrayList<RequirementSet> getMinors() {
-		return user.getMinors();
+		return getActiveUser().getMinors();
 	}
 
 	public ArrayList<RequirementSet> getDegreeRequirements() {
-		return user.getDegreeRequirements();
+		return getActiveUser().getDegreeRequirements();
+	}
+
+	public String getClassification() {
+		return "null";
 	}
 
 	public double getCreditHours() {
-		return -99.99;
+		return getActiveUser().getAttemptedHours();
 	}
 
 	public double getOverallGpa() {
-		return -99.99;
+		return getActiveUser().getGpa();
 	}
 
 	public double getMajorGpa() {
@@ -106,15 +99,23 @@ public class StudentApplication extends Application {
 		return RequirementSetList.getInstance().getMinors();
 	}
 
+	public ArrayList<CompletedCourse> getCompletedCourses() {
+		return getActiveUser().getCompletedCourses();
+	}
+
+	public ArrayList<PlannedCourse> getPlannedCourses() {
+		return getActiveUser().getPlannedCourses();
+	}
+
 	public String changeUscId(String uscId) {
 		if (uscId == null || uscId == "") {
 			return "Failed to modify USC ID: USC ID cannot be empty.";
-		} else if (UserList.getInstance().getStudent(uscId).equals(user)) {
+		} else if (UserList.getInstance().getStudent(uscId).equals(getActiveUser())) {
 			return "";
 		} else if (UserList.getInstance().getStudent(uscId) != null) {
 			return "Failed to modify USC ID: USC ID is already in use.";
 		} else {
-			UserList.getInstance().changeUscId(user, uscId);
+			UserList.getInstance().changeUscId(getActiveUser(), uscId);
 			return "";
 		}
 	}
@@ -124,15 +125,15 @@ public class StudentApplication extends Application {
 			throw new IllegalArgumentException("Parent cannot be null");
 		}
 
-		if (!user.getAccessRequests().contains(parent)) {
+		if (!getActiveUser().getAccessRequests().contains(parent)) {
 			return "Failed to approve access request: '"
 				+ parent.getUsername() + "' has not requested acess.";
 		} else {
-			user.removeAccessRequest(parent);
-			user.addParent(parent);
+			getActiveUser().removeAccessRequest(parent);
+			getActiveUser().addParent(parent);
 
-			parent.removePendingAccessRequest(user);
-			parent.addChild(user);
+			parent.removePendingAccessRequest(getActiveUser());
+			parent.addChild(getActiveUser());
 			return "";
 		}
 	}

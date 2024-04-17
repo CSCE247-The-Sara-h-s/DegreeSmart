@@ -3,6 +3,8 @@ package degreesmart.view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,9 +20,13 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Pos;
 import java.lang.reflect.*;
+import java.util.stream.Collectors;
 
 import degreesmart.model.Application;
-import degreesmart.model.Student;
+import degreesmart.model.StudentApplication;
+import degreesmart.model.CompletedCourse;
+import degreesmart.model.PlannedCourse;
+import degreesmart.model.Grade;
 
 public class StudentGraduationPlanController extends StudentController implements Initializable {
     @FXML
@@ -46,200 +52,87 @@ public class StudentGraduationPlanController extends StudentController implement
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
-        Application.getInstance().logIn("Hdawson", "ILoveFootball35");
-        headerPaneController.getPageTitle().setText("Graduation Plan");
+        StudentApplication application = StudentApplication.getInstance();
 
-        Student student = (Student) Application.getInstance().getActiveUser();
+        headerPaneController.getPageTitle().setText(Application.getInstance().getFirstName() + "'s Graduation Plan");
 
         try {
-            degree.setText(student.getGraduationPlan().getRequirementSets().get(0).getName());
+            degree.setText(application.getMajors().get(0).getName());
         } catch (Exception e) {
+            degree.setText("Undeclared");
         }
-        classification.setText("TODO");
-        overallGpa.setText("" + student.getGpa());
-        majorGpa.setText("TODO");
-        creditsEarned.setText("" + student.getAttemptedHours());
+
+        classification.setText(application.getClassification());
+        overallGpa.setText("" + application.getOverallGpa());
+        majorGpa.setText("" + application.getMajorGpa());
+        creditsEarned.setText("" + application.getCreditHours());
+
+        HashMap<String, ArrayList<CompletedCourse>> completedCoursesByTerm = new HashMap<String, ArrayList<CompletedCourse>>();
+        for (CompletedCourse course : application.getCompletedCourses()) {
+            String term = course.getSemester() + " " + course.getYear();
+
+            if (!completedCoursesByTerm.containsKey(term)) {
+                completedCoursesByTerm.put(term, new ArrayList<CompletedCourse>());
+            }
+            completedCoursesByTerm.get(term).add(course);
+        }
+
+        for (String term : completedCoursesByTerm.keySet()) {
+            // https://stackoverflow.com/a/30611899
+            addSemester(term,
+                new ArrayList<String>(completedCoursesByTerm.get(term).stream()
+                    .map((c) -> (c.getCourse().getShortName() == null)? "" : c.getCourse().getShortName()
+                        + " - " + c.getCourse().getName())
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(completedCoursesByTerm.get(term).stream()
+                    .map((c) -> Grade.D.toString())
+                    .collect(Collectors.toList())),
+                new ArrayList<Double>(completedCoursesByTerm.get(term).stream()
+                    .map((c) -> c.getCourse().getCreditHours())
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(completedCoursesByTerm.get(term).stream()
+                    .map((c) -> c.getGrade().toString())
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(completedCoursesByTerm.get(term).stream()
+                    .map((c) -> (c.getCourse().getPrerequisites().size() == 0)? "" : c.getCourse().getPrerequisites().toString())
+                    .collect(Collectors.toList()))
+            );
+        }
         
-        addSemester("Fall 2022", 1, 5, 0, 235, 16, 16,
-            new String[]{
-                "ENGL 101 Critical Reading and Composition",
-                "MATH 141 Calculus I",
-                "CSCE 145 Algorithmic Design I",
-                "CSCE 190 Computing in the Modern World",
-                "DANC 101 Dance Appreciation",
-            },
-            new String[]{
-                "C",
-                "C",
-                "C",
-                "C"
-            },
-            new double[]{
-                3,
-                4,
-                4,
-                1,
-                3
-            },
-            new String[]{
-                "A",
-                "B+",
-                "A",
-                "A",
-                "A"
-            },
-            new String[]{
-                "",
-                "C or better in MATH 112/115/116 or Math placement test score",
-                "Prereq or Coreq: MATH 111 or 115",
-                "Prereq or Coreq: CSCE 145, 204, 205, 206"
+        HashMap<String, ArrayList<PlannedCourse>> plannedCoursesByTerm = new HashMap<String, ArrayList<PlannedCourse>>();
+        for (PlannedCourse course : application.getPlannedCourses()) {
+            String term = course.getSemester() + " " + course.getYear();
+
+            if (!plannedCoursesByTerm.containsKey(term)) {
+                plannedCoursesByTerm.put(term, new ArrayList<PlannedCourse>());
             }
-        );
-        addSemester("Spring 2023", 2, 5, 16, 235, 13, 16,
-            new String[]{
-                "ENGL 101 Critical Reading and Composition",
-                "MATH 141 Calculus I",
-                "CSCE 145 Algorithmic Design I",
-                "CSCE 190 Computing in the Modern World",
-                "DANC 101 Dance Appreciation",
-            },
-            new String[]{
-                "C",
-                "C",
-                "C",
-                "C"
-            },
-            new double[]{
-                3,
-                4,
-                4,
-                1,
-                3
-            },
-            new String[]{
-                "A",
-                "B+",
-                "A",
-                "A",
-                "A"
-            },
-            new String[]{
-                "",
-                "C or better in MATH 112/115/116 or Math placement test score",
-                "Prereq or Coreq: MATH 111 or 115",
-                "Prereq or Coreq: CSCE 145, 204, 205, 206"
-            }
-        );
-        addSemester("Fall 2023", 3, 5, 29, 235, 12, 16,
-            new String[]{
-                "ENGL 101 Critical Reading and Composition",
-                "MATH 141 Calculus I",
-                "CSCE 145 Algorithmic Design I",
-                "CSCE 190 Computing in the Modern World",
-                "DANC 101 Dance Appreciation",
-            },
-            new String[]{
-                "C",
-                "C",
-                "C",
-                "C"
-            },
-            new double[]{
-                3,
-                4,
-                4,
-                1,
-                3
-            },
-            new String[]{
-                "A",
-                "B+",
-                "A",
-                "A",
-                "A"
-            },
-            new String[]{
-                "",
-                "C or better in MATH 112/115/116 or Math placement test score",
-                "Prereq or Coreq: MATH 111 or 115",
-                "Prereq or Coreq: CSCE 145, 204, 205, 206"
-            }
-        );
-        addSemester("Spring 2024", 4, 5, 31, 235, 9, 16,
-            new String[]{
-                "ENGL 101 Critical Reading and Composition",
-                "MATH 141 Calculus I",
-                "CSCE 145 Algorithmic Design I",
-                "CSCE 190 Computing in the Modern World",
-                "DANC 101 Dance Appreciation",
-            },
-            new String[]{
-                "C",
-                "C",
-                "C",
-                "C"
-            },
-            new double[]{
-                3,
-                4,
-                4,
-                1,
-                3
-            },
-            new String[]{
-                "A",
-                "B+",
-                "A",
-                "A",
-                "A"
-            },
-            new String[]{
-                "",
-                "C or better in MATH 112/115/116 or Math placement test score",
-                "Prereq or Coreq: MATH 111 or 115",
-                "Prereq or Coreq: CSCE 145, 204, 205, 206"
-            }
-        );
-        addSemester("Fall 2024", 5, 5, 40, 235, 4, 16,
-            new String[]{
-                "ENGL 101 Critical Reading and Composition",
-                "MATH 141 Calculus I",
-                "CSCE 145 Algorithmic Design I",
-                "CSCE 190 Computing in the Modern World",
-                "DANC 101 Dance Appreciation",
-            },
-            new String[]{
-                "C",
-                "C",
-                "C",
-                "C"
-            },
-            new double[]{
-                3,
-                4,
-                4,
-                1,
-                3
-            },
-            new String[]{
-                "A",
-                "B+",
-                "A",
-                "A",
-                "A"
-            },
-            new String[]{
-                "",
-                "C or better in MATH 112/115/116 or Math placement test score",
-                "Prereq or Coreq: MATH 111 or 115",
-                "Prereq or Coreq: CSCE 145, 204, 205, 206"
-            }
-        );
+            plannedCoursesByTerm.get(term).add(course);
+        }
+
+        for (String term : plannedCoursesByTerm.keySet()) {
+            addSemester(term,
+                new ArrayList<String>(plannedCoursesByTerm.get(term).stream()
+                    .map((c) -> (c.getCourse().getShortName() == null)? "" : c.getCourse().getShortName()
+                        + " - " + c.getCourse().getName())
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(plannedCoursesByTerm.get(term).stream()
+                    .map((c) -> Grade.F.toString())
+                    .collect(Collectors.toList())),
+                new ArrayList<Double>(plannedCoursesByTerm.get(term).stream()
+                    .map((c) -> c.getCourse().getCreditHours())
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(plannedCoursesByTerm.get(term).stream()
+                    .map((c) -> "-")
+                    .collect(Collectors.toList())),
+                new ArrayList<String>(plannedCoursesByTerm.get(term).stream()
+                    .map((c) -> (c.getCourse().getPrerequisites().size() == 0)? "" : c.getCourse().getPrerequisites().toString())
+                    .collect(Collectors.toList()))
+            );
+        }
     }
 
-    public void addSemester(String label, int numCourses, int maxCourses, int completedHours, int totalCreditHours, 
-            int creditHours, int maxCreditHours, String[] courses, String[] minGrades, double[] credits, String[] grades,
-            String[] prerequisites/*, String description*/) {
+    public void addSemester(String label, ArrayList<String> courses, ArrayList<String> minGrades, 
+            ArrayList<Double> credits, ArrayList<String> grades, ArrayList<String> prerequisites) {
         try {
            // https://coderanch.com/t/723526/java/fxml-include-dynamically-adding-removing
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -264,36 +157,36 @@ public class StudentGraduationPlanController extends StudentController implement
             ((Label)semester.lookup("#semesterName")).setText(label);
            
             GridPane details = (GridPane)semester.lookup("#semesterDetails");
-            for (int i = 0; i < courses.length; i++) {
-                Label tmp = new Label(courses[i]);
+            for (int i = 0; i < courses.size(); i++) {
+                Label tmp = new Label(courses.get(i));
                 GridPane.setRowIndex(tmp, i + 1);
                 GridPane.setColumnIndex(tmp, 0);
                 details.getChildren().add(tmp);
             }
 
-            for (int i = 0; i < minGrades.length; i++) {
-                Label tmp = new Label(minGrades[i]);
+            for (int i = 0; i < minGrades.size(); i++) {
+                Label tmp = new Label(minGrades.get(i));
                 GridPane.setRowIndex(tmp, i + 1);
                 GridPane.setColumnIndex(tmp, 1);
                 details.getChildren().add(tmp);
             }
 
-            for (int i = 0; i < credits.length; i++) {
-                Label tmp = new Label("" + credits[i]);
+            for (int i = 0; i < credits.size(); i++) {
+                Label tmp = new Label("" + credits.get(i));
                 GridPane.setRowIndex(tmp, i + 1);
                 GridPane.setColumnIndex(tmp, 2);
                 details.getChildren().add(tmp);
             }
 
-            for (int i = 0; i < prerequisites.length; i++) {
-                Label tmp = new Label("" + prerequisites[i]);
+            for (int i = 0; i < prerequisites.size(); i++) {
+                Label tmp = new Label("" + prerequisites.get(i));
                 GridPane.setRowIndex(tmp, i + 1);
                 GridPane.setColumnIndex(tmp, 3);
                 details.getChildren().add(tmp);
             }
 
-            for (int i = 0; i < grades.length; i++) {
-                Label tmp = new Label("" + grades[i]);
+            for (int i = 0; i < grades.size(); i++) {
+                Label tmp = new Label(grades.get(i));
                 GridPane.setRowIndex(tmp, i + 1);
                 GridPane.setColumnIndex(tmp, 4);
                 details.getChildren().add(tmp);

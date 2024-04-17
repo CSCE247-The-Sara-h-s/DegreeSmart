@@ -73,19 +73,36 @@ public class Application {
         return !userList.getGuest().equals(activeUser);
     }
 
-    public boolean logIn(String username, String password) {
-        if (!userLoggedIn()) {
-            User user = userList.getUser(username);
-            if (user != null && user.getPassword().equals(password)) {
-                activeUser = user;
-            }
+    public String logIn(String username, String password) {
+        if (userLoggedIn()) {
+            throw new IllegalStateException("User is already logged in");
         }
-        return userLoggedIn();
+
+        if (username.length() == 0) {
+            return "Login failed: Username is required";
+        } else if (password.length() == 0) {
+            return "Login failed: Password is required";
+        }
+
+        User user = userList.getUser(username);
+        if (user == null || !user.getPassword().equals(password)) {
+            return "Login failed: Invalid credentials";
+        }
+
+        activeUser = user;
+        return "";
     }
 
     public void logOut() {
         activeUser = userList.getGuest();
         userList.saveUsers();
+    }
+
+    public String getFirstName() {
+        if (userLoggedIn()) {
+            return activeUser.getFirstName();
+        }
+        return "";
     }
 
     private boolean validUsername(String username) {
