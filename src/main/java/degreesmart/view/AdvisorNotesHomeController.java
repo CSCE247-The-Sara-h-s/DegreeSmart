@@ -44,5 +44,10 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
         listView.setItems(searchResults);
     }
 
+    @FXML
+    private void viewStudentNotes() {
+        App.setRoot("modify-advisor-notes");
+    }
+
 
 }

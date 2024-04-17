@@ -1,2 +1,0 @@
-searchResults.setAll(data.filtered(Person -> Person.toString().equals(searchText)));
-searchResults.setAll(data.filtered(Person -> Person.toString().toLowerCase().contains(searchText)));

@@ -18,7 +18,7 @@
         <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
    </HBox>
     <children>
-        <ListView fx:id="listView"/>
+        <ListView fx:id="listView" onMouseClicked="#viewStudentNotes"/>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>
     <stylesheets>
