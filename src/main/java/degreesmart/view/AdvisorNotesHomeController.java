@@ -22,6 +22,9 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
     @FXML
     private ListView<Person> listView;
 
+    @FXML
+    private ObservableList<Person> searchResults;
+
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
@@ -32,8 +35,12 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
 
     @FXML
     private void search() {
-        String searchText = searchBar.getText();
-        ObservableList<Person> searchResults = data.filtered(item -> item.nameProperty().equals(searchText));
+        String searchText = searchBar.getText().toLowerCase().trim();
+        if(searchText.isEmpty()) {
+            searchResults.setAll(data);
+        } else {
+            searchResults = data.filtered(Person -> Person.toString().toLowerCase().contains(searchText));
+        }
         listView.setItems(searchResults);
     }
 
