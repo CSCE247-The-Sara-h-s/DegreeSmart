@@ -98,6 +98,13 @@ public class Application {
         userList.saveUsers();
     }
 
+    public String getFirstName() {
+        if (userLoggedIn()) {
+            return activeUser.getFirstName();
+        }
+        return "";
+    }
+
     private boolean validUsername(String username) {
         return username != null && userList.getUser(username) == null;
     }
