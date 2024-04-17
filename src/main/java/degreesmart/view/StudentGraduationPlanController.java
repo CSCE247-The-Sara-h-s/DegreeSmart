@@ -159,35 +159,35 @@ public class StudentGraduationPlanController extends StudentController implement
             GridPane details = (GridPane)semester.lookup("#semesterDetails");
             for (int i = 0; i < courses.size(); i++) {
                 Label tmp = new Label(courses.get(i));
-                GridPane.setRowIndex(tmp, i + 1);
+                GridPane.setRowIndex(tmp, i + 2);
                 GridPane.setColumnIndex(tmp, 0);
                 details.getChildren().add(tmp);
             }
 
             for (int i = 0; i < minGrades.size(); i++) {
                 Label tmp = new Label(minGrades.get(i));
-                GridPane.setRowIndex(tmp, i + 1);
+                GridPane.setRowIndex(tmp, i + 2);
                 GridPane.setColumnIndex(tmp, 1);
                 details.getChildren().add(tmp);
             }
 
             for (int i = 0; i < credits.size(); i++) {
                 Label tmp = new Label("" + credits.get(i));
-                GridPane.setRowIndex(tmp, i + 1);
+                GridPane.setRowIndex(tmp, i + 2);
                 GridPane.setColumnIndex(tmp, 2);
                 details.getChildren().add(tmp);
             }
 
             for (int i = 0; i < prerequisites.size(); i++) {
                 Label tmp = new Label("" + prerequisites.get(i));
-                GridPane.setRowIndex(tmp, i + 1);
+                GridPane.setRowIndex(tmp, i + 2);
                 GridPane.setColumnIndex(tmp, 3);
                 details.getChildren().add(tmp);
             }
 
             for (int i = 0; i < grades.size(); i++) {
                 Label tmp = new Label(grades.get(i));
-                GridPane.setRowIndex(tmp, i + 1);
+                GridPane.setRowIndex(tmp, i + 2);
                 GridPane.setColumnIndex(tmp, 4);
                 details.getChildren().add(tmp);
             }
