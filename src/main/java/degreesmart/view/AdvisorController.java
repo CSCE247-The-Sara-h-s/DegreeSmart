@@ -23,7 +23,6 @@ public class AdvisorController implements Initializable {
         
 
        	Label studentList = new Label("Student List");
-        Label modifyStudentList = new Label("Modify Student List");
         Label advisorNotes = new Label("Advisor Notes");
 
         studentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -35,39 +34,26 @@ public class AdvisorController implements Initializable {
                 }
             }
         });
-        modifyStudentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    //App.setRoot("modify-student-list");
-                } catch (Exception e) {
-                }
-            }
-        });
         advisorNotes.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    //App.setRoot("advisor-notes");
+                    App.setRoot("advisor-notes");
                 } catch (Exception e) {
                 }
             }
         });
 
         HBox.setHgrow(studentList, Priority.ALWAYS);
-        HBox.setHgrow(modifyStudentList, Priority.ALWAYS);
         HBox.setHgrow(advisorNotes, Priority.ALWAYS);
 
         studentList.setMaxWidth(Double.MAX_VALUE);
-        modifyStudentList.setMaxWidth(Double.MAX_VALUE);
         advisorNotes.setMaxWidth(Double.MAX_VALUE);
 
         studentList.setAlignment(Pos.CENTER);
-        modifyStudentList.setAlignment(Pos.CENTER);
         advisorNotes.setAlignment(Pos.CENTER);
 
         headerPaneController.getLinks().getChildren().add(studentList);
-        headerPaneController.getLinks().getChildren().add(modifyStudentList);
         headerPaneController.getLinks().getChildren().add(advisorNotes);
     }
 
