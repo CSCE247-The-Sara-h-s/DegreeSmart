@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
 <?import java.net.*?>
 
 <VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdminAdvisorManagementController">
@@ -33,15 +35,18 @@
                 <RowConstraints percentHeight="5"/>
                 <RowConstraints percentHeight="85"/>
             </rowConstraints>
+            <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <ComboBox fx:id="comboBox"/>
+            </HBox>
             <VBox styleClass="searchBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
                 <TextField fx:id="searchField" promptText="Search For Advisor"/>
             </VBox>
-            <VBox GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <VBox alignment="CENTER_LEFT" GridPane.columnIndex="4" GridPane.rowIndex="1">
                 <Button fx:id="search" text="Search" styleClass="searchButton"/>
             </VBox>
             <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
                 <HBox>
-                    <Label text="Results for advisor-name" alignment="BOTTOM_LEFT"/>
+                    <Label text="Results for advisor-name" alignment="BOTTOM_LEFT" style="-fx-font-size: 20px;"/>
                 </HBox>
                 <HBox>
                     <Separator HBox.hgrow="ALWAYS" styleClass="seperator"/>
@@ -49,9 +54,9 @@
             </VBox>
             <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
                 <HBox>
-                    <Label text="Name"/>
-                    <Label text="USC ID"/>
-                    <Label text="Approval Status"/>
+                    <Label text="Name" prefWidth="400"/>
+                    <Label text="USC ID" prefWidth="400"/>
+                    <Label text="Approval Status" prefWidth="400"/>
                 </HBox>
             </VBox>
         </GridPane>

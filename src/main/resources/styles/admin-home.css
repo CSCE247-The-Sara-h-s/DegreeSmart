@@ -1,3 +1,6 @@
+.root {
+    -fx-font-family: Arial;
+}
 .searchBox {
     -fx-background-color: white;
 	-fx-padding: 5;
@@ -13,6 +16,8 @@
 .searchButton {
     -fx-background-color: #410202;
     -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-padding: 5px;
 }
 
 .separator {
