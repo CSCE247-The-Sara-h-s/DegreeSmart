@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -23,7 +24,6 @@ public class AdminHomeController extends AdminController implements Initializabl
             "-fx-background-position: center;");
 
         headerPaneController.getPageTitle().setText("Welcome");
-
 
 
     }

@@ -7,6 +7,16 @@
     -fx-background-color: rgba(255, 255, 255, 0.5);
     -fx-text-fill: black;
 }
+
+.searchButton {
+    -fx-background-color: #410202;
+    -fx-text-fill: white;
+}
+
+.separator {
+    -fx-background-color: #410202;
+
+}
 /* .studentSizeFont {
     -fx-font-size: 16pt;
 } */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdminSearchController">
+    <children>
+        <VBox fx:id="personSearch" styleClass="searchBox" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
+            <HBox>
+                <TextField fx:id="firstNameField" promptText="First Name"/>
+                    <Region HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                            <Insets right="2"/>
+                        </HBox.margin>
+                    </Region>
+                <TextField fx:id="lastNameField" promptText="Last Name"/>
+                    <Region HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                            <Insets left="2"/>
+                        </HBox.margin>
+                    </Region>
+                <TextField fx:id="uuidField" promptText="UUID"/>
+                    <Region HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                            <Insets left="5"/>
+                        </HBox.margin>
+                    </Region>
+            </HBox>
+        </VBox>
+    </children>
+</Vbox>

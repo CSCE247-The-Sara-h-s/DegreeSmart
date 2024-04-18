@@ -13,14 +13,54 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Separator?>
 <?import java.net.*?>
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.project.AdminAdvisorManagementController">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdminAdvisorManagementController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
+        <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" fx:id="advisorManagement">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="18"/>
+                <ColumnConstraints percentWidth="18"/>
+                <ColumnConstraints percentWidth="32"/>
+                <ColumnConstraints percentWidth="14"/>
+                <ColumnConstraints percentWidth="18"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="5"/>
+                <RowConstraints percentHeight="5"/>
+                <RowConstraints percentHeight="5"/>
+                <RowConstraints percentHeight="85"/>
+            </rowConstraints>
+            <VBox styleClass="searchBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                <TextField fx:id="searchField" promptText="Search For Advisor"/>
+            </VBox>
+            <VBox GridPane.columnIndex="4" GridPane.rowIndex="1">
+                <Button fx:id="search" text="Search" styleClass="searchButton"/>
+            </VBox>
+            <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
+                <HBox>
+                    <Label text="Results for advisor-name" alignment="BOTTOM_LEFT"/>
+                </HBox>
+                <HBox>
+                    <Separator HBox.hgrow="ALWAYS" styleClass="seperator"/>
+                </HBox>
+            </VBox>
+            <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
+                <HBox>
+                    <Label text="Name"/>
+                    <Label text="USC ID"/>
+                    <Label text="Approval Status"/>
+                </HBox>
+            </VBox>
+        </GridPane>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <padding>
         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
     </padding>
+    <stylesheets>
+      <URL value="@../styles/admin-home.css"/>
+   </stylesheets>
 </VBox>
