@@ -39,7 +39,7 @@ public class StudentListController extends AdvisorController implements Initiali
 
 
     public void initialize(URL url, ResourceBundle rb) {
-       super.initialize(url, rb);
+        super.initialize(url, rb);
         headerPaneController.getPageTitle().setText("Student List");
 
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
@@ -57,9 +57,6 @@ public class StudentListController extends AdvisorController implements Initiali
                     @Override
                     public void handle(MouseEvent event) {
                         if (event.getButton() == MouseButton.SECONDARY) {
-                            // handle right click on cell...
-                            // access cell data with cell.getItem();
-                            // access row data with (Person)cell.getTableRow().getItem();
                             App.setRoot("advisor-student-plan");
                         }
                     }
@@ -67,12 +64,40 @@ public class StudentListController extends AdvisorController implements Initiali
                 return cell ;
             }
         });
+        yearCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
+            @Override
+            public TableCell<Person, String> call(TableColumn<Person, String> col) {
+                final TableCell<Person, String> cell = new TableCell<>();
+                cell.textProperty().bind(cell.itemProperty());
+                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getButton() == MouseButton.SECONDARY) {
+                            App.setRoot("advisor-student-plan");
+                        }
+                    }
+                });
+                return cell ;
+            }
+        });
+        majorCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
+            @Override
+            public TableCell<Person, String> call(TableColumn<Person, String> col) {
+                final TableCell<Person, String> cell = new TableCell<>();
+                cell.textProperty().bind(cell.itemProperty());
+                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getButton() == MouseButton.SECONDARY) {
+                            App.setRoot("advisor-student-plan");
+                        }
+                    }
+                });
+                return cell ;
+            }
+        });
+        
     }
-
-    //@FXML
-    //private void seeStudentPlan(MouseEvent event) {
-    //	App.setRoot("advisor-student-plan");
-  //  }
 
 
 }
