@@ -6,10 +6,19 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.event.ActionEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+
 
 public class StudentListController extends AdvisorController implements Initializable {
     @FXML
@@ -38,7 +47,32 @@ public class StudentListController extends AdvisorController implements Initiali
         majorCol.setCellValueFactory(cellData -> cellData.getValue().majorProperty());
 
         tableView.setItems(data);
+
+        nameCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
+            @Override
+            public TableCell<Person, String> call(TableColumn<Person, String> col) {
+                final TableCell<Person, String> cell = new TableCell<>();
+                cell.textProperty().bind(cell.itemProperty());
+                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getButton() == MouseButton.SECONDARY) {
+                            // handle right click on cell...
+                            // access cell data with cell.getItem();
+                            // access row data with (Person)cell.getTableRow().getItem();
+                            App.setRoot("advisor-student-plan");
+                        }
+                    }
+                });
+                return cell ;
+            }
+        });
     }
+
+    //@FXML
+    //private void seeStudentPlan(MouseEvent event) {
+    //	App.setRoot("advisor-student-plan");
+  //  }
 
 
 }

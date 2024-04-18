@@ -6,16 +6,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class ModifyAdvisorNotesController extends AdvisorController implements Initializable {
+public class AdvisorStudentPlan extends AdvisorController implements Initializable {
 
     @FXML
     private HeaderPaneController headerPaneController;
-
-
+    
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
-        headerPaneController.getPageTitle().setText("Advising Notes - S");
-
-    }
+         headerPaneController.getPageTitle().setText("VIEW STUDENTS");
+     }
     
 }
