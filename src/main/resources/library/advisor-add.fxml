@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import java.net.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdvisorAddController">
+    <children>
+        <fx:include fx:id="headerPane" source="header-pane.fxml"/>
+        <Label text="ADD NEW STUDENTS HERE:" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
+    </children>
+    <children>
+        <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
+    </children>
+    <stylesheets>
+      <URL value = "@../styles/student-list.css"/>
+   </stylesheets>
+
+</VBox>
