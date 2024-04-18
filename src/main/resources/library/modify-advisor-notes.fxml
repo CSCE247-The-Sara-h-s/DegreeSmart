@@ -2,13 +2,23 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import java.net.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.ModifyAdvisorNoteseController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.ModifyAdvisorNotesController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <Label text="ADVISING NOTES FOR STUDENT:" minHeight="16" minWidth="69"/>
-   </children>
+        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="GO BACK" onMouseClicked="#goBack"/>
+    </children>
+    <VBox>
+        <VBox>
+            <Label text="Note 1" minHeight="16" minWidth="69"/>
+        </VBox>
+        <VBox>
+            <Label text="Note 2" minHeight="16" minWidth="69"/>
+        </VBox>
+    </VBox>
     <children>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>

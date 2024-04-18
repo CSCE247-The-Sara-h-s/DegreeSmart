@@ -99,5 +99,10 @@ public class StudentListController extends AdvisorController implements Initiali
         
     }
 
+    @FXML
+    private void addStudentView() {
+        App.setRoot("advisor-add");
+    }
+
 
 }
