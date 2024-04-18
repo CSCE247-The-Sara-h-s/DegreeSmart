@@ -34,41 +34,32 @@
                 <RowConstraints percentHeight="8" />
                 <RowConstraints percentHeight="47" />
             </rowConstraints>
-            <VBox fx:id="message" styleClass="messageBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+            <HBox fx:id="message" styleClass="messageBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
                 <HBox>
-                    <Label text="over "/>
-                    <Label text="35,470 " style="-fx-font-size: 16pt;"/>
-                    <Label text="undergrad"/>
+                    <Label text="over " style="-fx-alignment: BOTTOM_CENTER; -fx-text-fill: #410202;"/>
                 </HBox>
-            </VBox>
-            <VBox GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2">
                 <HBox>
-                    <Button text="Student" styleClass="button"/>
-                    <Button text="Courses" styleClass="button"/>
-                    <Button text="Advisors" styleClass="button"/>
+                    <Label text="35,470 " style="-fx-font-size: 45pt; -fx-alignment: TOP_CENTER; -fx-text-fill: #410202;"/>
+                </HBox>
+                <HBox>
+                    <Label text="undergrad" style="-fx-alignment: BOTTOM_CENTER; -fx-text-fill: #410202;"/>
+                </HBox>
+            </HBox>
+            <VBox GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                <HBox style="-fx-spacing: 20px;">
+                    <Button text="Student" styleClass="button" onAction="#handlePersonSearch"/>
+                    <Button text="Courses" styleClass="button" onAction="#handleCourseSearch"/>
+                    <Button text="Advisors" styleClass="button" onAction="#handlePersonSearch"/>
                 </HBox>
             </VBox>
             <VBox fx:id="search" styleClass="searchBox" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
-                <HBox>
-                    <!-- <Label text="FirstName"/> -->
-                    <TextField fx:id="firstNameField" promptText="firstname"/>
-                        <Region HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets right="2"/>
-                            </HBox.margin>
-                        </Region>
-                    <TextField fx:id="lastNameField" promptText="lastname"/>
-                        <Region HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets left="2"/>
-                            </HBox.margin>
-                        </Region>
-                    <TextField fx:id="uuidField" promptText="UUID"/>
-                    <Region HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets left="5"/>
-                            </HBox.margin>
-                        </Region>
+                <HBox alignment="CENTER">
+                    <TextField fx:id="firstNameField" promptText="First Name" style="-fx-padding: 15px; -fx-alignment: CENTER_LEFT" prefWidth="400"/>
+                    <TextField fx:id="lastNameField" promptText="Last Name" style="-fx-padding: 15px; -fx-alignment: CENTER_LEFT" prefWidth="400"/>
+                    <!-- TODO: add mouse event for search button -->
+                    <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 10px;">
+                        <Image url="@../images/search_icon.png"/>
+                    </ImageView>
                 </HBox>
             </VBox>
         </GridPane>
