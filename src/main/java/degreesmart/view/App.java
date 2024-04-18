@@ -19,7 +19,7 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("DegreeSmart");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/icon.png")));
-        scene = new Scene(loadFXML("loginpage"), 1250, 900);
+        scene = new Scene(loadFXML("loginpage"), 1250, 850);
         stage.setScene(scene);
         stage.show();
     }

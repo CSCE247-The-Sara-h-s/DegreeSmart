@@ -8,6 +8,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import java.net.*?>
 
 <VBox alignment="CENTER" prefHeight="474.0" prefWidth="785.0" spacing="20.0" styleClass="vbox-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.LoginPageController">
@@ -17,10 +19,14 @@
             <Image url="@../images/degreesmart_logo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameField" promptText="Username" />
-      <PasswordField fx:id="passwordField" promptText="Password" />
-      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Login" onMouseClicked="#logIn"/>
-      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Create Account" onMouseClicked="#createAccount"/>
+      <TextField fx:id="usernameField" promptText="Username" onKeyPressed="#focusPassword"/>
+      <AnchorPane>
+         <TextField AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" fx:id="showPasswordField" promptText="Password" focusTraversable="false"/>
+         <PasswordField AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" fx:id="hidePasswordField" promptText="Password" onKeyPressed="#logInKey"/>
+         <Label alignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-font-size: 13;" onMousePressed="#showPassword" onMouseReleased="#hidePassword" onMouseExited="#hidePassword">(show)</Label>
+      </AnchorPane>
+      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Login" onMouseClicked="#logInMouse" onKeyPressed="#logInKey"/>
+      <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="163.0" text="Create Account" onMouseClicked="#createAccountMouse" onKeyPressed="#createAccountKey"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

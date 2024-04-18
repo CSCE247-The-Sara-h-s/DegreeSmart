@@ -1,28 +1,32 @@
 .vbox-border {
-    -fx-border-color: #410202; 
-    -fx-border-width: 100px; 
-    -fx-border-radius: 0px; 
-    -fx-background-color: #ffffff; 
+    -fx-border-color: #410202;
+    -fx-border-width: 100px;
+    -fx-border-radius: 0px;
+    -fx-background-color: #ffffff;
 }
 
 Label {
-    -fx-font-size: 18px; 
+    -fx-font-size: 18px;
 }
 
 TextField, PasswordField {
-    -fx-font-size: 14px; 
-    -fx-pref-width: 200px; 
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
 }
 
 Button {
-    -fx-font-size: 14px; 
-    -fx-pref-width: 120px; 
-    -fx-background-color: #300303; 
+    -fx-font-size: 14px;
+    -fx-pref-width: 120px;
+    -fx-background-color: #300303;
     -fx-text-fill: white;
 }
 
+Button:focused {
+    -fx-background-color: #73000a;
+}
+
 Button:hover {
-    -fx-background-color: #070707; 
+    -fx-background-color: #73000a;
 }
 
 .image-view {
