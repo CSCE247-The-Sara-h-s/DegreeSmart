@@ -16,6 +16,12 @@ public class AdminHomeController extends AdminController implements Initializabl
     @FXML
     private HeaderPaneController headerPaneController;
 
+    @FXML
+    private TextField firstNameField;
+
+    @FXML
+    private TextField lastNameField;
+
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
         background.setStyle("-fx-background-image: url(\"" 
@@ -26,5 +32,17 @@ public class AdminHomeController extends AdminController implements Initializabl
         headerPaneController.getPageTitle().setText("Welcome");
 
 
+    }
+
+    @FXML
+    private void handleCourseSearch() {
+        firstNameField.setPromptText("Subject");
+        lastNameField.setPromptText("Course Name");
+    }
+
+    @FXML
+    private void handlePersonSearch() {
+        firstNameField.setPromptText("First Name");
+        lastNameField.setPromptText("Last Name");
     }
 }
