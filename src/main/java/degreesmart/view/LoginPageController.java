@@ -84,6 +84,7 @@ public class LoginPageController implements Initializable {
         hidePasswordField.setManaged(false);
         showPasswordField.setVisible(true);
         showPasswordField.setManaged(true);
+        showPasswordField.getParent().requestFocus();
     }
 
     private void hidePassword() {
