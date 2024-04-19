@@ -9,11 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class AdvisorAddController extends AdvisorController implements Initializable {
-    
+public class AdvisorRemoveController extends AdvisorController implements Initializable{
+        
     @FXML
     private HeaderPaneController headerPaneController;
 
+    @FXML
     private TextField searchBar;
 
     @FXML
@@ -40,15 +41,15 @@ public class AdvisorAddController extends AdvisorController implements Initializ
     }
 
     @FXML
-    private void addStudent() {
-       String objectToAdd = searchBar.getText();
-        if (student.contains(objectToAdd) == false) {
-            int i = data.indexOf(objectToAdd);
-            student.add(data.get(i));
+    private void removeStudent() {
+        String objectToRemove = searchBar.getText();
+        if (student.contains(objectToRemove)) {
+            student.remove(objectToRemove);
         } else {
-            System.out.println("student already in list");
+            System.out.println("not found in the list");
         }
-        // ADD A STUDENT TO THE LIST
-       // student.add(data.get());
+        // Remove A STUDENT FROM THE LIST
+        //student.remove();
     }
+    
 }

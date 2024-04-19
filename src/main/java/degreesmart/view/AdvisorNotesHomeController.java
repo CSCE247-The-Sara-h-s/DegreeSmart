@@ -37,9 +37,9 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
     private void search() {
         String searchText = searchBar.getText().toLowerCase().trim();
         if(searchText.isEmpty()) {
-            searchResults.setAll(data);
+            searchResults.setAll(student);
         } else {
-            searchResults = data.filtered(Person -> Person.toString().toLowerCase().contains(searchText));
+            searchResults = student.filtered(Person -> Person.toString().toLowerCase().contains(searchText));
         }
         listView.setItems(searchResults);
     }

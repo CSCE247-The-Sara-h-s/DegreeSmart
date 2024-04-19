@@ -46,7 +46,8 @@ public class StudentListController extends AdvisorController implements Initiali
         yearCol.setCellValueFactory(cellData -> cellData.getValue().yearProperty());
         majorCol.setCellValueFactory(cellData -> cellData.getValue().majorProperty());
 
-        tableView.setItems(data);
+        // student
+        tableView.setItems(student);
 
         nameCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
             @Override
@@ -91,7 +92,7 @@ public class StudentListController extends AdvisorController implements Initiali
                         if (event.getButton() == MouseButton.SECONDARY) {
                             App.setRoot("advisor-student-plan");
                         }
-                    }
+                    }             
                 });
                 return cell ;
             }
@@ -102,6 +103,11 @@ public class StudentListController extends AdvisorController implements Initiali
     @FXML
     private void addStudentView() {
         App.setRoot("advisor-add");
+    }
+
+    @FXML
+    private void RemoveStudentView() {
+        App.setRoot("advisor-remove");
     }
 
 

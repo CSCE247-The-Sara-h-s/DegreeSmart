@@ -11,17 +11,17 @@
 <?import javafx.scene.control.ListView?>
 <?import java.net.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdvisorAddController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdvisorRemoveController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
-        <Label text="ADD NEW STUDENTS HERE:" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
+        <Label text="REMOVE NEW STUDENTS HERE:" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
     </children>
     <HBox>
         <TextField fx:id="searchBar" promptText="Enter student name..." />
         <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
     </HBox>
     <children>
-        <ListView fx:id="listView" onMouseClicked="#addStudent"/>
+        <ListView fx:id="listView" onMouseClicked="#removeStudent"/>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <stylesheets>
