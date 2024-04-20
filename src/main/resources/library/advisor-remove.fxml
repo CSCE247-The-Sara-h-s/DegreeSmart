@@ -15,13 +15,36 @@
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <Label text="REMOVE NEW STUDENTS HERE:" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
-    </children>
-    <HBox>
-        <TextField fx:id="searchBar" promptText="Enter student name..." />
-        <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
-    </HBox>
-    <children>
-        <ListView fx:id="listView" onMouseClicked="#removeStudent"/>
+        <HBox>
+            <TextField fx:id="searchBar" promptText="Enter student name..." />
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
+        </HBox>
+        <VBox VBox.vgrow="ALWAYS">
+           <TableView fx:id="studentTable" onMouseClicked="#removeStudent">
+                <columns>
+                    <TableColumn text="First" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="firstName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Last" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Username" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="username"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="USC ID" prefWidth="300">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="uscId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <stylesheets>

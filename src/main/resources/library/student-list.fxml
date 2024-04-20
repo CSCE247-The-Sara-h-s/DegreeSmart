@@ -12,36 +12,40 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.StudentListController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
-   </children>
-   <HBox>
-        <Label text="Student List for Fall 2024" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
-        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Add" onMouseClicked="#addStudentView"/>
-        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Remove" onMouseClicked="#RemoveStudentView"/>
-   </HBox>
-    <TableView fx:id="tableView">
-        <columns>
-            <TableColumn text="Name" fx:id="nameCol"  >
-                <cellValueFactory>
-                    <PropertyValueFactory property="name" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Year" fx:id="yearCol" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="year" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Major" fx:id="majorCol" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="major" />
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
-    <children>
+       <HBox>
+            <Label text="Student List for Fall 2024" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Add" onMouseClicked="#addStudentView"/>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Remove" onMouseClicked="#RemoveStudentView"/>
+       </HBox>
+        <VBox VBox.vgrow="ALWAYS">
+           <TableView fx:id="tableView" onMouseClicked="#viewGraduationPlan">
+                <columns>
+                    <TableColumn text="First" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="firstName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Last" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Username" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="username"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="USC ID" prefWidth="300">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="uscId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>
     <stylesheets>
       <URL value = "@../styles/student-list.css"/>
    </stylesheets>
-
 </VBox>

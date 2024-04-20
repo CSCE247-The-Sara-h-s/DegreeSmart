@@ -3,11 +3,20 @@ package degreesmart.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
+import degreesmart.model.Application;
+import degreesmart.model.UserList;
+import degreesmart.model.Student;
+import degreesmart.model.Advisor;
 
 public class AdvisorRemoveController extends AdvisorController implements Initializable{
         
@@ -18,38 +27,31 @@ public class AdvisorRemoveController extends AdvisorController implements Initia
     private TextField searchBar;
 
     @FXML
-    private ListView<Person> listView;
-
-    @FXML
-    private ObservableList<Person> searchResults;
+    private TableView<Student> studentTable;
 
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
         headerPaneController.getPageTitle().setText("Student List");
+
+        Advisor advisor = (Advisor) Application.getInstance().getActiveUser();
+        studentTable.setItems(FXCollections.observableList(advisor.getAssignedStudents()));
     }
 
     @FXML
     private void search() {
-        String searchText = searchBar.getText().toLowerCase().trim();
-        if(searchText.isEmpty()) {
-            searchResults.setAll(data);
-        } else {
-            searchResults = data.filtered(Person -> Person.toString().toLowerCase().contains(searchText));
-        }
-        listView.setItems(searchResults);
+        studentTable.setItems(
+            FXCollections.observableList(
+                UserList.getInstance().searchStudents(
+                    searchBar.getText(), ((Advisor) Application.getInstance().getActiveUser()).getAssignedStudents())));
     }
 
     @FXML
-    private void removeStudent() {
-        String objectToRemove = searchBar.getText();
-        if (student.contains(objectToRemove)) {
-            student.remove(objectToRemove);
-        } else {
-            System.out.println("not found in the list");
-        }
-        // Remove A STUDENT FROM THE LIST
-        //student.remove();
+    private void removeStudent(MouseEvent event) {
+        ((Advisor) Application.getInstance().getActiveUser()).removeAssignedStudent((Student) studentTable.getSelectionModel().getSelectedItem());
+        ((Student) studentTable.getSelectionModel().getSelectedItem()).setAdvisor(null);
+        Advisor advisor = (Advisor) Application.getInstance().getActiveUser();
+        studentTable.setItems(FXCollections.observableList(advisor.getAssignedStudents()));
     }
     
 }

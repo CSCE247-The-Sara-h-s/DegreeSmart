@@ -19,85 +19,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import degreesmart.model.Application;
+import degreesmart.model.UserList;
+import degreesmart.model.Student;
+import degreesmart.model.Advisor;
 
 public class StudentListController extends AdvisorController implements Initializable {
     @FXML
     private HeaderPaneController headerPaneController;
 
     @FXML
-    private TableView<Person> tableView;
-
-    @FXML
-    private TableColumn<Person, String> nameCol;
-    
-    @FXML
-    private TableColumn<Person, String> yearCol;
-
-    @FXML
-    private TableColumn<Person, String> majorCol;
-
-
+    private TableView<Student> tableView;
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
         headerPaneController.getPageTitle().setText("Student List");
 
-        nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        yearCol.setCellValueFactory(cellData -> cellData.getValue().yearProperty());
-        majorCol.setCellValueFactory(cellData -> cellData.getValue().majorProperty());
-
-        // student
-        tableView.setItems(student);
-
-        nameCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
-            @Override
-            public TableCell<Person, String> call(TableColumn<Person, String> col) {
-                final TableCell<Person, String> cell = new TableCell<>();
-                cell.textProperty().bind(cell.itemProperty());
-                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        if (event.getButton() == MouseButton.SECONDARY) {
-                            App.setRoot("advisor-student-plan");
-                        }
-                    }
-                });
-                return cell ;
-            }
-        });
-        yearCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
-            @Override
-            public TableCell<Person, String> call(TableColumn<Person, String> col) {
-                final TableCell<Person, String> cell = new TableCell<>();
-                cell.textProperty().bind(cell.itemProperty());
-                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        if (event.getButton() == MouseButton.SECONDARY) {
-                            App.setRoot("advisor-student-plan");
-                        }
-                    }
-                });
-                return cell ;
-            }
-        });
-        majorCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
-            @Override
-            public TableCell<Person, String> call(TableColumn<Person, String> col) {
-                final TableCell<Person, String> cell = new TableCell<>();
-                cell.textProperty().bind(cell.itemProperty());
-                cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        if (event.getButton() == MouseButton.SECONDARY) {
-                            App.setRoot("advisor-student-plan");
-                        }
-                    }             
-                });
-                return cell ;
-            }
-        });
-        
+        Advisor advisor = (Advisor) Application.getInstance().getActiveUser();
+        tableView.setItems(FXCollections.observableList(advisor.getAssignedStudents()));
     }
 
     @FXML
@@ -110,5 +49,9 @@ public class StudentListController extends AdvisorController implements Initiali
         App.setRoot("advisor-remove");
     }
 
-
+    @FXML
+    private void viewGraduationPlan(MouseEvent event) {
+        System.out.println(tableView.getSelectionModel().getSelectedItem());
+        App.setRoot("advisor-student-plan");
+    }
 }
