@@ -48,7 +48,7 @@ public class Application {
             return "Failed to create account: " + e.getMessage();
         }
 
-        if (activeUser == null) {
+        if (Application.getInstance().getActiveUser() == null) {
             return "Failed to create account: Unknown error";
         }
 
@@ -63,14 +63,14 @@ public class Application {
     public boolean deleteAccount() {
         boolean deleted = false;
         if (userLoggedIn()) {
-            deleted = userList.deleteUser(activeUser);
+            deleted = userList.deleteUser(Application.getInstance().getActiveUser());
             logOut();
         }
         return deleted;
     }
 
     public boolean userLoggedIn() {
-        return !userList.getGuest().equals(activeUser);
+        return !userList.getGuest().equals(Application.getInstance().getActiveUser());
     }
 
     public String logIn(String username, String password) {
@@ -100,7 +100,7 @@ public class Application {
 
     public String getFirstName() {
         if (userLoggedIn()) {
-            return activeUser.getFirstName();
+            return Application.getInstance().getActiveUser().getFirstName();
         }
         return "";
     }
@@ -125,7 +125,7 @@ public class Application {
         boolean canChange = userLoggedIn() && validUsername(username);
 
         if (canChange) {
-            userList.changeUsername(activeUser, username);
+            userList.changeUsername(Application.getInstance().getActiveUser(), username);
         }
 
         return canChange;
@@ -135,7 +135,7 @@ public class Application {
         boolean canChange = userLoggedIn() && validUsername(password);
 
         if (canChange) {
-            activeUser.setPassword(password);
+            Application.getInstance().getActiveUser().setPassword(password);
         }
 
         return canChange;
@@ -145,7 +145,7 @@ public class Application {
         boolean canChange = userLoggedIn() && validName(firstName);
 
         if (canChange) {
-            activeUser.setFirstName(firstName);
+            Application.getInstance().getActiveUser().setFirstName(firstName);
         }
 
         return canChange;
@@ -155,7 +155,7 @@ public class Application {
         boolean canChange = userLoggedIn() && validName(lastName);
 
         if (canChange) {
-            activeUser.setLastName(lastName);
+            Application.getInstance().getActiveUser().setLastName(lastName);
         }
 
         return canChange;
@@ -165,7 +165,7 @@ public class Application {
         boolean canChange = userLoggedIn() && validName(preferredName);
 
         if (canChange) {
-            activeUser.setPreferredName(preferredName);
+            Application.getInstance().getActiveUser().setPreferredName(preferredName);
         }
 
         return canChange;
@@ -175,70 +175,70 @@ public class Application {
         boolean canChange = userLoggedIn() && validEmailAddress(emailAddress);
 
         if (canChange) {
-            activeUser.setEmailAddress(emailAddress);
+            Application.getInstance().getActiveUser().setEmailAddress(emailAddress);
         }
 
         return canChange;
     }
     
     public ArrayList<Student> getStudents() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR || Application.getInstance().getActiveUser().getRole() == Role.ADVISOR) {
             return userList.getStudents();
         }
         return null;
     }
 
     public ArrayList<Student> getStudents(String firstName, String lastName) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR || Application.getInstance().getActiveUser().getRole() == Role.ADVISOR) {
             return userList.getStudents(firstName, lastName);
         }
         return null;
     }
 
     public ArrayList<Student> getUnassignedStudents() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return userList.getUnassignedStudents();
         }
         return null;
     }
 
     public Student getStudentByUscId(String uscId) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR || activeUser.getRole() == Role.ADVISOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR || Application.getInstance().getActiveUser().getRole() == Role.ADVISOR) {
             return userList.getStudent(uscId);
         }
         return null;
     }
 
     public ArrayList<Advisor> getAdvisors() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return userList.getAdvisors();
         }
         return null;
     }
 
     public ArrayList<Advisor> getUnapprovedAdvisors() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return userList.getUnapprovedAdvisors();
         }
         return null;
     }
 
     public ArrayList<Administrator> getAdministrators() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return userList.getAdministrators();
         }
         return null;
     }
 
     public ArrayList<Parent> getParents() {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return userList.getParents();
         }
         return null;
     }
 
     public boolean approveAdvisor(Advisor advisor) {
-        boolean canApprove = activeUser.getRole() == Role.ADMINISTRATOR;
+        boolean canApprove = Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR;
         if (canApprove) {
             advisor.setAdvisorRole();
         }
@@ -246,16 +246,16 @@ public class Application {
     }
 
     public boolean assignStudent(Student student) {
-        boolean canAssign = activeUser.getRole() == Role.ADVISOR;
+        boolean canAssign = Application.getInstance().getActiveUser().getRole() == Role.ADVISOR;
         if (canAssign) {
-            ((Advisor)activeUser).addAssignedStudent(student);
-            student.setAdvisor((Advisor)activeUser);
+            ((Advisor)Application.getInstance().getActiveUser()).addAssignedStudent(student);
+            student.setAdvisor((Advisor)Application.getInstance().getActiveUser());
         }
         return canAssign;
     }
 
     public boolean addAssignedStudent(Advisor advisor, Student student) {
-        boolean canAssign = activeUser.getRole() == Role.ADMINISTRATOR;
+        boolean canAssign = Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR;
         if (canAssign) {
             advisor.addAssignedStudent(student);
             student.setAdvisor(advisor);
@@ -264,16 +264,16 @@ public class Application {
     }
 
     public boolean removeAssignedStuent(Student student) {
-        boolean canAssign = activeUser.getRole() == Role.ADVISOR;
+        boolean canAssign = Application.getInstance().getActiveUser().getRole() == Role.ADVISOR;
         if (canAssign) {
-           ((Advisor)activeUser).removeAssignedStudent(student);
+           ((Advisor)Application.getInstance().getActiveUser()).removeAssignedStudent(student);
            student.setAdvisor(null);
         }
         return canAssign;
     }
 
     public boolean removeAssignedStuent(Advisor advisor, Student student) {
-        boolean canAssign = activeUser.getRole() == Role.ADMINISTRATOR;
+        boolean canAssign = Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR;
         if (canAssign) {
            advisor.removeAssignedStudent(student);
            student.setAdvisor(null);
@@ -317,8 +317,8 @@ public class Application {
     }
 
     public ArrayList<AdvisingNote> addAdvisingNote(Student student, String message) {
-        if (student != null && activeUser.getRole() == Role.ADVISOR) {
-            student.addAdvisingNote((Advisor)activeUser, message);
+        if (student != null && Application.getInstance().getActiveUser().getRole() == Role.ADVISOR) {
+            student.addAdvisingNote((Advisor)Application.getInstance().getActiveUser(), message);
             return student.getAdvisingNotes();
         }
         return null;
@@ -329,51 +329,51 @@ public class Application {
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
     
     public void addScholarship () {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            ((Student)activeUser).addScholarship(null);
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
+            ((Student)Application.getInstance().getActiveUser()).addScholarship(null);
         }
     }
 
     public void removeScholarship () {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
-            ((Student)activeUser).removeScholarship(null);
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
+            ((Student)Application.getInstance().getActiveUser()).removeScholarship(null);
         }
     }
 
     public Course createCourse(Subject subject, String number) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return courseList.createCourse(subject, number);
         }
         return null;
     }
 
     public void deleteCourse(Course course) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             courseList.deleteCourse(course);
         }
     }
 
     public void modifyCourse(Course modifiedCourse) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             courseList.modifyCourse(modifiedCourse);
         }
     }
 
     public RequirementSet createRequirementSet(String name, RequirementType type) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             return requirementSetList.createRequirementSet(name, type);
         }
         return null;
     }
 
     public void deleteRequirementSet(RequirementSet requirementSet) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
             requirementSetList.deleteRequirementSet(requirementSet);
         }
     }
 
     public void modifyRequirementSet(RequirementSet modifiedRequirementSet) {
-        if (activeUser.getRole() == Role.ADMINISTRATOR) {
+        if (Application.getInstance().getActiveUser().getRole() == Role.ADMINISTRATOR) {
              requirementSetList.modifyRequirementSet(modifiedRequirementSet);
         }
     }
