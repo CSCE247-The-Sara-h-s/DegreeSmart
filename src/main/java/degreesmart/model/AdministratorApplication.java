@@ -11,10 +11,8 @@ public class AdministratorApplication extends Application {
 	}
 
 	public static AdministratorApplication getInstance() throws IllegalArgumentException {
-		Role role = Application.getInstance().getActiveUser().getRole();
-
-		if (role != Role.ADMINISTRATOR) {
-			throw new IllegalStateException("Logged in user must have '" + role + "' role");
+		if (Application.getInstance().getActiveUser().getRole() != Role.ADMINISTRATOR) {
+			throw new IllegalStateException("Logged in user must have '" + Role.ADMINISTRATOR + "' role");
 		}
 
 		if (application == null) {
