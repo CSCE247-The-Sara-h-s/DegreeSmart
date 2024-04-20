@@ -14,6 +14,7 @@ public class AdvisorAddController extends AdvisorController implements Initializ
     @FXML
     private HeaderPaneController headerPaneController;
 
+    @FXML
     private TextField searchBar;
 
     @FXML
@@ -42,12 +43,8 @@ public class AdvisorAddController extends AdvisorController implements Initializ
     @FXML
     private void addStudent() {
        String objectToAdd = searchBar.getText();
-        if (student.contains(objectToAdd) == false) {
-            int i = data.indexOf(objectToAdd);
-            student.add(data.get(i));
-        } else {
-            System.out.println("student already in list");
-        }
+       int i = data.indexOf(objectToAdd);
+       student.add(data.get(i));
         // ADD A STUDENT TO THE LIST
        // student.add(data.get());
     }

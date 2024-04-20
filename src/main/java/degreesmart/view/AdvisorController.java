@@ -77,7 +77,7 @@ public class AdvisorController implements Initializable {
         new Person("Time, Justin L.", "Freshman", "Jungle Gym Structures")
     );
 
-    protected ObservableList<Person> student = FXCollections.observableArrayList( );
+    protected ObservableList<Person> student = FXCollections.observableArrayList();
 
     public static class Person {
         private final StringProperty name;
