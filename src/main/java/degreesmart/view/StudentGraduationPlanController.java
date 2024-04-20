@@ -74,7 +74,7 @@ public class StudentGraduationPlanController extends StudentController implement
         creditsEarned.setText("" + application.getCreditHours());
 
         addCompletedSemesters(application.getCompletedCourses());
-        addPlannedSemesters(application.getCurrentCourses());
+        addCurrentSemester(application.getCurrentCourses());
         addPlannedSemesters(application.getPlannedCourses());
     }
 
@@ -133,6 +133,7 @@ public class StudentGraduationPlanController extends StudentController implement
                 details = (GridPane) semester.lookup("#semesterDetails");
                 blockLabel = completedCourse.getTerm().toString();
                 ((Label) semester.lookup("#semesterName")).setText(blockLabel);
+                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(54, 188, 152);");
                 row = 0;
             }
             col = 0;
@@ -190,6 +191,86 @@ public class StudentGraduationPlanController extends StudentController implement
         }
     }
 
+    private void addCurrentSemester(ArrayList<PlannedCourse> courses) {
+        Collections.sort(courses, Collections.reverseOrder());
+
+        String blockLabel = "";
+        VBox semester = null;
+        GridPane details = null;
+        int row = 0;
+        int col = 0;
+
+        for (PlannedCourse plannedCourse : courses) {
+            if (!plannedCourse.getTerm().toString().equals(blockLabel)) {
+                semester = getSemesterVBox();
+                details = (GridPane) semester.lookup("#semesterDetails");
+                blockLabel = plannedCourse.getTerm().toString();
+                ((Label) semester.lookup("#semesterName")).setText(blockLabel);
+                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(255, 193, 7);");
+                row = 0;
+            }
+            col = 0;
+            row++;
+            Course course = plannedCourse.getCourse();
+
+
+            ArrayList<Label> labels = new ArrayList<Label>();
+            Collections.addAll(
+                labels,
+                new Label(course.getShortName()),
+                new Label(course.getName()),
+                new Label("" + course.getCreditHours()),
+                new Label("-"),
+                new Label("Computer Science - Major")
+            );
+
+            EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.println(course);
+                }
+            };
+
+            EventHandler<MouseEvent> enterEvent = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    for (Label label : labels) {
+                        label.setStyle("-fx-padding: 3 5; -fx-background-color: rgba(101, 8, 8, 0.2);");
+                    }
+                }
+            };
+
+            EventHandler<MouseEvent> exitEvent = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    for (Label label : labels) {
+                        label.setStyle("-fx-padding: 3 5; -fx-background-color: transparent;");
+                    }
+                }
+            };
+
+            for (Label label : labels) {
+                label.setOnMouseClicked(clickEvent);
+                GridPane.setRowIndex(label, row);
+                GridPane.setColumnIndex(label, col++);
+                details.getChildren().add(label);
+
+                label.setStyle("-fx-padding: 3 5;");
+                label.setMaxHeight(Double.MAX_VALUE);
+                label.setMaxWidth(Double.MAX_VALUE);
+                label.setOnMouseEntered(enterEvent);
+                label.setOnMouseExited(exitEvent);
+            }
+
+            HBox spacer = (HBox) semester.lookup("#spacer");
+
+            details.setVisible(true);
+            details.setManaged(true);
+            spacer.setVisible(true);
+            spacer.setManaged(true);
+        }
+    }
+
     private void addPlannedSemesters(ArrayList<PlannedCourse> courses) {
         Collections.sort(courses, Collections.reverseOrder());
 
@@ -205,6 +286,7 @@ public class StudentGraduationPlanController extends StudentController implement
                 details = (GridPane) semester.lookup("#semesterDetails");
                 blockLabel = plannedCourse.getTerm().toString();
                 ((Label) semester.lookup("#semesterName")).setText(blockLabel);
+                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(244, 81, 108);");
                 row = 0;
             }
             col = 0;
@@ -259,6 +341,13 @@ public class StudentGraduationPlanController extends StudentController implement
                 label.setOnMouseEntered(enterEvent);
                 label.setOnMouseExited(exitEvent);
             }
+
+            HBox spacer = (HBox) semester.lookup("#spacer");
+
+            details.setVisible(true);
+            details.setManaged(true);
+            spacer.setVisible(true);
+            spacer.setManaged(true);
         }
     }
 }

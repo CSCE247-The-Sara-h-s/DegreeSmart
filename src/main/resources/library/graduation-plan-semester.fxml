@@ -24,12 +24,14 @@
         <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" style="-fx-background-color: white">
             <columnConstraints>
                 <ColumnConstraints minWidth="25" maxWidth="25" />
+                <ColumnConstraints minWidth="25" maxWidth="25" />
             </columnConstraints>
             <children>
                 <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
                     <Image url="@../images/downarrow.png"/>
                 </ImageView>
-                <Label alignment="CENTER_LEFT" fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="5" GridPane.rowSpan="1" style="-fx-font-size: 15"/>
+                <HBox fx:id="status" minHeight="20" maxHeight="20" minWidth="20" maxWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1"/>
+                <Label alignment="CENTER_LEFT" fx:id="semesterName" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="5" GridPane.rowSpan="1" style="-fx-font-size: 15"/>
                 <HBox fx:id="spacer" minHeight="10" maxHeight="10" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1"/>
             </children>
         </GridPane>
