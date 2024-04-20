@@ -1,16 +1,14 @@
 package degreesmart.model;
 
-public class CompletedCourse {
+public class CompletedCourse implements Comparable<CompletedCourse> {
 	private Course course;
 	private Grade grade;
-	private Semester semester;
-	private int year;
+	private Term term;
 
 	public CompletedCourse(Course course, Grade grade, Semester semester, int year) {
 		this.course = course;
 		this.grade = grade;
-		this.semester = semester;
-		this.year = year;
+		term = new Term(semester, year);
 	}
 
 	public Course getCourse() {
@@ -30,25 +28,33 @@ public class CompletedCourse {
 	}
 
 	public Semester getSemester() {
-		return semester;
+		return term.getSemester();
 	}
 
 	public void setSemester(Semester semester) {
-		this.semester = semester;
+		term.setSemester(semester);
 	}
 
 	public int getYear() {
-		return year;
+		return term.getYear();
 	}
 
 	public void setYear(int year) {
-		this.year = year;
+		term.setYear(year);
 	}
 
+	public Term getTerm() {
+		return term;
+	}
+
+	public int compareTo(CompletedCourse c) {
+        return c.getTerm().compareTo(term);
+    }
+
 	public String toString() {
-		return course.getSubject() + " " + course.getNumber() + ", "
+		return course.getShortName() + ", "
 			+ course.getCreditHours() + ", "
 			+ grade + ", "
-			+ semester + " " + year;
+			+ term;
 	}
 }

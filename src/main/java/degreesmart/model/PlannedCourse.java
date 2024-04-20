@@ -1,6 +1,6 @@
 package degreesmart.model;
 
-public class PlannedCourse {
+public class PlannedCourse implements Comparable<PlannedCourse> {
     private Course course;
     private Term term;
 
@@ -35,6 +35,14 @@ public class PlannedCourse {
 
     public void setYear(int year) {
         term.setYear(year);
+    }
+
+    public Term getTerm() {
+        return term;
+    }
+
+    public int compareTo(PlannedCourse p) {
+        return p.getTerm().compareTo(term);
     }
 
     public String toString() {
