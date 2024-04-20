@@ -7,10 +7,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.Separator?>
@@ -34,26 +34,35 @@
                 <RowConstraints percentHeight="85"/>
             </rowConstraints>
             <VBox styleClass="searchBox" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
-                <TextField fx:id="searchField" promptText="Search For Course"/>
+                <TextField fx:id="searchField" promptText="Search For Course" onAction="#searchCourses"/>
             </VBox>
             <VBox GridPane.columnIndex="4" GridPane.rowIndex="1">
-                <Button fx:id="search" text="Search" styleClass="searchButton"/>
+                <Button fx:id="search" text="Search" styleClass="searchButton" onAction="#searchCourses"/>
             </VBox>
             <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
                 <HBox>
-                    <Label text="Results for..." alignment="BOTTOM_LEFT"/>
+                    <Label fx:id="resultLabel" text="Results for..." alignment="BOTTOM_LEFT"/>
                 </HBox>
                 <HBox>
-                    <Separator HBox.hgrow="ALWAYS" styleClass="seperator"/>
+                    <Separator HBox.hgrow="ALWAYS" styleClass="separator"/>
                 </HBox>
             </VBox>
-            <VBox GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
-                <HBox>
-                    <Label text="Name"/>
-                    <Label text="Number"/>
-                    <Label text="Approval Status"/>
-                </HBox>
-            </VBox>
+            <TableView fx:id="courseTable" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
+                <columns>
+                    <TableColumn text="Subject" prefWidth="100">
+                        <cellValueFactory><PropertyValueFactory property="subject" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Number" prefWidth="100">
+                        <cellValueFactory><PropertyValueFactory property="number" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Name" prefWidth="200">
+                        <cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Description" prefWidth="300">
+                        <cellValueFactory><PropertyValueFactory property="description" /></cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
         </GridPane>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
@@ -61,6 +70,6 @@
         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
     </padding>
     <stylesheets>
-      <URL value="@../styles/admin-home.css"/>
-   </stylesheets>
+        <URL value="@../styles/admin-home.css"/>
+    </stylesheets>
 </VBox>
