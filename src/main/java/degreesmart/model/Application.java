@@ -85,8 +85,12 @@ public class Application {
         }
 
         User user = userList.getUser(username);
-        if (user == null || !user.getPassword().equals(password)) {
-            return "Login failed: Invalid credentials";
+        if (user == null) {
+            return "Login failed: Invalid credentials\n"
+            + "-----------------\n[DEV] username '" + username +"' does not exist\n-----------------";
+        } else if (!user.getPassword().equals(password)) {
+            return "Login failed: Invalid credentials\n"
+             + "-----------------\n[DEV] " + username + "'s password is '" + user.getPassword() + "'\n-----------------";
         }
 
         activeUser = user;
