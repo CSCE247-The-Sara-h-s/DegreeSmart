@@ -252,7 +252,9 @@ public class DataLoader extends DataConstants {
 
 		try {
 			student.setAdvisor((Advisor) uuidToUser.get(UUID.fromString(advisor)));
+			((Advisor) uuidToUser.get(UUID.fromString(advisor))).addAssignedStudent(student);
 		} catch (NullPointerException e) {
+			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
@@ -265,6 +267,7 @@ public class DataLoader extends DataConstants {
 
 		for (Object object : parents) {
 			student.addParent((Parent) uuidToUser.get(UUID.fromString((String) object)));
+			((Parent) uuidToUser.get(UUID.fromString((String) object))).addChild(student);
 		}
 
 		for (Object object : requests) {
