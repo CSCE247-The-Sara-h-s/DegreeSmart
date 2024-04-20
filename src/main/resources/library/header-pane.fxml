@@ -15,11 +15,6 @@
 <VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.HeaderPaneController" fx:id="headerPane">
     <children>
        <HBox>
-            <HBox style="-fx-padding: 10;">
-                <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="100" fitHeight="50">
-                    <Image url="@../images/university_logo.png" />
-                </ImageView>
-            </HBox>
             <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10; -fx-text-fill: #650808; -fx-font-weight: BOLD;">Page Title</Label>
             <HBox style="-fx-padding: 10;" spacing="10">
                 <HBox onMouseClicked="#showUserHomePage">
