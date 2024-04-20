@@ -11,6 +11,7 @@ public class Student extends User {
   private ArrayList<AdvisingNote> advisingNotes;
   private ArrayList<Scholarship> scholarships;
   private ArrayList<CompletedCourse> completedCourses;
+  private ArrayList<PlannedCourse> currentCourses;
   private ArrayList<PlannedCourse> plannedCourses;
   private GraduationPlan graduationPlan;
 
@@ -23,6 +24,7 @@ public class Student extends User {
     advisingNotes = new ArrayList<AdvisingNote>();
     scholarships = new ArrayList<Scholarship>();
     completedCourses = new ArrayList<CompletedCourse>();
+    currentCourses = new ArrayList<PlannedCourse>();
     plannedCourses = new ArrayList<PlannedCourse>();
     graduationPlan = new GraduationPlan();
   }
@@ -95,12 +97,28 @@ public class Student extends User {
     return completedCourses.remove(completedCourse);
   }
 
+  public ArrayList<PlannedCourse> getCurrentCourses() {
+    return currentCourses;
+  }
+
+  public boolean addCurrentCourse(Course course, Semester semester, int year) {
+    return currentCourses.add(new PlannedCourse(course, semester, year));
+  }
+
+  public boolean removeCurrentCourse(PlannedCourse currentCourse) {
+    return currentCourses.remove(currentCourse);
+  }
+
   public ArrayList<PlannedCourse> getPlannedCourses() {
     return plannedCourses;
   }
 
   public boolean addPlannedCourse(Course course, Semester semester, int year) {
     return plannedCourses.add(new PlannedCourse(course, semester, year));
+  }
+
+  public boolean removePlannedCourse(PlannedCourse plannedCourse) {
+    return plannedCourses.remove(plannedCourse);
   }
 
   public ArrayList<AdvisingNote> getAdvisingNotes() {

@@ -103,6 +103,10 @@ public class StudentApplication extends Application {
 		return getActiveUser().getCompletedCourses();
 	}
 
+	public ArrayList<PlannedCourse> getCurrentCourses() {
+		return getActiveUser().getCurrentCourses();
+	}
+
 	public ArrayList<PlannedCourse> getPlannedCourses() {
 		return getActiveUser().getPlannedCourses();
 	}
@@ -136,5 +140,17 @@ public class StudentApplication extends Application {
 			parent.addChild(getActiveUser());
 			return "";
 		}
+	}
+
+	public String addPlannedCourse() {
+		return "";
+	}
+
+	public String changePlannedCourse() {
+		return "";
+	}
+
+	public String deletePlannedCourse() {
+		return "";
 	}
 }
