@@ -292,6 +292,13 @@ public class Application {
         return null;
     }
 
+    public ArrayList<Course> searchCourses(String query) {
+        if (userLoggedIn()) {
+            return courseList.searchCourses(query);
+        }
+        return null;
+    }
+
     public ArrayList<RequirementSet> getRequirementSets() {
         if (userLoggedIn()) {
             return requirementSetList.getRequirementSets();

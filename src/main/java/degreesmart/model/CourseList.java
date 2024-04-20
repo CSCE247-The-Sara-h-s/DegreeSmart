@@ -3,6 +3,7 @@ package degreesmart.model;
 import java.util.UUID;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class CourseList {
 	private ArrayList<Course> courses;
@@ -46,6 +47,21 @@ public class CourseList {
 
 	public Course getCourse(UUID uuid) {
 		return coursesByUuid.get(uuid);
+	}
+
+	public ArrayList<Course> searchCourses(String query) {
+		ArrayList<Course> results = new ArrayList<Course>();
+		query = ".*" + Pattern.quote(query.toLowerCase()) + ".*";
+
+		for (Course c : courses) {
+			if (c.getName().toLowerCase().matches(query)
+					|| c.getDescription().toLowerCase().matches(query)
+					|| c.getShortName().toLowerCase().matches(query)) {
+				results.add(c);
+			}
+		}
+
+		return results;
 	}
 
 	public Course getCourse(Subject subject, String number) {

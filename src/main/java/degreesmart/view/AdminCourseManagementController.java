@@ -48,7 +48,7 @@ public class AdminCourseManagementController extends AdminController implements 
     // Method to handle search action
     @FXML
     private void searchCourses() {
-        showSearchResults(Application.getInstance().getCourses());
+        showSearchResults(Application.getInstance().searchCourses(searchField.getText()));
     }
 
     // Method to display search results in the table
