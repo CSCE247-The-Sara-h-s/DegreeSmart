@@ -20,7 +20,7 @@
                     <Image url="@../images/university_logo.png" />
                 </ImageView>
             </HBox>
-            <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10;">Page Title</Label>
+            <Label fx:id="pageTitle" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-padding: 10; -fx-text-fill: #650808; -fx-font-weight: BOLD;">Page Title</Label>
             <HBox style="-fx-padding: 10;" spacing="10">
                 <HBox onMouseClicked="#showUserHomePage">
                     <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" style="-fx-padding: 5;">
@@ -39,7 +39,8 @@
                 </HBox>
             </HBox>
         </HBox>
-        <HBox fx:id="links" />
+        <HBox fx:id="links" style="-fx-padding: 10;"/>
+        <HBox minHeight="3" maxHeight="3" style="-fx-background-color: #650808" />
     </children>
     <stylesheets>
       <URL value = "@../styles/header-pane.css"/>
