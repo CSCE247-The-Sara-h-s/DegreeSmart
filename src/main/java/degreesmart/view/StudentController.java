@@ -22,39 +22,6 @@ public class StudentController implements Initializable {
 
     @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle rb) {
-        
-        Label graduationPlan = new Label("Graduation Plan");
-        Label parentList = new Label("Parent List");
 
-        graduationPlan.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("student-graduation-plan");
-                } catch (Exception e) {
-                }
-            }
-        });
-        parentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("parent-list");
-                } catch (Exception e) {
-                }
-            }
-        });
-
-        HBox.setHgrow(graduationPlan, Priority.ALWAYS);
-        HBox.setHgrow(parentList, Priority.ALWAYS);
-
-        graduationPlan.setMaxWidth(Double.MAX_VALUE);
-        parentList.setMaxWidth(Double.MAX_VALUE);
-
-        graduationPlan.setAlignment(Pos.CENTER);
-        parentList.setAlignment(Pos.CENTER);
-
-        headerPaneController.getLinks().getChildren().add(graduationPlan);
-        headerPaneController.getLinks().getChildren().add(parentList);
     }
 }
