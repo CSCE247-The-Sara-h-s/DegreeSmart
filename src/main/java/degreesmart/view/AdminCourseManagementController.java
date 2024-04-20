@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import java.util.List;
 import degreesmart.model.Course;
 import degreesmart.model.CourseList;
+import degreesmart.model.Application;
 
 public class AdminCourseManagementController extends AdminController implements Initializable {
 
@@ -47,7 +48,7 @@ public class AdminCourseManagementController extends AdminController implements 
     // Method to handle search action
     @FXML
     private void searchCourses() {
-        
+        showSearchResults(Application.getInstance().getCourses());
     }
 
     // Method to display search results in the table
