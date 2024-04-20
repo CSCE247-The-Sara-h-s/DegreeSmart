@@ -246,6 +246,7 @@ public class DataLoader extends DataConstants {
 		JSONArray requests =     (JSONArray) studentJSON.get(STUDENT_ACCESS_REQUESTS);
 		JSONArray sets =         (JSONArray) studentJSON.get(STUDENT_REQUIREMENT_SETS);
 		JSONArray completed =    (JSONArray) studentJSON.get(STUDENT_COMPLETED_COURSES);
+		JSONArray current =      (JSONArray) studentJSON.get(STUDENT_CURRENT_COURSES);
 		JSONArray planned =      (JSONArray) studentJSON.get(STUDENT_PLANNED_COURSES);
 		JSONArray notes =        (JSONArray) studentJSON.get(STUDENT_ADVISING_NOTES);
 
@@ -286,6 +287,17 @@ public class DataLoader extends DataConstants {
 				Grade.valueOf(grade), Semester.valueOf(semester), Integer.parseInt(year));
 		}
 
+		for (Object object : current) {
+			JSONObject currentCourse = (JSONObject) object;
+
+			String course =   (String) currentCourse.get(STUDENT_COURSE);
+			String semester = (String) currentCourse.get(STUDENT_COURSE_SEMESTER);
+			String year =     (String) currentCourse.get(STUDENT_COURSE_YEAR);
+
+			student.addCurrentCourse(uuidToCourse.get(UUID.fromString(course)),
+				Semester.valueOf(semester), Integer.parseInt(year));
+		}
+
 		for (Object object : planned) {
 			JSONObject plannedCourse = (JSONObject) object;
 
@@ -293,7 +305,7 @@ public class DataLoader extends DataConstants {
 			String semester = (String) plannedCourse.get(STUDENT_COURSE_SEMESTER);
 			String year =     (String) plannedCourse.get(STUDENT_COURSE_YEAR);
 
-			student.addPlannedCourse(uuidToCourse.get(UUID.fromString(course)), 
+			student.addPlannedCourse(uuidToCourse.get(UUID.fromString(course)),
 				Semester.valueOf(semester), Integer.parseInt(year));
 		}
 

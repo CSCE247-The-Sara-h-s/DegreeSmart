@@ -5,6 +5,7 @@ public abstract class DataConstants {
 	public static final String USER_FILE = "/data/user.json";
 	public static final String COURSE_FILE = "/data/course.json";
 	public static final String REQUIREMENT_FILE = "/data/requirement.json";
+
 	protected static final String USER_ROLE = "role";
 	protected static final String USER_UUID = "uuid";
 	protected static final String USER_USERNAME = "username";
@@ -25,6 +26,7 @@ public abstract class DataConstants {
 	protected static final String STUDENT_SCHOLARSHIPS = "scholarships";
 	protected static final String STUDENT_REQUIREMENT_SETS = "requirement_sets";
 	protected static final String STUDENT_COMPLETED_COURSES = "completed_courses";
+	protected static final String STUDENT_CURRENT_COURSES = "current_courses";
 	protected static final String STUDENT_PLANNED_COURSES = "planned_courses";
 	protected static final String STUDENT_COURSE = "course";
 	protected static final String STUDENT_COURSE_GRADE = "grade";
@@ -50,5 +52,4 @@ public abstract class DataConstants {
 	protected static final String REQUIREMENT_GRADE = "grade";
 	protected static final String REQUIREMENT_CHOICES = "choices";
 	protected static final String REQUIREMENT_OPTIONS = "options";
-
 }
