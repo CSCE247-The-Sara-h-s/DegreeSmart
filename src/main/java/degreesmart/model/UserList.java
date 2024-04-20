@@ -91,8 +91,105 @@ public class UserList {
         return filteredUsers;
     }
 
-    public ArrayList<User> searchUsers(String query) {
+    public ArrayList<Administrator> searchAdministators(String query, ArrayList<Administrator> usersToSearch) {
+        ArrayList<Administrator> results = new ArrayList<Administrator>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(usersToSearch);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Administrator) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Parent> searchParents(String query, ArrayList<Parent> usersToSearch) {
+        ArrayList<Parent> results = new ArrayList<Parent>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(usersToSearch);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Parent) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Advisor> searchAdvisors(String query, ArrayList<Advisor> usersToSearch) {
+        ArrayList<Advisor> results = new ArrayList<Advisor>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(usersToSearch);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Advisor) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Student> searchStudents(String query, ArrayList<Student> usersToSearch) {
+        ArrayList<Student> results = new ArrayList<Student>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(usersToSearch);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Student) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Administrator> searchAdministators(String query) {
+        ArrayList<Administrator> results = new ArrayList<Administrator>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(administrators);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Administrator) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Parent> searchParents(String query) {
+        ArrayList<Parent> results = new ArrayList<Parent>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(parents);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Parent) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Advisor> searchAdvisors(String query) {
+        ArrayList<Advisor> results = new ArrayList<Advisor>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(advisors);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Advisor) u);
+        }
+
+        return results;
+    }
+
+    public ArrayList<Student> searchStudents(String query) {
+        ArrayList<Student> results = new ArrayList<Student>();
+        ArrayList<User> genericUsers = new ArrayList<User>();
+        genericUsers.addAll(students);
+
+        for (User u : searchUsers(query, genericUsers)) {
+            results.add((Student) u);
+        }
+
+        return results;
+    }
+
+    private ArrayList<User> searchUsers(String query, ArrayList<User> usersToSearch) {
         ArrayList<User> results = new ArrayList<User>();
+
         query = Arrays.asList(query.trim().split("\\s+")).stream()
             .map(String::toLowerCase)
             .map(Pattern::quote)
@@ -100,7 +197,7 @@ public class UserList {
             .collect(Collectors.joining());
         query = "^" + query + ".*$";
 
-        for (User u : users) {
+        for (User u : usersToSearch) {
             String str = u.getUsername() + '\0'
                 + u.getFirstName() + '\0'
                 + u.getLastName() + '\0'
@@ -117,6 +214,10 @@ public class UserList {
         }
 
         return results;
+    }
+
+    public ArrayList<User> searchUsers(String query) {
+        return searchUsers(query, users);
     }
 
     public ArrayList<Student> getStudents() {
