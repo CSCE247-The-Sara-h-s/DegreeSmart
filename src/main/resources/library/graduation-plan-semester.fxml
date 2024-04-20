@@ -23,24 +23,14 @@
     <children>
         <GridPane maxHeight="Infinity" VBox.vgrow="ALWAYS" style="-fx-background-color: white">
             <columnConstraints>
-                <ColumnConstraints percentWidth="5" />
-                <ColumnConstraints percentWidth="15" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints minWidth="25" maxWidth="25" />
             </columnConstraints>
-            <rowConstraints>
-                <RowConstraints />
-                <RowConstraints minHeight="10" maxHeight="10"/>
-            </rowConstraints>
             <children>
                 <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
                     <Image url="@../images/downarrow.png"/>
                 </ImageView>
-                <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="1"/>
-                <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                </HBox>
+                <Label alignment="CENTER_LEFT" fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="5" GridPane.rowSpan="1" style="-fx-font-size: 15"/>
+                <HBox fx:id="spacer" minHeight="10" maxHeight="10" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1"/>
             </children>
         </GridPane>
         <GridPane fx:id="semesterDetails" maxHeight="Infinity" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" style="-fx-background-color: white">
@@ -51,11 +41,11 @@
                 <ColumnConstraints percentWidth="5" />
                 <ColumnConstraints percentWidth="40" />
             </columnConstraints>
-            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Code</Label>
-            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Name</Label>
-            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Hours</Label>
-            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Grade</Label>
-            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Required By</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: rgba(87, 0, 8, 0.85); -fx-text-fill: white; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Number</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: rgba(87, 0, 8, 0.85); -fx-text-fill: white; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Name</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: rgba(87, 0, 8, 0.85); -fx-text-fill: white; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Hours</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: rgba(87, 0, 8, 0.85); -fx-text-fill: white; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Grade</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: rgba(87, 0, 8, 0.85); -fx-text-fill: white; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Required By</Label>
         </GridPane>
     </children>
 </VBox>
