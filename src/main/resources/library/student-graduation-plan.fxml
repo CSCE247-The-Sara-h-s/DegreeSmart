@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -62,20 +63,19 @@
                 <Label styleClass="fieldData" fx:id="creditsEarned"></Label>
             </HBox> 
         </GridPane>
-
-        <VBox style="-fx-background-color: lightgrey;" maxHeight="Infinity" VBox.vgrow="ALWAYS">
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="edge-to-edge" style="-fx-background-color: transparent;">
             <VBox fx:id="semesterList" spacing="10" style="-fx-padding: 10;"/>
+        </ScrollPane>
 
-            <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
-                <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25"  >
-                    <Image url="@../images/pinned-notes.png" />
-                </ImageView>
-                <Label style="-fx-padding: 5;"></Label>
-                <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25">
-                    <Image url="@../images/print.png" />
-                </ImageView>
-            </HBox>
-        </VBox>
+        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25"  >
+                <Image url="@../images/pinned-notes.png" />
+            </ImageView>
+            <Label style="-fx-padding: 5;"></Label>
+            <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25">
+                <Image url="@../images/print.png" />
+            </ImageView>
+        </HBox>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <padding>

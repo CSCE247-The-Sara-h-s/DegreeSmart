@@ -1,3 +1,21 @@
+.scrollbar:vertical {
+	-fx-background-color: transparent;
+}
+
+.scrollbar:vertical .increment-button,
+.scrollbar:vertical .decrement-button {
+	-fx-background-color: transparent;
+	-fx-max-height: 0;
+	-fx-max-width: 0;
+}
+
+.scrollbar .increment-arrow,
+.scrollbar .decrement-arrow {
+	-fx-background-color: transparent;
+	-fx-max-height: 0;
+	-fx-max-width: 0;
+}
+
 .fieldLabel {
 	-fx-text-fill: #650808;
 	-fx-padding: 5 10 5 30;

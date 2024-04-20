@@ -30,28 +30,32 @@
                 <ColumnConstraints percentWidth="20" />
                 <ColumnConstraints percentWidth="20" />
             </columnConstraints>
-
-            <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
-                <Image url="@../images/downarrow.png"/>
-            </ImageView>
-            <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="1"/>
-            <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
-            </HBox>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints minHeight="10" maxHeight="10"/>
+            </rowConstraints>
+            <children>
+                <ImageView preserveRatio="true" fitWidth="20" fitHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1" fx:id="expandSemester">
+                    <Image url="@../images/downarrow.png"/>
+                </ImageView>
+                <Label fx:id="semesterName" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="1"/>
+                <HBox GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                </HBox>
+            </children>
         </GridPane>
         <GridPane fx:id="semesterDetails" maxHeight="Infinity" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" style="-fx-background-color: white">
             <columnConstraints>
+                <ColumnConstraints percentWidth="15" />
                 <ColumnConstraints percentWidth="35" />
-                <ColumnConstraints percentWidth="10" />
-                <ColumnConstraints percentWidth="10" />
-                <ColumnConstraints percentWidth="35" />
-                <ColumnConstraints percentWidth="10" />
+                <ColumnConstraints percentWidth="5" />
+                <ColumnConstraints percentWidth="5" />
+                <ColumnConstraints percentWidth="40" />
             </columnConstraints>
-            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Course and Title</Label>
-            <HBox alignment="BOTTOM_CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="5" GridPane.rowSpan="1" style="-fx-background-color: #650808; -fx-min-height: 1; -fx-max-height: 1;"/>
-            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Min Grade</Label>
-            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Credit Hours</Label>
-            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Prerequisites</Label>
-            <Label alignment="BOTTOM_LEFT" styleClass="tableHeader" style="-fx-min-height: 3em;" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Completed Grade</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Code</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Name</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Hours</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Grade</Label>
+            <Label alignment="CENTER_LEFT" styleClass="tableHeader" style="-fx-background-color: #650808; -fx-text-fill: white; -fx-max-width: INFINITY; -fx-padding: 3 5;" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.columnSpan="1" GridPane.rowSpan="1">Required By</Label>
         </GridPane>
     </children>
 </VBox>
