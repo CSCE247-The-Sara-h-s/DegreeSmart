@@ -335,6 +335,13 @@ public class Application {
         return null;
     }
 
+    public ArrayList<User> searchUsers(String query) {
+        if (userLoggedIn()) {
+            return userList.searchUsers(query);
+        }
+        return null;
+    }
+
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
 //  Everything above this line is done.
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/

@@ -1,8 +1,11 @@
 package degreesmart.model;
 
 import java.util.UUID;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class UserList {
     private ArrayList<User> users;
@@ -86,6 +89,34 @@ public class UserList {
         }
 
         return filteredUsers;
+    }
+
+    public ArrayList<User> searchUsers(String query) {
+        ArrayList<User> results = new ArrayList<User>();
+        query = Arrays.asList(query.trim().split("\\s+")).stream()
+            .map(String::toLowerCase)
+            .map(Pattern::quote)
+            .map(q -> "(?=.*" + q + ")")
+            .collect(Collectors.joining());
+        query = "^" + query + ".*$";
+
+        for (User u : users) {
+            String str = u.getUsername() + '\0'
+                + u.getFirstName() + '\0'
+                + u.getLastName() + '\0'
+                + u.getPreferredName() + '\0'
+                + u.getEmailAddress();
+
+            if (u.getRole() == Role.STUDENT) {
+                str += '\0' + ((Student) u).getUscId();
+            }
+
+            if (str.toLowerCase().matches(query)) {
+                results.add(u);
+            }
+        }
+
+        return results;
     }
 
     public ArrayList<Student> getStudents() {
