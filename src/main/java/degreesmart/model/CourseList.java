@@ -1,9 +1,11 @@
 package degreesmart.model;
 
 import java.util.UUID;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class CourseList {
 	private ArrayList<Course> courses;
@@ -51,12 +53,19 @@ public class CourseList {
 
 	public ArrayList<Course> searchCourses(String query) {
 		ArrayList<Course> results = new ArrayList<Course>();
-		query = ".*" + Pattern.quote(query.toLowerCase()) + ".*";
+		query = Arrays.asList(query.trim().split("\\s+")).stream()
+			.map(String::toLowerCase)
+			.map(Pattern::quote)
+			.map(q -> "(?=.*" + q + ")")
+			.collect(Collectors.joining());
+		query = "^" + query + ".*$";
 
 		for (Course c : courses) {
-			if (c.getName().toLowerCase().matches(query)
-					|| c.getDescription().toLowerCase().matches(query)
-					|| c.getShortName().toLowerCase().matches(query)) {
+			String str = c.getShortName() + '\0'
+				+ c.getName() + '\0'
+				+ c.getDescription();
+
+			if (str.toLowerCase().matches(query)) {
 				results.add(c);
 			}
 		}
