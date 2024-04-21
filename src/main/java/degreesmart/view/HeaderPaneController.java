@@ -13,11 +13,17 @@ public class HeaderPaneController {
 	private HBox links;
 
 	@FXML
-	private Label pageTitle;
+	private HBox icons;
 
+	@FXML
+	private Label pageTitle;
 
 	public HBox getLinks() {
 		return links;
+	}
+
+	public HBox getIcons() {
+		return icons;
 	}
 
 	public Label getPageTitle() {

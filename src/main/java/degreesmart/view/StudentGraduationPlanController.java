@@ -28,6 +28,8 @@ import java.util.stream.Collectors;
 import java.util.Collections;
 import java.util.Comparator;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import degreesmart.model.Application;
 import degreesmart.model.StudentApplication;
@@ -76,20 +78,37 @@ public class StudentGraduationPlanController extends StudentController implement
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
+        HBox notesContainer = new HBox();
+        ImageView notes = new ImageView();
+        notesContainer.getChildren().add(notes);
+        notes.setPreserveRatio(true);
+        notes.setFitWidth(20);
+        notes.setFitHeight(20);
+        notes.setStyle("-fx-padding: 5;");
+        notes.setImage(new Image(App.class.getResource("/images/pinned-notes.png").toExternalForm()));
+        notesContainer.setOnMouseClicked(e -> {
+            App.setRoot("student-advising-notes");
+        });
+
+        HBox printContainer = new HBox();
+        ImageView print = new ImageView();
+        printContainer.getChildren().add(print);
+        print.setPreserveRatio(true);
+        print.setFitWidth(25);
+        print.setFitHeight(25);
+        print.setStyle("-fx-padding: 5;");
+        print.setImage(new Image( App.class.getResource("/images/print.png").toExternalForm()));
+        printContainer.setOnMouseClicked(e -> {
+            System.out.println("TODO");
+        });
+
+        headerPaneController.getIcons().getChildren().add(0, printContainer);
+        headerPaneController.getIcons().getChildren().add(0, notesContainer);
+
         plan = new SemesterPlan(new ArrayList<>(Arrays.asList(Set.generateComputerScience())));
         plan.getPlanned().get(0).setCompleted(Grade.A);
         plan.getPlanned().get(5).setCurrent();
         refresh();
-    }
-
-    @FXML
-    public void openAdvisingNotes(MouseEvent event) {
-        App.setRoot("student-advising-notes");
-    }
-
-    @FXML
-    public void printPlan(MouseEvent event) {
-        
     }
 
     private GridPane getBlankSemesterRow() {
@@ -265,13 +284,19 @@ public class StudentGraduationPlanController extends StudentController implement
         VBox semester = getSemesterVBox();
 
         VBox details = (VBox) semester.lookup("#semesterDetails");
+        HBox spacer = (HBox) semester.lookup("#spacer");
         String blockLabel = "UNPLANNED";
-        ((Label) semester.lookup("#semesterName")).setText(blockLabel);
-                    ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(244, 81, 108, 1);");
+        ((Label) semester.lookup("#semesterName")).setText(plan.getUndecidedBranches().size() + "  " + blockLabel);
+        ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(244, 81, 108, 1);");
 
         for (RequirementTree branch : plan.getUndecidedBranches()) {
             details.getChildren().add(new Label(branch.getName()));
         }
+
+        details.setVisible(true);
+        details.setManaged(true);
+        spacer.setVisible(true);
+        spacer.setManaged(true);
     }
 
     private VBox getSemesterVBox() {
@@ -320,6 +345,7 @@ public class StudentGraduationPlanController extends StudentController implement
         String blockLabel = "";
         VBox semester = null;
         VBox details = null;
+        HBox spacer = null;
         int row = 0;
         int col = 0;
 
@@ -328,16 +354,28 @@ public class StudentGraduationPlanController extends StudentController implement
                 semester = getSemesterVBox();
                 details = (VBox) semester.lookup("#semesterDetails");
                 blockLabel = node.getTerm().toString();
-                ((Label) semester.lookup("#semesterName")).setText(blockLabel);
+                spacer = (HBox) semester.lookup("#spacer");
                 switch (node.getState()) {
                 case COMPLETED:
+                    ((Label) semester.lookup("#semesterName")).setText(blockLabel);
                     ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(54, 188, 152, 1);");
+                    
                     break;
                 case CURRENT:
+                    ((Label) semester.lookup("#semesterName")).setText(blockLabel + "  —  CURRENT");
                     ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(255, 193, 7, 1);");
+                    details.setVisible(true);
+                    details.setManaged(true);
+                    spacer.setVisible(true);
+                    spacer.setManaged(true);
                     break;
                 case PLANNED:
+                    ((Label) semester.lookup("#semesterName")).setText(blockLabel);
                     ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(108, 108, 108, 1);");
+                    details.setVisible(true);
+                    details.setManaged(true);
+                    spacer.setVisible(true);
+                    spacer.setManaged(true);
                     break;
                 }
                 details.getChildren().add(getSemesterHeader(node));
@@ -347,22 +385,6 @@ public class StudentGraduationPlanController extends StudentController implement
             row++;
 
             details.getChildren().add(getSemesterRow(node));
-
-            HBox spacer = (HBox) semester.lookup("#spacer");
-
-            if (node.getState() == SemesterState.COMPLETED) {
-                details.setVisible(false);
-                details.setManaged(false);
-                spacer.setVisible(false);
-                spacer.setManaged(false);
-            } else {
-                details.setVisible(true);
-                details.setManaged(true);
-                spacer.setVisible(true);
-                spacer.setManaged(true);
-                
-            }
-            
         }
     }
 
@@ -394,8 +416,8 @@ public class StudentGraduationPlanController extends StudentController implement
 
         addSemesters(plan.getCompleted());
         addSemesters(plan.getCurrent());
-        addSemesters(plan.getPlanned());
         addUnplannedRequirements();
+        addSemesters(plan.getPlanned());
     }
 
     private void openNodeMenu(SemesterNode node) {

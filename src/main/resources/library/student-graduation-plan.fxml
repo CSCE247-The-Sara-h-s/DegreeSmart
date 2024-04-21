@@ -22,64 +22,52 @@
 <VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.StudentGraduationPlanController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
-        <GridPane style="-fx-padding: 10;">
-            <columnConstraints>
-                <ColumnConstraints percentWidth="0" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-                <ColumnConstraints percentWidth="20" />
-            </columnConstraints>
-
-            <HBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldLabel">Degree:</Label>
-            </HBox>
-            <HBox GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldData" fx:id="degree"></Label>
-            </HBox>
-            <HBox GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldLabel">Classification:</Label>
-            </HBox>
-            <HBox GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldData" fx:id="classification"></Label>
-            </HBox>
-            <HBox GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldLabel">Overall GPA:</Label>
-            </HBox>
-            <HBox GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldData" fx:id="overallGpa"></Label>
-            </HBox>
-            <HBox GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldLabel">Major GPA:</Label>
-            </HBox>
-            <HBox GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldData" fx:id="majorGpa"></Label>
-            </HBox>
-            <HBox GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldLabel">Total Credits Earned</Label>
-            </HBox> 
-            <HBox GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                <Label styleClass="fieldData" fx:id="creditsEarned"></Label>
-            </HBox> 
-        </GridPane>
         <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="edge-to-edge" style="-fx-background-color: transparent;">
-            <VBox fx:id="semesterList" spacing="10" style="-fx-padding: 10;"/>
-        </ScrollPane>
+            <VBox>
+                <GridPane style="-fx-padding: 10;">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="0" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                    </columnConstraints>
 
-        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
-            <HBox onMouseClicked="#openAdvisingNotes">
-                <ImageView fx:id="advisingNotesIcon" preserveRatio="true" fitWidth="25" fitHeight="25" >
-                    <Image url="@../images/pinned-notes.png" />
-                </ImageView>
-            </HBox>
-            <Label style="-fx-padding: 5;"></Label>
-            <HBox onMouseClicked="#printPlan">
-                <ImageView fx:id="printIcon" preserveRatio="true" fitWidth="25" fitHeight="25">
-                    <Image url="@../images/print.png"  />
-                </ImageView>
-            </HBox>
-        </HBox>
+                    <HBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldLabel">Degree:</Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldData" fx:id="degree"></Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldLabel">Classification:</Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldData" fx:id="classification"></Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldLabel">Overall GPA:</Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldData" fx:id="overallGpa"></Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldLabel">Major GPA:</Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldData" fx:id="majorGpa"></Label>
+                    </HBox>
+                    <HBox GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldLabel">Total Credits Earned</Label>
+                    </HBox> 
+                    <HBox GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
+                        <Label styleClass="fieldData" fx:id="creditsEarned"></Label>
+                    </HBox> 
+                </GridPane>
+                <VBox fx:id="semesterList" spacing="10" style="-fx-padding: 10;"/>
+            </VBox>
+        </ScrollPane>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>
     <padding>
