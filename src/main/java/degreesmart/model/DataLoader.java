@@ -254,7 +254,6 @@ public class DataLoader extends DataConstants {
 			student.setAdvisor((Advisor) uuidToUser.get(UUID.fromString(advisor)));
 			((Advisor) uuidToUser.get(UUID.fromString(advisor))).addAssignedStudent(student);
 		} catch (NullPointerException e) {
-			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}

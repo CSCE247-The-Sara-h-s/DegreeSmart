@@ -42,6 +42,14 @@ public class Term implements Comparable<Term> {
 			&& year == term.getYear();
 	}
 
+	public boolean isNewerThan(Term term) {
+		return this.compareTo(term) > 0;
+	}
+
+	public boolean isOlderThan(Term term) {
+		return this.compareTo(term) < 0;
+	}
+
 	public int compareTo(Term term) {
 		if (year < term.getYear()) {
 			return -1;

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.HashMap;
+import java.util.Arrays;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
@@ -14,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.chart.PieChart;
@@ -22,6 +26,8 @@ import javafx.geometry.Pos;
 import java.lang.reflect.*;
 import java.util.stream.Collectors;
 import java.util.Collections;
+import java.util.Comparator;
+import javafx.scene.Node;
 
 import degreesmart.model.Application;
 import degreesmart.model.StudentApplication;
@@ -32,10 +38,19 @@ import degreesmart.model.CompletedCourse;
 import degreesmart.model.PlannedCourse;
 import degreesmart.model.Grade;
 import degreesmart.model.Semester;
+import degreesmart.model.SemesterPlan;
+import degreesmart.model.SemesterNode;
+import degreesmart.model.SemesterState;
+import degreesmart.model.RequirementTree;
+import degreesmart.model.Set;
+
 
 public class StudentGraduationPlanController extends StudentController implements Initializable {
     @FXML
     private HeaderPaneController headerPaneController;
+
+    @FXML
+    private StackPane stackrRoot;
 
     @FXML
     private Label degree;
@@ -55,27 +70,198 @@ public class StudentGraduationPlanController extends StudentController implement
     @FXML
     private VBox semesterList;
 
+    private SemesterPlan plan;
+
+    private Label dragView;
+
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
-        StudentApplication application = StudentApplication.getInstance();
+        plan = new SemesterPlan(new ArrayList<>(Arrays.asList(Set.generateComputerScience())));
+        plan.getPlanned().get(0).setCompleted(Grade.A);
+        plan.getPlanned().get(5).setCurrent();
+        refresh();
+    }
 
-        String title = Application.getInstance().getFirstName() + "'s Graduation Plan";
-        headerPaneController.getPageTitle().setText(title);
+    private GridPane getBlankSemesterRow() {
+        GridPane blankRow = new GridPane();
 
-        try {
-            degree.setText(application.getMajors().get(0).getName());
-        } catch (Exception e) {
-            degree.setText("Undeclared");
+        ColumnConstraints one = new ColumnConstraints();
+        ColumnConstraints two = new ColumnConstraints();
+        ColumnConstraints three = new ColumnConstraints();
+        ColumnConstraints four = new ColumnConstraints();
+        ColumnConstraints five = new ColumnConstraints();
+        one.setPercentWidth(15);
+        two.setPercentWidth(35);
+        three.setPercentWidth(5);
+        four.setPercentWidth(5);
+        five.setPercentWidth(40);
+
+        blankRow.getColumnConstraints().addAll(
+            one,
+            two,
+            three,
+            four,
+            five
+        );
+        return blankRow;
+    }
+
+    private String getBaseHeaderStyle() {
+        return " -fx-text-fill: black; -fx-max-width: INFINITY; -fx-max-height: INFINITY; -fx-padding: 3 5; -fx-font-size: 13;";
+    }
+
+    private String getBaseCellStyle() {
+        return "-fx-padding: 3 5;";
+    }
+
+    private GridPane getSemesterHeader(SemesterNode node) {
+        GridPane header = getBlankSemesterRow();
+
+        ArrayList<String> columnHeaders = new ArrayList<String>();
+        columnHeaders.add("Number");
+        columnHeaders.add("Name");
+        columnHeaders.add("Hours");
+        columnHeaders.add("Grade");
+        columnHeaders.add("Required By");
+
+        int count = 0;
+        for (String text : columnHeaders) {
+            Label tmp = new Label(text);
+            switch (node.getState()) {
+            case COMPLETED:
+                tmp.setStyle(getBaseHeaderStyle() + "-fx-background-color: rgba(54, 188, 152, 0.2);");
+                break;
+            case CURRENT:
+                tmp.setStyle(getBaseHeaderStyle() + "-fx-background-color: rgba(255, 193, 7, 0.2);");
+                break;
+            case PLANNED:
+                tmp.setStyle(getBaseHeaderStyle() + "-fx-background-color: rgba(108, 108, 108, 0.2);");
+                break;
+            }
+            GridPane.setConstraints(tmp, count++, 0);
+            header.getChildren().add(tmp);
         }
 
-        classification.setText(application.getClassification());
-        overallGpa.setText("" + application.getOverallGpa());
-        majorGpa.setText("" + application.getMajorGpa());
-        creditsEarned.setText("" + application.getCreditHours());
+        return header;
+    }
 
-        addCompletedSemesters(application.getCompletedCourses());
-        addCurrentSemester(application.getCurrentCourses());
-        addPlannedSemesters(application.getPlannedCourses());
+    private GridPane getSemesterRow(SemesterNode node) {
+        GridPane row = getBlankSemesterRow();
+
+        String number = "-";
+        String name = "-";
+        String hours = "-";
+        String grade = "-";
+        String requiredBy = "-";
+
+        ArrayList<String> data = new ArrayList<String>();
+
+        switch (node.getState()) {
+        case COMPLETED:
+            number = node.getCourse().getShortName();
+            name = node.getCourse().getName();
+            hours = "" + node.getCourse().getCreditHours();
+            grade = node.getGrade().toString();
+            if (node.getRequirement() != null) {
+                if (node.getRequirement().getName() != null
+                        && node.getRequirement().getName().trim().length() > 0) {
+                    requiredBy = node.getRequirement().getName();
+                } else {
+                     requiredBy = String.join(" - ", node.getPath());
+                }
+            }
+            break;
+        case CURRENT:
+            number = node.getCourse().getShortName();
+            name = node.getCourse().getName();
+            hours = "" + node.getCourse().getCreditHours();
+            if (node.getRequirement() != null) {
+                if (node.getRequirement().getName() != null
+                        && node.getRequirement().getName().trim().length() > 0) {
+                    requiredBy = node.getRequirement().getName();
+                } else {
+                     requiredBy = String.join(" - ", node.getPath());
+                }
+            }
+            break;
+        case PLANNED:
+            if (node.getCourse() != null) {
+                number = node.getCourse().getShortName();
+                name = node.getCourse().getName();
+                hours = "" + node.getCourse().getCreditHours();
+                grade = node.getRequirement().getGrade().toString();
+            }
+
+           if (node.getRequirement() != null) {
+                if (node.getRequirement().getName() != null
+                        && node.getRequirement().getName().trim().length() > 0) {
+                    requiredBy = node.getRequirement().getName();
+                } else {
+                     requiredBy = String.join(" - ", node.getPath());
+                }
+            }
+            break;
+        }
+
+        data.add(number);
+        data.add(name);
+        data.add(hours);
+        data.add(grade);
+        data.add(requiredBy);
+
+        int count = 0;
+        for (String text : data) {
+            Label tmp = new Label(text);
+            tmp.setStyle(getBaseCellStyle());
+            GridPane.setConstraints(tmp, count++, 0);
+            row.getChildren().add(tmp);
+        }
+
+        row.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                openNodeMenu(node);
+            }
+        });
+
+        row.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                switch (node.getState()) {
+                case COMPLETED:
+                    row.setStyle("-fx-background-color: rgba(54, 188, 152, 0.1);");
+                    break;
+                case CURRENT:
+                    row.setStyle("-fx-background-color: rgba(255, 193, 7, 0.1);");
+                    break;
+                case PLANNED:
+                    row.setStyle("-fx-background-color: rgba(108, 108, 108, 0.1);");
+                    break;
+                }
+            }
+        });
+
+        row.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                row.setStyle(" -fx-background-color: transparent;");
+            }
+        });
+
+        return row;
+    }
+
+    private void addUnplannedRequirements() {
+        VBox semester = getSemesterVBox();
+
+        VBox details = (VBox) semester.lookup("#semesterDetails");
+        String blockLabel = "UNPLANNED";
+        ((Label) semester.lookup("#semesterName")).setText(blockLabel);
+                    ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(244, 81, 108, 1);");
+
+        for (RequirementTree branch : plan.getUndecidedBranches()) {
+            details.getChildren().add(new Label(branch.getName()));
+        }
     }
 
     private VBox getSemesterVBox() {
@@ -86,7 +272,7 @@ public class StudentGraduationPlanController extends StudentController implement
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(App.class.getResource("/library/graduation-plan-semester.fxml"));
             semester = fxmlLoader.<VBox>load();
-            GridPane details = (GridPane)semester.lookup("#semesterDetails");
+            VBox details = (VBox) semester.lookup("#semesterDetails");
             HBox spacer = (HBox) semester.lookup("#spacer");
 
             ((ImageView)semester.lookup("#expandSemester")).setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -118,236 +304,95 @@ public class StudentGraduationPlanController extends StudentController implement
         return semester;
     }
 
-    private void addCompletedSemesters(ArrayList<CompletedCourse> courses) {
-        Collections.sort(courses, Collections.reverseOrder());
+    private void addSemesters(ArrayList<SemesterNode> nodes) {
+        Collections.sort(nodes);
 
         String blockLabel = "";
         VBox semester = null;
-        GridPane details = null;
+        VBox details = null;
         int row = 0;
         int col = 0;
 
-        for (CompletedCourse completedCourse : courses) {
-            if (!completedCourse.getTerm().toString().equals(blockLabel)) {
+        for (SemesterNode node : nodes) {
+            if (!node.getTerm().toString().equals(blockLabel)) {
                 semester = getSemesterVBox();
-                details = (GridPane) semester.lookup("#semesterDetails");
-                blockLabel = completedCourse.getTerm().toString();
+                details = (VBox) semester.lookup("#semesterDetails");
+                blockLabel = node.getTerm().toString();
                 ((Label) semester.lookup("#semesterName")).setText(blockLabel);
-                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(54, 188, 152);");
+                switch (node.getState()) {
+                case COMPLETED:
+                    ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(54, 188, 152, 1);");
+                    break;
+                case CURRENT:
+                    ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(255, 193, 7, 1);");
+                    break;
+                case PLANNED:
+                    ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(108, 108, 108, 1);");
+                    break;
+                }
+                details.getChildren().add(getSemesterHeader(node));
                 row = 0;
             }
             col = 0;
             row++;
-            Course course = completedCourse.getCourse();
 
-
-            ArrayList<Label> labels = new ArrayList<Label>();
-            Collections.addAll(
-                labels,
-                new Label(course.getShortName()),
-                new Label(course.getName()),
-                new Label("" + course.getCreditHours()),
-                new Label(completedCourse.getGrade().toString()),
-                new Label("Computer Science - Major")
-            );
-
-            EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.println(course);
-                }
-            };
-
-            EventHandler<MouseEvent> enterEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: rgba(101, 8, 8, 0.2);");
-                    }
-                }
-            };
-
-            EventHandler<MouseEvent> exitEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: transparent;");
-                    }
-                }
-            };
-
-            for (Label label : labels) {
-                label.setOnMouseClicked(clickEvent);
-                GridPane.setRowIndex(label, row);
-                GridPane.setColumnIndex(label, col++);
-                details.getChildren().add(label);
-
-                label.setStyle("-fx-padding: 3 5;");
-                label.setMaxHeight(Double.MAX_VALUE);
-                label.setMaxWidth(Double.MAX_VALUE);
-                label.setOnMouseEntered(enterEvent);
-                label.setOnMouseExited(exitEvent);
-            }
-        }
-    }
-
-    private void addCurrentSemester(ArrayList<PlannedCourse> courses) {
-        Collections.sort(courses, Collections.reverseOrder());
-
-        String blockLabel = "";
-        VBox semester = null;
-        GridPane details = null;
-        int row = 0;
-        int col = 0;
-
-        for (PlannedCourse plannedCourse : courses) {
-            if (!plannedCourse.getTerm().toString().equals(blockLabel)) {
-                semester = getSemesterVBox();
-                details = (GridPane) semester.lookup("#semesterDetails");
-                blockLabel = plannedCourse.getTerm().toString();
-                ((Label) semester.lookup("#semesterName")).setText(blockLabel);
-                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(255, 193, 7);");
-                row = 0;
-            }
-            col = 0;
-            row++;
-            Course course = plannedCourse.getCourse();
-
-
-            ArrayList<Label> labels = new ArrayList<Label>();
-            Collections.addAll(
-                labels,
-                new Label(course.getShortName()),
-                new Label(course.getName()),
-                new Label("" + course.getCreditHours()),
-                new Label("-"),
-                new Label("Computer Science - Major")
-            );
-
-            EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.println(course);
-                }
-            };
-
-            EventHandler<MouseEvent> enterEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: rgba(101, 8, 8, 0.2);");
-                    }
-                }
-            };
-
-            EventHandler<MouseEvent> exitEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: transparent;");
-                    }
-                }
-            };
-
-            for (Label label : labels) {
-                label.setOnMouseClicked(clickEvent);
-                GridPane.setRowIndex(label, row);
-                GridPane.setColumnIndex(label, col++);
-                details.getChildren().add(label);
-
-                label.setStyle("-fx-padding: 3 5;");
-                label.setMaxHeight(Double.MAX_VALUE);
-                label.setMaxWidth(Double.MAX_VALUE);
-                label.setOnMouseEntered(enterEvent);
-                label.setOnMouseExited(exitEvent);
-            }
+            details.getChildren().add(getSemesterRow(node));
 
             HBox spacer = (HBox) semester.lookup("#spacer");
 
-            details.setVisible(true);
-            details.setManaged(true);
-            spacer.setVisible(true);
-            spacer.setManaged(true);
+            if (node.getState() == SemesterState.COMPLETED) {
+                details.setVisible(false);
+                details.setManaged(false);
+                spacer.setVisible(false);
+                spacer.setManaged(false);
+            } else {
+                details.setVisible(true);
+                details.setManaged(true);
+                spacer.setVisible(true);
+                spacer.setManaged(true);
+                
+            }
+            
         }
     }
 
-    private void addPlannedSemesters(ArrayList<PlannedCourse> courses) {
-        Collections.sort(courses, Collections.reverseOrder());
+    private void refresh() {
+        semesterList.getChildren().clear();
 
-        String blockLabel = "";
-        VBox semester = null;
-        GridPane details = null;
-        int row = 0;
-        int col = 0;
+        StudentApplication application = StudentApplication.getInstance();
 
-        for (PlannedCourse plannedCourse : courses) {
-            if (!plannedCourse.getTerm().toString().equals(blockLabel)) {
-                semester = getSemesterVBox();
-                details = (GridPane) semester.lookup("#semesterDetails");
-                blockLabel = plannedCourse.getTerm().toString();
-                ((Label) semester.lookup("#semesterName")).setText(blockLabel);
-                ((HBox) semester.lookup("#status")).setStyle("-fx-background-radius: 20; -fx-background-color: rgb(244, 81, 108);");
-                row = 0;
-            }
-            col = 0;
-            row++;
-            Course course = plannedCourse.getCourse();
+        String title = Application.getInstance().getFirstName() + "'s Graduation Plan";
+        headerPaneController.getPageTitle().setText(title);
+        try {
+            degree.setText(application.getMajors().get(0).getName());
+        } catch (Exception e) {
+            degree.setText("Undeclared");
+        }
 
+        classification.setText(application.getClassification());
+        overallGpa.setText("" + application.getOverallGpa());
+        majorGpa.setText("" + application.getMajorGpa());
+        creditsEarned.setText("" + application.getCreditHours());
 
-            ArrayList<Label> labels = new ArrayList<Label>();
-            Collections.addAll(
-                labels,
-                new Label(course.getShortName()),
-                new Label(course.getName()),
-                new Label("" + course.getCreditHours()),
-                new Label(Grade.D.toString()),
-                new Label("Computer Science - Major")
-            );
+        // System.out.println(plan.getCompleted());
+        // System.out.println(plan.getCurrent());
+        // ArrayList<SemesterNode> planned = plan.getPlanned();
+        // Collections.sort(planned);
+        // for (SemesterNode n : planned) {
+        //     System.out.println(n);
+        // }
 
-            EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.println(course);
-                }
-            };
+        addSemesters(plan.getCompleted());
+        addSemesters(plan.getCurrent());
+        addSemesters(plan.getPlanned());
+        addUnplannedRequirements();
+    }
 
-            EventHandler<MouseEvent> enterEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: rgba(101, 8, 8, 0.2);");
-                    }
-                }
-            };
-
-            EventHandler<MouseEvent> exitEvent = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (Label label : labels) {
-                        label.setStyle("-fx-padding: 3 5; -fx-background-color: transparent;");
-                    }
-                }
-            };
-
-            for (Label label : labels) {
-                label.setOnMouseClicked(clickEvent);
-                GridPane.setRowIndex(label, row);
-                GridPane.setColumnIndex(label, col++);
-                details.getChildren().add(label);
-
-                label.setStyle("-fx-padding: 3 5;");
-                label.setMaxHeight(Double.MAX_VALUE);
-                label.setMaxWidth(Double.MAX_VALUE);
-                label.setOnMouseEntered(enterEvent);
-                label.setOnMouseExited(exitEvent);
-            }
-
-            HBox spacer = (HBox) semester.lookup("#spacer");
-
-            details.setVisible(true);
-            details.setManaged(true);
-            spacer.setVisible(true);
-            spacer.setManaged(true);
+    private void openNodeMenu(SemesterNode node) {
+        if (node.getState() != SemesterState.PLANNED) {
+            System.out.println("View-only");
+        } else {
+            System.out.println("Edit");
         }
     }
 }
