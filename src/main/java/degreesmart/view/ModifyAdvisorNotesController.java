@@ -22,5 +22,15 @@ public class ModifyAdvisorNotesController extends AdvisorController implements I
     private void goBack() {
        App.setRoot("advisor-notes-home");
     }
+
+    @FXML
+    private void addAdvisorNote() {
+        App.setRoot("advisor-add-note");
+    }
+
+    @FXML
+    private void removeAdvisorNote() {
+        App.setRoot("advisor-remove-note");
+    }
     
 }

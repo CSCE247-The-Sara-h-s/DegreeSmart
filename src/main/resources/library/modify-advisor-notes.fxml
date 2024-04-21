@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import java.net.*?>
@@ -10,7 +11,13 @@
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <Label text="ADVISING NOTES FOR STUDENT:" minHeight="16" minWidth="69"/>
         <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="GO BACK" onMouseClicked="#goBack"/>
+
     </children>
+    <HBox>
+        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="GO BACK" onMouseClicked="#goBack"/>
+        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Add" onMouseClicked="#addAdvisorNote"/>
+        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Remove" onMouseClicked="#removeAdvisorNote"/>
+    </HBox>
     <VBox>
         <VBox>
             <Label text="Note 1" minHeight="16" minWidth="69"/>
