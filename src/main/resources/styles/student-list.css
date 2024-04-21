@@ -1,0 +1,28 @@
+.tableTitle {
+    -fx-text-fill:#650808;
+    -fx-font-size: 25px;
+    -fx-font-family: Arial;
+    -fx-alignment: BOTTOM_LEFT;
+}
+
+.separator {
+    -fx-background-color: #650808;
+}
+
+.button {
+    -fx-background-color: #650808;
+    -fx-text-fill: white;
+    -fx-font-family: Arial;
+    -fx-alignment: CENTER;
+    -fx-padding: 5px;
+    -fx-border-color: #650808;
+    -fx-border-width: 1px
+}
+
+.table-view {
+    -fx-background-color:white;
+}
+
+.column-header {
+    -fx-text-fill: #650808;
+}
