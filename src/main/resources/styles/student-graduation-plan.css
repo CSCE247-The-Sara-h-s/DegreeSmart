@@ -19,10 +19,10 @@
 .fieldLabel {
 	-fx-text-fill: #650808;
 	-fx-padding: 5 10 5 30;
+	-fx-font-weight: bold;
 }
 
 .fieldData {
-	-fx-background-color: white;
 	-fx-padding: 5;
 }
 
