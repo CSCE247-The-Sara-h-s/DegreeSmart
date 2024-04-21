@@ -50,7 +50,7 @@ public class AdvisorNotesHomeController extends AdvisorController implements Ini
 
     @FXML
     private void viewStudentNotes(MouseEvent event) {
-        System.out.println(studentTable.getSelectionModel().getSelectedItem());
+        Application.getInstance().selectStudent((Student) studentTable.getSelectionModel().getSelectedItem());
         App.setRoot("modify-advisor-notes");
     }
 }

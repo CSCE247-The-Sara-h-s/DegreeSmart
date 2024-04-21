@@ -8,6 +8,7 @@ public class Application {
     private RequirementSetList requirementSetList;
     private User activeUser;
     private static Application application;
+    private Student selectedStudent;
 
     protected Application() {
         courseList = CourseList.getInstance();
@@ -247,6 +248,14 @@ public class Application {
             advisor.setAdvisorRole();
         }
         return canApprove;
+    }
+
+    public void selectStudent(Student student) {
+        selectedStudent = student;
+    }
+
+    public Student getSelectedStudent() {
+        return selectedStudent;
     }
 
     public boolean assignStudent(Student student) {
