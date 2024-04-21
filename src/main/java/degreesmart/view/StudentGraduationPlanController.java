@@ -82,6 +82,16 @@ public class StudentGraduationPlanController extends StudentController implement
         refresh();
     }
 
+    @FXML
+    public void openAdvisingNotes(MouseEvent event) {
+        App.setRoot("student-advising-notes");
+    }
+
+    @FXML
+    public void printPlan(MouseEvent event) {
+        
+    }
+
     private GridPane getBlankSemesterRow() {
         GridPane blankRow = new GridPane();
 

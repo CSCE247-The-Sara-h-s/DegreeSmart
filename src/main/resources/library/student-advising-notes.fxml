@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="581.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.StudentAdvisingNoteController">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.StudentAdvisingNoteController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml" />
         <GridPane fx:id="courseManagement" maxHeight="Infinity" VBox.vgrow="ALWAYS">
@@ -27,25 +27,11 @@
                 <RowConstraints percentHeight="5" />
                 <RowConstraints percentHeight="93" />
             </rowConstraints>
-            <TableView fx:id="SANTable" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
-                <columns>
-                    <TableColumn prefWidth="530.0000203450521" text="Description">
-                        <cellValueFactory><PropertyValueFactory property="description" /></cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="100" text="Advisor">
-                        <cellValueFactory><PropertyValueFactory property="subject" /></cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="100" text="Date">
-                        <cellValueFactory><PropertyValueFactory property="number" /></cellValueFactory>
-                    </TableColumn>
-                </columns>
+            <TableView fx:id="sanTable" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="3">
             </TableView>
         </GridPane>
         <fx:include fx:id="footerPane" source="footer-pane.fxml" />
     </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
     <stylesheets>
         <URL value="@../styles/student-list.css" />
     </stylesheets>

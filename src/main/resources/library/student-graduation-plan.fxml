@@ -68,13 +68,17 @@
         </ScrollPane>
 
         <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
-            <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25"  >
-                <Image url="@../images/pinned-notes.png" />
-            </ImageView>
+            <HBox onMouseClicked="#openAdvisingNotes">
+                <ImageView fx:id="advisingNotesIcon" preserveRatio="true" fitWidth="25" fitHeight="25" >
+                    <Image url="@../images/pinned-notes.png" />
+                </ImageView>
+            </HBox>
             <Label style="-fx-padding: 5;"></Label>
-            <ImageView fx:id="universityLogo" preserveRatio="true" fitWidth="25" fitHeight="25">
-                <Image url="@../images/print.png" />
-            </ImageView>
+            <HBox onMouseClicked="#printPlan">
+                <ImageView fx:id="printIcon" preserveRatio="true" fitWidth="25" fitHeight="25">
+                    <Image url="@../images/print.png"  />
+                </ImageView>
+            </HBox>
         </HBox>
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
     </children>

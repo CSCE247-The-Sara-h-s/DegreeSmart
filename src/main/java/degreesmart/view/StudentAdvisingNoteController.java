@@ -15,6 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.util.Callback;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleStringProperty;
 
 public class StudentAdvisingNoteController extends StudentController implements Initializable {
 
@@ -22,10 +26,7 @@ public class StudentAdvisingNoteController extends StudentController implements 
     private HeaderPaneController headerPaneController;
 
     @FXML
-    private TableView<AdvisingNote> userTableView;
-
-    @FXML
-    private TextField searchField;
+    private TableView<AdvisingNote> sanTable;
 
 
     @SuppressWarnings("unchecked")
@@ -36,25 +37,30 @@ public class StudentAdvisingNoteController extends StudentController implements 
         String title = Application.getInstance().getFirstName() + "'s Advising Notes";
         headerPaneController.getPageTitle().setText(title);
 
-
-
         // Setup TableView columns
         TableColumn<AdvisingNote, String> dateColumn = new TableColumn<>("Date");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateColumn.setCellValueFactory(new Callback<CellDataFeatures<AdvisingNote, String>, ObservableValue<String>>() {
+             public ObservableValue<String> call(CellDataFeatures<AdvisingNote, String> n) {
+                 return new SimpleStringProperty(n.getValue().getTime().toString());
+             }
+          });
 
         TableColumn<AdvisingNote, String> advisorNameColumn = new TableColumn<>("Advisor Name");
-        advisorNameColumn.setCellValueFactory(new PropertyValueFactory<>("advisorName"));
+        advisorNameColumn.setCellValueFactory(new Callback<CellDataFeatures<AdvisingNote, String>, ObservableValue<String>>() {
+             public ObservableValue<String> call(CellDataFeatures<AdvisingNote, String> n) {
+                 return new SimpleStringProperty(n.getValue().getAuthor().getFirstName() + n.getValue().getAuthor().getLastName());
+             }
+          });
 
         TableColumn<AdvisingNote, String> advisingNotesColumn = new TableColumn<>("Advising Notes");
-        advisingNotesColumn.setCellValueFactory(new PropertyValueFactory<>("advisingNotes"));
+        advisingNotesColumn.setCellValueFactory(new Callback<CellDataFeatures<AdvisingNote, String>, ObservableValue<String>>() {
+             public ObservableValue<String> call(CellDataFeatures<AdvisingNote, String> n) {
+                 return new SimpleStringProperty(n.getValue().getNote());
+             }
+          });
 
-        userTableView.getColumns().addAll(dateColumn, advisorNameColumn, advisingNotesColumn);
+        sanTable.getColumns().addAll(dateColumn, advisorNameColumn, advisingNotesColumn);
 
-        searchField.setOnKeyPressed(event -> searchUsers());
-
-    }
-
-    private void searchUsers() {String searchText = searchField.getText().toLowerCase().trim();
-
+        sanTable.setItems(FXCollections.observableArrayList(StudentApplication.getInstance().getActiveUser().getAdvisingNotes()));
     }
 }
