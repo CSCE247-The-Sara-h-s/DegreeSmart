@@ -3,5 +3,11 @@
 }
 
 #pageTitle {
-	-fx-font-size: 20;
+	-fx-font-family: Georgia;
+	-fx-font-size: 30;
+}
+
+#links {
+	-fx-font-family: Arial;
+	-fx-font-size: 14;
 }
