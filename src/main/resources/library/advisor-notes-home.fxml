@@ -15,11 +15,14 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="degreesmart.view.AdvisorNotesHomeController">
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
-        <Label text="Search for a Student:" minHeight="16" minWidth="69"/>
+        <HBox spacing="15">
+            <Label text="Search for a Student:" layoutX="126" layoutY="120" minHeight="16" minWidth="69" styleClass="tableTitle" />
+        </HBox>
         <HBox>
             <TextField fx:id="searchBar" promptText="Enter student name..." />
             <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
        </HBox>
+       <HBox minHeight="1" maxHeight="1" style="-fx-background-color: #650808"/>
        <VBox VBox.vgrow="ALWAYS">
            <TableView fx:id="studentTable" onMouseClicked="#viewStudentNotes">
                 <columns>
