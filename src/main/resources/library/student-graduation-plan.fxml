@@ -58,12 +58,6 @@
                     <HBox GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
                         <Label styleClass="fieldData" fx:id="majorGpa"></Label>
                     </HBox>
-                    <HBox GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                        <Label styleClass="fieldLabel">Total Credits Earned</Label>
-                    </HBox> 
-                    <HBox GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
-                        <Label styleClass="fieldData" fx:id="creditsEarned"></Label>
-                    </HBox> 
                 </GridPane>
                 <VBox fx:id="semesterList" spacing="10" style="-fx-padding: 10;"/>
             </VBox>

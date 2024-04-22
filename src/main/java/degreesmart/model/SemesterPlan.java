@@ -41,7 +41,7 @@ public class SemesterPlan {
 		return node;
 	}
 
-	public void selectBranch(RequirementTree requirement) {
+	public void selectBranch(RequirementTree branch, RequirementTree path) {
 
 	}
 
@@ -59,6 +59,7 @@ public class SemesterPlan {
 		completed.addAll(nodesWithoutARequirement.stream()
 			.filter((n) -> n.getState() == SemesterState.COMPLETED)
 			.collect(Collectors.toCollection(ArrayList::new)));
+		Collections.sort(completed);
 		return completed;
 	}
 
@@ -72,6 +73,7 @@ public class SemesterPlan {
 		current.addAll(nodesWithoutARequirement.stream()
 			.filter((n) -> n.getState() == SemesterState.CURRENT)
 			.collect(Collectors.toCollection(ArrayList::new)));
+		Collections.sort(current);
 		return current;
 	}
 
@@ -85,6 +87,7 @@ public class SemesterPlan {
 		planned.addAll(nodesWithoutARequirement.stream()
 			.filter((n) -> n.getState() == SemesterState.PLANNED)
 			.collect(Collectors.toCollection(ArrayList::new)));
+		Collections.sort(planned);
 		return planned;
 	}
 
@@ -190,12 +193,12 @@ public class SemesterPlan {
 			start = getNextTermFromLocalDate();
 		}
 
+		// yikes
 		for (RequirementTree requirement : requirements) {
 			for (RequirementTree branch : requirement.getBranches()) {
 				if (branch.isLeaf()) {
 					if (!branch.hasBranch()) {
 						for (Course course : branch.getCourses()) {
-
 							if (!nodes.keySet().contains(String.join("\0", branch.getPathFromRoot()))
 								|| !nodes.get(String.join("\0", branch.getPathFromRoot())).stream()
 										.map((n) -> n.getCourse())

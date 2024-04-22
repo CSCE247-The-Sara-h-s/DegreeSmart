@@ -67,14 +67,9 @@ public class StudentGraduationPlanController extends StudentController implement
     private Label majorGpa;
 
     @FXML
-    private Label creditsEarned;
-
-    @FXML
     private VBox semesterList;
 
     private SemesterPlan plan;
-
-    private Label dragView;
 
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
@@ -106,9 +101,33 @@ public class StudentGraduationPlanController extends StudentController implement
         headerPaneController.getIcons().getChildren().add(0, notesContainer);
 
         plan = new SemesterPlan(new ArrayList<>(Arrays.asList(Set.generateComputerScience())));
+        plan.getPlanned().get(0).setCompleted(Grade.B);
         plan.getPlanned().get(0).setCompleted(Grade.A);
-        plan.getPlanned().get(5).setCurrent();
+        plan.getPlanned().get(0).setCompleted(Grade.A);
+        plan.getPlanned().get(0).setCompleted(Grade.C);
+        plan.getPlanned().get(0).setCourse(plan.getPlanned().get(0).getRequirement().getPossibleCourses().get(3));
+        plan.getPlanned().get(0).setCompleted(Grade.B);
+        plan.getPlanned().get(0).setCurrent();
+        plan.getPlanned().get(0).setCurrent();
+        plan.getPlanned().get(0).setCurrent();
+        plan.getPlanned().get(0).setCurrent();
         refresh();
+    }
+
+    private GridPane getBlankBranchRow() {
+        GridPane blankRow = new GridPane();
+
+        ColumnConstraints one = new ColumnConstraints();
+        ColumnConstraints two = new ColumnConstraints();
+        one.setPercentWidth(60);
+        two.setPercentWidth(40);
+
+        blankRow.getColumnConstraints().addAll(
+            one,
+            two
+        );
+
+        return blankRow;
     }
 
     private GridPane getBlankSemesterRow() {
@@ -196,7 +215,7 @@ public class StudentGraduationPlanController extends StudentController implement
                         && node.getRequirement().getName().trim().length() > 0) {
                     requiredBy = node.getRequirement().getName();
                 } else {
-                     requiredBy = String.join(" - ", node.getPath());
+                    requiredBy = node.getRequirement().getParent().getParent().getName() + " - " + node.getRequirement().getParent().getName();
                 }
             }
             break;
@@ -209,7 +228,7 @@ public class StudentGraduationPlanController extends StudentController implement
                         && node.getRequirement().getName().trim().length() > 0) {
                     requiredBy = node.getRequirement().getName();
                 } else {
-                     requiredBy = String.join(" - ", node.getPath());
+                    requiredBy = node.getRequirement().getParent().getParent().getName() + " - " + node.getRequirement().getParent().getName();
                 }
             }
             break;
@@ -226,7 +245,7 @@ public class StudentGraduationPlanController extends StudentController implement
                         && node.getRequirement().getName().trim().length() > 0) {
                     requiredBy = node.getRequirement().getName();
                 } else {
-                     requiredBy = String.join(" - ", node.getPath());
+                    requiredBy = node.getRequirement().getParent().getParent().getName() + " - " + node.getRequirement().getParent().getName();
                 }
             }
             break;
@@ -289,8 +308,55 @@ public class StudentGraduationPlanController extends StudentController implement
         ((Label) semester.lookup("#semesterName")).setText(plan.getUndecidedBranches().size() + "  " + blockLabel);
         ((Label) semester.lookup("#semesterName")).setStyle("-fx-font-weight: BOLD; -fx-padding: 0 10; -fx-text-fill: white; -fx-font-size: 15; -fx-background-radius: 20; -fx-background-color: rgba(244, 81, 108, 1);");
 
+        GridPane header = getBlankBranchRow();
+
+        ArrayList<String> columnHeaders = new ArrayList<String>();
+        columnHeaders.add("Name");
+        columnHeaders.add("Required By");
+
+        int count = 0;
+        for (String text : columnHeaders) {
+            Label tmp = new Label(text);
+            tmp.setStyle(getBaseHeaderStyle() + "-fx-background-color: rgba(244, 81, 108, 0.2);");
+            GridPane.setConstraints(tmp, count++, 0);
+            header.getChildren().add(tmp);
+        }
+
+        details.getChildren().add(header);
+
         for (RequirementTree branch : plan.getUndecidedBranches()) {
-            details.getChildren().add(new Label(branch.getName()));
+            GridPane row = getBlankBranchRow();
+            Label name = new Label(branch.getName());
+            Label requiredBy = new Label(branch.getParent().getName());
+            GridPane.setConstraints(name, 0, 0);
+            GridPane.setConstraints(requiredBy, 1, 0);
+            row.getChildren().add(name);
+            row.getChildren().add(requiredBy);
+            name.setStyle(getBaseCellStyle());
+            requiredBy.setStyle(getBaseCellStyle());
+
+            row.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    row.setStyle("-fx-background-color: rgba(244, 81, 108, 0.1);");
+                }
+            });
+
+            row.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    row.setStyle(" -fx-background-color: transparent;");
+                }
+            });
+
+            details.getChildren().add(row);
+
+            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    openBranchMenu(branch);
+                }
+            });
         }
 
         details.setVisible(true);
@@ -401,10 +467,9 @@ public class StudentGraduationPlanController extends StudentController implement
             degree.setText("Undeclared");
         }
 
-        classification.setText(application.getClassification());
+        classification.setText("Freshman");
         overallGpa.setText("" + application.getOverallGpa());
-        majorGpa.setText("" + application.getMajorGpa());
-        creditsEarned.setText("" + application.getCreditHours());
+        majorGpa.setText("" + application.getOverallGpa());
 
         // System.out.println(plan.getCompleted());
         // System.out.println(plan.getCurrent());
@@ -426,5 +491,9 @@ public class StudentGraduationPlanController extends StudentController implement
         } else {
             System.out.println("Edit");
         }
+    }
+
+    private void openBranchMenu(RequirementTree branch) {
+        System.out.println("Select");
     }
 }
