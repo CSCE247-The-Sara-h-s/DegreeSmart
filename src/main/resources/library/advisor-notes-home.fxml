@@ -16,11 +16,13 @@
     <children>
         <fx:include fx:id="headerPane" source="header-pane.fxml"/>
         <HBox spacing="15">
-            <Label text="Search for a Student:" minHeight="16" minWidth="69" styleClass="title"/>
-            <TextField fx:id="searchBar" promptText="Enter student name..." styleClass="searchBox"/>
-            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="60.0" text="Search" onMouseClicked="#search" styleClass="button"/>
+            <Label text="Search for a Student:" layoutX="126" layoutY="120" minHeight="16" minWidth="69" styleClass="tableTitle" />
         </HBox>
-        <HBox minHeight="1" maxHeight="1" style="-fx-background-color: #650808"/>
+        <HBox>
+            <TextField fx:id="searchBar" promptText="Enter student name..." />
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Search" onMouseClicked="#search" />
+       </HBox>
+       <HBox minHeight="1" maxHeight="1" style="-fx-background-color: #650808"/>
        <VBox VBox.vgrow="ALWAYS">
            <TableView fx:id="studentTable" onMouseClicked="#viewStudentNotes">
                 <columns>

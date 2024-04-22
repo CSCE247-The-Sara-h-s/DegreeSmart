@@ -31,7 +31,6 @@ public class ModifyAdvisorNotesController extends AdvisorController implements I
 
     @FXML
     private void goBack() {
-        
         Application.getInstance().selectStudent(null);
         App.setRoot("advisor-notes-home");
     }
