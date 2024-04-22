@@ -17,6 +17,9 @@ import degreesmart.model.Application;
 public class AdminCourseManagementController extends AdminController implements Initializable {
 
     @FXML
+    private HeaderPaneController headerPaneController;
+
+    @FXML
     private TextField searchField;
 
     @FXML
@@ -28,6 +31,8 @@ public class AdminCourseManagementController extends AdminController implements 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
+
+        headerPaneController.getPageTitle().setText("Course Management");
 
         // Set up columns in the table
         TableColumn<Course, String> subjectCol = new TableColumn<>("Subject");
