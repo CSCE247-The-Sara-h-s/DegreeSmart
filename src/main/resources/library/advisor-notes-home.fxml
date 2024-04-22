@@ -52,6 +52,6 @@
         <fx:include fx:id="footerPane" source="footer-pane.fxml"/>
    </children>
     <stylesheets>
-      <URL value = "@../styles/student-list.css"/>
+      <URL value = "@../styles/advisor-notes.css"/>
    </stylesheets>
 </VBox>
