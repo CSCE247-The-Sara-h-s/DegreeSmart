@@ -14,10 +14,10 @@
             <Label text="Notes:" layoutX="126" layoutY="120" minHeight="16" minWidth="69" styleClass="tableTitle" />
         </HBox>
         <HBox minHeight="1" maxHeight="1" style="-fx-background-color: #650808"/>
-        <VBox maxHeight="Infinity" VBox.vgrow="ALWAYS">
+        <VBox maxHeight="Infinity" VBox.vgrow="ALWAYS" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 10;">
             <VBox fx:id="notesList" />
-            <HBox>
-                <TextField fx:id="newNote" promptText="Enter message"/>
+            <HBox style="-fx-padding: 10px;">
+               <TextField fx:id="newNote" promptText="Enter message"/>
                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="Add" onMouseClicked="#addAdvisorNote"/>
             </HBox>
         </VBox>
