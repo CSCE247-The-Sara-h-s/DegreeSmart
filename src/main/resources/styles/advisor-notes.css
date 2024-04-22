@@ -1,12 +1,7 @@
-.tableTitle {
-    -fx-text-fill:#650808;
-    -fx-font-size: 25px;
-    -fx-font-family: Arial;
-    -fx-alignment: BOTTOM;
-}
-
-.separator {
-    -fx-background-color: #650808;
+.searchBox {
+    -fx-background-color: white;
+    -fx-prompt-text-fill: gray;
+	-fx-padding: 5;
 }
 
 .button {
@@ -15,6 +10,13 @@
     -fx-font-family: Arial;
     -fx-alignment: CENTER;
     -fx-padding: 5px;
+}
+
+.title {
+    -fx-text-fill:#650808;
+    -fx-font-size: 25px;
+    -fx-font-family: Arial;
+    -fx-alignment: BOTTOM_LEFT;
 }
 
 .table-view .column-header .label {
